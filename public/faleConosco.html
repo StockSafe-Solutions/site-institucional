@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>StockSafe</title>
+        <link rel="stylesheet" href="../public/css/faleConosco.css">
+    </head>
+
+    <body>
+        <div id="faleConosco">
+            <div class="titulo">
+                <h1>Fale Conosco</h1>
+            </div>
+            <div class="flex">
+                <div class="column">
+                    <div id="localizacao">
+                        <img src="assets/img/Rectangle 114.png" alt="retangulo">
+                        <div id="iframe">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.2981389556066!2d-46.66117322297425!3d-23.557733459854955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59d2a5270055%3A0x3c7ea4f4c7d51fb6!2sRua%20Haddock%20Lobo%2C%20595%20-%20Cerqueira%20C%C3%A9sar%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2001414-001!5e0!3m2!1spt-BR!2sbr!4v1680197408895!5m2!1spt-BR!2sbr"
+                                width="300" height="200" style="border:0;" allowfullscreen=""
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                        <div id="endereco">
+                            <p>Rua Haddock Lobo, 595 - Cerqueira César, São Paulo - SP, 01414-001</p>
+                        </div>
+                    </div>
+                    <div id="contatos">
+                        <img src="assets/img/iconesContato.png" alt="contatos">
+                        <div class="contatos">
+                            <p onclick="copiarEmail()" id="email">contato@stocksafe.com</p>
+                            <p>@stocksafe</p>
+                            <p>/stocksafesolutions</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="formulario">
+                    <img src="assets/img/decoracao.png" alt="Decoração">
+                    <div class="formulario">
+                        <input type="text" placeholder="Nome Completo">
+                        <input type="text" placeholder="E-mail">
+                        <input type="text" placeholder="Mensagem...">
+                    </div>
+                    <button>Enviar</button>
+                </div>
+            </div>
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#005EFF" fill-opacity="1"
+                d="M0,160L80,176C160,192,320,224,480,202.7C640,181,800,107,960,101.3C1120,96,1280,160,1360,192L1440,224L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z">
+            </path>
+        </svg>
+    </body>
+
+</html>
+
+<script>
+    function copiarEmail() {
+        navigator.clipboard.writeText("contato@stocksafe.com")
+            .then(() => {
+                alert("Email copiado para área de transferência!");
+            })
+            .catch(() => {
+                alert("something went wrong");
+            });
+    }
+</script>

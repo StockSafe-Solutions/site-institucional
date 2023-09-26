@@ -1,0 +1,13 @@
+#content-wrapper {
+    overflow-y: hidden;
+}
+
+#checkbox {
+    text-align: center;
+}
+
+@media screen and (max-width: 1000px) {
+    input::placeholder {
+        font-size: 9px;
+    }
+}

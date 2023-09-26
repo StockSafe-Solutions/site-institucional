@@ -1,0 +1,27 @@
+@media only screen and (max-width: 800px) {
+    #logoStockLogin {
+    display: none;
+    }
+    #infos,#address{
+        background-image: url(../assets/logotrans.png);
+        background-size: auto;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    #infos input{
+        background-color: transparent;
+    }
+    #address input{
+background-color: transparent;
+    }
+    #setaLogin{
+        width: 10px;
+        height: 10px;
+    
+      }
+  }
+  #setaLogin{
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+  }

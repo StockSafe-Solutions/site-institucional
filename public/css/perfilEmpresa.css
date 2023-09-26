@@ -1,0 +1,44 @@
+#olho {
+    margin-left: 100%;
+    position: absolute;
+}
+
+#ipt_cnpjEmpresa, #ipt_emailEmpresa {
+    background-color: rgb(187, 187, 187)
+}
+
+@media screen and (max-width: 2561px) {
+    #olho {
+        margin-top: -3%;
+    }
+}
+
+@media screen and (max-width: 1441px) {
+    #olho {
+        margin-top: -7%;
+    }
+}
+
+@media screen and (max-width: 1025px) {
+    #olho {
+        margin-top: -11%;
+    }
+}
+
+@media screen and (max-width: 769px) {
+    #olho {
+        margin-top: -17%;
+    }
+}
+
+@media screen and (max-width: 426px) {
+    #olho {
+        margin-top: -11%;
+    }
+}
+
+@media screen and (max-width: 321px) {
+    #olho {
+        margin-top: -16%;
+    }
+}

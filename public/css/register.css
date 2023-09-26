@@ -1,0 +1,29 @@
+#infos{
+    transition: all 0.3s linear;
+    z-index: 3;
+ 
+}
+#address{
+    
+    z-index: 1;
+    position: absolute;
+}
+@media only screen and (max-width: 600px) {
+    #logoStockLogin {
+    display: none;
+    }
+    #infos,#address{
+        background-image: url(../assets/logotrans.png);
+        background-size: auto;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    #infos input{
+        background-color: transparent;
+    }
+    #address input{
+background-color: transparent;
+    }
+  }
+
+

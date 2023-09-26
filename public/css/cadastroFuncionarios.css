@@ -1,0 +1,59 @@
+.tituloAddFuncionario {
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.tituloAddFuncionario h4 {
+    margin-top: 3%;
+    margin-bottom: 3%;
+    background-color: #005EFF;
+    color: white;
+    width: 20vw;
+    height: 10vh;
+    border-radius: 10px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#infoFuncionario {
+    display: flex; 
+    gap: 10px;
+}
+
+.container-fluid {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-content: space-around;
+}
+
+@media screen and (max-width: 450px) {
+
+
+.tituloAddFuncionario {
+    padding-bottom: 25px;
+}
+
+.tituloAddFuncionario h4 {
+ 
+    width: 55vw;
+    height: 7vh;
+    border-radius: 10px;
+    font-size: 18px;
+
+}
+
+
+
+
+
+}
+
+#tituloAdicionarMaquinas{
+    color: white;
+}
