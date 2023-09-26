@@ -1,13 +1,10 @@
 function enviarDadosBanco(){
 
     // Especificações da máquina
-    var qtdNucleosVar = ipt_qtdNucleos.value;
-    var qtdProcessadoresLogicosVar = ipt_processadoresLogicos.value;
-    var qtdRamVar =  ipt_memoriaRam.value;
-    var qtdArmazenamentoVar =  ipt_armazenamento.value;
-    // var cpuAtivoVar = ipt_cpuCheckbox.value;
-    // var ramAtivoVar = ipt_ramCheckbox.value;
-    // var discoAtivoVar = ipt_discoCheckbox.value; 
+    var qtdNucleosVar = iptQtdNucleos.value;
+    var qtdProcessadoresLogicosVar = iptProcessadoresLogicos.value;
+    var qtdRamVar =  iptMemoriaRAM.value;
+    var qtdArmazenamentoVar =  iptArmazenamento.value;
     
     fetch("/maquinas/cadastrar",{
         method: "POST",
@@ -20,9 +17,6 @@ function enviarDadosBanco(){
             qtdProcessadoresLogicosServer: qtdProcessadoresLogicosVar,
             ramServer: qtdRamVar,
             armazenamentoServer: qtdArmazenamentoVar,
-            //cpuAtivoServer: cpuAtivoVar,
-            //ramAtivoServer: ramAtivoVar,
-            //discoAtivoServer: discoAtivoVar
           }),
     }
     

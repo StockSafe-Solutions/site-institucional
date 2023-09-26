@@ -4,10 +4,10 @@ var email = sessionStorage.EMAIL_USUARIO;
 var nome = sessionStorage.NOME_USUARIO;
 var cnpj = sessionStorage.CNPJ
 
-var b_usuario = document.getElementById("b_usuario");
+var bUsuario = document.getElementById("bUsuario");
 
 if (email != null && nome != null) {
-    b_usuario.innerHTML = nome;
+    bUsuario.innerHTML = nome;
 } else {
     window.location = "../dashboard/index.html";
 }

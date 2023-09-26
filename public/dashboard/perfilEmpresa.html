@@ -18,13 +18,13 @@
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="../css/sb-admin-2.css" rel="stylesheet">
+    <link href="../css/sb-admin.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/css.css">
     <link rel="stylesheet" href="../css/customDash.css">
     <link rel="stylesheet" href="../css/perfilFuncionario.css">
     <link rel="stylesheet" href="../css/perfilEmpresa.css">
     <script src="../js/perfilFuncionario.js"></script>
-    <link rel="icon" href="../assets/icon/LOGO-removebg.png"/>
+    <link rel="icon" href="../assets/img/index/logo.png"/>
     <script src="js/dados.js"></script>
 </head>
 
@@ -117,7 +117,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Login Screens:</h6>
                         <a class="collapse-item" href="login.html">Login</a>
-                        <a class="collapse-item" href="register.html">Register</a>
+                        <a class="collapse-item" href="cadastro.html">Register</a>
                         <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Pages:</h6>
@@ -130,7 +130,7 @@
             <!-- Nav Item - Dados usuário -->
             <li class="nav-item">
                 <a class="nav-link" href="perfilEmpresa.html">
-                    <img src="../assets/editarPerfilMenu.png" alt="Editar perfil">
+                    <img src="../assets/dashboard/editarPerfilMenu.png" alt="Editar perfil">
                     <!-- <i class="fas fa-fw fa-chart-area"></i> -->
                     <span>Dados usuário</span></a>
             </li>
@@ -138,7 +138,7 @@
             <!-- Nav Item - Cadastro de funcionários -->
             <li class="nav-item">
                 <a class="nav-link" href="cadastroFuncionarios.html">
-                    <img src="../assets/adicionarPerfilMenu.png" alt="Cadastrar funcionários">
+                    <img src="../assets/dashboard/addPerfilMenu.png" alt="Cadastrar funcionários">
                     <!-- <i class="fas fa-fw fa-table"></i> -->
                     <span>Cadastrar funcionários</span></a>
             </li>
@@ -146,13 +146,13 @@
             <!-- Nav Item - Cadastro de máquinas -->
             <li class="nav-item">
                 <a class="nav-link" href="cadastroMaquinas.html">
-                    <img src="../assets/addMaquinasMenu.png" alt="Cadastrar máquinas">
+                    <img src="../assets/dashboard/addMaquinasMenu.png.png" alt="Cadastrar máquinas">
                     <!-- <i class="fas fa-fw fa-table"></i> -->
                     <span>Cadastrar máquinas</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="cadastroComponentes.html">
-                    <img src="../assets/addComponentes.png" alt="Cadastrar componentes">
+                    <img src="../assets/dashboard/addComponentes.png" alt="Cadastrar componentes">
                     <!-- <i class="fas fa-fw fa-table"></i> -->
                     <span>Cadastrar componentes</span></a>
             </li>
@@ -160,7 +160,7 @@
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
                 <a class="nav-link" href="index.html">
-                    <img src="../assets/dashboardMenu.png" alt="Dashboard">
+                    <img src="../assets/dashboard/dashboardMenu.png" alt="Dashboard">
                     <!-- <i class="fas fa-fw fa-table"></i> -->
                     <span>Dashboard</span></a>
             </li>
@@ -175,7 +175,7 @@
 
             <!-- Sidebar Message -->
             <!-- <div class="sidebar-card d-none d-lg-flex">
-                <img class="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="...">
+                <img class="sidebar-card-illustration mb-2" src="img/fotosPadrao/undraw_rocket.svg" alt="...">
                 <p class="text-center mb-2"><strong>StockSafe Pro</strong> is packed with premium features, components,
                     and more!</p>
                 <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to
@@ -199,7 +199,7 @@
                     </button>
 
                     <div class="" id="containerLogo">
-                        <img src="../assets/img/LOGO-removebg.png" alt="" id="logoDash">
+                        <img src="../assets/img/index/logo.png" alt="" id="logoDash">
                     </div>
 
 
@@ -264,22 +264,22 @@
                     <form id="infos" class="user">
                         <div  class="mx-auto text-center">
                             <h1 id="tituloCad" class="h4 border-bottom-1 text-light  mt-3">Olá, <span id="nomeUsuario">usuário</span>!</h1>
-                            <img id="imagemPerfil" src="../assets/img copy/undraw_profile.svg" class="img-thumbnai" alt="" style="border-radius: 10000px; height: 350px;width: 350px;">
+                            <img id="imagemPerfil" src="../assets/img copy/fotosPadrao/undraw_profile.svg" class="img-thumbnai" alt="" style="border-radius: 10000px; height: 350px;width: 350px;">
                         </div>
                         <div class="form-group flex-wrap col-sm-8 mx-auto col">
                             <div class="mx-auto col-sm-8">
-                                <input type="text" class="form-control form-control-user" id="ipt_cnpjEmpresa"
+                                <input type="text" class="form-control form-control-user" id="iptCNPJEmpresa"
                                     placeholder="CNPJ" readonly>
                             </div>
                             <!-- CNPJ -->
                             <div class="mx-auto col-sm-8">
-                                <input type="text" onchange="catchCNPJ()" class="form-control form-control-user" id="ipt_emailEmpresa"
+                                <input type="text" onchange="catchCNPJ()" class="form-control form-control-user" id="iptEmailEmpresa"
                                     placeholder="E-mail" readonly>
                             </div>
                             <!-- Razão Social -->
                             <div class="mx-auto col-sm-8">
                                 <div>
-                                    <input type="password" class="form-control form-control-user" id="ipt_senhaEmpresa"
+                                    <input type="password" class="form-control form-control-user" id="iptSenhaEmpresa"
                                     placeholder="Senha" />
                                     <img id="olho" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABDUlEQVQ4jd2SvW3DMBBGbwQVKlyo4BGC4FKFS4+TATKCNxAggkeoSpHSRQbwAB7AA7hQoUKFLH6E2qQQHfgHdpo0yQHX8T3exyPR/ytlQ8kOhgV7FvSx9+xglA3lM3DBgh0LPn/onbJhcQ0bv2SHlgVgQa/suFHVkCg7bm5gzB2OyvjlDFdDcoa19etZMN8Qp7oUDPEM2KFV1ZAQO2zPMBERO7Ra4JQNpRa4K4FDS0R0IdneCbQLb4/zh/c7QdH4NL40tPXrovFpjHQr6PJ6yr5hQV80PiUiIm1OKxZ0LICS8TWvpyyOf2DBQQtcXk8Zi3+JcKfNafVsjZ0WfGgJlZZQxZjdwzX+ykf6u/UF0Fwo5Apfcq8AAAAASUVORK5CYII="
                                     />
@@ -300,7 +300,7 @@
                             <div>
                              
                                 <div class="mx-auto col-sm-8">
-                                    <input type="file"  id="ipt_foto" name="foto" placeholder="Senha">
+                                    <input type="file"  id="iptFoto" name="foto" placeholder="Senha">
                                 </div>
                             </div>
                         </div>
@@ -370,7 +370,7 @@
     <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="../js/sb-admin-2.min.js"></script>
+    <script src="../js/sb-admin.min.js"></script>
 
     <!-- Page level plugins -->
     <script src="../vendor/chart.js/Chart.min.js"></script>

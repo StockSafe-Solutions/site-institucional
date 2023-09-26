@@ -1,335 +1,322 @@
 <!DOCTYPE html>
 <html lang="PT-BR">
-
-<head>
-  <meta charset="UTF-8">
-
-  <!-- Configuração Media Query -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home</title>
-  <link rel="stylesheet" href="css/home.css">
-  <link rel="icon" href="assets/icon/LOGO-removebg.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/faleConosco.css">
-  <link rel="stylesheet" href="css/sobreNos.css">
-  <link rel="stylesheet" media="screen and (min-width: 900px)" href="widescreen-styles.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=League+Spartan&family=Raleway:wght@700&display=swap"
-    rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
-
-</head>
-
-<body id="a">
-
-  <!-- começo HOME -->
-
-  <div class="wallpaperHome">
-
-    <div class="opacidade">
-
-      <!-- Começo Header -->
-      <header>
-        <div class="Header">
-
-          <div class="divLogo">
-
-            <img class="imgLogo" src="assets/img/LOGO-removebg.png" alt="Logo">
-
-            <div class="divNome">
-
-              <span class="p1">CERTIFICATE OF</span>
-              <span class="p2">STOCKSAFE</span>
-              <span class="p3">SOLUTIONS®</span>
-
-            </div>
-
-          </div>
-
-          <div class="divLinksPrincipais">
-
-            <a class="link" onclick="scrollHome()"><span>Home</span>
-              <div class="underline"></div>
-            </a>
-
-            <a class="link" onclick="scrollSobreNos()"><span>Sobre Nós</span>
-              <div class="underline"></div>
-            </a>
-
-            <a class="link" onclick="scrollFaleNos()"><span>Fale Conosco</span>
-              <div class="underline"></div>
-            </a>
-
-            <a href="login.html">
-              <div class="caixaAzul">
-                <span>LOGIN</span>
-              </div>
-            </a>
-            <a href="register.html">
-              <div class="caixaAzul">
-                <span>CADASTRO</span>
-              </div>
-            </a>
-
-          </div>
-
-        </div>
-
-      </header>
-
-      <!-- Fim do Header -->
-
-      <div class="corpoHome">
-
-        <div class="underlineHome"></div>
-
-        <span class="slogan">
-          A <b class="seg">segurança</b> que <br>
-          seu investimento precisa!
-        </span>
-
-        <button class="botaoSaibamais" onclick="scrollSobreNos()">Saiba mais</button>
-
-      </div>
-
-    </div>
-
-  </div>
-
-  <!-- Fim da Home -->
-
-  <!-- Começo tela de fale conosco -->
-
-  <div id="telaFaleConosco">
-
-    <div id="faleConosco">
-
-      <div class="titulo">
-
-        <h1>Fale Conosco
-
-      </div>
-
-      <div class="tituloSublinhado"></div>
-
-    </div>
-
-    <div class="flex">
-
-      <div class="column">
-
-        <div id="localizacao">
-
-          <div id="iframe">
-
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.2981389556066!2d-46.66117322297425!3d-23.557733459854955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59d2a5270055%3A0x3c7ea4f4c7d51fb6!2sRua%20Haddock%20Lobo%2C%20595%20-%20Cerqueira%20C%C3%A9sar%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2001414-001!5e0!3m2!1spt-BR!2sbr!4v1680197408895!5m2!1spt-BR!2sbr"
-              width="300" height="200" style="border:0;" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
-
-          </div>
-
-          <div id="endereco">
-            <p>Rua Haddock Lobo, 595 - Cerqueira César, São Paulo - SP, 01414-001</p>
-          </div>
-
-        </div>
-
-        <div id="contatos">
-
-          <img src="assets/img/iconesContato.png" alt="contatos">
-
-          <div class="contatos">
-
-            <p onclick="copiarEmail()" id="email">contato@stocksafe.com</p>
-
-            <p>@stocksafe</p>
-
-            <p>/stocksafesolutions</p>
-
-          </div>
-
-        </div>
-
-      </div>
-
-      <div id="formulario">
-
-        <div class="formulario">
-
-          <form action="https://formspree.io/f/xpzglazq" method="POST">
-
-            <label>
-
-              <input id="ipt_nome" type="text" placeholder="Nome">
-            </label>
-
-            <label>
-
-              <input id="ipt_email" type="email" name="email" placeholder="E-mail">
-            </label>
-
-            <label>
-
-              <input id="ipt_mensagem" name="message" placeholder="Mensagem "></input>
-            </label>
-
-            <!-- your other form fields go here -->
-            <button type="submit" onclick="enviarEmail()">Enviar</button>
-          </form>
-
-        </div>
-
-      </div>
-
-    </div>
-
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-
-      <path fill="#005EFF" fill-opacity="1"
-        d="M0,160L80,176C160,192,320,224,480,202.7C640,181,800,107,960,101.3C1120,96,1280,160,1360,192L1440,224L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z">
-      </path>
-
-    </svg>
-
-  </div>
-
-  <!-- Fim da tela fale conosco -->
-
-  <!-- Começo tela Sobre nós  -->
-
-  <div id="sobreNosContainer">
-
-    <div id="containerEsquerdoSN">
-
-      <div class="div_Titulo">
-        <span>
-          <b>Sobre Nós</b>
-        </span>
-
-        <div id="sublinhadoSobreNos"></div>
-
-      </div>
-
-      <span class="span">
-        A StockSafe é uma empresa focada no monitoramento e supervisionamento dos servidores da bolsa de valores do
-        Brasil.
-      </span>
-
-      <span class="span">
-        Transações de compra e venda de ações asseguradas e protegidas por especialistas 24h/7 !
-      </span>
-
-      <span class="span">
-        Desde 2020 mantemos a missão de manter seu patrimonio investido, mais seguro
-      </span>
-
-      <span class="span">
-        Venha fazer parte do maior projeto de segurança do mercado financeiro!
-      </span>
-
-      <span class="span">
-        Stock Safe a segurança que você precisa!
-      </span>
-
-
-    </div>
-
-    <div class="containerDireitoSN">
-
-      <img class="imgBola" src="assets/img/BOLA.png" alt="">
-
-      <img class="imgPata" src="assets/img/PATA.png" alt="">
-
-    </div>
-
-  </div>
-
-  <!-- começo do footer  -->
-
-  <footer>
-
-    <div class="footer">
-
-      <div class="divLogoFooter">
-
-
-        <img class="imgLogoFoter" src="assets/img/LOGO-removebg.png" alt="Logo">
-
-        <div class="divNome2">
-
-          <span class="p11">CERTIFICATE OF</span>
-          <span class="p22">STOCKSAFE</span>
-          <span class="p33">SOLUTIONS®</span>
-
-        </div>
-
-      </div>
-
-      <div class="divCentro">
-
-        <img onclick="scrollVoltarTopo()" src="assets/img/botaoVoltarTopo.png" alt="">
-
-        <span>
-          © 2020 - 2023 <b>StockSafe Solutions.</b> All Directs Reserved
-        </span>
-
-      </div>
-
-      <div class="div_redes-sociais">
-
-        <div class="redeSocial">
-
-          <img src="assets/img/linkedin.png" alt="">
-          <img src="assets/img/instagram.png" alt="">
-          <img src="assets/img/facebook.png" alt="">
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </footer>
-
-  <!-- fim do footer -->
-
-</body>
-
-
+	<head>
+		<meta charset="UTF-8" />
+
+		<!-- Configuração Media Query -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Home</title>
+		<link rel="stylesheet" href="css/home.css" />
+		<link rel="icon" href="assets/img/index/logo.png" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="css/faleConosco.css" />
+		<link rel="stylesheet" href="css/sobreNos.css" />
+		<link
+			rel="stylesheet"
+			media="screen and (min-width: 900px)"
+			href="widescreen-styles.css"
+		/>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=League+Spartan&family=Raleway:wght@700&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+
+	<body>
+		<!-- começo HOME -->
+
+		<div class="wallpaperHome">
+			<div class="opacidade">
+				<!-- Começo Header -->
+				<header>
+					<div class="divLogo">
+						<img
+							class="imgLogo"
+							src="assets/img/index/logo.png"
+							alt="Logo"
+						/>
+
+						<div class="divNome">
+							<span class="p1">CERTIFICATE OF</span>
+							<span class="p2">STOCKSAFE</span>
+							<span class="p3">SOLUTIONS®</span>
+						</div>
+					</div>
+
+					<div class="divLinksPrincipais">
+						<a class="link" onclick="scrollHome()"
+							><span>Home</span>
+							<div class="underline"></div>
+						</a>
+
+						<a class="link" onclick="scrollSobreNos()"
+							><span>Sobre Nós</span>
+							<div class="underline"></div>
+						</a>
+
+						<a class="link" onclick="scrollFaleNos()"
+							><span>Fale Conosco</span>
+							<div class="underline"></div>
+						</a>
+
+						<a href="login.html">
+							<div class="caixaAzul">
+								<span>LOGIN</span>
+							</div>
+						</a>
+						<a href="cadastro.html">
+							<div class="caixaAzul">
+								<span>CADASTRO</span>
+							</div>
+						</a>
+					</div>
+				</header>
+
+				<!-- Fim do Header -->
+
+				<div class="content">
+					<div class="underlineHome"></div>
+
+					<span class="slogan">
+						A <b style="color: #005eff">segurança</b> que <br />
+						seu investimento precisa!
+					</span>
+
+					<button class="botaoSaibamais" onclick="scrollSobreNos()">
+						Saiba mais
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- Fim da Home -->
+
+		<!-- Começo tela de fale conosco -->
+
+		<div id="faleConosco">
+			<div class="titulo">
+				<h1>Fale Conosco</h1>
+			</div>
+
+			<div class="tituloSublinhado"></div>
+		</div>
+
+		<div class="flex">
+			<div class="column">
+				<div id="localizacao">
+					<div id="iframe">
+						<iframe
+							src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.2981389556066!2d-46.66117322297425!3d-23.557733459854955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59d2a5270055%3A0x3c7ea4f4c7d51fb6!2sRua%20Haddock%20Lobo%2C%20595%20-%20Cerqueira%20C%C3%A9sar%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2001414-001!5e0!3m2!1spt-BR!2sbr!4v1680197408895!5m2!1spt-BR!2sbr"
+							width="300"
+							height="200"
+							style="border: 0"
+							allowfullscreen=""
+							referrerpolicy="no-referrer-when-downgrade"
+						>
+						</iframe>
+					</div>
+
+					<div id="endereco">
+						<p>
+							Rua Haddock Lobo, 595 - Cerqueira César, São Paulo -
+							SP, 01414-001
+						</p>
+					</div>
+				</div>
+
+				<div id="contatos">
+					<img src="assets/img/index/iconesContato.png" alt="contatos" />
+
+					<div class="contatos">
+						<p onclick="copiarEmail()" id="email">
+							contato@stocksafe.com
+						</p>
+
+						<p>@stocksafe</p>
+
+						<p>/stocksafesolutions</p>
+					</div>
+				</div>
+			</div>
+
+			<div id="formulario">
+				<div class="formulario">
+					<form
+						action="https://formspree.io/f/xpzglazq"
+						method="POST"
+					>
+						<label>
+							<input
+								id="iptNome"
+								type="text"
+								placeholder="Nome"
+							/>
+						</label>
+
+						<label>
+							<input
+								id="iptEmail"
+								type="email"
+								name="email"
+								placeholder="E-mail"
+							/>
+						</label>
+
+						<label>
+							<input
+								id="iptMensagem"
+								name="message"
+								placeholder="Mensagem "
+							/>
+						</label>
+
+						<!-- your other form fields go here -->
+						<button type="submit" onclick="enviarEmail()">
+							Enviar
+						</button>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+			<path
+				fill="#005EFF"
+				fill-opacity="1"
+				d="M0,160L80,176C160,192,320,224,480,202.7C640,181,800,107,960,101.3C1120,96,1280,160,1360,192L1440,224L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"
+			></path>
+		</svg>
+
+		<!-- Fim da tela fale conosco -->
+
+		<!-- Começo tela Sobre nós  -->
+
+		<div id="sobreNosContainer">
+			<div id="containerEsquerdoSobreNos">
+				<div class="div_Titulo">
+					<span>
+						<b>Sobre Nós</b>
+					</span>
+
+					<div id="sublinhadoSobreNos"></div>
+				</div>
+
+				<span class="span">
+					A StockSafe é uma empresa focada no monitoramento e
+					supervisionamento dos servidores da bolsa de valores do
+					Brasil.
+				</span>
+
+				<span class="span">
+					Transações de compra e venda de ações asseguradas e
+					protegidas por especialistas 24h/7 !
+				</span>
+
+				<span class="span">
+					Desde 2020 mantemos a missão de manter seu patrimonio
+					investido, mais seguro
+				</span>
+
+				<span class="span">
+					Venha fazer parte do maior projeto de segurança do mercado
+					financeiro!
+				</span>
+
+				<span class="span">
+					Stock Safe a segurança que você precisa!
+				</span>
+			</div>
+
+			<div class="containerDireitoSobreNos">
+				<img class="imgBola" src="assets/img/index/bola.png" alt="" />
+
+				<img class="imgPata" src="assets/img/index/pata.png" alt="" />
+			</div>
+		</div>
+
+		<!-- começo do footer  -->
+
+		<footer>
+			<div class="footer">
+				<div class="divLogoFooter">
+					<img
+						class="imgLogoFoter"
+						src="assets/img/index/logo.png"
+						alt="Logo"
+					/>
+
+					<div class="divNome2">
+						<span class="p11">CERTIFICATE OF</span>
+						<span class="p22">STOCKSAFE</span>
+						<span class="p33">SOLUTIONS®</span>
+					</div>
+				</div>
+
+				<div class="divCentro">
+					<img
+						onclick="scrollVoltarTopo()"
+						src="assets/img/index/botaoVoltarTopo.png"
+						alt=""
+					/>
+
+					<span>
+						© 2020 - 2023 <b>StockSafe Solutions.</b> All Directs
+						Reserved
+					</span>
+				</div>
+
+				<div class="divRedesSociais">
+					<div class="redeSocial">
+						<img src="assets/img/index/linkedin.png" alt="" />
+						<img src="assets/img/index/instagram.png" alt="" />
+						<img src="assets/img/index/facebook.png" alt="" />
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<!-- fim do footer -->
+	</body>
 </html>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mailcomposer/4.1.2/mailcomposer.min.js"></script>
-
+<script src="./js/index.js"></script>
 
 <script>
-  function copiarEmail() {
-    navigator.clipboard.writeText("contato@stocksafe.com")
-      .then(() => {
-        alert("Email copiado para área de transferência!");
-      })
-      .catch(() => {
-        alert("something went wrong");
-      });
-  }
+	function copiarEmail() {
+		navigator.clipboard
+			.writeText('contato@stocksafe.com')
+			.then(() => {
+				alert('Email copiado para área de transferência!');
+			})
+			.catch(() => {
+				alert('something went wrong');
+			});
+	}
 
-  function scrollFaleNos() {
-    window.scrollTo(0, 687)
-  }
+	function scrollFaleNos() {
+		window.scrollTo(0, 687);
+	}
 
-  function scrollSobreNos() {
-    // const body = document.getElementById("a")
-    window.scrollTo(0, 1615);
+	function scrollSobreNos() {
+		// const body = document.getElementById("a")
+		window.scrollTo(0, 1615);
+	}
 
-  }
-
-  function scrollVoltarTopo() {
-    window.scrollTo(0, 0);
-  }
-
+	function scrollVoltarTopo() {
+		window.scrollTo(0, 0);
+	}
 </script>

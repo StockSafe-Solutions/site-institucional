@@ -13,7 +13,7 @@
     display: none;
     }
     #infos,#address{
-        background-image: url(../assets/logotrans.png);
+        background-image: url(../assets/index/logoTrans.png);
         background-size: auto;
         background-repeat: no-repeat;
         background-position: center;

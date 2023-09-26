@@ -24,7 +24,7 @@ function atualizarDados(){
                 var Foto = document.getElementById("usuario_foto");
                 var Perfil = document.getElementById("imagemPerfil");
                 if(infos.foto == null){
-                    Foto.src = `../../assets/imgs/av1.png`
+                    Foto.src = `../../assets/imgs/fotosPadrao/av1.png`
                 
                 } else{
                     Foto.src = `../../assets/${infos.foto}`;

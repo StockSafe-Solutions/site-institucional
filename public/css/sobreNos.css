@@ -24,7 +24,7 @@ body {
 }
 
 /* Inicio estilização textos do Sobre Nós */
-#containerEsquerdoSN {
+#containerEsquerdoSobreNos {
     padding-left: 70px;
     padding-top: 20px;
     display: flex;
@@ -86,7 +86,7 @@ svg {
     font-size: 25px;
 }
 
-.containerDireitoSN {
+.containerDireitoSobreNos {
     padding-left: 100px;
     padding-top: 20px;
     display: flex;
@@ -144,7 +144,7 @@ svg {
 
 }
 
-.div_redes-sociais {
+.divRedesSociais {
     width: 33%;
     display: flex;
     justify-content: flex-end;
@@ -159,14 +159,14 @@ svg {
     justify-content: space-around;
 }
 
-.div_redes-sociais img {
+.divRedesSociais img {
     width: 30px;
     height: 30px;
     transition: transform 0.3s ease-in-out;
     cursor: pointer;
 }
 
-.div_redes-sociais img:hover {
+.divRedesSociais img:hover {
     transform: scale(1.1);
 }
 
@@ -255,7 +255,7 @@ footer span {
         display: none;
     }
 
-    .div_redes-sociais {
+    .divRedesSociais {
         justify-content: center;
     }
     
@@ -288,11 +288,11 @@ footer span {
         display: none;
     }
 
-    .div_redes-sociais {
+    .divRedesSociais {
         justify-content: center;
     }
     
-    .div_redes-sociais img {
+    .divRedesSociais img {
         width: 25px;
         height: 25px;
     }

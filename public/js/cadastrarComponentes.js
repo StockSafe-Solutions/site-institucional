@@ -1,7 +1,7 @@
 function enviarDadosBanco(){
 
     // Especificações da máquina
-   var nomeComponente = ipt_nomeComponente.value
+   var nomeComponente = iptNomeComponente.value
 if (ipt_porcentagem.checked) {
     var unidade = "porcentagem"
 }else if (ipt_temperatura.checked) {

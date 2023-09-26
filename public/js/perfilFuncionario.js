@@ -1,10 +1,10 @@
 function cadastrarFuncionario(){
     alert("Ta entrando")
-    var nome = ipt_nome.value;
-    var dataNascimento = ipt_dataNasc.value;
-    var funcao = ipt_funcao.value;
-    var email = ipt_emailFuncionario.value;
-    var senha = ipt_senhaFuncionario.value;
+    var nome = iptNome.value;
+    var dataNascimento = iptDataNasc.value;
+    var funcao = iptFuncao.value;
+    var email = iptEmailFuncionario.value;
+    var senha = iptSenhaFuncionario.value;
     
     fetch("/funcionario/cadastrarFuncionario", {
         method: "POST",
@@ -43,8 +43,8 @@ function cadastrarFuncionario(){
 function enviarFoto() {
     alert("Ta entrando")
     const formData = new FormData();
-    console.log(ipt_foto.files[0], formData)
-    formData.append('foto', ipt_foto.files[0])
+    console.log(iptFoto.files[0], formData)
+    formData.append('foto', iptFoto.files[0])
     alert("Ta entrando")
     // idUsuario = sessionStorage.ID_USUARIO
     var idFuncionario = sessionStorage.ID_FUNCIONARIO

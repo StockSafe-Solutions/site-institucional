@@ -18,14 +18,14 @@
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="../css/sb-admin-2.css" rel="stylesheet">
+    <link href="../css/sb-admin.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/css.css">
     <link rel="stylesheet" href="../css/customDash.css">
     <link rel="stylesheet" href="../css/perfilFuncionario.css">
     <link rel="stylesheet" href="../css/cadastroFuncionarios.css">
     <script src="../js/perfilFuncionario.js"></script>
 
-    <link rel="icon" href="../assets/icon/LOGO-removebg.png"/>
+    <link rel="icon" href="../assets/img/index/logo.png"/>
     <script src="js/dados.js"></script>
 </head>
 
@@ -119,7 +119,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Login Screens:</h6>
                         <a class="collapse-item" href="login.html">Login</a>
-                        <a class="collapse-item" href="register.html">Register</a>
+                        <a class="collapse-item" href="cadastro.html">Register</a>
                         <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Pages:</h6>
@@ -132,7 +132,7 @@
             <!-- Nav Item - Dados usuário -->
             <li class="nav-item">
                 <a class="nav-link" href="#">
-                    <img src="../assets/editarPerfilMenu.png" alt="Editar perfil">
+                    <img src="../assets/dashboard/editarPerfilMenu.png" alt="Editar perfil">
                     <!-- <i class="fas fa-fw fa-chart-area"></i> -->
                     <span>Dados usuário</span></a>
             </li>
@@ -140,7 +140,7 @@
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
                 <a class="nav-link" href="../dashboard/dashboardFuncionarioM.html">
-                    <img src="../assets/dashboardMenu.png" alt="Dashboard">
+                    <img src="../assets/dashboard/dashboardMenu.png" alt="Dashboard">
                     <!-- <i class="fas fa-fw fa-table"></i> -->
                     <span>Dashboard</span></a>
             </li>
@@ -155,7 +155,7 @@
 
             <!-- Sidebar Message -->
             <!-- <div class="sidebar-card d-none d-lg-flex">
-                <img class="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="...">
+                <img class="sidebar-card-illustration mb-2" src="img/fotosPadrao/undraw_rocket.svg" alt="...">
                 <p class="text-center mb-2"><strong>StockSafe Pro</strong> is packed with premium features, components,
                     and more!</p>
                 <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to
@@ -179,7 +179,7 @@
                     </button>
 
                     <div class="" id="containerLogo">
-                        <img src="../assets/img/LOGO-removebg.png" alt="" id="logoDash">
+                        <img src="../assets/img/index/logo.png" alt="" id="logoDash">
                     </div>
 
 
@@ -205,7 +205,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span id="nomeSpan" class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
-                                <img class="img-profile rounded-circle" src="../assets/img copy/undraw_profile.svg" id="usuario_foto">
+                                <img class="img-profile rounded-circle" src="../assets/img copy/fotosPadrao/undraw_profile.svg" id="usuario_foto">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -244,26 +244,26 @@
                     <form id="infos" class="user" onsubmit="return false">
                         <div class="mx-auto text-center">
                             <h1 id="tituloCad" class="h4 border-bottom-1 text-light  mt-3">Olá,</h1>
-                            <img id="usuario_foto" src="../assets/img copy/undraw_profile.svg" class="img-profile rounded-circle"width="210px" height="210px"
+                            <img id="usuario_foto" src="../assets/img copy/fotosPadrao/undraw_profile.svg" class="img-profile rounded-circle"width="210px" height="210px"
                                 alt="">
                         </div>
                         <div class="form-group flex-wrap col-sm-8 mx-auto col">
                             <div class="mx-auto col-sm-8">
-                                <input type="text" class="form-control form-control-user" id="ipt_emailFuncionario"
+                                <input type="text" class="form-control form-control-user" id="iptEmailFuncionario"
                                     placeholder="E-mail" readonly>
                             </div>
                             <!-- CNPJ -->
                             <div class="mx-auto col-sm-8" id="infoFuncionario">
-                                <input type="text" class="form-control form-control-user" id="ipt_nomeFuncionario"
+                                <input type="text" class="form-control form-control-user" id="iptNomeFuncionario"
                                     placeholder="Nome">
-                                <input type="text" class="form-control form-control-user" id="ipt_dataNasc"
+                                <input type="text" class="form-control form-control-user" id="iptDataNasc"
                                     placeholder="Data de Nascimento" readonly>
                             </div>
                             <!-- Razão Social -->
                             <div class="mx-auto col-sm-8" id="infoFuncionario">
-                                <input type="text" class="form-control form-control-user" id="ipt_funcao"
+                                <input type="text" class="form-control form-control-user" id="iptFuncao"
                                     placeholder="Função">
-                                <input type="text" class="form-control form-control-user" id="ipt_senha"
+                                <input type="text" class="form-control form-control-user" id="iptSenha"
                                     placeholder="Senha">
                             </div>
 
@@ -278,7 +278,7 @@
                             </div>
                             <div>
                                 <div class="mx-auto col-sm-8">
-                                    <input type="file"  id="ipt_foto" name="foto" placeholder="Senha">
+                                    <input type="file"  id="iptFoto" name="foto" placeholder="Senha">
                                 </div>
                             </div>
                             <button onclick="enviarFoto()" class="btn mx-auto mb-5 col-sm-6 btn-outline-primary font-weight-bolder rounded border border-primary btn-user btn-block"> EnviarFoto</button>
@@ -347,7 +347,7 @@
     <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="../js/sb-admin-2.min.js"></script>
+    <script src="../js/sb-admin.min.js"></script>
 
     <!-- Page level plugins -->
     <script src="../vendor/chart.js/Chart.min.js"></script>
@@ -374,11 +374,11 @@
     console.log(dataFormatada);
 
 
-    ipt_emailFuncionario.value = sessionStorage.EMAIL_USUARIO
-    ipt_nomeFuncionario.value = sessionStorage.NOME_USUARIO
-    ipt_dataNasc.value = dataFormatada
-    ipt_funcao.value = sessionStorage.FUNCAO
-    ipt_senha.value = sessionStorage.SENHA
+    iptEmailFuncionario.value = sessionStorage.EMAIL_USUARIO
+    iptNomeFuncionario.value = sessionStorage.NOME_USUARIO
+    iptDataNasc.value = dataFormatada
+    iptFuncao.value = sessionStorage.FUNCAO
+    iptSenha.value = sessionStorage.SENHA
 
     tituloCad.innerHTML += ` ${sessionStorage.NOME_USUARIO}`
     nomeSpan.innerHTML += `${sessionStorage.NOME_USUARIO}`
@@ -388,11 +388,11 @@
 
         alert('Está entrando')
 
-        var email = ipt_emailFuncionario.value
-        var nome = ipt_nomeFuncionario.value
-        var dataNascimento = ipt_dataNasc.value
-        var funcao = ipt_funcao.value
-        var senha = ipt_senha.value
+        var email = iptEmailFuncionario.value
+        var nome = iptNomeFuncionario.value
+        var dataNascimento = iptDataNasc.value
+        var funcao = iptFuncao.value
+        var senha = iptSenha.value
         var idUsuario = sessionStorage.ID_USUARIO
         var idFuncionario = sessionStorage.ID_FUNCIONARIO
 
@@ -400,10 +400,10 @@
 
         alert(idFuncionario)
         
-        if (ipt_dataNasc.value.length != 10 && email.indexOf('-') == -1) {
+        if (iptDataNasc.value.length != 10 && email.indexOf('-') == -1) {
             alert('Campo data de nascimento com erro')
             ERRO = true
-            console.log(ipt_dataNasc.value)
+            console.log(iptDataNasc.value)
         }
 
         if (ERRO == false) {

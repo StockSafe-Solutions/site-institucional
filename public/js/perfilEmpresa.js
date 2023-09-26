@@ -1,16 +1,8 @@
-// var nomeUser = document.getElementById("nomeUsuario");
-// var nome = sessionStorage.NOME_USUARIO;
-// nomeUser.innerHTML = nome;
+iptCNPJEmpresa.value = sessionStorage.CNPJ;
+iptEmailEmpresa.value = sessionStorage.EMAIL_USUARIO;
+iptSenhaEmpresa.value = sessionStorage.SENHA;
 
-// var nomeUsuario = document.getElementById("nomeDoUsuario");
-// var nomeDoUsuario = sessionStorage.NOME_USUARIO;
-// nomeUsuario.innerHTML = nomeUsuario;
-
-ipt_cnpjEmpresa.value = sessionStorage.CNPJ;
-ipt_emailEmpresa.value = sessionStorage.EMAIL_USUARIO;
-ipt_senhaEmpresa.value = sessionStorage.SENHA;
-
-var senha = $('#ipt_senhaEmpresa');
+var senha = $('#iptSenhaEmpresa');
 var olho= $("#olho");
 
 olho.mousedown(function() {
@@ -29,9 +21,9 @@ $( "#olho" ).mouseout(function() {
 function pegarDadosEmpresa() {
     var idUsuario = sessionStorage.ID_USUARIO
     nomeUsuario.innerHTML = sessionStorage.NOME_USUARIO;
-    // cnpj = ipt_cnpjEmpresa.value;
-    // email = ipt_emailEmpresa.value;
-    // senha = ipt_senhaEmpresa.value;
+    // cnpj = iptCNPJEmpresa.value;
+    // email = iptEmailEmpresa.value;
+    // senha = iptSenhaEmpresa.value;
 
 
     fetch(`/perfilEmpresa/pegarDadosEmpresa/${idUsuario}`, {
@@ -66,7 +58,7 @@ function pegarDadosEmpresa() {
 }
 
 function alterarDados() {
-    senha = ipt_senhaEmpresa.value;
+    senha = iptSenhaEmpresa.value;
     idUsuario = sessionStorage.ID_USUARIO
 
     fetch(`/perfilEmpresa/alterarDados/${idUsuario}`, {

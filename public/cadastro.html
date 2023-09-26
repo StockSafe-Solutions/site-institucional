@@ -1,98 +1,216 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>AquaTech | Cadastro</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-  <script src="./js/sessao.js"></script>
+    <script src="js/register.js"></script>
 
-  <link rel="icon" href="./assets/icon/favicon2.ico" />
+    <title>Cadastro</title>
 
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-    rel="stylesheet" />
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/register.css">
+    
+    <link rel="icon" href="assets/img/index/logo.png"/>
+
+
 </head>
 
-<body onload="listar()">
-  <!--header inicio-->
+<body class="bg-gradient-primary">
 
-  <!--header fim-->
+    <div class="container">
 
+        <div class="card o-hidden border-0 my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    
+                    <img onclick="()=>{window.location.pathname(index.html)}" id="logoStockLogin" src="assets/index/logoCompleto.png.png" class="mx-5 mt-3 col-sm-2 position-absolute" alt="...">
+                    <div class="col-lg-8 mx-auto">
+                        <div class="p-5">
+                            <form id="infos" class="user">
+                                <div class="text-center">
+                                    <h1 id="tituloCad" class="h4 border-bottom-1 rounded font-weight-bolder mb-4">CADASTRO</h1>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control form-control-user" id="iptFantasia"
+                                            placeholder="Nome Fantasia">
+                                    </div>
+                                    <!-- CNPJ -->
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" onchange="catchCNPJ()" class="form-control form-control-user" id="iptCNPJ"
+                                            placeholder="CNPJ">
+                                    </div>
+                                    <!-- Razão Social -->
+                                    <div class="col-sm-6 mt-3">
+                                        <input type="text" class="form-control form-control-user" id="iptRazao"
+                                           placeholder="Razão Social">
+                                    </div>
+                                    <!-- Telefone -->
+                                    <div class="col-sm-6 mt-3">
+                                        <input type="text" maxlength="12" class="form-control form-control-user " id="iptTelefone"
+                                           placeholder="Telefone/Contato">
+                                    </div>
+                                </div>
+                                <!-- Email -->
+                                <div class="form-group">
+                                    <input type="email" class="form-control form-control-user" id="iptEmail"
+                                        placeholder="E-mail corporativo">
+                                </div>
+                                <!-- Senha -->
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="password" class="form-control form-control-user"
+                                            id="iptSenha" placeholder="Senha">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="password" class="form-control form-control-user"
+                                            id="confirmacaoSenhaInput" placeholder="Repita a senha">
+                                    </div>
+                                </div>
+                                <a id onclick="trocar()" class="btn mx-auto col-sm-6 btn-outline-primary  font-weight-bolder border border-primary btn-user btn-block">
+                                    Continuar
+                                </a>
+                                
+                            
+                            </form>
+                            <form id="address"  class="user" action="">
+                                <div class="text-center">
+                                    <h1 id="tituloCad" class="h4 text-gray-900 mb-4">Informe seu endereço.</h1>
+                                </div>
+                                <div class="form-group row">
+                                    <!-- CEP -->
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input onchange="catchAddress()" type="text" class="form-control form-control-user" id="iptCEP"
+                                            placeholder="CEP/Codigo postal">
+                                    </div>
+                                    <!-- Rua -->
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control form-control-user" id="iptRua"
+                                            placeholder="Rua/Logradouro">
+                                    </div>
+                                    <!-- bairro -->
+                                    <div class="col-sm-6 mt-3">
+                                        <input type="text" class="form-control form-control-user" id="iptBairro"  placeholder="Bairro">
+                                    </div>
+                                    <!-- Cidade -->
+                                    <div class="col-sm-6 mt-3">
+                                        <input type="text" class="form-control form-control-user " id="iptCidade"
+                                           placeholder="Cidade">
+                                    </div>
+                                    <!-- Numero -->
+                                    <div class="col-sm-3 mt-3">
+                                        <input type="text" class="form-control text-center form-control-user " id="iptNumero"
+                                           placeholder="Nº">
+                                    </div>
+                                </div>
+                                <a onclick="cadastrar()" class="btn btn-primary btn-user btn-block">
+                                    Continuar
+                                </a>
+                            </form>
+                            
+                            <div class="text-center">
+                                <a class="small" href="login.html">Already have an account? Login!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+    </div>
 
-  <div class="campo">
-    <span>Nome:</span>
-    <input id="nome_input" type="text" placeholder="Seu nome" />
-  </div>
-  <div class="campo">
-    <span>E-mail:</span>
-    <input id="email_input" type="text" placeholder="meuemail@provedor.com" />
-  </div>
-  <div class="campo">
-    <span>Telefone:</span>
-    <input id="telefone_input" placeholder="Telefone"></input>
-  </div>
-  <div class="campo">
-    <span>Razão:</span>
-    <Input id="ipt_razao"></Input>
-  </div>
-  <div class="campo">
-    <span>CNPJ</span>
-    <input id="cnpj_input" placeholder="CNPJ"></input>
-  </div>
-  <div class="campo">
-    <span>Senha:</span>
-    <input id="senha_input" type="password" placeholder="******" />
-  </div>
-  <div class="campo">
-    <span>Confirmação da Senha:</span>
-    <input id="confirmacao_senha_input" type="password" placeholder="******" />
-  </div>
-  <h3>Endereço</h3>
-  <div class="campo">
-    <span>Rua:</span>
-    <input id="rua_input" placeholder="Rua"></input>
-  </div>
-  <div class="campo">
-    <span>Número:</span>
-    <input id="numero_input" placeholder="Número"></input>
-  </div>
-  <div class="campo">
-    <span>Bairro:</span>
-    <input id="bairro_input" placeholder="Bairro"></input>
-  </div>
-  <div class="campo">
-    <span>Complemento:</span>
-    <input id="complemento_input" placeholder="Complemento"></input>
-  </div>
-  <div class="campo">
-    <span>CEP:</span>
-    <input id="cep_input" placeholder="CEP"></input>
-  </div>
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin.min.js"></script>
 
-   
-  <button class="botao" onclick="cadastrar()">Cadastrar</button>
-  </div>
-
-  <div id="div_erros_login"></div>
-  </div>
-  </div>
-  </div>
-
-  <!--footer inicio-->
-
-  <!--footer fim-->
 </body>
 
 </html>
-
 <script>
+//  address.style.display = "none"
+
+ infos.style.display = "block"
+ address.style.opacity = "0"
+    function trocar() {
+        address.style.transition ="all 0.3s linear"
+        infos.style.opacity = "0"
+        tituloCad.innerHTML = "Qual seu endereço?"
+        setTimeout(()=>{
+            infos.style.display = "none"
+            // address.style.display = "block"
+            address.style.opacity = "1"
+            address.style.position = "relative"
+        },500)
+    }
+
+    function catchAddress(){
+        fetch(`https://viacep.com.br/ws/${iptCEP.value}/json`)
+.then(data => {
+return data.json();
+})
+.then(post => {
+    if (post.logradouro == undefined || post.bairro == undefined || post.localidade == undefined) {
+        
+        console.error("cep nao encontrado")
+    }
+    else{
+iptRua.value = post.logradouro
+iptBairro.value = post.bairro
+iptCidade.value = post.localidade  
+    }
+
+})
+.catch(error=> {
+    console.log("cep nao encontrado")
+})
+
+    }
+
+    function catchCNPJ(){
+        fetch(`https://publica.cnpj.ws/cnpj/${iptCNPJ.value}`)
+.then(data => {
+return data.json();
+})
+.then(post => {
+    if (post.razao_social == undefined) {
+        
+        console.error("CNPJ nao encontrado")
+    }
+    else{
+iptRazao.value = post.razao_social
  
+    }
+
+})
+.catch(error=> {
+    console.log("cnpj nao encontrado")
+})
+
+    }
+
+
+ 
+
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

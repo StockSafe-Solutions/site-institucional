@@ -4,12 +4,12 @@ function entrar() {
 
     // aguardar();
 
-    var emailVar = email_input.value;
-    var senhaVar = senha_input.value;
+    var emailVar = emailInput.value;
+    var senhaVar = senhaInput.value;
 
     if (emailVar == "" || senhaVar == "") {
         // cardErro.style.display = "block"
-        mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+        mensagemErro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
         // finalizarAguardar();
         // return false;
     }

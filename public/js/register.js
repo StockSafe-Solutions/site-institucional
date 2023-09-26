@@ -2,19 +2,19 @@
   
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
-    var cnpjVar = ipt_cnpj.value;
-    var razaoVar = ipt_razao.value;
-    var telefoneVar = ipt_telefone.value; 
-    var emailVar = ipt_email.value;
-    var senhaVar = ipt_senha.value;
-    var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    var nomeFantasiaVar = ipt_fantasia.value;
+    var cnpjVar = iptCNPJ.value;
+    var razaoVar = iptRazao.value;
+    var telefoneVar = iptTelefone.value; 
+    var emailVar = iptEmail.value;
+    var senhaVar = iptSenha.value;
+    var confirmacaoSenhaVar = confirmacaoSenhaInput.value;
+    var nomeFantasiaVar = iptFantasia.value;
     // var empresaVar = listaEmpresas.value;
-    var cepVar = ipt_cep.value;
-    var ruaVar = ipt_rua.value;
-    var bairroVar = ipt_bairro.value;
-    var cidadeVar = ipt_cidade.value;
-    var numeroVar = ipt_numero.value;
+    var cepVar = iptCEP.value;
+    var ruaVar = iptRua.value;
+    var bairroVar = iptBairro.value;
+    var cidadeVar = iptCidade.value;
+    var numeroVar = iptNumero.value;
     // if (
     //   nomeVar == "" ||
     //   emailVar == "" ||
@@ -23,7 +23,7 @@
     //   empresaVar == ""
     // ) {
     //   cardErro.style.display = "block";
-    //   mensagem_erro.innerHTML =
+    //   mensagemErro.innerHTML =
     //     "(Mensagem de erro para todos os campos em branco)";
 
     //   finalizarAguardar();
