@@ -1,0 +1,49 @@
+// ================================================================= Variáveis
+
+pastas = lower-case
+classe = PascalCase
+funcoes e variaveis = camelCase
+
+nomeclatura = nome/tipo + descricao
+
+ex: 
+    var cadastroUsuario;
+    var verificarConta;
+
+    (tentar deixar o mais descritivo/intuitivo possivel para evitar a necessidade de comentários)
+
+condicionais = colocar sempre is ou has (é ou tem)
+
+// ================================================================= Estrutura
+
+Condicionais:
+    Sempre que possível colocar condicionais em variaveis, e com ternario se aplicável.
+
+    ex:
+        var isCadastrado = usuario == null ? false : true;
+
+        var hasSalario = conta > 0 ? true : false;
+
+
+Indentação:
+    Seguir o exemplo abaixo, tentando minimizar o numero de returns e sempre com o return no final.
+
+        ELIMINAR TODOS OS WHILE TRUE E SUBSTITUIR POR CONDICIONAIS como while(isRunning) ou while(hasSalario)
+
+        [declaração] nome (condicional) {
+
+        }
+
+    ex:
+        function beijarRafa (hasClima) {
+
+        }
+
+    (Java)
+        public String euTeAmoRafa () {
+            return "Meu amor por você é incondicional (no pun intended)";
+        }
+
+// ================================================================== Estrutura de pastas
+
+    Não mexer na estrutura de pastas atualmente, a refatoração será feita por: Gabriel Bazante de Araujo
