@@ -13,14 +13,14 @@
 
     <title>Cadastro</title>
 
-    <!-- Custom fonts for this template-->
+    <!-- Fontes customizadas -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
-    <!-- Custom styles for this template-->
-    <link href="css/sb-admin.min.css" rel="stylesheet">
+    <!-- Estilos customizados -->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/register.css">
     
     <link rel="icon" href="assets/img/index/logo.png"/>
@@ -37,7 +37,11 @@
                 <!-- Nested Row within Card Body -->
                 <div class="row">
                     
-                    <img onclick="()=>{window.location.pathname(index.html)}" id="logoStockLogin" src="assets/index/logoCompleto.png.png" class="mx-5 mt-3 col-sm-2 position-absolute" alt="...">
+                    <img onclick="()=>{window.location.pathname(index.html)}" 
+                        id="logoStockLogin" src="assets\img\index\logoCompleto.png" 
+                        class="mx-5 mt-3 col-sm-2 position-absolute" alt="..."
+                    />
+                    
                     <div class="col-lg-8 mx-auto">
                         <div class="p-5">
                             <form id="infos" class="user">
@@ -84,9 +88,8 @@
                                 <a id onclick="trocar()" class="btn mx-auto col-sm-6 btn-outline-primary  font-weight-bolder border border-primary btn-user btn-block">
                                     Continuar
                                 </a>
-                                
-                            
                             </form>
+
                             <form id="address"  class="user" action="">
                                 <div class="text-center">
                                     <h1 id="tituloCad" class="h4 text-gray-900 mb-4">Informe seu endereço.</h1>
@@ -117,13 +120,15 @@
                                            placeholder="Nº">
                                     </div>
                                 </div>
+
                                 <a onclick="cadastrar()" class="btn btn-primary btn-user btn-block">
                                     Continuar
                                 </a>
+
                             </form>
                             
                             <div class="text-center">
-                                <a class="small" href="login.html">Already have an account? Login!</a>
+                                <a class="small" href="login.html">Já tem uma conta? Login!</a>
                             </div>
                         </div>
                     </div>
