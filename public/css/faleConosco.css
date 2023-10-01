@@ -10,7 +10,6 @@
 /* Personaliza a cor da thumb */
 ::-webkit-scrollbar-thumb {
     background-color: #005EFF;
-
 }
 
 /* Personaliza a cor da thumb quando hover */
@@ -18,10 +17,7 @@
     background-color: #005EFF;
 }
 
-@media screen and (max-width: 1050px) {
-
-}
-
+@media screen and (max-width: 1050px) {}
 
 body {
     margin: 0;
@@ -38,8 +34,6 @@ body {
 }
 
 #faleConosco {
-    /* width: 100vw; */
-    /* height: 100vh; */
     padding-top: 15px;
     display: flex;
     flex-direction: column;
@@ -52,7 +46,6 @@ body {
     width: 100%;
     display: flex;
     justify-content: center;
-    /* margin-top: 1%; */
 }
 
 #faleConosco h1 {
@@ -62,35 +55,11 @@ body {
     margin-bottom: 0;
 }
 
-/* .titulo:before {
-    position: absolute;
-    content: "";
-    width: 35%;
-    height: 14px;
-    border-radius: 10px;
-    margin-top: 8%;
-    background-color: #005EFF;
-    -webkit-transform: scaleX(0);
-    transform: scaleX(0);
-    -webkit-transition: all 0.3s ease-in-out 0s;
-    transition: all 0.3s ease-in-out 0s;
-}
-
-.titulo:hover:before {
-    visibility: visible;
-    -webkit-transform: scaleX(1);
-    transform: scaleX(1);
-} */
-
-
-
 .tituloSublinhado {
-
     width: 20%;
     height: 10px;
     background-color: #005EFF;
     border-radius: 15px;
-
 }
 
 .flex {
@@ -114,22 +83,13 @@ body {
     display: flex;
     flex-direction: column;
     margin-top: 2%;
-
 }
 
 #formulario {
-
     width: 50%;
     border-left: 2px solid black;
     border-top: 2px solid black;
 }
-
-/* #localizacao img {
-    width: 21vw;
-    position: relative;
-    left: 205px;
-    bottom: 15px;
-} */
 
 #iframe {
     display: flex;
@@ -140,7 +100,6 @@ body {
 iframe {
     border-radius: 10px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
-    /* position: absolute; */
     top: 35%;
 }
 
@@ -184,8 +143,6 @@ iframe {
 #email {
     cursor: pointer;
 }
-
-
 
 .formulario {
     width: 40%;
@@ -248,25 +205,16 @@ iframe {
         width: 222px;
         height: 222px;
         padding-top: 15%;
-    
-    }
 
-    /* .formulario input::placeholder{
-        font-size: 12px;
     }
-
-    #formulario button {
-        width: 30%;
-    } */
 }
 
 @media screen and (max-width: 635px) {
-    
     iframe {
         width: 200px;
         height: 150px;
     }
-    
+
     #faleConosco h1 {
         font-size: 45px;
     }
@@ -286,7 +234,7 @@ iframe {
         margin-top: 7%;
         margin-left: 17%;
     }
-    
+
     #contatos p {
         font-size: 12px;
     }
@@ -306,14 +254,9 @@ iframe {
         width: 50%;
     }
 
-       .formulario input::placeholder{
+    .formulario input::placeholder {
         font-size: 12px;
     }
-
-
-
-
-
 }
 
 @media screen and (max-width: 430px) {
@@ -321,7 +264,7 @@ iframe {
         width: 125px;
         height: 90px;
     }
-    
+
     #faleConosco h1 {
         font-size: 30px;
     }
@@ -341,7 +284,7 @@ iframe {
         margin-top: 7%;
         margin-left: 17%;
     }
-    
+
     #contatos p {
         font-size: 10px;
     }
@@ -352,13 +295,11 @@ iframe {
         justify-content: center;
         align-items: center;
         flex-direction: column;
-
     }
 
     .formulario {
         width: 50%;
         padding-top: 15%;
-       
     }
 
     form {
@@ -377,8 +318,7 @@ iframe {
         font-size: 12px;
     }
 
-
-       .formulario input::placeholder{
+    .formulario input::placeholder {
         font-size: 12px;
     }
 }
@@ -388,7 +328,7 @@ iframe {
         width: 125px;
         height: 90px;
     }
-    
+
     #faleConosco h1 {
         font-size: 30px;
     }
@@ -408,7 +348,7 @@ iframe {
         margin-top: 7%;
         margin-left: 17%;
     }
-    
+
     #contatos p {
         font-size: 10px;
     }
@@ -432,7 +372,7 @@ iframe {
         font-size: 10px;
     }
 
-       .formulario input::placeholder{
+    .formulario input::placeholder {
         font-size: 12px;
     }
 }
@@ -442,7 +382,7 @@ iframe {
         width: 100px;
         height: 75px;
     }
-    
+
     #faleConosco h1 {
         font-size: 30px;
     }
@@ -462,7 +402,7 @@ iframe {
         margin-top: 7%;
         margin-left: 17%;
     }
-    
+
     #contatos p {
         font-size: 7px;
     }
@@ -486,9 +426,9 @@ iframe {
         width: 45px;
         height: 20px;
         font-size: 10px;
-        }
+    }
 
-       .formulario input::placeholder{
+    .formulario input::placeholder {
         font-size: 13px;
     }
 }

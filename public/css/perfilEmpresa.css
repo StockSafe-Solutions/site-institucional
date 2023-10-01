@@ -3,7 +3,8 @@
     position: absolute;
 }
 
-#iptCNPJEmpresa, #iptEmailEmpresa {
+#iptCNPJEmpresa,
+#iptEmailEmpresa {
     background-color: rgb(187, 187, 187)
 }
 

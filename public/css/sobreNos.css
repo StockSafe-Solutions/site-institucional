@@ -11,7 +11,6 @@ body {
     background-color: #005EFF;
     display: flex;
     margin: 0;
-
 }
 
 #sobreNos {
@@ -40,11 +39,7 @@ body {
     color: white;
     font-size: 25px;
     font-family: 'League Spartan', sans-serif;
-
 }
-
-
-
 
 #sublinhadoSobreNos {
     width: 155px;
@@ -70,7 +65,6 @@ body {
 .div_Titulo span {
     font-size: 50px;
     font-family: League Spartan;
-
 }
 
 svg {
@@ -216,7 +210,7 @@ footer span {
 
 }
 
-@media screen and (max-width: 900px) { 
+@media screen and (max-width: 900px) {
     .divCentro span {
         font-size: 9px;
     }
@@ -224,11 +218,11 @@ footer span {
     .p11 {
         font-size: 7px;
     }
-    
+
     .p22 {
         font-size: 13px;
     }
-    
+
     .p33 {
         font-size: 9px;
     }
@@ -240,17 +234,17 @@ footer span {
 
     .imgLogoFoter {
         width: 115px;
-    height: 57px;
+        height: 57px;
     }
 
     .divCentro span {
         display: none;
     }
-    
+
 }
 
 
-@media screen and (max-width: 450px) { 
+@media screen and (max-width: 450px) {
     .divCentro span {
         display: none;
     }
@@ -258,16 +252,16 @@ footer span {
     .divRedesSociais {
         justify-content: center;
     }
-    
-  
+
+
     .p11 {
         font-size: 5px;
     }
-    
+
     .p22 {
         font-size: 11px;
     }
-    
+
     .p33 {
         font-size: 7px;
     }
@@ -279,11 +273,11 @@ footer span {
 
     .imgLogoFoter {
         width: 100px;
-    height: 45px;
+        height: 45px;
     }
 }
 
-@media screen and (max-width: 450px) { 
+@media screen and (max-width: 450px) {
     .divCentro span {
         display: none;
     }
@@ -291,7 +285,7 @@ footer span {
     .divRedesSociais {
         justify-content: center;
     }
-    
+
     .divRedesSociais img {
         width: 25px;
         height: 25px;
@@ -305,7 +299,7 @@ footer span {
 
     .imgLogoFoter {
         width: 90px;
-    height: 40px;
+        height: 40px;
     }
 
     .divNome2 {
@@ -357,7 +351,7 @@ footer span {
         width: 420px;
         height: 265px;
     }
-    
+
     .imgPata {
         width: 220px;
         height: 140px;
@@ -365,33 +359,33 @@ footer span {
 
 }
 
-    @media screen and (max-width: 880px) {
+@media screen and (max-width: 880px) {
 
 
-        .div_Titulo span {
-            font-size: 25px;
-        }
-    
-        #sublinhadoSobreNos {
-            width: 85px;
-            height: 4px;
-    
-        }
-    
-        .span {
-            font-size: 18px;
-        }
-    
-    
-        .imgBola {
-            width: 370px;
-            height: 215px;
-        }
-        
-        .imgPata {
-            width: 210px;
-            height: 125px;
-        }
+    .div_Titulo span {
+        font-size: 25px;
+    }
+
+    #sublinhadoSobreNos {
+        width: 85px;
+        height: 4px;
+
+    }
+
+    .span {
+        font-size: 18px;
+    }
+
+
+    .imgBola {
+        width: 370px;
+        height: 215px;
+    }
+
+    .imgPata {
+        width: 210px;
+        height: 125px;
+    }
 
 
 
@@ -419,13 +413,13 @@ footer span {
         width: 350px;
         height: 200px;
     }
-    
+
     .imgPata {
         width: 210px;
         height: 125px;
     }
 
-    
+
 
 }
 
@@ -451,13 +445,13 @@ footer span {
         width: 315px;
         height: 175px;
     }
-    
+
     .imgPata {
         width: 190px;
         height: 105px;
     }
 
-    
+
 
 }
 
@@ -468,15 +462,15 @@ footer span {
         width: 285px;
         height: 150px;
     }
-    
+
     .imgPata {
         width: 175px;
         height: 85px;
     }
 
- 
 
-    
+
+
 
 }
 
@@ -507,7 +501,7 @@ footer span {
         width: 300px;
         height: 150px;
     }
-    
+
     .imgPata {
         width: 170px;
         height: 85px;
@@ -549,15 +543,15 @@ footer span {
     .containerDireitoSN {
         padding-left: 50px;
     }
-    
+
     .imgBola {
-       display: none;
+        display: none;
     }
-    
+
     .imgPata {
         display: none;
     }
-   
+
 
 }
 
@@ -568,7 +562,7 @@ footer span {
         font-size: 14px;
     }
 
-    .sobreNosContainer{
+    .sobreNosContainer {
         width: 98%;
     }
 
@@ -598,14 +592,14 @@ footer span {
     .containerDireitoSN {
         padding-left: 50px;
     }
-    
+
     .imgBola {
-       display: none;
+        display: none;
     }
-    
+
     .imgPata {
         display: none;
     }
-   
+
 
 }

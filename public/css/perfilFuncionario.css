@@ -25,11 +25,11 @@
 
 .sidebar-toggled::after {
     transition: all 0.5s ease-in-out;
-  }
+}
 
-  .sidebar-toggled.is-active {
+.sidebar-toggled.is-active {
     transform: translateY(0);
-  }
+}
 
 @media screen and (max-width: 450px) {
 
@@ -39,48 +39,48 @@
         z-index: 1;
     }
 
-    #accordionSidebar{
+    #accordionSidebar {
         margin: 80px 40px 80px 0px;
         border-radius: 15px;
         height: 552px;
         background-color: #005EFF;
     }
-    
+
     #wrapper {
         display: block;
     }
-    
+
     #logoDash {
         margin-left: 10%;
     }
-    
+
     #containerLogo {
         width: 155%;
     }
-    
+
     .img-profile {
         margin-right: 10px;
     }
-    
+
     .sidebar span {
         display: flex;
         justify-content: center;
     }
-    
+
     .sidebar .nav-item .nav-link {
         padding: 1.75rem 5rem;
         width: 14.5rem;
     }
-    
+
     #content {
         padding: 15px;
     }
-    
+
     #wrapper #content-wrapper #content {
         margin: 20px 20px 0px 20px;
     }
-    
-    
-     
-    
-    }
+
+
+
+
+}

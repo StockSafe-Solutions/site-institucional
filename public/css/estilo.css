@@ -212,7 +212,7 @@ body {
   display: none
 }
 
-.alerta_erro{
+.alerta_erro {
   display: flex;
   justify-content: flex-end;
 }
@@ -229,7 +229,7 @@ body {
   margin-right: 10%;
 }
 
-.card_erro #mensagemErro{
+.card_erro #mensagemErro {
   font-weight: 500;
   font-size: 20px;
 }
@@ -263,6 +263,6 @@ body {
 
 .simulador .container {
   flex-direction: column;
-  overflow: scroll; 
+  overflow: scroll;
   height: var(--tamanho-simulador);
 }
