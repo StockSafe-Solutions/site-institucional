@@ -30,7 +30,7 @@ a {
 }
 
 .wallpaperHome {
-  background-image: url(../assets/img/index/fundoHome.png);
+  background-image: url(../assets/img/index/wallpaperCell.png);
   background-size: cover;
   width: 100%;
   background-repeat: no-repeat;
