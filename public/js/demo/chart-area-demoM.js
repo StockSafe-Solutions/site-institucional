@@ -1,32 +1,52 @@
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
 
-function number_format(number, decimals, dec_point, thousands_sep) {
-  // *     example: number_format(1234.56, 2, ',', ' ');
+function formatarNumero(numeroBruto, decimals, dec_point, thousands_sep) {
+
+  // *     Exemplo:
+  // *     formatarNumero(1234.56, 2, ',', ' ');
   // *     return: '1 234,56'
-  number = (number + '').replace(',', '').replace(' ', '');
-  var n = !isFinite(+number) ? 0 : +number,
-    prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
-    sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
-    dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
-    s = '',
-    toFixedFix = function(n, prec) {
-      var k = Math.pow(10, prec);
-      return '' + Math.round(n * k) / k;
-    };
-  
-  // Fix for IE parseFloat(0.55).toFixed(0) = 0;
-  s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.');
-  if (s[0].length > 3) {
-    s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
+
+  // Remover espaços e vírgulas para tratar diferentes formatos de entrada
+  numeroBruto = String(numeroBruto).replace(',', '').replace(' ', '');
+
+  // Definir valores padrão para casos em que não são fornecidos
+  var numeroTratado;
+  var qtdCasasDecimais;
+  var separadorMilhares;
+  var pontoDecimal;
+  var textoSaida;
+
+  numeroTratado = !isFinite(+numeroBruto) ? 0 : +numeroBruto
+  qtdCasasDecimais = !isFinite(+decimals) ? 0 : Math.abs(decimals)
+  separadorMilhares = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep
+  pontoDecimal = (typeof dec_point === 'undefined') ? '.' : dec_point
+  textoSaida = ''
+
+  //Função para corrigir o problema do parseFloat no IE parseFloat(0.55).toFixed(0) = 0;
+  var toFixedFix = function (numeroTratado, qtdCasasDecimais) {
+
+    var  fatorArredondamento = Math.pow(10, qtdCasasDecimais);
+
+    return String(Math.round(numeroTratado *  fatorArredondamento) /  fatorArredondamento);
+  };
+
+  textoSaida = (qtdCasasDecimais ? toFixedFix(numeroTratado, qtdCasasDecimais) : String(Math.round(numeroTratado))).split('.');
+  // Adicionar separadores de milhares
+  if (textoSaida[0].length > 3) {
+    textoSaida[0] = textoSaida[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, separadorMilhares);
   }
-  if ((s[1] || '').length < prec) {
-    s[1] = s[1] || '';
-    s[1] += new Array(prec - s[1].length + 1).join('0');
+   // Adicionar zeros às casas decimais, se necessário
+  if ((textoSaida[1] || '').length < qtdCasasDecimais) {
+    textoSaida[1] = textoSaida[1] || '';
+    textoSaida[1] += new Array(qtdCasasDecimais - textoSaida[1].length + 1).join('0');
   }
-  return s.join(dec);
+
+  return textoSaida.join(pontoDecimal);
 }
-console.log("QUalquer coisa")
+
+console.log("Qualquer coisa")
+
 var dados = []
 // Area Chart Example
 var ctx = document.getElementById("myChartCanvas2000");
@@ -62,7 +82,7 @@ var myLineChart = new Chart(ctx, {
           padding: 10,
           // Include a dollar sign in the ticks
           callback: function(value, index, values) {
-            return  number_format(value) + '%';
+            return  formatarNumero(value) + '%';
           }
         },
         gridLines: {
