@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600&display=swap');
+
 * {
   scroll-behavior: smooth;
 }
@@ -19,6 +21,8 @@
 ::-webkit-scrollbar-thumb:hover {
   background-color: #005EFF;
 }
+
+/* ============================================= ESTILO PRINCIPAL DA HOME PAGE */
 
 body {
   margin: 0;
@@ -373,5 +377,1025 @@ button:hover {
     justify-content: flex-end;
     height: 250px;
 
+  }
+}
+
+/* ============================================= ESTILO DA PARTE SOBRE NOS */
+
+body {
+  margin: 0px;
+}
+
+#sobreNosContainer {
+  width: 100%;
+  height: 645px;
+  background-color: #005EFF;
+  display: flex;
+  margin: 0;
+}
+
+#sobreNos {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: 50px;
+  margin-left: 20px;
+}
+
+/* Inicio estilização textos do Sobre Nós */
+#containerEsquerdoSobreNos {
+  padding-left: 70px;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  justify-content: center;
+  justify-content: space-around;
+  height: 500px;
+}
+
+#sobreNosContainer {
+  margin: 0;
+  color: white;
+  font-size: 25px;
+  font-family: 'League Spartan', sans-serif;
+}
+
+#sublinhadoSobreNos {
+  width: 155px;
+  height: 6px;
+  background-color: white;
+  border-radius: 15px;
+}
+
+#textoSobreNos {
+  justify-content: center;
+  align-items: center;
+  justify-content: space-around;
+  padding-bottom: 50px;
+}
+
+.div_Titulo {
+  display: flex;
+  width: 45%;
+  justify-content: flex-end;
+  flex-direction: column;
+}
+
+.div_Titulo span {
+  font-size: 50px;
+  font-family: League Spartan;
+}
+
+svg {
+  margin-bottom: -10px;
+}
+
+#textoSobreNos span {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: League Spartan;
+  color: white;
+  font-size: 25px;
+}
+
+.containerDireitoSobreNos {
+  padding-left: 100px;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  justify-content: flex-end;
+  justify-content: space-between;
+  height: 600px;
+}
+
+.imgBola {
+  width: 470px;
+  height: 300px;
+}
+
+.imgPata {
+  width: 260px;
+  height: 170px;
+}
+
+/* Final estilização textos do Sobre Nós */
+
+/* começo do footer  */
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 120px;
+  position: relative;
+  background-color: black;
+}
+
+.divLogoFooter {
+  width: 33%;
+  display: flex;
+  justify-content: flex-start;
+
+}
+
+.divCentro {
+  width: 33%;
+  height: 65%;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.divCentro span {
+  font-size: 11px;
+  font-family: Inter;
+
+}
+
+.divRedesSociais {
+  width: 33%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.redeSocial {
+  width: 40%;
+  display: flex;
+  justify-content: flex-start;
+  justify-content: space-around;
+}
+
+.divRedesSociais img {
+  width: 30px;
+  height: 30px;
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.divRedesSociais img:hover {
+  transform: scale(1.1);
+}
+
+.divCentro img {
+  height: 37px;
+  width: 37px;
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.divCentro img:hover {
+  transform: scale(1.2);
+}
+
+footer span {
+  font-size: 25px;
+  color: white;
+  font-family: Sedgwick Ave Display;
+}
+
+.p11 {
+  font-size: 8px;
+}
+
+.p22 {
+  font-size: 14px;
+}
+
+.p33 {
+  font-size: 10px;
+}
+
+.imgLogoFoter {
+  width: 130px;
+  height: 74px;
+}
+
+.divNome2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.divNome2 span {
+  font-family: Raleway;
+}
+
+@media screen and (max-width: 900px) {
+  .divCentro span {
+      font-size: 9px;
+  }
+
+  .p11 {
+      font-size: 7px;
+  }
+
+  .p22 {
+      font-size: 13px;
+  }
+
+  .p33 {
+      font-size: 9px;
+  }
+
+  .divCentro img {
+      height: 35px;
+      width: 35px;
+  }
+
+  .imgLogoFoter {
+      width: 115px;
+      height: 57px;
+  }
+
+  .divCentro span {
+      display: none;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .divCentro span {
+      display: none;
+  }
+
+  .divRedesSociais {
+      justify-content: center;
+  }
+
+  .p11 {
+      font-size: 5px;
+  }
+
+  .p22 {
+      font-size: 11px;
+  }
+
+  .p33 {
+      font-size: 7px;
+  }
+
+  .divCentro img {
+      height: 33px;
+      width: 33px;
+  }
+
+  .imgLogoFoter {
+      width: 100px;
+      height: 45px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .divCentro span {
+      display: none;
+  }
+
+  .divRedesSociais {
+      justify-content: center;
+  }
+
+  .divRedesSociais img {
+      width: 25px;
+      height: 25px;
+  }
+
+  .divCentro img {
+      height: 28px;
+      width: 28px;
+  }
+
+  .imgLogoFoter {
+      width: 90px;
+      height: 40px;
+  }
+
+  .divNome2 {
+      display: none;
+  }
+}
+
+
+/* Media query */
+@media screen and (max-width: 1140px) {
+
+  .div_Titulo span {
+      font-size: 35px;
+  }
+
+  #sublinhadoSobreNos {
+      width: 115px;
+      height: 5.5px;
+  }
+
+  .span {
+      font-size: 23px;
+  }
+
+}
+
+@media screen and (max-width: 980px) {
+
+
+  .div_Titulo span {
+      font-size: 30px;
+  }
+
+  #sublinhadoSobreNos {
+      width: 100px;
+      height: 4.5px;
+  }
+
+  .span {
+      font-size: 20px;
+  }
+
+
+  .imgBola {
+      width: 420px;
+      height: 265px;
+  }
+
+  .imgPata {
+      width: 220px;
+      height: 140px;
+  }
+}
+
+@media screen and (max-width: 880px) {
+
+
+  .div_Titulo span {
+      font-size: 25px;
+  }
+
+  #sublinhadoSobreNos {
+      width: 85px;
+      height: 4px;
+  }
+
+  .span {
+      font-size: 18px;
+  }
+
+  .imgBola {
+      width: 370px;
+      height: 215px;
+  }
+
+  .imgPata {
+      width: 210px;
+      height: 125px;
+  }
+}
+
+@media screen and (max-width: 790px) {
+
+
+  .div_Titulo span {
+      font-size: 22px;
+  }
+
+  #sublinhadoSobreNos {
+      width: 70px;
+      height: 3.5px;
+
+  }
+
+  .span {
+      font-size: 16px;
+  }
+
+
+  .imgBola {
+      width: 350px;
+      height: 200px;
+  }
+
+  .imgPata {
+      width: 210px;
+      height: 125px;
+  }
+
+
+
+}
+
+@media screen and (max-width: 735px) {
+
+
+  .div_Titulo span {
+      font-size: 18px;
+  }
+
+  #sublinhadoSobreNos {
+      width: 60px;
+      height: 3px;
+
+  }
+
+  .span {
+      font-size: 14px;
+  }
+
+
+  .imgBola {
+      width: 315px;
+      height: 175px;
+  }
+
+  .imgPata {
+      width: 190px;
+      height: 105px;
+  }
+
+
+
+}
+
+@media screen and (max-width: 660px) {
+
+
+  .imgBola {
+      width: 285px;
+      height: 150px;
+  }
+
+  .imgPata {
+      width: 175px;
+      height: 85px;
+  }
+
+
+
+
+
+}
+
+
+@media screen and (max-width: 630px) {
+
+
+  .containerDireitoSN {
+      padding-left: 50px;
+  }
+
+  .div_Titulo span {
+      font-size: 13px;
+  }
+
+  #sublinhadoSobreNos {
+      width: 35px;
+      height: 2.5px;
+
+  }
+
+  .span {
+      font-size: 12px;
+  }
+
+
+  .imgBola {
+      width: 300px;
+      height: 150px;
+  }
+
+  .imgPata {
+      width: 170px;
+      height: 85px;
+  }
+
+
+}
+
+
+@media screen and (max-width: 595px) {
+
+  .div_Titulo span {
+      font-size: 20px;
+  }
+
+  #sublinhadoSobreNos {
+      width: 60px;
+      height: 4px;
+
+  }
+
+  .span {
+      font-size: 15px;
+  }
+
+
+  .containerEsquerdoSN {
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      padding-left: 0px;
+  }
+
+  .containerDireitoSN {
+      display: none;
+  }
+
+
+  .containerDireitoSN {
+      padding-left: 50px;
+  }
+
+  .imgBola {
+      display: none;
+  }
+
+  .imgPata {
+      display: none;
+  }
+
+
+}
+
+
+@media screen and (max-width: 320px) {
+
+  .div_Titulo span {
+      font-size: 14px;
+  }
+
+  .sobreNosContainer {
+      width: 98%;
+  }
+
+  #sublinhadoSobreNos {
+      width: 45px;
+      height: 2.5px;
+
+  }
+
+  .span {
+      font-size: 13px;
+  }
+
+
+  .containerEsquerdoSN {
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      padding-left: 0px;
+  }
+
+  .containerDireitoSN {
+      display: none;
+  }
+
+
+  .containerDireitoSN {
+      padding-left: 50px;
+  }
+
+  .imgBola {
+      display: none;
+  }
+
+  .imgPata {
+      display: none;
+  }
+}
+
+/* ============================================= ESTILO DA PARTE FALE CONOSCO */
+
+/* scroll */
+
+/* Personaliza a largura do scroll */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Personaliza a cor da thumb */
+::-webkit-scrollbar-thumb {
+  background-color: #005EFF;
+}
+
+/* Personaliza a cor da thumb quando hover */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #005EFF;
+}
+
+@media screen and (max-width: 1050px) {}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.telaFaleConosco {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+}
+
+#faleConosco {
+  padding-top: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 30px;
+}
+
+#faleConosco .titulo {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#faleConosco h1 {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 70px;
+  cursor: default;
+  margin-bottom: 0;
+}
+
+.tituloSublinhado {
+  width: 20%;
+  height: 10px;
+  background-color: #005EFF;
+  border-radius: 15px;
+}
+
+.flex {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3%;
+  margin-left: 3%;
+  justify-content: center;
+  align-items: center;
+}
+
+#localizacao {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 2%;
+}
+
+#formulario {
+  width: 50%;
+  border-left: 2px solid black;
+  border-top: 2px solid black;
+}
+
+#iframe {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+iframe {
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
+  top: 35%;
+}
+
+#endereco {
+  width: 50vw;
+  display: flex;
+  justify-content: center;
+}
+
+#endereco p {
+  width: 20vw;
+  text-align: center;
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 600;
+  font-size: 17px;
+  margin-top: 2%;
+}
+
+#contatos {
+  display: flex;
+  width: 100%;
+}
+
+#contatos img {
+  width: 40px;
+  height: 110px;
+  margin-top: 5%;
+  margin-left: 30%;
+}
+
+.contatos {
+  margin-left: 5%;
+  margin-top: 4%;
+  font-family: 'League Spartan', sans-serif;
+}
+
+.contatos p {
+  font-size: 19px;
+}
+
+#email {
+  cursor: pointer;
+}
+
+.formulario {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 10%;
+  margin-left: 30%;
+}
+
+.formulario input {
+  width: 100%;
+  font-family: 'League Spartan', sans-serif;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  font-size: 22px;
+  margin-top: 10%;
+  outline: none;
+  padding-bottom: 10%;
+}
+
+.formulario input:hover {
+  transform: scale(1.03);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
+}
+
+#formulario button {
+  width: 40%;
+  height: 40px;
+  font-family: 'League Spartan', sans-serif;
+  font-size: 22px;
+  border-radius: 15px;
+  background-color: rgba(0, 94, 255, 0.916);
+  color: #ffff;
+  border: none;
+  font-weight: 200;
+  margin-top: 10%;
+  margin-left: 30%;
+  cursor: pointer;
+  transition: all 0.5s ease-out;
+}
+
+#formulario button:hover {
+  background-color: #005EFF;
+}
+
+@media screen and (max-width: 1025px) {
+  #endereco p {
+      width: 30vw;
+  }
+
+  #contatos img {
+      width: 35px;
+      height: 100px;
+      margin-top: 7%;
+      margin-left: 24%;
+  }
+
+  .formulario {
+      width: 222px;
+      height: 222px;
+      padding-top: 15%;
+
+  }
+}
+
+@media screen and (max-width: 635px) {
+  iframe {
+      width: 200px;
+      height: 150px;
+  }
+
+  #faleConosco h1 {
+      font-size: 45px;
+  }
+
+  .tituloSublinhado {
+      margin-top: 0;
+  }
+
+  #endereco p {
+      width: 25vw;
+      font-size: 15px;
+  }
+
+  #contatos img {
+      width: 25px;
+      height: 65px;
+      margin-top: 7%;
+      margin-left: 17%;
+  }
+
+  #contatos p {
+      font-size: 12px;
+  }
+
+  #formulario {
+      margin-top: 2%;
+      margin-left: 3%;
+      width: 35%;
+  }
+
+  .formulario {
+      width: 50%;
+      padding-top: 15%;
+  }
+
+  #formulario button {
+      width: 50%;
+  }
+
+  .formulario input::placeholder {
+      font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  iframe {
+      width: 125px;
+      height: 90px;
+  }
+
+  #faleConosco h1 {
+      font-size: 30px;
+  }
+
+  .tituloSublinhado {
+      margin-top: 0;
+  }
+
+  #endereco p {
+      width: 25vw;
+      font-size: 12px;
+  }
+
+  #contatos img {
+      width: 17px;
+      height: 50px;
+      margin-top: 7%;
+      margin-left: 17%;
+  }
+
+  #contatos p {
+      font-size: 10px;
+  }
+
+  #formulario {
+      width: 175px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+  }
+
+  .formulario {
+      width: 50%;
+      padding-top: 15%;
+  }
+
+  form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      justify-content: space-around;
+      height: 200px;
+  }
+
+  #formulario button {
+      width: 65px;
+      height: 25px;
+      margin: 0;
+      font-size: 12px;
+  }
+
+  .formulario input::placeholder {
+      font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 376px) {
+  iframe {
+      width: 125px;
+      height: 90px;
+  }
+
+  #faleConosco h1 {
+      font-size: 30px;
+  }
+
+  .tituloSublinhado {
+      margin-top: 0;
+  }
+
+  #endereco p {
+      width: 25vw;
+      font-size: 12px;
+  }
+
+  #contatos img {
+      width: 17px;
+      height: 50px;
+      margin-top: 7%;
+      margin-left: 17%;
+  }
+
+  #contatos p {
+      font-size: 10px;
+  }
+
+  #formulario {
+      width: 175px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+  }
+
+  .formulario {
+      width: 50%;
+      padding-top: 15%;
+  }
+
+  #formulario button {
+      width: 50%;
+      font-size: 10px;
+  }
+
+  .formulario input::placeholder {
+      font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 321px) {
+  iframe {
+      width: 100px;
+      height: 75px;
+  }
+
+  #faleConosco h1 {
+      font-size: 30px;
+  }
+
+  .tituloSublinhado {
+      margin-top: 0;
+  }
+
+  #endereco p {
+      width: 25vw;
+      font-size: 9px;
+  }
+
+  #contatos img {
+      width: 15px;
+      height: 47px;
+      margin-top: 7%;
+      margin-left: 17%;
+  }
+
+  #contatos p {
+      font-size: 7px;
+  }
+
+  #formulario {
+      width: 100px;
+      height: 250px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+  }
+
+  .formulario {
+      width: 50%;
+      padding-top: 15%;
+  }
+
+  #formulario button {
+      width: 45px;
+      height: 20px;
+      font-size: 10px;
+  }
+
+  .formulario input::placeholder {
+      font-size: 13px;
   }
 }
