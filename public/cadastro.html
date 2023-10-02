@@ -22,8 +22,8 @@
     <!-- Estilos customizados -->
     <link href="css/templateStocksafe.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/register.css">
-    
-    <link rel="icon" href="assets/img/index/logo.png"/>
+
+    <link rel="icon" href="assets/img/index/logo.png" />
 
 
 </head>
@@ -36,17 +36,17 @@
             <div class="card-body p-0">
                 <!-- Nested Row within Card Body -->
                 <div class="row">
-                    
-                    <img onclick="()=>{window.location.pathname(index.html)}" 
-                        id="logoStockLogin" src="assets\img\index\logoCompleto.png" 
-                        class="mx-5 mt-3 col-sm-2 position-absolute" alt="..."
-                    />
-                    
+
+                    <img onclick="()=>{window.location.pathname(index.html)}" id="logoStockLogin"
+                        src="assets\img\index\logoCompleto.png" class="mx-5 mt-3 col-sm-2 position-absolute"
+                        alt="..." />
+
                     <div class="col-lg-8 mx-auto">
                         <div class="p-5">
                             <form id="infos" class="user">
                                 <div class="text-center">
-                                    <h1 id="tituloCad" class="h4 border-bottom-1 rounded font-weight-bolder mb-4">CADASTRO</h1>
+                                    <h1 id="tituloCad" class="h4 border-bottom-1 rounded font-weight-bolder mb-4">
+                                        CADASTRO</h1>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
@@ -55,18 +55,18 @@
                                     </div>
                                     <!-- CNPJ -->
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" onchange="catchCNPJ()" class="form-control form-control-user" id="iptCNPJ"
-                                            placeholder="CNPJ">
+                                        <input type="text" onchange="catchCNPJ()" class="form-control form-control-user"
+                                            id="iptCNPJ" placeholder="CNPJ">
                                     </div>
                                     <!-- Razão Social -->
                                     <div class="col-sm-6 mt-3">
                                         <input type="text" class="form-control form-control-user" id="iptRazao"
-                                           placeholder="Razão Social">
+                                            placeholder="Razão Social">
                                     </div>
                                     <!-- Telefone -->
                                     <div class="col-sm-6 mt-3">
-                                        <input type="text" maxlength="12" class="form-control form-control-user " id="iptTelefone"
-                                           placeholder="Telefone/Contato">
+                                        <input type="text" maxlength="12" class="form-control form-control-user "
+                                            id="iptTelefone" placeholder="Telefone/Contato">
                                     </div>
                                 </div>
                                 <!-- Email -->
@@ -77,27 +77,29 @@
                                 <!-- Senha -->
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="iptSenha" placeholder="Senha">
+                                        <input type="password" class="form-control form-control-user" id="iptSenha"
+                                            placeholder="Senha">
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="password" class="form-control form-control-user"
                                             id="confirmacaoSenhaInput" placeholder="Repita a senha">
                                     </div>
                                 </div>
-                                <a id onclick="trocar()" class="btn mx-auto col-sm-6 btn-outline-primary  font-weight-bolder border border-primary btn-user btn-block">
+                                <a id onclick="trocar()"
+                                    class="btn mx-auto col-sm-6 btn-outline-primary  font-weight-bolder border border-primary btn-user btn-block">
                                     Continuar
                                 </a>
                             </form>
 
-                            <form id="address"  class="user" action="">
+                            <form id="address" class="user" action="">
                                 <div class="text-center">
                                     <h1 id="tituloCad" class="h4 text-gray-900 mb-4">Informe seu endereço.</h1>
                                 </div>
                                 <div class="form-group row">
                                     <!-- CEP -->
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input onchange="catchAddress()" type="text" class="form-control form-control-user" id="iptCEP"
+                                        <input onchange="catchAddress()" type="text"
+                                            class="form-control form-control-user" id="iptCEP"
                                             placeholder="CEP/Codigo postal">
                                     </div>
                                     <!-- Rua -->
@@ -107,17 +109,18 @@
                                     </div>
                                     <!-- bairro -->
                                     <div class="col-sm-6 mt-3">
-                                        <input type="text" class="form-control form-control-user" id="iptBairro"  placeholder="Bairro">
+                                        <input type="text" class="form-control form-control-user" id="iptBairro"
+                                            placeholder="Bairro">
                                     </div>
                                     <!-- Cidade -->
                                     <div class="col-sm-6 mt-3">
                                         <input type="text" class="form-control form-control-user " id="iptCidade"
-                                           placeholder="Cidade">
+                                            placeholder="Cidade">
                                     </div>
                                     <!-- Numero -->
                                     <div class="col-sm-3 mt-3">
-                                        <input type="text" class="form-control text-center form-control-user " id="iptNumero"
-                                           placeholder="Nº">
+                                        <input type="text" class="form-control text-center form-control-user "
+                                            id="iptNumero" placeholder="Nº">
                                     </div>
                                 </div>
 
@@ -126,7 +129,7 @@
                                 </a>
 
                             </form>
-                            
+
                             <div class="text-center">
                                 <a class="small" href="login.html">Já tem uma conta? Login!</a>
                             </div>
@@ -151,71 +154,6 @@
 </body>
 
 </html>
-<script>
-//  address.style.display = "none"
 
- infos.style.display = "block"
- address.style.opacity = "0"
-    function trocar() {
-        address.style.transition ="all 0.3s linear"
-        infos.style.opacity = "0"
-        tituloCad.innerHTML = "Qual seu endereço?"
-        setTimeout(()=>{
-            infos.style.display = "none"
-            // address.style.display = "block"
-            address.style.opacity = "1"
-            address.style.position = "relative"
-        },500)
-    }
-
-    function catchAddress(){
-        fetch(`https://viacep.com.br/ws/${iptCEP.value}/json`)
-.then(data => {
-return data.json();
-})
-.then(post => {
-    if (post.logradouro == undefined || post.bairro == undefined || post.localidade == undefined) {
-        
-        console.error("cep nao encontrado")
-    }
-    else{
-iptRua.value = post.logradouro
-iptBairro.value = post.bairro
-iptCidade.value = post.localidade  
-    }
-
-})
-.catch(error=> {
-    console.log("cep nao encontrado")
-})
-
-    }
-
-    function catchCNPJ(){
-        fetch(`https://publica.cnpj.ws/cnpj/${iptCNPJ.value}`)
-.then(data => {
-return data.json();
-})
-.then(post => {
-    if (post.razao_social == undefined) {
-        
-        console.error("CNPJ nao encontrado")
-    }
-    else{
-iptRazao.value = post.razao_social
- 
-    }
-
-})
-.catch(error=> {
-    console.log("cnpj nao encontrado")
-})
-
-    }
-
-
- 
-
-</script>
-
+<script src="js/capturaValidacao.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

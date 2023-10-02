@@ -9,28 +9,11 @@
     var senhaVar = iptSenha.value;
     var confirmacaoSenhaVar = confirmacaoSenhaInput.value;
     var nomeFantasiaVar = iptFantasia.value;
-    // var empresaVar = listaEmpresas.value;
     var cepVar = iptCEP.value;
     var ruaVar = iptRua.value;
     var bairroVar = iptBairro.value;
     var cidadeVar = iptCidade.value;
     var numeroVar = iptNumero.value;
-    // if (
-    //   nomeVar == "" ||
-    //   emailVar == "" ||
-    //   senhaVar == "" ||
-    //   confirmacaoSenhaVar == "" ||
-    //   empresaVar == ""
-    // ) {
-    //   cardErro.style.display = "block";
-    //   mensagemErro.innerHTML =
-    //     "(Mensagem de erro para todos os campos em branco)";
-
-    //   finalizarAguardar();
-    //   return false;
-    // } else {
-    //   setInterval(sumirMensagem, 5000);
-    // }
 
     // Enviando o valor da nova input
     fetch("/empresas/cadastrar", {
