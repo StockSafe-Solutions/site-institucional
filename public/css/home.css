@@ -86,10 +86,6 @@ header {
   font-size: 10px;
 }
 
-.divLogo img {
-  width: 150px;
-  height: 84px;
-}
 
 .divLinksPrincipais {
   width: 60%;
@@ -209,10 +205,9 @@ button:hover {
     height: 20px;
   }
 
-  .divLogo img {
-    width: 160px;
-    height: 95px;
-
+  .imgLogo {
+    width: 55px;
+    height: 55px;
   }
 
   .divNome .p1 {
@@ -570,11 +565,6 @@ footer span {
 
 .p33 {
   font-size: 10px;
-}
-
-.imgLogoFoter {
-  width: 130px;
-  height: 74px;
 }
 
 .divNome2 {
