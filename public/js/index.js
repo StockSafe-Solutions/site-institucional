@@ -14,7 +14,6 @@ function scrollFaleNos() {
 }
 
 function scrollSobreNos() {
-    // const body = document.getElementById("a")
     window.scrollTo(0, 1615);
 }
 

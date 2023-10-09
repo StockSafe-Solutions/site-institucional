@@ -1,8 +1,4 @@
-// const { resolve } = require("path");
-
 function entrar() {
-
-    // aguardar();
 
     var emailVar = emailInput.value;
     var senhaVar = senhaInput.value;
@@ -32,13 +28,12 @@ function entrar() {
         })
     }).then(function (resposta) {
         console.log("ESTOU NO THEN DO entrar()!")
-        // alert("Está caindo no then")
+        alert("Está caindo no then")
         if (resposta.ok) {
             
             console.warn(resposta);
 
             resposta.json().then(json => {
-                // alert("Está mais perto 😁😘👌")
                 console.log(json);
                 console.log(JSON.stringify(json));
                 sessionStorage.EMAIL_USUARIO = json.email;
@@ -56,33 +51,23 @@ function entrar() {
                 }else{
                     window.location = "../dashboard/index.html";
                 }
-                setTimeout(function () {
-                   
-                }, 1000);
-
+                setTimeout(function (){}, 1000);
             });
-
-        } else {
+        } 
+        else {
             alert("Tá no else")
             console.log("Houve um erro ao tentar realizar o login!");
 
             resposta.text().then(texto => {
                 console.error(texto);
-                // finalizarAguardar(texto);
             });
         }
-
     }).catch(function (erro) {
-        alert("Ta dando erro 😱")
+        alert("Algo deu errado!")
         console.log(erro);
     })
-
     return false;        
 }
-
-/* function sumirMensagem() {
-    cardErro.style.display = "none"
-} */
 
 function voltarParaIndex() {
     window.location.href = "index.html";

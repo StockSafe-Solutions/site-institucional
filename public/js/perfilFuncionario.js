@@ -28,7 +28,8 @@ function cadastrarFuncionario(){
             setTimeout(() => {
                 console.log(resposta)
             }, "2000");
-        }else {
+        }
+        else {
             alert("Houve um erro ao tentar realizar cadastro!")
         }
     }
@@ -46,7 +47,7 @@ function enviarFoto() {
     console.log(iptFoto.files[0], formData)
     formData.append('foto', iptFoto.files[0])
     alert("Ta entrando")
-    // idUsuario = sessionStorage.ID_USUARIO
+
     var idFuncionario = sessionStorage.ID_FUNCIONARIO
     fetch(`/funcionario/enviarFoto/${idFuncionario}`, {
       method: "POST",
@@ -59,5 +60,4 @@ function enviarFoto() {
       .catch(err => {
         console.log(err);
       })
-  }
-
+}

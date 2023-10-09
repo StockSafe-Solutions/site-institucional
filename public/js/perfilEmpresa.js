@@ -17,14 +17,9 @@ $( "#olho" ).mouseout(function() {
   $("#senha").attr("type", "password");
 });
 
-
 function pegarDadosEmpresa() {
     var idUsuario = sessionStorage.ID_USUARIO
     nomeUsuario.innerHTML = sessionStorage.NOME_USUARIO;
-    // cnpj = iptCNPJEmpresa.value;
-    // email = iptEmailEmpresa.value;
-    // senha = iptSenhaEmpresa.value;
-
 
     fetch(`/perfilEmpresa/pegarDadosEmpresa/${idUsuario}`, {
         method: "GET",
@@ -45,7 +40,8 @@ function pegarDadosEmpresa() {
                         alert(dados.cnpj)
                         // nomeUsuario.innerHTML = dados.cnpj
                     }, "2000");
-                } else {
+                } 
+                else {
                     alert("Houve um erro ao tentar puxar os dados!")
                 }
             }
@@ -91,6 +87,3 @@ function alterarDados() {
     )
     return false;
 }
-
-
-
