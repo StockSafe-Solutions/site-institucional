@@ -30,12 +30,12 @@
     <div class="container">
         <div class="card o-hidden border-0 my-5">
             <div class="card-body p-0">
-                <!-- Nested Row within Card Body -->
-                <div class="row">
 
+                <div class="row">
                     <img onclick="()=>{window.location.pathname(index.html)}" id="logoStockLogin"
                         src="assets/img/index/logotipo.png" class="mx-5 mt-3 col-sm-2 position-absolute"
-                        alt="..." />
+                        alt="..." 
+                    />
 
                     <div class="col-lg-8 mx-auto">
                         <div class="p-5">
@@ -45,7 +45,7 @@
                                     <h1 id="tituloCad" class="h4 border-bottom-1 rounded font-weight-bolder mb-4">
                                         CADASTRO</h1>
                                 </div>
-                                <!-- Inputs -->
+                                <!-- Inputs (NECESSÁRIO MUDANÇA NAS VARIAVEIS PARA GERAR AS ROTAS)-->
                                 <!-- Nome Completo -->
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
@@ -74,49 +74,9 @@
                                             id="confirmacaoSenhaInput" placeholder="Repita a senha">
                                     </div>
                                 </div>
-                                <a id onclick="trocar()"
-                                    class="btn mx-auto col-sm-6 btn-outline-primary  font-weight-bolder border border-primary btn-user btn-block">
-                                    Continuar
-                                </a>
-                            </form>
-
-                            <form id="address" class="user" action="">
-                                <div class="text-center">
-                                    <h1 id="tituloCad" class="h4 text-gray-900 mb-4">Informe seu endereço.</h1>
-                                </div>
-                                <div class="form-group row">
-                                    <!-- CEP -->
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input onchange="catchAddress()" type="text"
-                                            class="form-control form-control-user" id="iptCEP"
-                                            placeholder="CEP/Codigo postal">
-                                    </div>
-                                    <!-- Rua -->
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="iptRua"
-                                            placeholder="Rua/Logradouro">
-                                    </div>
-                                    <!-- bairro -->
-                                    <div class="col-sm-6 mt-3">
-                                        <input type="text" class="form-control form-control-user" id="iptBairro"
-                                            placeholder="Bairro">
-                                    </div>
-                                    <!-- Cidade -->
-                                    <div class="col-sm-6 mt-3">
-                                        <input type="text" class="form-control form-control-user " id="iptCidade"
-                                            placeholder="Cidade">
-                                    </div>
-                                    <!-- Numero -->
-                                    <div class="col-sm-3 mt-3">
-                                        <input type="text" class="form-control text-center form-control-user "
-                                            id="iptNumero" placeholder="Nº">
-                                    </div>
-                                </div>
-
                                 <a onclick="cadastrar()" class="btn btn-primary btn-user btn-block">
-                                    Continuar
+                                    Cadastrar
                                 </a>
-
                             </form>
 
                             <div class="text-center">
@@ -127,7 +87,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 
     <!-- Bootstrap core JavaScript-->
@@ -144,5 +103,4 @@
 
 </html>
 
-<script src="js/capturaValidacao.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
