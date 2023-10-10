@@ -1,17 +1,10 @@
 function cadastrar() {
 
-  var cnpjVar = iptCNPJ.value;
-  var razaoVar = iptRazao.value;
-  var telefoneVar = iptTelefone.value; 
+  var nomeVar = iptNomeCompleto.value;
+  var dataVar = iptData.value;
   var emailVar = iptEmail.value;
   var senhaVar = iptSenha.value;
   var confirmacaoSenhaVar = confirmacaoSenhaInput.value;
-  var nomeFantasiaVar = iptFantasia.value;
-  var cepVar = iptCEP.value;
-  var ruaVar = iptRua.value;
-  var bairroVar = iptBairro.value;
-  var cidadeVar = iptCidade.value;
-  var numeroVar = iptNumero.value;
 
   fetch("/empresas/cadastrar", {
     method: "POST",
@@ -19,6 +12,7 @@ function cadastrar() {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
+      // Corrigir as rotas para novo modelo mais tarde
       cnpjServer: cnpjVar,
       razaoServer: razaoVar,
       telefoneServer: telefoneVar,
