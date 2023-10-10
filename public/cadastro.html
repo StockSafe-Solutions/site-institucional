@@ -49,13 +49,13 @@
                                 <!-- Nome Completo -->
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="iptFantasia"
+                                        <input type="text" class="form-control form-control-user" id="iptNomeCompleto"
                                             placeholder="Nome Completo">
                                     </div>
                                     <!-- Data Nascimento -->
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user"
-                                            id="iptCNPJ" placeholder="Data de Nascimento">
+                                        <input type="date" class="form-control form-control-user"
+                                            id="iptData" placeholder="Data de Nascimento">
                                     </div>
                                 </div>
                                 <!-- Email -->
@@ -98,6 +98,11 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin.min.js"></script>
+
+    <script type="text/javascript">
+        $("#telefone, #celular").mask("00");
+        </script>
+            
 
 </body>
 
