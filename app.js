@@ -10,11 +10,10 @@ var app = express();
 
 var indexRouter = require("./src/routes/index");
 var medidasRouter = require("./src/routes/medidas");
-var empresasRouter = require("./src/routes/empresas");
 var funcionarioRouter = require("./src/routes/funcionario");
 var cadastroMaquinasRouter = require("./src/routes/maquinas");
 var perfilEmpresaRouter = require("./src/routes/perfilEmpresa");
-var usuarioRouter = require("./src/routes/usuarios")
+var usuarioRouter = require("./src/routes/usuario")
 
 
 app.use(express.json());
@@ -25,11 +24,10 @@ app.use(cors());
 
 app.use("/", indexRouter);
 app.use("/medidas", medidasRouter);
-app.use("/empresas", empresasRouter);
 app.use("/funcionario", funcionarioRouter)
 app.use("/maquinas", cadastroMaquinasRouter)
 app.use("/perfilEmpresa", perfilEmpresaRouter)
-app.use("/", usuarioRouter)
+app.use("/usuario", usuarioRouter)
 
 
 app.listen(PORTA, function () {

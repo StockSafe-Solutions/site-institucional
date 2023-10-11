@@ -6,17 +6,16 @@ function cadastrar() {
   var senhaVar = iptSenha.value;
   // var confirmacaoSenhaVar = confirmacaoSenhaInput.value;
 
-  fetch("/usuario/cadastrar", {
+  fetch("cadastrar", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      // Corrigir as rotas para novo modelo mais tarde
-      NomeServer: nomeVar,
+      nomeServer: nomeVar,
       dataServer: dataVar,
       emailServer: emailVar,
-      senhaServer: senhaVar,
+      senhaServer: senhaVar
     }),
   })
     .then(function (resposta) {
