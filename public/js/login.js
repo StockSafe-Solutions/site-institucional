@@ -1,16 +1,10 @@
 function entrar() {
 
-    var emailVar = emailInput.value;
-    var senhaVar = senhaInput.value;
+    var emailVar = iptEmail.value;
+    var senhaVar = iptSenha.value;
 
     if (emailVar == "" || senhaVar == "") {
-        // cardErro.style.display = "block"
-        mensagemErro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-        // finalizarAguardar();
-        // return false;
-    }
-    else {
-        // setInterval(sumirMensagem, 5000)
+        alert("Preencha os campos em branco");
     }
 
     console.log("FORM LOGIN: ", emailVar);
@@ -28,7 +22,6 @@ function entrar() {
         })
     }).then(function (resposta) {
         console.log("ESTOU NO THEN DO entrar()!")
-        alert("Está caindo no then")
         if (resposta.ok) {
             
             console.warn(resposta);
@@ -38,24 +31,17 @@ function entrar() {
                 console.log(JSON.stringify(json));
                 sessionStorage.EMAIL_USUARIO = json.email;
                 sessionStorage.NOME_USUARIO = json.nome;
-                sessionStorage.ID_FUNCIONARIO = json.id;
-                sessionStorage.ID_USUARIO = json.idUsuario
+                sessionStorage.ID_FUNCIONARIO = json.id_funcionario;
                 sessionStorage.FOTO_USUARIO = json.foto;
-                sessionStorage.CNPJ = json.cnpj;
-                sessionStorage.DATANSC = json.dataNascimento;
+                sessionStorage.DATANSC = json.data_nascimento;
                 sessionStorage.FUNCAO = json.funcao;
                 sessionStorage.SENHA = json.senha;
-                sessionStorage.TIPO = json.tipo;
-                if(json.tipo == '1'){
-                    window.location = "../dashboard/dashboardFuncionarioM.html"
-                }else{
-                    window.location = "../dashboard/index.html";
-                }
-                setTimeout(function (){}, 1000);
             });
+            window.location = "../dashboard/dashboardFuncionarioM.html"
+            setTimeout(function (){}, 1000);
         } 
         else {
-            alert("Tá no else")
+            alert("Algo deu errado! Verifique seu email ou senha!")
             console.log("Houve um erro ao tentar realizar o login!");
 
             resposta.text().then(texto => {
@@ -63,7 +49,7 @@ function entrar() {
             });
         }
     }).catch(function (erro) {
-        alert("Algo deu errado!")
+        alert("Algo deu errado! Verifique seu email ou senha!")
         console.log(erro);
     })
     return false;        

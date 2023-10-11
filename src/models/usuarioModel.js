@@ -21,7 +21,7 @@ function cadastrar(nome, data, email, senha) {
 
     var instrucao = `
         INSERT INTO tb_funcionario (nome, funcao, data_nascimento, email, senha) VALUES 
-        ('${nome}', 'Gerente', '${data}', '${email}', '${senha}');
+        ('${nome}', 'Administrador', '${data}', '${email}', '${senha}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

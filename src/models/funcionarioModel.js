@@ -3,23 +3,17 @@ var database = require("../database/config")
 function autenticar(email, senha) {
     var instrucao = `
     SELECT
-	    u.email,
-        u.senha,
-        u.idUsuario,
-        u.tipo,
-        f.idFuncionario as id,
-        f.nome,
-        f.foto,
-        e.cnpj,
-        f.funcao,
-        f.dataNascimento
+        id_funcionario,
+        nome,
+        funcao,
+        data_nascimento,
+	    foto,
+        email,
+        senha
     FROM
-	    usuario AS u 
-        JOIN empresa AS e
-        JOIN funcionario AS f
-        WHERE f.idFuncionario = u.fkFuncionario 
-        AND e.idEmpresa = f.fkEmpresa
-        AND email LIKE '${email}' 
+	    tb_funcionario
+        WHERE 
+        email LIKE '${email}' 
 	    AND senha LIKE '${senha}';
     `
     console.log("Executando a instrução SQL: \n" + instrucao)
