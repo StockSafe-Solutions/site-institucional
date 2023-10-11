@@ -14,6 +14,7 @@ var empresasRouter = require("./src/routes/empresas");
 var funcionarioRouter = require("./src/routes/funcionario");
 var cadastroMaquinasRouter = require("./src/routes/maquinas");
 var perfilEmpresaRouter = require("./src/routes/perfilEmpresa");
+var usuarioRouter = require("./src/routes/usuarios")
 
 
 app.use(express.json());
@@ -28,6 +29,7 @@ app.use("/empresas", empresasRouter);
 app.use("/funcionario", funcionarioRouter)
 app.use("/maquinas", cadastroMaquinasRouter)
 app.use("/perfilEmpresa", perfilEmpresaRouter)
+app.use("/", usuarioRouter)
 
 
 app.listen(PORTA, function () {

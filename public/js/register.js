@@ -4,26 +4,19 @@ function cadastrar() {
   var dataVar = iptData.value;
   var emailVar = iptEmail.value;
   var senhaVar = iptSenha.value;
-  var confirmacaoSenhaVar = confirmacaoSenhaInput.value;
+  // var confirmacaoSenhaVar = confirmacaoSenhaInput.value;
 
-  fetch("/empresas/cadastrar", {
+  fetch("/usuario/cadastrar", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
       // Corrigir as rotas para novo modelo mais tarde
-      cnpjServer: cnpjVar,
-      razaoServer: razaoVar,
-      telefoneServer: telefoneVar,
+      NomeServer: nomeVar,
+      dataServer: dataVar,
       emailServer: emailVar,
       senhaServer: senhaVar,
-      nomeFantasiaServer: nomeFantasiaVar,
-      cepServer: cepVar,
-      ruaServer: ruaVar,
-      bairroServer: bairroVar,
-      cidadeServer: cidadeVar,
-      numeroServer: numeroVar
     }),
   })
     .then(function (resposta) {
