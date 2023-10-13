@@ -19,9 +19,9 @@ function autenticar(req, res) {
                         console.log(resultadoAutenticar[0]);
                         res.json(resultadoAutenticar[0]);
                     } else if (resultadoAutenticar.length == 0) {
-                        res.status(403).send("Email e/ou senha invalido(s)")
+                        res.status(404).send("Email e/ou senha invalido(s)")
                     } else {
-                        res.status(403).send("Mais de um usuário com o mesmo email")
+                        res.status(300).send("Mais de um usuário com o mesmo email")
                     }
                 })
             .catch(
@@ -34,14 +34,14 @@ function autenticar(req, res) {
     }
 }
 
-function cadastrarFuncionario(req, res) {
-    var email = req.body.emailServer;
+function cadastrar(req, res) {
     var nome = req.body.nomeServer;
-    var dataNascimento = req.body.dataNascimentoServer;
     var funcao = req.body.funcaoServer;
+    var dataNasc = req.body.dataServer;
+    var email = req.body.emailServer;
     var senha = req.body.senhaServer
 
-    funcionarioModel.cadastrarFuncionario(email, nome, dataNascimento, funcao, senha)
+    funcionarioModel.cadastrar(nome, funcao, dataNasc, email, senha)
         .then(
             function (resultado) {
                 res.json(resultado);
@@ -106,40 +106,27 @@ function atualizarSenhaFuncionario(req, res) {
 }
 
 
-function pegarDadosFucionario(req, res) {
-    var email = req.body.emailServer;
-    var nome = req.body.nomeServer;
-    var dataNascimento = req.body.dataNascimentoServer;
-    var funcao = req.body.funcaoServer;
-    var senha = req.body.senhaServer
+function selecionar(req, res) {
+    var email = req.params.email;
 
-    if (nome == undefined) {
-        res.status(400).send("Seu nome está undefined!");
-    } else if (email == undefined) {
-        res.status(400).send("Sua senha está indefinida!");
-    } else if (senha == undefined) {
-        res.status(400).send("Sua senha está indefinida!");
-    } else if (dataNascimento == undefined) {
-        res.status(400).send("Sua data de nascimento está indefinida!");
-    } else if (funcao == undefined) {
-        res.status(400).send("Sua função está indefinida!");
+    if (email == undefined) {
+        res.status(400).send("Seu email está indefinido!");
     } else {
-
-        perfilEmpresaModel.pegarDadosFucionario(nome, email, senha, dataNascimento, funcao)
+        perfilEmpresaModel.selecionar(email)
             .then(
                 function (pegarDadosFucionario) {
                     console.log(`\nResultados encontrados: ${pegarDadosFucionario.length}`);
                     console.log(`Resultados: ${JSON.stringify(pegarDadosFucionario[0])}`); // transforma JSON em String
 
-                    // if (resultadoAutenticar.length == 1) {
-                    //     console.log(resultadoAutenticar[0]);
-                    //     res.json(resultadoAutenticar[0])
-                    //    console.log("Tá quase")
-                    // } else if (resultadoAutenticar.length == 0) {
-                    //     res.status(403).send("Email e/ou senha inválido(s)");
-                    // } else {
-                    //     res.status(403).send("Mais de um usuário com o mesmo login e senha!");
-                    // }
+                    if (resultadoAutenticar.length == 1) {
+                        console.log(resultadoAutenticar[0]);
+                        res.json(resultadoAutenticar[0])
+                       console.log("Tá quase")
+                    } else if (resultadoAutenticar.length == 0) {
+                        res.status(403).send("Email e/ou senha inválido(s)");
+                    } else {
+                        res.status(403).send("Mais de um usuário com o mesmo email!");
+                    }
                 }
             ).catch(
                 function (erro) {
@@ -149,7 +136,6 @@ function pegarDadosFucionario(req, res) {
                 }
             );
     }
-
 }
 
 
@@ -164,49 +150,11 @@ function enviarFoto(req, res) {
         });
 }
 
-function mostrarFoto(req, res) {
-    var idUsuario = req.params.idFuncionario;
-
-    funcionarioModel.mostrarFoto(idUsuario)
-        .then(
-            function (resultado) {
-                res.json(resultado);
-            }
-        )
-        .catch(
-            function (erro) {
-                console.log(erro);
-                console.log("Houve um erro ao realizar a consulta: ", erro.sqlMessage);
-                res.status(500).json(erro.sqlMessage);
-            }
-        )
-}
-
-function mostrarNome(req,res){
-    var idUsuario = req.params.idFuncionario;
-
-    funcionarioModel.mostrarNome(idUsuario)
-        .then(
-            function (resultado){
-                res.json(resultado);
-            }
-        )
-        .catch(
-            function (erro){
-                console.log(erro);
-                console.log("Houve um erro ao realizar a consulta: ", erro.sqlMessage);
-                res.status(500).json(erro.sqlMessage);
-            }
-        )
-}
 module.exports = {
-    cadastrarFuncionario,
     autenticar,
+    cadastrar,
+    selecionar,
     enviarFoto,
-    mostrarFoto,
-    mostrarNome,
-    pegarDadosFucionario,
     atualizarDadosFuncionario,
     atualizarSenhaFuncionario
-    
 }
