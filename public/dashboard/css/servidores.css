@@ -1,0 +1,64 @@
+.pesquisa-servidores{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+}
+.pesquisa-servidores h3{
+    margin: 0;
+}
+.pesquisa-servidores span{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: .35rem;
+    background-color: whitesmoke;
+}
+.pesquisa-servidores input{
+    border: none;
+    padding: 5px;
+    background-color: inherit;
+    border-radius: inherit;
+}
+.pesquisa-servidores svg{
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+.container-servidores{
+    background-color: whitesmoke;
+    border-radius: .35rem;
+    padding: 0px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 20px;
+    height: 400px;
+    overflow-y: scroll;
+}
+
+.servidor{
+    width: 220px;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    align-items: center;
+    background-color: #005eff;
+    color: white;
+    margin: 10px;
+    border-radius: 20px;
+}
+.servidor img{
+    height: 80%;
+}
+.servidor span{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.servidor h3, .servidor p{
+    margin: 0px;
+}

@@ -12,9 +12,6 @@ var indexRouter = require("./src/routes/index");
 var medidasRouter = require("./src/routes/medidas");
 var funcionarioRouter = require("./src/routes/funcionario");
 var cadastroMaquinasRouter = require("./src/routes/maquinas");
-var perfilEmpresaRouter = require("./src/routes/perfilEmpresa");
-var usuarioRouter = require("./src/routes/usuario")
-
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -26,9 +23,6 @@ app.use("/", indexRouter);
 app.use("/medidas", medidasRouter);
 app.use("/funcionario", funcionarioRouter)
 app.use("/maquinas", cadastroMaquinasRouter)
-app.use("/perfilEmpresa", perfilEmpresaRouter)
-app.use("/usuario", usuarioRouter)
-
 
 app.listen(PORTA, function () {
     console.log(`Servidor do seu site já está rodando! Acesse o caminho a seguir para visualizar: http://localhost:${PORTA} \n

@@ -2,7 +2,7 @@ var database = require("../database/config")
 
 function autenticar(email, senha) {
     var instrucao = `
-    SELECT email, senha
+    SELECT *
     FROM tb_funcionario
     WHERE email = '${email}' AND senha = '${senha}'
     `
@@ -51,8 +51,6 @@ function atualizarDadosFuncionario(nome, funcao, dataNascimento, idFuncionario) 
     return database.executar(instrucao);
 }
 
-
-
 function atualizarSenhaFuncionario(senha, idUsuario) {
     var instrucao = `
     UPDATE usuario SET senha = '${senha}' where idUsuario = ${idUsuario};
@@ -61,8 +59,6 @@ function atualizarSenhaFuncionario(senha, idUsuario) {
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
-
-
 
 module.exports = {
     autenticar,

@@ -39,20 +39,10 @@ function entrar() {
     }).then(function (resposta) {
         if (resposta.ok) {
             console.warn(resposta);
-
             resposta.json().then(json => {
-                console.log(json);
-                console.log(JSON.stringify(json));
-                sessionStorage.EMAIL_USUARIO = json.email;
-                sessionStorage.NOME_USUARIO = json.nome;
-                sessionStorage.ID_FUNCIONARIO = json.id_funcionario;
-                sessionStorage.FOTO_USUARIO = json.foto;
-                sessionStorage.DATANSC = json.dataNascimento;
-                sessionStorage.FUNCAO = json.funcao;
-                sessionStorage.SENHA = json.senha;
+                sessionStorage.funcionario = JSON.stringify(json);
             });
             window.location = "../dashboard/dashboardGeral.html"
-            setTimeout(function (){}, 1000);
         } 
         else {
             resposta.text().then(texto => {

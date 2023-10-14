@@ -15,10 +15,9 @@
 
     <!-- Estilos -->
     <link rel="stylesheet" href="../css/templateStocksafe.min.css">
-    <link rel="stylesheet" href="../css/customDash.css">
+    <link rel="stylesheet" href="css/baseDashboard.css">
 
     <!-- Scripts -->
-    <script src="js/dados.js"></script>
     <script src="js/menuLateral.js"></script>
 
     <!-- Icone -->
@@ -27,7 +26,7 @@
     <title>StockSafe - Dashboard</title>
 </head>
 
-<body id="page-top" onload="atualizarDados(), obterDadosGrafico('todos'), carregarMenu()">
+<body id="page-top" onload="obterDadosGrafico('todos'), carregarMenu('geral')">
 
     <!-- Page Wrapper -->
     <div id="wrapper">

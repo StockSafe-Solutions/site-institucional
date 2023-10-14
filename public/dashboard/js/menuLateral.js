@@ -1,5 +1,39 @@
+function carregarMenu(pagina) {
+    if(sessionStorage.funcionario == undefined){
+        window.location = "../index.html"
+    }
 
-function carregarMenu() {
+    jsonFunc = JSON.parse(sessionStorage.funcionario)
+    nomeUsuario = jsonFunc.nome;
+    fotoUsuario = jsonFunc.foto;
+    if(fotoUsuario == null){
+        fotoUsuario = "../assets/img/fotosPadrao/undraw_profile.svg"
+    }
+
+    destGeral = ""
+    destServs = ""
+    destFuncs = ""
+    destPerf = ""
+    destConfig = ""
+
+    switch (pagina) {
+        case "geral":
+            destGeral = " active"
+            break;
+        case "servs":
+            destServs = " active"
+            break;
+        case "funcs":
+            destFuncs = " active"
+            break;
+        case "perf":
+            destPerf = " active"
+            break;
+        case "config":
+            destConfig = " active"
+            break;
+    }
+
     var conteudo = `
     <!-- Marca -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
@@ -14,38 +48,35 @@ function carregarMenu() {
     <hr class="sidebar-divider my-0">
 
         <!-- Nav Item - Dashboard -->
-        <li class="nav-item active">
-            <a class="nav-link" href="index.html">
+        <li class="nav-item${destGeral}">
+            <a class="nav-link" href="dashboardGeral.html">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Visão geral</span></a>
         </li>
 
-        <!-- Divider -->
-        <hr class="sidebar-divider">
-
-            <!-- Serviodres -->
-            <li class="nav-item">
-                <a class="nav-link" href="cadastroMaquinas.html">
+            <!-- Servidores -->
+            <li class="nav-item${destServs}">
+                <a class="nav-link" href="servidores.html">
                     <img src="../assets/img/dashboard/addMaquinasMenu.png" alt="Cadastrar máquinas">
                         <span>Servidores</span></a>
             </li>
 
             <!-- Funcionários -->
-            <li class="nav-item">
+            <li class="nav-item${destFuncs}">
                 <a class="nav-link" href="cadastroFuncionarios.html">
                     <img src="../assets/img/dashboard/addPerfilMenu.png" alt="Cadastrar funcionários">
                         <span>Funcionários</span></a>
             </li>
 
             <!-- Seu perfil -->
-            <li class="nav-item">
+            <li class="nav-item${destPerf}">
                 <a class="nav-link" href="cadastroFuncionarios.html">
                     <img src="../assets/img/dashboard/addPerfilMenu.png" alt="Cadastrar funcionários">
                         <span>Seu perfil</span></a>
             </li>
 
             <!-- Configurações -->
-            <li class="nav-item">
+            <li class="nav-item${destConfig}">
                 <a class="nav-link" href="cadastroFuncionarios.html">
                     <img src="../assets/img/dashboard/addPerfilMenu.png" alt="Cadastrar funcionários">
                         <span>Configurações</span></a>
@@ -57,12 +88,11 @@ function carregarMenu() {
                 <!-- Configurações -->
                 <li class="nav-item nav-profile">
                     <p class="nav-link">
-                        <img src="../assets/img/fotosPadrao/undraw_profile.svg" alt="Cadastrar funcionários">
-                            <span>Fernando Brandão</span>
+                        <img src="${fotoUsuario}" alt="Cadastrar funcionários">
+                            <span>${nomeUsuario}</span>
                             <a onclick="sair()">Sair</a>
                     </p>
                 </li>
-                Adicionar notificações
 
                 <!-- Sidebar Toggler (Sidebar) -->
                 <div class="text-center d-none d-md-inline">

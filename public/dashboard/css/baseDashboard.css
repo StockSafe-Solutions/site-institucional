@@ -1,9 +1,10 @@
 body {
+    height: fit-content !important;
     background-color: whitesmoke;
-    margin: 10px;
+    margin: 10px 10px 0 10px;
 }
 body > div > *{
-    margin: 10px;
+    margin: 0 10px;
 }
 *::-webkit-scrollbar {
     width: 10px;
@@ -12,7 +13,7 @@ body > div > *{
 /* Barra lateral */
 #accordionSidebar {
     border-radius: 15px;
-    height: 560px;
+    height: 590px;
     background-color: #005EFF;
 }
 
@@ -30,12 +31,11 @@ body > div > *{
 
 .nav-profile img{
     width: 25%;
-    /* height: 24px; */
 }
 
 /* Conteúdo principal */
 #content-wrapper{
-    height: 560px;
+    height: 590px;
 }
 
 #content {
