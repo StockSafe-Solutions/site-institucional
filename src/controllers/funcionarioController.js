@@ -4,9 +4,9 @@ function autenticar(req, res) {
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
     if (email == undefined) {
-        res.status(400).send("Seu email está indefinido");
+        res.status(400).send("Email vazio.");
     } else if (senha == undefined) {
-        res.status(400).send("Sua senha esta indefinida")
+        res.status(400).send("Senha vazia.")
     } else {
 
         funcionarioModel.autenticar(email, senha)
