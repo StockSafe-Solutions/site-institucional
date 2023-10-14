@@ -22,10 +22,33 @@ function listarServidores() {
     })
 }
 
-function pesquisarServidores(){
+function pesquisarServidores() {
     query = iptPesquisa.value
 
-    fetch(("/servidor/selecionar/"+query), {
+    var caracteresPermitidos = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9,"A","B","C","D","E","F","G","H","I","J",
+    "K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+
+    valido = true
+    for(i in query){
+        caractereInvalido = true
+        for(c in caracteresPermitidos){
+            if(query[i].indexOf(caracteresPermitidos[c]) != -1){
+                caractereInvalido = false
+                break
+            }
+        }
+        if(caractereInvalido){
+            valido = false
+            break
+        }
+    }
+
+    if(!valido){
+        alert("a")
+        iptPesquisa.value = ""
+    }
+
+    fetch(("/servidor/selecionar/" + query), {
         method: "GET",
         headers: {
             "Content-Type": "application/json"

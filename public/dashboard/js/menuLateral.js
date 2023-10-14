@@ -1,8 +1,4 @@
 function carregarMenu(pagina) {
-    if(sessionStorage.funcionario == undefined){
-        window.location = "../index.html"
-    }
-
     jsonFunc = JSON.parse(sessionStorage.funcionario)
     nomeUsuario = jsonFunc.nome;
     fotoUsuario = jsonFunc.foto;
