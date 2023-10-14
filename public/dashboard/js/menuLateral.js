@@ -59,7 +59,7 @@ function carregarMenu(pagina) {
 
             <!-- Funcionários -->
             <li class="nav-item${destFuncs}">
-                <a class="nav-link" href="cadastroFuncionarios.html">
+                <a class="nav-link" href="funcionarios.html">
                     <img src="../assets/img/dashboard/addPerfilMenu.png" alt="Cadastrar funcionários">
                         <span>Funcionários</span></a>
             </li>
