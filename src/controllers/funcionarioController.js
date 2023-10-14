@@ -19,9 +19,9 @@ function autenticar(req, res) {
                         console.log(resultadoAutenticar[0]);
                         res.json(resultadoAutenticar[0]);
                     } else if (resultadoAutenticar.length == 0) {
-                        res.status(404).send("Email e/ou senha invalido(s)")
+                        res.status(406).send("Email e/ou senha invalido(s)")
                     } else {
-                        res.status(300).send("Mais de um usuário com o mesmo email")
+                        res.status(500).send("Erro no servidor do aplicativo. Contate seu administrador de TI.")
                     }
                 })
             .catch(

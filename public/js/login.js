@@ -1,23 +1,32 @@
 function entrar() {
-
     var emailVar = emailInput.value;
     var senhaVar = senhaInput.value;
 
-    if (emailVar == "" || senhaVar == "") {
-        // cardErro.style.display = "block"
-        mensagemErro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-        // finalizarAguardar();
-        // return false;
+    var validacoes = true;
+    var textoErro = "";
+
+    if((emailVar.indexOf("@") == -1)||(emailVar.indexOf(".") == -1)||(emailVar.length > 125)){
+        validacoes = false;
+        textoErro += "Email inválido.";
     }
-    else {
-        // setInterval(sumirMensagem, 5000)
+    if(senhaVar.length > 20){
+        validacoes = false;
+        textoErro += "Senha inválida.";
+      }
+    if((emailVar.length == 0)||(senhaVar.length == 0)){
+        validacoes = false;
+        textoErro = "Preencha todos os campos.";
     }
 
-    console.log("FORM LOGIN: ", emailVar);
-    console.log("FORM SENHA: ", senhaVar);
+    if(!validacoes){
+    Swal.fire({
+        title: "Campos inválidos!",
+        text: textoErro,
+        icon: "error"
+    })
+    }
 
     fetch("/funcionario/autenticar", {
-        
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -27,10 +36,7 @@ function entrar() {
             senhaServer: senhaVar
         })
     }).then(function (resposta) {
-        console.log("ESTOU NO THEN DO entrar()!")
-        alert("Está caindo no then")
         if (resposta.ok) {
-            
             console.warn(resposta);
 
             resposta.json().then(json => {
@@ -41,7 +47,6 @@ function entrar() {
                 sessionStorage.ID_FUNCIONARIO = json.id;
                 sessionStorage.ID_USUARIO = json.idUsuario
                 sessionStorage.FOTO_USUARIO = json.foto;
-                sessionStorage.CNPJ = json.cnpj;
                 sessionStorage.DATANSC = json.dataNascimento;
                 sessionStorage.FUNCAO = json.funcao;
                 sessionStorage.SENHA = json.senha;
@@ -55,18 +60,19 @@ function entrar() {
             });
         } 
         else {
-            alert("Tá no else")
-            console.log("Houve um erro ao tentar realizar o login!");
-
             resposta.text().then(texto => {
-                console.error(texto);
-            });
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Erro ao realizar o login',
+                    text: texto
+                })
+            })
+            
         }
     }).catch(function (erro) {
-        alert("Algo deu errado!")
         console.log(erro);
     })
-    return false;        
+    return false; 
 }
 
 function voltarParaIndex() {
