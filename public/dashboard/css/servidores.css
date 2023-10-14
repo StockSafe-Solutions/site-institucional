@@ -1,14 +1,30 @@
-.pesquisa-servidores{
+.header-servidores{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     margin: 20px 0;
+    flex-wrap: wrap;
 }
-.pesquisa-servidores h3{
+.header-servidores h3{
     margin: 0;
 }
-.pesquisa-servidores span{
+.header-servidores > span{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 40%;
+}
+.header-servidores button{
+    background-color: #005eff;
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    padding: 5px;
+}
+.header-servidores > span > span{
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -16,13 +32,13 @@
     border-radius: .35rem;
     background-color: whitesmoke;
 }
-.pesquisa-servidores input{
+.header-servidores input{
     border: none;
     padding: 5px;
     background-color: inherit;
     border-radius: inherit;
 }
-.pesquisa-servidores svg{
+.header-servidores svg{
     cursor: pointer;
     margin: 0 5px;
 }
