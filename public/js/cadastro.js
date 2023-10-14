@@ -5,7 +5,7 @@ function cadastrar() {
   var dataVar = iptData.value;
   var emailVar = iptEmail.value;
   var senhaVar = iptSenha.value;
-  // var confirmacaoSenhaVar = confirmacaoSenhaInput.value;
+  var confirmacaoSenhaVar = confirmacaoSenhaInput.value;
 
   var validacoes = true;
   var textoErro = "";
@@ -37,8 +37,8 @@ function cadastrar() {
   
   var numeros = [0,1,2,3,4,5,6,7,8,9]
   var temNumero = false;
-  for(numero in numeros){
-    if(senhaVar.indexOf(numero) != -1){
+  for(i in numeros){
+    if(senhaVar.indexOf(numeros[i]) != -1){
       temNumero = true;
       break;
     }
@@ -47,20 +47,20 @@ function cadastrar() {
   var letrasMin = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u",
   "v","w","x","y","z"]
   var temLetraMin = false;
-  for(letraMin in letrasMin){
-    if(senhaVar.indexOf(letraMin) != -1){
+  for(i in letrasMin){
+    if(senhaVar.indexOf(letrasMin[i]) != -1){
       temLetraMin = true;
       break;
     }
   }
 
   var letrasMai = []
-  for(letra in letrasMin){
-    letrasMai.push(letra.toUpperCase())
+  for(i in letrasMin){
+    letrasMai.push(letrasMin[i].toUpperCase())
   }
   var temLetraMai = false;
-  for(letraMai in letrasMai){
-    if(senhaVar.indexOf(letraMai) != -1){
+  for(i in letrasMai){
+    if(senhaVar.indexOf(letrasMai[i]) != -1){
       temLetraMai = true;
       break;
     }
