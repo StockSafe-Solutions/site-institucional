@@ -1,24 +1,33 @@
 body {
-    background-color: black;
+    background-color: whitesmoke;
+    margin: 10px;
+}
+body > div > *{
+    margin: 10px;
+}
+
+.navbar{
+    background-color: whitesmoke !important;
 }
 
 #accordionSidebar {
-    margin: 105px 40px 80px 40px;
     border-radius: 15px;
-    height: 515px;
+    height: 560px;
     background-color: #005EFF;
 }
 
+#content-wrapper{
+    height: 560px;
+}
+
 #content {
-    margin-top: 10px;
     background-color: #001A46;
     border-radius: 15px;
 }
 
 /* INICIOCustom navbar */
-#wrapper #content-wrapper {
-    margin: 20px 60px 800px 0px;
-    background-color: black;
+#wrapper {
+    background-color: whitesmoke;
 }
 
 #logoDash {
@@ -83,20 +92,12 @@ form.user .form-control-user {
     height: 750px;
 }
 
-#content-wrapper {
-    height: 100%;   
-}
-
 /* #content-wrapper{
     overflow-y:hidden ;
 } */
 
 *::-webkit-scrollbar {
     width: 10px;
-}
-
-#accordionSidebar{
-    height: 80%;
 }
 
 @media screen and (max-width: 450px) {

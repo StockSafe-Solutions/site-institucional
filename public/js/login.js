@@ -51,7 +51,7 @@ function entrar() {
                 sessionStorage.FUNCAO = json.funcao;
                 sessionStorage.SENHA = json.senha;
             });
-            window.location = "../dashboard/dashboardFuncionarioM.html"
+            window.location = "../dashboard/dashboardGeral.html"
             setTimeout(function (){}, 1000);
         } 
         else {
