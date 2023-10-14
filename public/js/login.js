@@ -1,6 +1,7 @@
 function entrar() {
-    var emailVar = emailInput.value;
-    var senhaVar = senhaInput.value;
+
+    var emailVar = iptEmail.value;
+    var senhaVar = iptSenha.value;
 
     var validacoes = true;
     var textoErro = "";
@@ -44,20 +45,14 @@ function entrar() {
                 console.log(JSON.stringify(json));
                 sessionStorage.EMAIL_USUARIO = json.email;
                 sessionStorage.NOME_USUARIO = json.nome;
-                sessionStorage.ID_FUNCIONARIO = json.id;
-                sessionStorage.ID_USUARIO = json.idUsuario
+                sessionStorage.ID_FUNCIONARIO = json.id_funcionario;
                 sessionStorage.FOTO_USUARIO = json.foto;
                 sessionStorage.DATANSC = json.dataNascimento;
                 sessionStorage.FUNCAO = json.funcao;
                 sessionStorage.SENHA = json.senha;
-                sessionStorage.TIPO = json.tipo;
-                if(json.tipo == '1'){
-                    window.location = "../dashboard/dashboardFuncionarioM.html"
-                }else{
-                    window.location = "../dashboard/index.html";
-                }
-                setTimeout(function (){}, 1000);
             });
+            window.location = "../dashboard/dashboardFuncionarioM.html"
+            setTimeout(function (){}, 1000);
         } 
         else {
             resposta.text().then(texto => {

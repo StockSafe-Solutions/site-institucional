@@ -5,7 +5,7 @@ function cadastrar() {
   var dataVar = iptData.value;
   var emailVar = iptEmail.value;
   var senhaVar = iptSenha.value;
-  var confirmacaoSenhaVar = confirmacaoSenhaInput.value;
+  // var confirmacaoSenhaVar = confirmacaoSenhaInput.value;
 
   var validacoes = true;
   var textoErro = "";

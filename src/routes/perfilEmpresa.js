@@ -12,6 +12,4 @@ router.post('/alterarDados/:idUsuario', function (req, res) {
     perfilEmpresaController.alterarDados(req, res);
 })
 
-
-
 module.exports = router;

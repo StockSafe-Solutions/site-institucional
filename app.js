@@ -13,6 +13,7 @@ var medidasRouter = require("./src/routes/medidas");
 var funcionarioRouter = require("./src/routes/funcionario");
 var cadastroMaquinasRouter = require("./src/routes/maquinas");
 var perfilEmpresaRouter = require("./src/routes/perfilEmpresa");
+var usuarioRouter = require("./src/routes/usuario")
 
 
 app.use(express.json());
@@ -26,6 +27,7 @@ app.use("/medidas", medidasRouter);
 app.use("/funcionario", funcionarioRouter)
 app.use("/maquinas", cadastroMaquinasRouter)
 app.use("/perfilEmpresa", perfilEmpresaRouter)
+app.use("/usuario", usuarioRouter)
 
 
 app.listen(PORTA, function () {
