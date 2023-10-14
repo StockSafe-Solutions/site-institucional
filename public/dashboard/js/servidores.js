@@ -5,7 +5,19 @@ function listarServidores() {
             "Content-Type": "application/json"
         }
     }).then(function (resposta) {
-        if (resposta.ok) {
+        if(resposta.status == 204){
+            document.getElementById("iptPesquisa").disabled = true
+            document.getElementById("iconPesquisa").style = "cursor: default; fill: grey"
+
+            container = document.getElementById("container-servidores")
+            container.className = "container-vazio"
+            container.innerHTML = `
+                <p>
+                Nenhum servidor cadastrado<br>
+                Utilize o botão "Adicionar novo" acima para adicionar novos servidores
+                </p>
+            `
+        } else if (resposta.ok) {
             console.log(resposta);
             resposta.json().then(json => {
                 console.log(json)
