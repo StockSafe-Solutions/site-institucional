@@ -2,61 +2,24 @@ var database = require("../database/config")
 
 function autenticar(email, senha) {
     var instrucao = `
-    SELECT
-        id_funcionario,
-        nome,
-        funcao,
-        data_nascimento,
-	    foto,
-        email,
-        senha
-    FROM
-	    tb_funcionario
-        WHERE 
-        email LIKE '${email}' 
-	    AND senha LIKE '${senha}';
+    SELECT email, senha
+    FROM tb_funcionario
+    WHERE email = '${email}' AND senha = '${senha}'
     `
     console.log("Executando a instrução SQL: \n" + instrucao)
     return database.executar(instrucao);
 }
 
-function mostrarFoto(idUsuario) {
+function cadastrar(nome, funcao, dataNasc, email, senha) {
     var instrucao = `
-    SELECT 
-    foto
-    FROM funcionario WHERE idFuncionario = ${idUsuario};
-    `
-    console.log("Executando a instrução SQL: \n" + instrucao)
-    return database.executar(instrucao)
-}
-
-function mostrarNome(idUsuario){
-    var instrucao = `
-    SELECT 
-        nome
-    FROM funcionario WHERE idFuncionario = ${idUsuario}
-    `
-    console.log("Executando a instrução SQL: \n" + instrucao)
-    return database.executar(instrucao)
-}
-
-function cadastrarFuncionario(email, nome, dataNascimento, funcao, senha) {
-    var instrucao = `
-        CALL stockSafe.inserirFuncionario('${nome}','${funcao}','${dataNascimento}',5000,'${email}','${senha}');
-    `
-    console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
-}
-function enviarFoto(imagem, idUsuario) {
-    var instrucao = `
-         UPDATE funcionario SET foto = '${imagem}' where idFuncionario = ${idUsuario};
+    INSERT INTO tb_funcionario
+    VALUES (null,'${nome}','${funcao}','${dataNasc}',null,'${email}','${senha}')
     `
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
 
-function pegarDadosFucionario(nome, email, senha, funcao, dataNascimento) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function pegarDadosEmpresa(): ", cnpj, email, senha)
+function selecionar(email) {
     var instrucao = `
     SELECT 
 	    nome, 
@@ -64,14 +27,17 @@ function pegarDadosFucionario(nome, email, senha, funcao, dataNascimento) {
 	    senha,
         funcao,
         DATE_FORMAT(dataNascimento, '%d/%m/%Y')
-	    FROM empresa 
-	    WHERE nome LIKE ${nome}
-        email LIKE '${email}' 
-	    AND senha LIKE '${senha}'
-        AND senha LIKE '${funcao}'
-        AND senha LIKE '${dataNascimento}'
-        
+	FROM tb_funcionario
+    WHERE email = '${email}'    
     `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function enviarFoto(imagem, idUsuario) {
+    var instrucao = `
+         UPDATE funcionario SET foto = '${imagem}' where idFuncionario = ${idUsuario};
+    `
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
@@ -99,13 +65,10 @@ function atualizarSenhaFuncionario(senha, idUsuario) {
 
 
 module.exports = {
-    cadastrarFuncionario,
-    enviarFoto,
     autenticar,
-    mostrarFoto,
-    mostrarNome,
-    pegarDadosFucionario,
+    cadastrar,
+    selecionar,
+    enviarFoto,
     atualizarDadosFuncionario,
     atualizarSenhaFuncionario
-
 };
