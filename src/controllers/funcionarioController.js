@@ -22,25 +22,22 @@ function listar(req, res) {
 }
 
 function selecionar(req, res) {
-    var email = req.params.email;
+    var id = req.params.id;
 
-    if (email == undefined) {
-        res.status(400).send("Seu email está indefinido!");
+    if (id == undefined) {
+        res.status(400).send("ID vazio.");
     } else {
-        funcionarioModel.selecionar(email)
+        funcionarioModel.selecionar(id)
             .then(
                 function (pegarDadosFucionario) {
                     console.log(`\nResultados encontrados: ${pegarDadosFucionario.length}`);
                     console.log(`Resultados: ${JSON.stringify(pegarDadosFucionario[0])}`); // transforma JSON em String
 
-                    if (resultadoAutenticar.length == 1) {
-                        console.log(resultadoAutenticar[0]);
-                        res.json(resultadoAutenticar[0])
-                        console.log("Tá quase")
-                    } else if (resultadoAutenticar.length == 0) {
-                        res.status(403).send("Email e/ou senha inválido(s)");
-                    } else {
-                        res.status(403).send("Mais de um usuário com o mesmo email!");
+                    if (pegarDadosFucionario.length == 1) {
+                        console.log(pegarDadosFucionario[0]);
+                        res.json(pegarDadosFucionario[0])
+                    } else{
+                        res.status(403).send("Usuário não encontrado");
                     }
                 }
             ).catch(
@@ -110,34 +107,32 @@ function cadastrar(req, res) {
         );
 }
 
-function atualizarDadosFuncionario(req, res) {
+function alterar(req, res) {
+    var id = req.params.idFuncionario;
+    
     var nome = req.body.nomeServer;
-    var dataNascimento = req.body.dataNascimentoServer;
     var funcao = req.body.funcaoServer;
-    // var senha = req.body.senhaServer;
-    var idFuncionario = req.params.idFuncionario;
+    var data = req.body.dataServer;
+    var email = req.body.emailServer;
 
-    funcionarioModel.atualizarDadosFuncionario(nome, funcao, dataNascimento, idFuncionario)
-
-        .then(
-            function (resultado) {
-                res.json(resultado);
-            }
-        ).catch(
-            function (erro) {
-                console.log(erro);
-                console.log(
-                    "\n Houve um erro ao atualizar os dados! Erro: ", erro.sqlMessage
-                );
-                res.status(500).json(erro.sqlMessage)
-            }
-        );
+    funcionarioModel.alterar(id, nome, funcao, data, email)
+    .then(
+        function (resultado) {
+            res.json(resultado);
+        }).catch(
+        function (erro) {
+            console.log(erro);
+            console.log(
+                "\n Houve um erro ao atualizar os dados! Erro: ", erro.sqlMessage
+            );
+            res.status(500).json(erro.sqlMessage)
+    });
 }
 
-function atualizarSenhaFuncionario(req, res) {
-    var idFuncionario = req.params.idUsuario
+function alterarSenha(req, res) {
+    var idFuncionario = req.params.idFuncionario
     var senha = req.body.senhaServer;
-    funcionarioModel.atualizarSenhaFuncionario(senha, idFuncionario)
+    funcionarioModel.alterarSenha(senha, idFuncionario)
         .then(
             function (resultado) {
                 res.json(resultado);
@@ -170,6 +165,6 @@ module.exports = {
     autenticar,
     cadastrar,
     enviarFoto,
-    atualizarDadosFuncionario,
-    atualizarSenhaFuncionario
+    alterar,
+    alterarSenha
 }

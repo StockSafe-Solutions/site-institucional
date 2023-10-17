@@ -51,8 +51,7 @@ function entrar() {
                     title: 'Erro ao realizar o login',
                     text: texto
                 })
-            })
-            
+            })   
         }
     }).catch(function (erro) {
         console.log(erro);

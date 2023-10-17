@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Fontes -->
+    <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="../css/templateStocksafe.min.css">
+    <link rel="stylesheet" href="css/baseDashboard.css">
+    <link rel="stylesheet" href="css/perfil.css">
+
+    <!-- Scripts -->
+    <script src="js/sessao.js"></script>
+    <script src="js/menuLateral.js"></script>
+    <script src="js/perfil.js"></script>
+
+    <!-- Icone -->
+    <link rel="icon" href="../assets/icon/logo.ico" />
+
+    <title>StockSafe - Dashboard</title>
+</head>
+
+<body id="page-top" onload="carregarPerfil(), carregarMenu('perf')">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+        <ul id="accordionSidebar"></ul>
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+            <!-- Main Content -->
+            <div id="content">
+                <div class="container-fluid">
+                    <h3 class="nomePagina">Seu perfil</h3>
+                    <header>
+                        <img onclick="trocarImagem()" src="../assets/img/fotosPadrao/undraw_profile.svg">
+                        <span>
+                            <input id="iptNome"></input>
+                            <input id="iptFuncao"></input>
+                        </span>
+                    </header>
+                    <form class="containerForm">
+                        <span>
+                            <label for="iptDataNasc">Data de nascimento:</label>
+                            <input type="text" id="iptDataNasc">
+                        </span>
+                        <span>
+                            <label for="iptEmail">Email:</label>
+                            <input type="text" id="iptEmail">
+                        </span>
+                        <button id="btnSenha">Alterar senha</button>
+                    </form>
+                    <button id="btnInfos" onclick="mudarModo()"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

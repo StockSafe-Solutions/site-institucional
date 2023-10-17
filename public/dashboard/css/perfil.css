@@ -1,0 +1,113 @@
+.container-fluid{
+    display: flex;
+    flex-direction: column;
+    align-items: center !important;
+}
+.nomePagina{
+    align-self: flex-start;
+}
+
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: end;
+    color: whitesmoke;
+    margin: 10px;
+    flex-wrap: wrap;
+}
+
+header img{
+    width: 10vw;
+    min-width: 150px;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: 1s;
+}
+header img:hover{
+    opacity: 0.5;
+}
+
+header span{
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+}
+
+header input, .containerForm input{
+    border-radius: 10rem;
+    border: 1px solid #858796;
+    padding: 0.5rem 1rem;
+    background-color: #001A46;
+    color: whitesmoke;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+header input{
+    padding: 1px 1rem;
+    border-radius: 0px;
+    border-width: 0 0 1px 0;
+    width: 25vw;
+    min-width: 250px;
+}
+
+header input:disabled{
+    color: whitesmoke;
+    background: none;
+    border: none;
+}
+header input:first-child{
+    font-size: 38px;
+}
+header input:last-child{
+    font-size: 22px;
+}
+
+.containerForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.containerForm span{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    color: whitesmoke;
+    margin: 10px 0;
+    width: 250px;
+    height: 80px;
+}
+.containerForm label{
+    font-size: 1.2em;
+}
+.containerForm input:focus{
+    border: none;
+    box-shadow: 0 0 5px whitesmoke;
+}
+.containerForm input:disabled{
+    background-color: #565e6c56;
+    border: none;
+    color: gray;
+}
+
+#btnSenha, #btnInfos{
+    align-self: center;
+    background-color: #2e59d9;
+    color: white;
+    border-radius: 10rem;
+    padding: 10px 20px;
+    border: none;
+    margin: 10px 0;
+}
+.btnDesabilitado{
+    background-color: #001A46 !important;
+    color: gray !important;
+    border: 1px solid gray !important;
+}
+#btnSenha:active, #btnInfos:active{
+    background-color: #2e59d98c;
+    border: solid 1px whitesmoke;
+}

@@ -7,7 +7,7 @@ router.get('/listar', function (req, res){
     funcionarioController.listar(req, res);
 })
 
-router.get('/selecionar/:email', function (req, res) {
+router.get('/selecionar/:id', function (req, res) {
     funcionarioController.selecionar(req, res);
 })
 
@@ -23,12 +23,12 @@ router.post('/enviarFoto/:idUsuario', upload.single('foto'), (req, res) => {
     funcionarioController.enviarFoto(req, res);
 });
 
-router.post('/atualizarDadosFuncionario/:idFuncionario', function (req, res) {
-    funcionarioController.atualizarDadosFuncionario(req, res);
+router.put('/alterar/:idFuncionario', function (req, res) {
+    funcionarioController.alterar(req, res);
 });
 
-router.post('/atualizarSenhaFuncionario/:idUsuario', function (req, res) {
-    funcionarioController.atualizarSenhaFuncionario(req, res);
+router.put('/alterarSenha/:idFuncionario', function (req, res) {
+    funcionarioController.alterarSenha(req, res);
 });
 
 module.exports = router;

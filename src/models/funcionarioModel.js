@@ -1,17 +1,17 @@
 var database = require("../database/config")
 
 function listar(){
-    var instrucao = `SELECT nome, email, senha, funcao, DATE_FORMAT(data_nascimento, '%d/%m/%Y')
+    var instrucao = `SELECT nome, email, senha, funcao, DATE_FORMAT(data_nascimento, '%d/%m/%Y') as dtNasc
 	FROM tb_funcionario`
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
 
-function selecionar(email) {
+function selecionar(id) {
     var instrucao = `
-    SELECT nome, email, senha, funcao, DATE_FORMAT(data_nascimento, '%d/%m/%Y')
+    SELECT nome, email, senha, funcao, DATE_FORMAT(data_nascimento, '%d/%m/%Y') as dtNasc
 	FROM tb_funcionario
-    WHERE email = '${email}'`
+    WHERE id_funcionario = '${id}'`
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
@@ -40,14 +40,16 @@ function enviarFoto(imagem, idUsuario) {
     return database.executar(instrucao);
 }
 
-function atualizarDadosFuncionario(nome, funcao, dataNascimento, idFuncionario) {
+function alterar(id, nome, funcao, data, email) {
     var instrucao = `
-        UPDATE funcionario SET nome = '${nome}', funcao = '${funcao}', dataNascimento = '${dataNascimento}'  where idFuncionario = ${idFuncionario};`
+        UPDATE tb_funcionario SET nome = '${nome}', funcao = '${funcao}', data_nascimento = '${data}',
+            email = '${email}'
+            WHERE id_funcionario = ${id};`
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
 
-function atualizarSenhaFuncionario(senha, idUsuario) {
+function alterarSenha(senha, idUsuario) {
     var instrucao = `
     UPDATE usuario SET senha = '${senha}' where idUsuario = ${idUsuario};`
     console.log("Executando a instrução SQL: \n" + instrucao);
@@ -60,6 +62,6 @@ module.exports = {
     autenticar,
     cadastrar,
     enviarFoto,
-    atualizarDadosFuncionario,
-    atualizarSenhaFuncionario
+    alterar,
+    alterarSenha
 };
