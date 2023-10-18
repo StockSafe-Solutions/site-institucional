@@ -42,7 +42,7 @@
                     <header class="header-servidores">
                         <h3 class="nomePagina">Servidores</h3>
                         <span>
-                            <button>Adicionar novo</button>
+                            <button onclick="abrirModal('cad')">Adicionar novo</button>
                             <span>
                                 <input type="text" id="iptPesquisa" placeholder="Pesquisar por código"
                                     onkeyup="pesquisarServidores()">
@@ -59,10 +59,17 @@
         </div>
     </div>
     
-    <div id="containerModalServidor">
-        <div id="modalServidor">
+    <div id="containerModal">
+        <div class="modalServ" id="modalCadastro">
             <header>
-                <h3 class="nomePagina" id="codServidor"></h3>
+                <h3 class="nomePagina">Cadastrando novo servidor</h3>
+                <i class="fa-solid fa-x" onclick="fecharModal()"></i>
+            </header>
+        </div>
+
+        <div class="modalServ" id="modalDashboard">
+            <header>
+                <h3 class="nomePagina" id="codigoServ"></h3>
                 <i class="fa-solid fa-x" onclick="fecharModal()"></i>
             </header>
             <div class="kpis">

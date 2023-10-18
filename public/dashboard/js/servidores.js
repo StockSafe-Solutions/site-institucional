@@ -121,7 +121,7 @@ function criarLiServidor(json) {
         }
 
         container.innerHTML += `
-        <li class="servidor" onclick="abrirModal('${item.codigo}')">
+        <li class="servidor" onclick="abrirModal('dash','${item.codigo}')">
             <img src="../assets/img/dashboard/servidor.png" alt="">
             <span>
                 <h3>${item.codigo}</h3>
@@ -131,10 +131,27 @@ function criarLiServidor(json) {
     }
 }
 
-function abrirModal(codigo){
-    codServidor.innerText = codigo
-    containerModalServidor.style = "display: flex"
+function abrirModal(modal,codigo){
+    switch(modal){
+        case "cad":
+            modalCadServidor()
+            break
+        case "dash":
+            modalDashServidor(codigo)
+            break
+    }
+    containerModal.style = "display: flex"
 }
 function fecharModal(){
-    containerModalServidor.style = "display: none"
+    modalCadastro.style = "display: none"
+    modalDashboard.style = "display: none"
+    containerModal.style = "display: none"
+}
+
+function modalCadServidor(){
+    modalCadastro.style = "display: flex"
+}
+function modalDashServidor(codigo){
+    modalDashboard.style = "display: flex"
+    codigoServ.innerText = codigo
 }

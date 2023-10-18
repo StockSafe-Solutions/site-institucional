@@ -103,7 +103,7 @@
     font-style: italic;
 }
 
-#containerModalServidor{
+#containerModal{
     display: none;
     position: absolute;
     top: 0;
@@ -119,31 +119,31 @@
     align-items: center;
 }
 
-#modalServidor{
+.modalServ{
     width: 80vw;
     height: fit-content;
     background-color: #001a46;
     border-radius: 0.25rem;
     padding: 20px 50px;
     overflow-y: scroll;
+    display: none;
+    flex-direction: column;
 }
-
-#modalServidor header{
+.modalServ header{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
-#modalServidor header i{
+.modalServ header i{
     cursor: pointer;
     color: whitesmoke;
     transition: 500ms;
 }
-#modalServidor header i:hover{
+.modalServ header i:hover{
     color: #858792;
 }
-
-#modalServidor h3{
+.modalServ h3{
     margin-top: 0;
 }
 
