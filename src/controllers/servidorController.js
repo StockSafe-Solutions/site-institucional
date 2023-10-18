@@ -52,10 +52,8 @@ function selecionar(req, res) {
 
 function cadastrar(req, res) {
   var codigo = req.body.codigoServer;
-  var armazenamento = req.body.armazenamentoServer;
-  var autenticador = req.body.autenticadorServer;
 
-  servidorModel.cadastrar(codigo, armazenamento, autenticador)
+  servidorModel.cadastrar(codigo)
     .then((resultado) => {
       res.status(201).json(resultado);
     }

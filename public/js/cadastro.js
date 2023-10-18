@@ -137,6 +137,5 @@ function cadastrar() {
         
         console.log(`#ERRO: ${resposta}`);
       });
-    return false;
  }
 }

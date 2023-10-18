@@ -14,10 +14,11 @@ function selecionar(codigo){
   return database.executar(instrucaoSql);
 }
 
-function cadastrar(codigo, armazenamento, autenticador) {
+function cadastrar(codigo) {
   var instrucaoSql = `
     INSERT INTO tb_servidor
-    VALUES(null, ${codigo},${armazenamento},0,${autenticador})
+      (codigo)
+      VALUES ('${codigo}')
   `
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);

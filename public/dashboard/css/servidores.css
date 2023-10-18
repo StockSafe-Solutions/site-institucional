@@ -171,6 +171,7 @@
     background-color: rgba(128, 128, 128, 0.200);
     margin: 0px;
     width: 10vw;
+    min-width: 85px;
     text-align: center;
 }
 #btnRegenerarCodigo{
