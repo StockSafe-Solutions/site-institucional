@@ -129,6 +129,16 @@
     display: none;
     flex-direction: column;
 }
+@keyframes aparecer{
+    0% { transform: scale(0,0); }
+    50% { transform: scale(1,1); }
+    80% { transform: scale(0.95,0.95); }
+    100% { transform: scale(1,1); }
+}
+@keyframes sumir{
+    from {transform: scale(1,1);opacity: 1;}
+    to {transform: scale(0,0);opacity: 0;}
+}
 .modalServ header{
     display: flex;
     flex-direction: row;

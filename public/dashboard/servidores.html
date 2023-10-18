@@ -22,6 +22,7 @@
     <script src="js/sessao.js"></script>
     <script src="js/menuLateral.js"></script>
     <script src="js/servidores.js"></script>
+    <script src="js/servidoresModals.js"></script>
 
     <!-- Icone -->
     <link rel="icon" href="../assets/icon/logo.ico" />
@@ -63,7 +64,7 @@
         <div class="modalServ" id="modalCadastro">
             <header>
                 <h3 class="nomePagina">Cadastrando novo servidor</h3>
-                <i class="fa-solid fa-x" onclick="fecharModal()"></i>
+                <i class="fa-solid fa-x" onclick="fecharModal('cad')"></i>
             </header>
             <span>
                 <input type="text" disabled="true" id="iptCodigo">
@@ -78,7 +79,7 @@
         <div class="modalServ" id="modalDashboard">
             <header>
                 <h3 class="nomePagina" id="codigoServ"></h3>
-                <i class="fa-solid fa-x" onclick="fecharModal()"></i>
+                <i class="fa-solid fa-x" onclick="fecharModal('dash')"></i>
             </header>
             <div class="kpis">
                 <div>
