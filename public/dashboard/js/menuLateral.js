@@ -73,7 +73,7 @@ function carregarMenu(pagina) {
 
             <!-- Configurações -->
             <li class="nav-item${destConfig}">
-                <a class="nav-link" href="cadastroFuncionarios.html">
+                <a class="nav-link" href="configuracoes.html">
                     <i class="fa-solid fa-gears"></i>
                     <span>Configurações</span></a>
             </li>
