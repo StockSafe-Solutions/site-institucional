@@ -53,29 +53,29 @@ function carregarMenu(pagina) {
             <!-- Servidores -->
             <li class="nav-item${destServs}">
                 <a class="nav-link" href="servidores.html">
-                    <img src="../assets/img/dashboard/addMaquinasMenu.png" alt="Cadastrar máquinas">
-                        <span>Servidores</span></a>
+                    <i class="fa-solid fa-server"></i>
+                    <span>Servidores</span></a>
             </li>
 
             <!-- Funcionários -->
             <li class="nav-item${destFuncs}">
                 <a class="nav-link" href="funcionarios.html">
-                    <img src="../assets/img/dashboard/addPerfilMenu.png" alt="Cadastrar funcionários">
-                        <span>Funcionários</span></a>
+                    <i class="fa-solid fa-users"></i>
+                    <span>Funcionários</span></a>
             </li>
 
             <!-- Seu perfil -->
             <li class="nav-item${destPerf}">
                 <a class="nav-link" href="perfil.html">
-                    <img src="../assets/img/dashboard/addPerfilMenu.png" alt="Cadastrar funcionários">
-                        <span>Seu perfil</span></a>
+                    <i class="fa-solid fa-user-gear"></i>
+                    <span>Seu perfil</span></a>
             </li>
 
             <!-- Configurações -->
             <li class="nav-item${destConfig}">
                 <a class="nav-link" href="cadastroFuncionarios.html">
-                    <img src="../assets/img/dashboard/addPerfilMenu.png" alt="Cadastrar funcionários">
-                        <span>Configurações</span></a>
+                    <i class="fa-solid fa-gears"></i>
+                    <span>Configurações</span></a>
             </li>
 
             <!-- Divisor -->
