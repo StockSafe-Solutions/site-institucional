@@ -49,3 +49,29 @@ function criarLiFuncionario(json) {
         </li>`
     }
 }
+
+function reloadFuncionarios(){
+    textoReload.innerText = "Atualizando"
+    iconReload.style = "animation-name: girar; animation-duration: 2250ms"
+    let i = 0
+    let animacaoTexto = setInterval(()=>{
+        if(i == 2){
+            clearInterval(animacaoTexto)
+        }
+        textoReload.innerText += "."
+        i++
+    },1000)
+
+    setTimeout(()=>{
+        let now = new Date()
+        textoReload.innerText = "Atualizado pela ultima vez às "+now.getHours()+":"+now.getMinutes()
+        iconReload.style = ""
+    },4500)
+
+    if(iptPesquisa.value == ""){
+        listarFuncionarios()
+    } else{
+        listarFuncionarios()
+    }
+}
+setInterval(reloadFuncionarios,60000)
