@@ -65,6 +65,14 @@
                 <h3 class="nomePagina">Cadastrando novo servidor</h3>
                 <i class="fa-solid fa-x" onclick="fecharModal()"></i>
             </header>
+            <span>
+                <input type="text" disabled="true" id="iptCodigo">
+                <button id="btnRegenerarCodigo" onclick="gerarCodigo()">
+                    <p>Gerar outro código</p>
+                    <i class="fa-solid fa-rotate"></i>
+                </button>
+            </span>
+            <button id="btnCadastrar">Cadastrar</button>
         </div>
 
         <div class="modalServ" id="modalDashboard">

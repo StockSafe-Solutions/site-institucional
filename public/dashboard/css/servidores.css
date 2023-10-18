@@ -134,6 +134,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
 }
 .modalServ header i{
     cursor: pointer;
@@ -145,6 +146,50 @@
 }
 .modalServ h3{
     margin-top: 0;
+}
+
+#modalCadastro{
+    align-items: center;
+    width: 40vw;
+}
+#modalCadastro > span{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-items: center;
+    border-radius: 0.25rem;
+    border: solid 1px whitesmoke;
+    width: fit-content;
+    margin: 10px 0;
+}
+#modalCadastro input{
+    background: none;
+    padding: 5px 10px;
+    border: solid 1px whitesmoke;
+    border-width: 0 1px 0 0;
+    color: whitesmoke;
+    background-color: rgba(128, 128, 128, 0.200);
+    margin: 0px;
+    width: 10vw;
+    text-align: center;
+}
+#btnRegenerarCodigo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: none;
+    border: none;
+    color: whitesmoke;
+}
+#btnRegenerarCodigo > *{
+    margin: 0 5px;
+}
+#btnCadastrar{
+    background-color: #005eff;
+    color: whitesmoke;
+    border: none;
+    border-radius: 0.25rem;
+    padding: 5px;
 }
 
 .kpis{

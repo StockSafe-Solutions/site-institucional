@@ -149,8 +149,41 @@ function fecharModal(){
 }
 
 function modalCadServidor(){
+    gerarCodigo()
     modalCadastro.style = "display: flex"
 }
+function gerarCodigo(){
+    var caracteresPermitidos = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9,"A","B","C","D","E","F","G","H","I","J",
+    "K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+
+    codigoJaExiste = true
+    while(codigoJaExiste){
+        novoCodigo = ""
+        for(var i = 0; i < 6; i++){
+            aleatorio = 36
+            while(aleatorio >= 36){
+                aleatorio = Math.round(Math.random()*36)
+            }
+            novoCodigo += caracteresPermitidos[aleatorio]
+        }
+        codigoJaExiste = verificarCodigo(novoCodigo)
+    }
+    iptCodigo.value = novoCodigo
+}
+function verificarCodigo(novoCodigo){
+    fetch(("/servidor/selecionar/" + novoCodigo), {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(function (resposta) {
+        if(resposta.status == 204){ return true }
+        else{ return false}
+    }).catch(function (erro) {
+        console.log(erro);
+    })
+}
+
 function modalDashServidor(codigo){
     modalDashboard.style = "display: flex"
     codigoServ.innerText = codigo
