@@ -33,8 +33,11 @@ function carregarPerfil(){
             resposta.json().then(json => {
                 iptNome.value = json.nome
                 iptFuncao.value = json.funcao
-                iptDataNasc.value = json.dtNasc
                 iptEmail.value = json.email
+                
+                dataRaw = json.dtNasc
+                dataFormat = dataRaw.slice(6,10)+"-"+dataRaw.slice(3,5)+"-"+dataRaw.slice(0,2)
+                iptDataNasc.value = dataFormat
             });
         } 
         else {
@@ -102,8 +105,7 @@ function editarPerfil(){
             body: JSON.stringify({
                 nomeServer: nomeVar,
                 funcaoServer: funcaoVar,
-                // dataServer: dataVar,
-                dataServer: '2005/06/13',
+                dataServer: dataVar,
                 emailServer: emailVar
             }),
         }).then(function (resposta) {
@@ -114,7 +116,6 @@ function editarPerfil(){
                 title: 'Perfil alterado com sucesso!',
                 text: 'Recarregando a página em 5 segundos...'
                 })
-                alert("FORMATAR DATA/ARRUMAR RELOAD")
             } 
             else {
                 Swal.fire({
@@ -123,9 +124,7 @@ function editarPerfil(){
                 icon: 'error'
                 })
             }
-            setTimeout(()=>{
-                location.reload(),5000
-            })
+            setTimeout(()=>{location.reload()},5000)
         }).catch(function (resposta) {
             console.log(resposta);
         })
