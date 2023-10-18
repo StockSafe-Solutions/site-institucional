@@ -81,20 +81,14 @@ function carregarMenu(pagina) {
             <!-- Divisor -->
             <hr class="sidebar-divider d-none d-md-block">
 
-                <!-- Configurações -->
-                <li class="nav-item nav-profile">
-                    <p class="nav-link">
-                        <img src="${fotoUsuario}" alt="Cadastrar funcionários">
-                            <span>${nomeUsuario}</span>
-                            <a onclick="sair()">Sair</a>
-                    </p>
-                </li>
-
-                <!-- Sidebar Toggler (Sidebar) -->
-                <div class="text-center d-none d-md-inline">
-                    <button class="rounded-circle border-0" id="sidebarToggle"></button>
-                </div>
-    `
+            <!-- Usuário logado -->
+            <li class="nav-item nav-profile">
+            <p class="nav-link">
+                <img src="${fotoUsuario}">
+                <span>${nomeUsuario}</span>
+                <a onclick="sair()">Sair</a>
+            </p>
+            </li>`
     accordionSidebar.className = "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
     accordionSidebar.innerHTML = conteudo;
 }
