@@ -41,7 +41,7 @@ function entrar() {
             console.warn(resposta);
             resposta.json().then(json => {
                 sessionStorage.funcionario = JSON.stringify(json);
-                window.location = "../dashboard/dashboardGeral.html"
+                window.location = "../dashboard/index.html"
             });
         } 
         else {

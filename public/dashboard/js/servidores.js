@@ -121,7 +121,7 @@ function criarLiServidor(json) {
         }
 
         container.innerHTML += `
-        <li class="servidor">
+        <li class="servidor" onclick="abrirModal('${item.codigo}')">
             <img src="../assets/img/dashboard/servidor.png" alt="">
             <span>
                 <h3>${item.codigo}</h3>
@@ -129,4 +129,12 @@ function criarLiServidor(json) {
             </span>
         </li>`
     }
+}
+
+function abrirModal(codigo){
+    codServidor.innerText = codigo
+    containerModalServidor.style = "display: flex"
+}
+function fecharModal(){
+    containerModalServidor.style = "display: none"
 }

@@ -45,7 +45,7 @@ function carregarMenu(pagina) {
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item${destGeral}">
-            <a class="nav-link" href="dashboardGeral.html">
+            <a class="nav-link" href="index.html">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Visão geral</span></a>
         </li>
