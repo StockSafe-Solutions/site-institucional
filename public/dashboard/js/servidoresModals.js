@@ -89,7 +89,7 @@ function cadastrarServidor() {
                 title: 'Servidor cadastrado com sucesso!',
                 text: 'Você deve autenticar o Monitor de Recursos com o código desse servidor para visualizar suas informações.'
             })
-            listarServidores()
+            reloadServidores()
         }
         else {
             Swal.fire({

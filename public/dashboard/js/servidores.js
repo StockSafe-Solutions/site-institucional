@@ -139,3 +139,29 @@ function avisoNaoAutenticado(){
         text: 'Você instalar o Monitor de Recurso neste servidor, autenticá-lo com o código de 6 dígitos e coletar dados antes de abrir sua dashboard.'
     })
 }
+
+function reloadServidores(){
+    textoReload.innerText = "Atualizando"
+    iconReload.style = "animation-name: girar; animation-duration: 2250ms"
+    let i = 0
+    let animacaoTexto = setInterval(()=>{
+        if(i == 2){
+            clearInterval(animacaoTexto)
+        }
+        textoReload.innerText += "."
+        i++
+    },1000)
+
+    setTimeout(()=>{
+        let now = new Date()
+        textoReload.innerText = "Atualizado pela ultima vez às "+now.getHours()+":"+now.getMinutes()
+        iconReload.style = ""
+    },4500)
+
+    if(iptPesquisa.value == ""){
+        listarServidores()
+    } else{
+        pesquisarServidores()
+    }
+}
+setInterval(reloadServidores,60000)
