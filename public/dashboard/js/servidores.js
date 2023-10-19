@@ -164,4 +164,4 @@ function reloadServidores(){
         pesquisarServidores()
     }
 }
-setInterval(reloadServidores,60000)
+setInterval(reloadServidores,sessionStorage.intervalo_atualizacao)

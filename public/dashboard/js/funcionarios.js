@@ -74,4 +74,4 @@ function reloadFuncionarios(){
         listarFuncionarios()
     }
 }
-setInterval(reloadFuncionarios,60000)
+setInterval(reloadFuncionarios,sessionStorage.intervalo_atualizacao)
