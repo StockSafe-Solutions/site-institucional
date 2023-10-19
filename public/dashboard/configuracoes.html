@@ -29,7 +29,7 @@
     <title>StockSafe - Dashboard</title>
 </head>
 
-<body id="page-top" onload="carregarMenu('config'), carregarConfigs()">
+<body id="page-top" onload="carregarMenu('config'), carregarCamposConfigs()">
     <!-- Page Wrapper -->
     <div id="wrapper">
         <ul id="accordionSidebar"></ul>
@@ -43,6 +43,17 @@
                     <input type="number" name="iptBanda" id="iptBanda">
                     <label for="iptTaxa">Taxa de transferência:</label>
                     <input type="number" name="iptTaxa" id="iptTaxa">
+                    <label for="iptIntervalo">Intervalo de atualizações automáticas das informações:</label>
+                    <select name="slctIntervalo" id="slctIntervalo">
+                        <option value="10000">10 segundos</option>
+                        <option value="30000" selected>30 segundos</option>
+                        <option value="60000">1 minuto</option>
+                        <option value="300000">5 minutos</option>
+                        <option value="600000">10 minutos</option>
+                        <option value="900000">15 minutos</option>
+                        <option value="1800000">30 minutos</option>
+                        <option value="3600000">1 hora</option>
+                    </select>
                     <button onclick="alterarConfigs()">Alterar</button>
             </div>
         </div>

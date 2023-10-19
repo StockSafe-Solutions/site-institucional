@@ -25,8 +25,9 @@ function alterar(req, res) {
     var id = req.params.id;
     var bandaLarga = req.body.bandaServer;
     var taxaTransf = req.body.taxaServer;
+    var intervalo = req.body.intervaloServer;
 
-    configuracaoModel.alterar(id, bandaLarga, taxaTransf)
+    configuracaoModel.alterar(id, bandaLarga, taxaTransf, intervalo)
         .then(
             function (resultado) {
                 res.json(resultado);

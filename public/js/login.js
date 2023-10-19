@@ -40,8 +40,8 @@ function entrar() {
         if (resposta.ok) {
             console.warn(resposta);
             resposta.json().then(json => {
-                sessionStorage.funcionario = JSON.stringify(json);
-                window.location = "../dashboard/index.html"
+                sessionStorage.funcionario = JSON.stringify(json)
+                carregarConfigs()
             });
         } 
         else {
@@ -60,4 +60,29 @@ function entrar() {
 
 function voltarParaIndex() {
     window.location.href = "index.html";
+}
+
+function carregarConfigs() {
+    fetch("/configuracao/listar", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(function (resposta) {
+        if (resposta.ok) {
+            console.log(resposta);
+            resposta.json().then(json => {
+                sessionStorage.banda_larga = json['banda_larga']
+                sessionStorage.taxa_transferencia = json['taxa_transferencia'].replace(".",",")
+                sessionStorage.intervalo_atualizacao = json['intervalo_atualizacao']
+                window.location = "../dashboard/index.html"
+            });
+        }
+        else{
+            resposta.text().then(texto => {
+                console.warn(texto)
+        })}
+    }).catch(function (erro) {
+        console.log(erro);
+    })
 }
