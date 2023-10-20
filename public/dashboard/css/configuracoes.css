@@ -1,0 +1,11 @@
+.container-fluid > span{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px 0;
+    width: 100%;
+}
+.container-fluid > span h3{
+    margin: 0px;
+}

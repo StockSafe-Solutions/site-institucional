@@ -142,7 +142,7 @@ function avisoNaoAutenticado(){
 
 function reloadServidores(){
     textoReload.innerText = "Atualizando"
-    iconReload.style = "animation-name: girar; animation-duration: 2250ms"
+    iconReload.style = "animation-name: girar; animation-duration: 2250ms; pointer-events: none"
     let i = 0
     let animacaoTexto = setInterval(()=>{
         if(i == 2){

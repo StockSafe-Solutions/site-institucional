@@ -1,3 +1,18 @@
+.container-fluid > span{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+    margin: 15px 0;
+    width: 100%;
+}
+.container-fluid > span h3{
+    margin: 0px;
+}
+.container-fluid > span div{
+    margin-top: 15px;
+}
+
 .kpis{
     display: flex;
     flex-direction: row;
