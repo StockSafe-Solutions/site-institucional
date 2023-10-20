@@ -70,26 +70,33 @@ body > div > *{
     display: none;
     flex-direction: column;
     background-color: #001A46;
+    box-shadow: 0 0 0 1px rgba(128, 128, 128, 0.506);
     padding: 10px;
     border-radius: 0.25rem;
     overflow-y: scroll;
     max-height: 75vh;
+    right: 0px;
 }
 #quadroDeAlertas li{
-    background-color: whitesmoke;
-    color: #001A46;
+    color: whitesmoke;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
     cursor: default;
     border-radius: 0.25rem;
     margin: 5px;
     padding: 10px;
     font-size: 0.8em !important;
-    width: 280px;
-    height: 100px;
+    width: 250px;
+    height: 70px;
     transition: 1s;
 }
 .alertaAberto{
     height: fit-content !important;
     box-shadow: 0px 0px 0px 5px rgba(156,156,156,1);
+}
+.alertaAberto p{
+    white-space: initial;
 }
 
 #quadroDeAlertas span{
