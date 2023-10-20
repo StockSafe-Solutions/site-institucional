@@ -136,10 +136,10 @@ function carregarAlertas(){
                 corAlerta = "#e64767"
                 break
             case "amarelo":
-                corAlerta = "#e6db47"
+                corAlerta = "#91891b"
                 break
             case "verde":
-                corAlerta = "#47e65f"
+                corAlerta = "#319e41"
                 break
         }
 
