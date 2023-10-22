@@ -8,11 +8,11 @@ function abrirModal(modal, codigo) {
             },1000)
             break
         case "dash":
+            frameDashboard.src="index.html?"+codigo
             modalDashboard.style = "display: flex; animation-name: aparecer; animation-duration: 500ms;"
             setTimeout(()=>{
                 modalDashboard.style = "display: flex"
             },1000)
-            codigoServ.innerText = codigo
             break
     }
     setTimeout(()=>{

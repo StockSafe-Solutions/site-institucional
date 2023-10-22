@@ -23,6 +23,7 @@
     <script src="js/menuLateral.js"></script>
     <script src="js/servidores.js"></script>
     <script src="js/servidoresModals.js"></script>
+    <script src="js/dashboard.js"></script>
 
     <!-- Icone -->
     <link rel="icon" href="../assets/icon/logo.ico" />
@@ -80,58 +81,9 @@
             <button id="btnCadastrar" onclick="cadastrarServidor()">Cadastrar</button>
         </div>
 
-        <div class="modalServ" id="modalDashboard">
-            <header>
-                <h3 class="nomePagina" id="codigoServ"></h3>
-                <i class="fa-solid fa-x" onclick="fecharModal('dash')"></i>
-            </header>
-            <div class="kpis">
-                <div>
-                    <span>
-                        <h3>Uptime</h3>
-                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 0a256 256 0 1 1 0 512A256 256 0 1 1 256 0zM232 120V256c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z"/></svg>
-                    </span>
-                    <p class="valorKPI">99%</p>
-                    <p class="baseKPI">de 9 horas</p>
-                </div>
-
-                <div>
-                    <span>
-                        <h3>Uso da banda larga</h3>
-                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 640 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M54.2 202.9C123.2 136.7 216.8 96 320 96s196.8 40.7 265.8 106.9c12.8 12.2 33 11.8 45.2-.9s11.8-33-.9-45.2C549.7 79.5 440.4 32 320 32S90.3 79.5 9.8 156.7C-2.9 169-3.3 189.2 8.9 202s32.5 13.2 45.2 .9zM320 256c56.8 0 108.6 21.1 148.2 56c13.3 11.7 33.5 10.4 45.2-2.8s10.4-33.5-2.8-45.2C459.8 219.2 393 192 320 192s-139.8 27.2-190.5 72c-13.3 11.7-14.5 31.9-2.8 45.2s31.9 14.5 45.2 2.8c39.5-34.9 91.3-56 148.2-56zm64 160a64 64 0 1 0 -128 0 64 64 0 1 0 128 0z"/></svg>
-                    </span>
-                    <p class="valorKPI">300GHz</p>
-                    <p class="baseKPI">de 300GB</p>
-                </div>
-
-                <div>
-                    <span>
-                        <h3>Pacotes enviados</h3>
-                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 640 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M58.9 42.1c3-6.1 9.6-9.6 16.3-8.7L320 64 564.8 33.4c6.7-.8 13.3 2.7 16.3 8.7l41.7 83.4c9 17.9-.6 39.6-19.8 45.1L439.6 217.3c-13.9 4-28.8-1.9-36.2-14.3L320 64 236.6 203c-7.4 12.4-22.3 18.3-36.2 14.3L37.1 170.6c-19.3-5.5-28.8-27.2-19.8-45.1L58.9 42.1zM321.1 128l54.9 91.4c14.9 24.8 44.6 36.6 72.5 28.6L576 211.6v167c0 22-15 41.2-36.4 46.6l-204.1 51c-10.2 2.6-20.9 2.6-31 0l-204.1-51C79 419.7 64 400.5 64 378.5v-167L191.6 248c27.8 8 57.6-3.8 72.5-28.6L318.9 128h2.2z"/></svg>
-                    </span>
-                    <p class="valorKPI">1358</p>
-                    <p class="baseKPI"></p>
-                </div>
-
-                <div>
-                    <span>
-                        <h3>Espaço usado</h3>
-                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M448 80v48c0 44.2-100.3 80-224 80S0 172.2 0 128V80C0 35.8 100.3 0 224 0S448 35.8 448 80zM393.2 214.7c20.8-7.4 39.9-16.9 54.8-28.6V288c0 44.2-100.3 80-224 80S0 332.2 0 288V186.1c14.9 11.8 34 21.2 54.8 28.6C99.7 230.7 159.5 240 224 240s124.3-9.3 169.2-25.3zM0 346.1c14.9 11.8 34 21.2 54.8 28.6C99.7 390.7 159.5 400 224 400s124.3-9.3 169.2-25.3c20.8-7.4 39.9-16.9 54.8-28.6V432c0 44.2-100.3 80-224 80S0 476.2 0 432V346.1z"/></svg>
-                    </span>
-                    <p class="valorKPI">78%</p>
-                    <p class="baseKPI">de 124TB</p>
-                </div>
-            </div>
-            <div class="containerGraficos">
-                <div class="grafico">
-                    <h3>Média de uso da CPU</h3>
-                    <canvas></canvas>
-                </div>
-                <div class="grafico">
-                    <h3>Média de uso da RAM</h3>
-                    <canvas></canvas>
-                </div>
-            </div>
+        <div id="modalDashboard" class="modalServ">
+            <i class="fa-solid fa-x" onclick="fecharModal('dash')"></i>
+            <iframe id="frameDashboard" frameborder="0"></iframe>
         </div>
     </div>
 </body>

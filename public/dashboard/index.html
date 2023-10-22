@@ -21,7 +21,8 @@
     <!-- Scripts -->
     <script src="js/sessao.js"></script>
     <script src="js/menuLateral.js"></script>
-    <script src="js/dashboardGeral.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/graficos.js"></script>
 
     <!-- Icone -->
     <link rel="icon" href="../assets/icon/logo.ico" />
@@ -40,7 +41,7 @@
                 <div class="container-fluid">
                     <span>
                         <span>
-                            <h3 class="nomePagina">Dashboard</h3>
+                            <h3 id="nomePagina" class="nomePagina">Dashboard</h3>
                             <input type="date" name="pesquisaData" id="pesquisaData">
                         </span>
                         <div id="containerAlertas"></div>
@@ -49,43 +50,47 @@
                         <div>
                             <span>
                                 <h3>Uptime</h3>
-                                <i class="fa-regular fa-clock"></i>                            </span>
-                            <p class="valorKPI">99%</p>
-                            <p class="baseKPI">de 9 horas</p>
+                                <i class="fa-regular fa-clock"></i>                           
+                             </span>
+                            <p id="valorKPI1" class="valorKPI">99%</p>
+                            <p id="baseKPI1" class="baseKPI">de 9 horas</p>
                         </div>
 
                         <div>
                             <span>
-                                <h3>Uso da banda larga</h3>
-                                <i class="fa-solid fa-wifi"></i>                            </span>
-                            <p class="valorKPI">300GHz</p>
-                            <p class="baseKPI">de 300GB</p>
+                                <h3 id="nomeKPI2">Uso da banda larga</h3>
+                                <i id="iconKPI2" class="fa-solid fa-wifi"></i>                            
+                            </span>
+                            <p id="valorKPI2" class="valorKPI">300GHz</p>
+                            <p id="baseKPI2" class="baseKPI">de 300GB</p>
                         </div>
 
                         <div>
                             <span>
                                 <h3>Pacotes enviados</h3>
-                                <i class="fa-solid fa-box-open"></i>                            </span>
-                            <p class="valorKPI">1358</p>
-                            <p class="baseKPI">enviados</p>
+                                <i class="fa-solid fa-box-open"></i>                            
+                            </span>
+                            <p id="valorKPI3" class="valorKPI">1358</p>
+                            <p id="baseKPI3" class="baseKPI">enviados</p>
                         </div>
 
                         <div>
                             <span>
                                 <h3>Uso de disco</h3>
-                                <i class="fa-solid fa-hard-drive"></i>                            </span>
-                            <p class="valorKPI">78%</p>
-                            <p class="baseKPI">de 124TB</p>
+                                <i class="fa-solid fa-hard-drive"></i>                            
+                            </span>
+                            <p id="valorKPI4" class="valorKPI">78%</p>
+                            <p id="baseKPI4" class="baseKPI">de 124TB</p>
                         </div>
                     </div>
                     <div class="containerGraficos">
                         <h3>Média de uso da CPU</h3>
                         <div class="grafico">
-                            <canvas></canvas>
+                            <canvas id="graficoCPU"></canvas>
                         </div>
                         <h3>Média de uso da RAM</h3>
                         <div class="grafico">
-                            <canvas></canvas>
+                            <canvas id="graficoRAM"></canvas>
                         </div>
                     </div>
                 </div>
@@ -97,3 +102,7 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
+</body>
+</html>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

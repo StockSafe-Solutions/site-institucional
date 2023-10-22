@@ -19,6 +19,7 @@
     background: none;
     border: none;
     color: #005eff;
+    cursor: text;
 }
 .kpis{
     display: flex;
@@ -28,8 +29,8 @@
 }
 
 .kpis > div{
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
     background-color: #001a46;
     display: flex;
     flex-direction: column;
@@ -55,7 +56,7 @@
     height: 45px;
 }
 .kpis i{
-    font-size: 65px;
+    font-size: 35px;
     margin-left: 10px;
 }
 
@@ -69,7 +70,7 @@
 
 .containerGraficos{
     width: 100%;
-    height: 60vh;
+    height: 48vh;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -78,7 +79,7 @@
 
 .grafico{
     width: 45%;
-    height: 50vh;
+    height: 40vh;
     background-color: lightgrey;
     border-radius: 0.25rem;
     display: flex;
@@ -92,10 +93,4 @@
     width: 45%;
     align-self: flex-start;
     overflow-wrap: break-word;
-}
-.grafico canvas{
-    border: solid 1px #001a46;
-    border-width: 0 0 1px 1px;
-    width: 100%;
-    height: 100%;
 }
