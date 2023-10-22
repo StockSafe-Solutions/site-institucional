@@ -136,7 +136,7 @@ function avisoNaoAutenticado(){
     Swal.fire({
         icon: 'error',
         title: 'Servidor não autenticado!',
-        text: 'Você instalar o Monitor de Recurso neste servidor, autenticá-lo com o código de 6 dígitos e coletar dados antes de abrir sua dashboard.'
+        text: 'Você instalar o Monitor de Recursos neste servidor, autenticá-lo com o código de 6 dígitos e coletar dados antes de abrir sua dashboard.'
     })
 }
 
