@@ -18,7 +18,7 @@ function uptime() {
 
                 var dados = document.getElementById("uptime");
 
-                dados.textContent = JSON.stringify(json);
+                dados.textContent = json[0].uptime
 
             })
         } else {
@@ -56,7 +56,7 @@ function bandaLarga() {
 
                 var dados = document.getElementById("bandaLarga");
 
-                dados.textContent = JSON.stringify(json);
+                dados.textContent = json[0].Banda;
                 
             })
         } else {
@@ -133,7 +133,7 @@ function espacoUsado() {
 
                 var dados = document.getElementById("espacoUsado");
                 
-                dados.textContent = JSON.stringify(json);
+                dados.textContent = json[0].armazenamento_usado
 
             })
         } else {
