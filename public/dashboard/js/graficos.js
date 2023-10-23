@@ -1,14 +1,12 @@
-function carregarGrafico(id){
-
-const ctx = document.getElementById(id);
+function carregarGrafico(id ,vetorDados){
+  const ctx = document.getElementById(id);
 
   new Chart(ctx, {
     type: 'line',
     data: {
       labels: ['10:00', '12:00', '14:00', '16:00', '18:00'],
       datasets: [{
-        label: '# of Votes',
-        data: [89, 63, 23, 45, 89]
+        data: vetorDados
       }]
     },
     options: {

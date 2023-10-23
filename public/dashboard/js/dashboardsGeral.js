@@ -34,7 +34,7 @@ function uptime() {
         });
     }
 
-uptime()
+// uptime()
 
 function bandaLarga() {
     var select = `SELECT * FROM vw_banda_larga`
@@ -72,7 +72,7 @@ function bandaLarga() {
         });
     }
     
-bandaLarga()
+// bandaLarga()
 
 function pacotesEnviados() {
     var select = `SELECT * FROM vw_media_pacotes_semana`
@@ -110,8 +110,7 @@ function pacotesEnviados() {
         });
     }
     
-pacotesEnviados()
-
+// pacotesEnviados()
 
 function espacoUsado() {
     var select = `SELECT * FROM vw_armz_usado`
@@ -149,8 +148,7 @@ function espacoUsado() {
         });
     }
     
-espacoUsado()
-
+// espacoUsado()
 
 function usoRam() {
     var select = `SELECT * FROM vw_ram`
@@ -208,8 +206,7 @@ function usoRam() {
         });
     }
     
-usoRam()
-
+// usoRam()
 
 function usoCpu() {
     var select = `SELECT * FROM vw_cpu`
@@ -268,5 +265,5 @@ function usoCpu() {
         });
     }
     
-usoCpu()
+// usoCpu()
     

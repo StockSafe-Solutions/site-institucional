@@ -22,7 +22,8 @@
     <script src="./js/dashboardsGeral.js"></script>
     <script src="js/sessao.js"></script>
     <script src="js/menuLateral.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/graficos.js"></script>
 
     <!-- Icone -->
     <link rel="icon" href="../assets/icon/logo.ico" />
@@ -50,12 +51,10 @@
                         <div>
                             <span>
                                 <h3>Uptime</h3>
-                               
-                            </span>
                                 <i class="fa-regular fa-clock"></i>                           
                              </span>
-                            <p class="valorKPI" id="uptime">%</p>
-                            <p id="baseKPI1" class="baseKPI"></p>
+                            <p id="valorKPI1" class="valorKPI" id="uptime"></p>
+                            <p id="baseKPI1" class="baseKPI">de 9 horas</p>
                         </div>
 
                         <div>
@@ -63,7 +62,7 @@
                                 <h3 id="nomeKPI2">Uso da banda larga</h3>
                                 <i id="iconKPI2" class="fa-solid fa-wifi"></i>                            
                             </span>
-                            <p class="valorKPI" id="bandaLarga">GHz</p>
+                            <p id="valorKPI2" class="valorKPI" id="bandaLarga"></p>
                             <p id="baseKPI2" class="baseKPI"></p>
                         </div>
 
@@ -72,7 +71,7 @@
                                 <h3>Pacotes enviados</h3>
                                 <i class="fa-solid fa-box-open"></i>                            
                             </span>
-                            <p class="valorKPI" id="pacotesEnviados"></p>
+                            <p id="valorKPI3" class="valorKPI" id="pacotesEnviados"></p>
                             <p id="baseKPI3" class="baseKPI">enviados</p>
                         </div>
 
@@ -81,18 +80,18 @@
                                 <h3>Uso de disco</h3>
                                 <i class="fa-solid fa-hard-drive"></i>                            
                             </span>
-                            <p class="valorKPI" id="espacoUsado">%</p>
+                            <p id="valorKPI4" class="valorKPI" id="espacoUsado"></p>
                             <p id="baseKPI4" class="baseKPI">de 124TB</p>
                         </div>
                     </div>
                     <div class="containerGraficos">
                         <h3>Média de uso da CPU</h3>
                         <div class="grafico">
-                            <canvas id="cpuChart" width="394px" height="254px"></canvas>
+                            <canvas id="graficoCPU"></canvas>
                         </div>
                         <h3>Média de uso da RAM</h3>
                         <div class="grafico">
-                            <canvas id="ramChart" width="394px" height="254px"></canvas>
+                            <canvas id="graficoRAM"></canvas>
                         </div>
                     </div>
                 </div>
