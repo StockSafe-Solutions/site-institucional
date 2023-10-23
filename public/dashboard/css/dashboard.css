@@ -1,3 +1,26 @@
+#content{
+    background: whitesmoke;
+    color: #001a46 !important;
+}
+
+.container-fluid > span{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px 0;
+    width: 100%;
+}
+.container-fluid > span > span > *{
+    margin: 0px;
+    color: #001a46;
+}
+#pesquisaData{
+    background: none;
+    border: none;
+    color: #005eff;
+    cursor: text;
+}
 .kpis{
     display: flex;
     flex-direction: row;
@@ -6,17 +29,17 @@
 }
 
 .kpis > div{
-    width: 190px;
-    height: 150px;
-    background-color: whitesmoke;
+    width: 180px;
+    height: 180px;
+    background-color: #001a46;
     display: flex;
     flex-direction: column;
     align-items: start;
     justify-content: start;
-    border-radius: 0.25rem;
+    border-radius: 0.5rem;
     padding: 20px;
     margin: 10px;
-    color: #001a46;
+    color: whitesmoke;
 }
 
 .kpis span{
@@ -32,9 +55,8 @@
     font-size: 18px;
     height: 45px;
 }
-.kpis svg{
-    width: 30px;
-    height: 30px;
+.kpis i{
+    font-size: 35px;
     margin-left: 10px;
 }
 
@@ -48,15 +70,17 @@
 
 .containerGraficos{
     width: 100%;
+    height: 48vh;
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: space-evenly;
 }
 
 .grafico{
     width: 45%;
-    height: 50vh;
-    background-color: whitesmoke;
+    height: 40vh;
+    background-color: lightgrey;
     border-radius: 0.25rem;
     display: flex;
     flex-direction: column;
@@ -65,12 +89,8 @@
     padding: 15px;
     color: #001a46;
 }
-.grafico h3{
+.grafico ~ h3{
+    width: 45%;
     align-self: flex-start;
-}
-.grafico canvas{
-    border: solid 1px gray;
-    border-radius: 0.25rem;
-    width: 100%;
-    height: 100%;
+    overflow-wrap: break-word;
 }

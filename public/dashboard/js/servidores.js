@@ -136,13 +136,13 @@ function avisoNaoAutenticado(){
     Swal.fire({
         icon: 'error',
         title: 'Servidor não autenticado!',
-        text: 'Você instalar o Monitor de Recurso neste servidor, autenticá-lo com o código de 6 dígitos e coletar dados antes de abrir sua dashboard.'
+        text: 'Você instalar o Monitor de Recursos neste servidor, autenticá-lo com o código de 6 dígitos e coletar dados antes de abrir sua dashboard.'
     })
 }
 
 function reloadServidores(){
     textoReload.innerText = "Atualizando"
-    iconReload.style = "animation-name: girar; animation-duration: 2250ms"
+    iconReload.style = "animation-name: girar; animation-duration: 2250ms; pointer-events: none"
     let i = 0
     let animacaoTexto = setInterval(()=>{
         if(i == 2){

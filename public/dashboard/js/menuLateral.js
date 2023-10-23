@@ -91,4 +91,121 @@ function carregarMenu(pagina) {
             </li>`
     accordionSidebar.className = "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
     accordionSidebar.innerHTML = conteudo;
+
+    criarContainerAlertas()
+    setInterval(()=>{
+        atualizarAlertas()
+    },sessionStorage.intervalo_atualizacao)
+}
+
+function criarContainerAlertas(){
+    containerAlertas.innerHTML = `
+    <p id="contadorAlerta" onclick="quadroAlertas()"></p>
+    <i class="fa-solid fa-bell" onclick="quadroAlertas()" id="iconQuadroAlertas"></i>
+    <ul id="quadroDeAlertas"></ul>`
+    atualizarAlertas()
+}
+
+function carregarAlertas(){
+    quadroDeAlertas.innerHTML = ""
+    alertas = [
+        {
+            titulo: "Perigo",
+            tipo: "vermelho",
+            text: "O servidor A02E0 estáadipisicing elit. Est libero facilis debitis assumenda rerum inventore earum repellat, ut porro iste eligendi culpa impedit temporibus facere ipsa adipisci aut nulla in."
+        },
+        {
+            titulo: "Sucesso",
+            tipo: "verde",
+            text: "adipisicing elit. Est libero facilis debitis assumenda rerum inventore earum repellat, ut porro iste eligendi culpa impedit temporibus facere ipsa adipisci aut nulla in."
+        },
+        {
+            titulo: "Cuidado",
+            tipo: "amarelo",
+            text: "assumenda rerum inventore earum repellat"
+        }
+    ]
+    // alertas = []
+
+    contadorAlerta.innerText = alertas.length
+    corAlerta = ""
+    i = 0
+    while(i < alertas.length){
+        switch(alertas[i].tipo){
+            case "vermelho":
+                corAlerta = "#e64767"
+                break
+            case "amarelo":
+                corAlerta = "#91891b"
+                break
+            case "verde":
+                corAlerta = "#319e41"
+                break
+        }
+
+        quadroDeAlertas.innerHTML += `
+        <li id="alerta${i}" style="background-color: ${corAlerta}">
+            <span>
+                <h4>${alertas[i].titulo}</h4>
+                <i onclick="expandirAlerta(${i})" id="iconAlerta${i}" class="fa-solid fa-plus"></i>
+            </span>
+        <p>${alertas[i].text}</p>
+        </li>
+        `
+        i++
+    }
+    if(alertas.length == 0){
+        quadroDeAlertas.innerHTML += `
+        <p><br>Nenhum alerta encontrado</p>
+        `
+    }
+}
+
+function atualizarAlertas(){
+    if(iconQuadroAlertas.className.indexOf("iconQuadroAberto") == -1){
+        iconQuadroAlertas.className = "fa-solid fa-arrows-rotate"
+        iconQuadroAlertas.style = "animation-name: girar; pointer-events: none"
+        contadorAlerta.style = "display: none"
+        carregarAlertas()
+        setTimeout(()=>{
+            iconQuadroAlertas.className = "fa-solid fa-bell"
+            iconQuadroAlertas.style = ""
+            contadorAlerta.style = ""
+        },1000)
+    }
+}
+
+var quadroAberto = false
+function quadroAlertas(){
+    if(!quadroAberto){
+        quadroDeAlertas.style = "display: flex";
+        iconQuadroAlertas.className += " iconQuadroAberto"
+        quadroAberto = true
+    } else{
+        quadroDeAlertas.style = "";
+        iconQuadroAlertas.className = "fa-solid fa-bell"
+        quadroAberto = false
+        atualizarAlertas()
+    }
+}
+
+function expandirAlerta(id){
+    alertaAlvo = document.getElementById("alerta"+id)
+    icon = document.getElementById("iconAlerta"+id)
+
+    if(icon.className.indexOf("aberto") == -1){
+        icon.style = "animation-name: rodar";
+        alertaAlvo.className = "alertaAberto";
+        setTimeout(()=>{
+            icon.className = "fa-solid fa-minus aberto"
+            icon.style = ""
+        },500)
+    } else{
+        icon.style = "animation-name: rodar; animation-direction: reverse";
+        alertaAlvo.className = "";
+        setTimeout(()=>{
+            icon.className = "fa-solid fa-plus"
+            icon.style = ""
+        },500)
+    }
 }
