@@ -31,7 +31,7 @@
     width: 350px;
     position: relative;
 }
-#reload_e_alertas > span{
+#reload_e_alertas > span > *{
     margin: 0 15px;
 }
 #reload_e_alertas p{
@@ -46,7 +46,7 @@
 .kpis{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-wrap: wrap;
 }
 
@@ -60,7 +60,7 @@
     justify-content: start;
     border-radius: 0.5rem;
     padding: 20px;
-    margin: 10px;
+    /* margin: 10px; */
     color: whitesmoke;
 }
 
@@ -89,15 +89,15 @@
 
 .containerGraficos{
     width: 100%;
-    height: 48vh;
     display: flex;
     flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: space-evenly;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px 0;
 }
 
 .grafico{
-    width: 480px;
+    width: 465px;
     height: 300px;
     background-color: lightgrey;
     border-radius: 0.25rem;
