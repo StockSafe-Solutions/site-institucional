@@ -22,6 +22,12 @@ function ramEspecifico(codServidor){
     return database.executar(instrucao);
 }
 
+function kpiGeral(){
+    var instrucao = `CALL sp_kpi_geral(1);`
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 function cpuGeral(){
     var instrucao = `SELECT * FROM vw_cpu;`
     console.log("Executando a instrução SQL: \n" + instrucao);
@@ -38,6 +44,7 @@ module.exports = {
     kpiEspecifica,
     cpuEspecifico,
     ramEspecifico,
+    kpiGeral,
     cpuGeral,
     ramGeral
 }

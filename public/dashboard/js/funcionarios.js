@@ -64,7 +64,8 @@ function reloadFuncionarios(){
 
     setTimeout(()=>{
         let now = new Date()
-        textoReload.innerText = "Atualizado pela ultima vez às "+now.getHours()+":"+now.getMinutes()
+        textoReload.innerText = "Atualizado pela ultima vez às "+now.getHours()+":"+
+        (String(now.getMinutes()).length == 1 ? "0"+now.getMinutes() : now.getMinutes())
         iconReload.style = ""
     },4500)
 

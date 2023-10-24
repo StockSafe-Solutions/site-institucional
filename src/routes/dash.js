@@ -11,6 +11,10 @@ router.get("/graficosEspecificos/:codServidor", (req, res) => {
     dashController.graficosEspecificos(req, res);
 })
 
+router.get("/kpiGeral", (req, res) => {
+    dashController.kpiGeral(req, res);
+})
+
 router.get("/graficosGerais", (req, res) => {
     dashController.graficosGerais(req, res);
 })

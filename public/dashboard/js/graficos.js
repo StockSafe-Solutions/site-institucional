@@ -1,10 +1,27 @@
-function carregarGrafico(id ,vetorDados){
-  const ctx = document.getElementById(id);
+var contadorDeCharts = 0
+function gerenciarGraficos(id, vetorDados) {
 
-  new Chart(ctx, {
+  if(contadorDeCharts == 2){
+    chartCPU.destroy()
+    chartRAM.destroy()
+    contadorDeCharts = 1
+  } else{
+    contadorDeCharts++
+  }
+
+  if(id == "graficoCPU"){
+    chartCPU = criarGrafico(id,vetorDados)
+  } else{
+    chartRAM = criarGrafico(id,vetorDados)
+  }
+}
+
+function criarGrafico(id, vetorDados){
+  const ctx = document.getElementById(id);
+  return new Chart(ctx, {
     type: 'line',
     data: {
-      labels: ['10:00', '12:00', '14:00', '16:00', '18:00'],
+      labels: ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
       datasets: [{
         data: vetorDados
       }]
@@ -15,13 +32,9 @@ function carregarGrafico(id ,vetorDados){
         y: {
           max: 100,
           beginAtZero: true,
-          border: {color: 'black'}
-        },
-        x: {border: {color: 'black'}}
+          border: { color: 'black' }
+        }, x: { border: { color: 'black' } }
       },
-      plugins: {
-        legend: { display: false }
-      }
-    }
-  });
+      plugins: { legend: { display: false } }
+    }});
 }

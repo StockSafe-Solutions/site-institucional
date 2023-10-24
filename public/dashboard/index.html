@@ -15,11 +15,10 @@
 
     <!-- Estilos -->
     <link rel="stylesheet" href="../css/templateStocksafe.min.css">
-    <link rel="stylesheet" href="css/baseDashboard.css">
+    <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/dashboard.css">
 
     <!-- Scripts -->
-    <script src="./js/dashboardsGeral.js"></script>
     <script src="js/sessao.js"></script>
     <script src="js/menuLateral.js"></script>
     <script src="js/dashboard.js"></script>
@@ -31,7 +30,7 @@
     <title>StockSafe - Dashboard</title>
 </head>
 
-<body id="page-top" onload="carregarMenu('geral'), carregarDashboardGeral()">
+<body id="page-top" onload="carregarMenu('geral'), reloadDashboard()">
     <!-- Page Wrapper -->
     <div id="wrapper">
         <ul id="accordionSidebar"></ul>
@@ -40,13 +39,19 @@
             <!-- Main Content -->
             <div id="content">
                 <div class="container-fluid">
-                    <span>
+                    <header>
                         <span>
                             <h3 id="nomePagina" class="nomePagina">Dashboard</h3>
                             <input type="date" name="pesquisaData" id="pesquisaData">
                         </span>
-                        <div id="containerAlertas"></div>
-                    </span>
+                        <span id="reload_e_alertas">
+                            <span>
+                                <p id="textoReload"></p>
+                                <i class="fa-solid fa-arrows-rotate" id="iconReload"></i>
+                            </span>
+                            <div id="containerAlertas"></div>
+                        </span>
+                    </header>
                     <div class="kpis">
                         <div>
                             <span>
@@ -85,12 +90,12 @@
                         </div>
                     </div>
                     <div class="containerGraficos">
-                        <h3>Média de uso da CPU</h3>
                         <div class="grafico">
+                            <h3>Média de uso da CPU</h3>
                             <canvas id="graficoCPU"></canvas>
                         </div>
-                        <h3>Média de uso da RAM</h3>
                         <div class="grafico">
+                            <h3>Média de uso da RAM</h3>
                             <canvas id="graficoRAM"></canvas>
                         </div>
                     </div>

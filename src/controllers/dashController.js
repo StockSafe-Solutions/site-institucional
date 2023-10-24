@@ -12,8 +12,7 @@ function kpiEspecifica(req, res) {
       res.status(200).json(resultado[0][0])
     } else {
       res.status(404).send()
-    }
-  }).catch((error) => {
+    }}).catch((error) => {
     console.log(error)
     console.log("Erro nas Dashboards\n", erro.sqlMessage)
   })
@@ -36,6 +35,20 @@ function graficosEspecificos(req, res) {
         console.log(error)
         console.log("Erro nas Dashboards\n", erro.sqlMessage)
       })} else {
+      res.status(404).send()
+    }}).catch((error) => {
+    console.log(error)
+    console.log("Erro nas Dashboards\n", erro.sqlMessage)
+  })
+}
+
+function kpiGeral(req, res) {
+
+  dashboardModel.kpiGeral().then((resultado) => {
+    if (resultado.length > 0) {
+      console.log(resultado)
+      res.status(200).json(resultado[0][0])
+    } else {
       res.status(404).send()
     }}).catch((error) => {
     console.log(error)
@@ -66,5 +79,6 @@ function graficosGerais(req, res) {
 module.exports = {
     kpiEspecifica,
     graficosEspecificos,
+    kpiGeral,
     graficosGerais
 }
