@@ -82,7 +82,7 @@ function cadastrarServidor() {
         }),
     }).then(function (resposta) {
         console.log("resposta: ", resposta);
-        fecharModal()
+        fecharModal("cad")
         if (resposta.ok) {
             Swal.fire({
                 icon: 'success',

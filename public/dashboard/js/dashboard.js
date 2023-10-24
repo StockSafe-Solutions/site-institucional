@@ -69,13 +69,13 @@ function carregarDados(){
 function definirKPIs(tipo, json){
     if(tipo == "geral"){
         valorKPI2.innerText = Math.round(Number(json.kpi_banda_larga))+"Mb/s"
-        baseKPI2.innerText = "de "+Math.round(Number(json.base_taxa))+"Mb/s"
+        // baseKPI2.innerText = "de "+Math.round(Number(json.base_taxa))+"Mb/s"
 
         valorKPI4.innerText = Math.round(Number(json.kpi_armazenamento)/1000,1)+"TB"
         baseKPI4.innerText = "de "+Math.round(Number(json.base_armazenamento)/1000,1)+"TB"
     } else{
         valorKPI2.innerText = Math.round(Number(json.kpi_taxa))+"Mb/s"
-        baseKPI2.innerText = "de "+Math.round(Number(json.base_taxa))+"Mb/s"
+        // baseKPI2.innerText = "de "+Math.round(Number(json.base_taxa))+"Mb/s"
 
         valorKPI4.innerText = Math.round(Number(json.kpi_armazenamento))+"GB"
         baseKPI4.innerText = "de "+Math.round(Number(json.base_armazenamento))+"GB"
