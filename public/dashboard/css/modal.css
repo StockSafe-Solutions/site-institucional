@@ -1,0 +1,107 @@
+.header-servidores i{
+    cursor: pointer;
+    margin: 0 5px;
+    color: #005eff;
+    animation-iteration-count: infinite;
+}
+
+/*#containerModal*/
+#containerModal{
+    display: none;
+    position: absolute;
+    top: 0;
+    z-index: 20;
+    left: -10px;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(140, 140, 140, 0.5);
+    backdrop-filter: blur(2px);
+    overflow: hidden;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/*.modalServ*/
+.modalObjeto{
+    width: 80vw;
+    height: fit-content;
+    border-radius: 0.25rem;
+    overflow-y: scroll;
+    display: none;
+    flex-direction: column;
+}
+
+@keyframes aparecer{
+    0% { transform: scale(0,0); }
+    50% { transform: scale(1,1); }
+    80% { transform: scale(0.95,0.95); }
+    100% { transform: scale(1,1); }
+}
+@keyframes sumir{
+    from {transform: scale(1,1);opacity: 1;}
+    to {transform: scale(0,0);opacity: 0;}
+}
+.modalObjeto header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.modalObjeto header i{
+    cursor: pointer;
+    color: whitesmoke;
+    transition: 500ms;
+}
+.modalObjeto header i:hover{
+    color: #858792;
+}
+
+#modalDashboard{
+    height: 100vh;
+    position: relative;
+}
+#modalDashboard iframe{
+    height: 100%;
+}
+#modalDashboard i{
+    position: absolute;
+    right: 50px;
+    top: 35px;
+    color: #005eff;
+    cursor: pointer;
+    transition: 500ms;
+}
+#modalDashboard i:hover{
+    opacity: 0.6;
+}
+
+#modalCadastro{
+    align-items: center;
+    width: 40vw;
+    background-color: #001a46;
+    padding: 20px 50px;
+}
+#modalCadastro > span{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-items: center;
+    border-radius: 0.25rem;
+    border: solid 1px whitesmoke;
+    width: fit-content;
+    margin: 10px 0;
+}
+#modalCadastro input{
+    background: none;
+    padding: 5px 10px;
+    border: solid 1px whitesmoke;
+    border-width: 0 1px 0 0;
+    color: whitesmoke;
+    background-color: rgba(128, 128, 128, 0.200);
+    margin: 0px;
+    width: 10vw;
+    min-width: 85px;
+    text-align: center;
+}
