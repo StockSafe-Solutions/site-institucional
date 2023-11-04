@@ -16,7 +16,7 @@ function listar(req, res) {
             function (erro) {
                 console.log(erro);
                 console.log("\n Houve um erro ao carregar funcionários! Erro: ", erro.sqlMessage);
-                res.status(500), json(erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
             }
         )
 }
