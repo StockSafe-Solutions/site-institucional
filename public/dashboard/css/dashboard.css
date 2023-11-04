@@ -53,16 +53,32 @@
 .kpis > div{
     width: 180px;
     height: 180px;
-    background-color: #001a46;
+    background-color: #577bb9;
     display: flex;
     flex-direction: column;
     align-items: start;
     justify-content: start;
     border-radius: 0.5rem;
     padding: 20px;
-    /* margin: 10px; */
     color: whitesmoke;
 }
+.kpis > .kpiBoa{
+    box-shadow: 0 0 0 5px rgba(0, 185, 12, 0.688);
+}
+.kpis > .kpiRuim{
+    box-shadow: 0 0 0 5px rgba(185, 172, 0, 0.688)
+}
+.kpis > .kpiMuitoRuim{
+    animation-name: pulsar;
+    animation-duration: 2.5s;
+    animation-iteration-count: infinite;
+}
+@keyframes pulsar{
+    0% {box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.428);}
+    75% {box-shadow: 0 0 0 10px rgba(255, 0, 0, 0.428);}
+    100% {box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.428);}
+}
+
 
 .kpis span{
     width: 100%;
