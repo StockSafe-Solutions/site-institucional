@@ -106,26 +106,55 @@ function criarContainerAlertas(){
     atualizarAlertas()
 }
 
-function carregarAlertas(){
-    quadroDeAlertas.innerHTML = ""
-    alertas = [
-        {
-            titulo: "Perigo",
-            tipo: "vermelho",
-            text: "O servidor A02E0 estáadipisicing elit. Est libero facilis debitis assumenda rerum inventore earum repellat, ut porro iste eligendi culpa impedit temporibus facere ipsa adipisci aut nulla in."
-        },
-        {
-            titulo: "Sucesso",
-            tipo: "verde",
-            text: "adipisicing elit. Est libero facilis debitis assumenda rerum inventore earum repellat, ut porro iste eligendi culpa impedit temporibus facere ipsa adipisci aut nulla in."
-        },
-        {
-            titulo: "Cuidado",
-            tipo: "amarelo",
-            text: "assumenda rerum inventore earum repellat"
+function listarAlertas() {
+    fetch("/alerta/listarAlertas", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
         }
-    ]
-    // alertas = []
+    }).then(function (resposta) {
+        if (resposta.ok) {
+            console.log(resposta);
+            resposta.json().then(json => {
+                console.log(json)
+                criarLiAlertas(json)
+            });
+        }
+        else {
+            resposta.text().then(texto => {
+                console.warn(texto)
+            })
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+    })
+}
+
+function criarLiAlertas(json){
+    quadroDeAlertas.innerHTML = ""
+    // alertas = [
+    //     {
+    //         titulo: "Perigo",
+    //         tipo: "vermelho",
+    //         text: "O servidor A02E0 estáadipisicing elit. Est libero facilis debitis assumenda rerum inventore earum repellat, ut porro iste eligendi culpa impedit temporibus facere ipsa adipisci aut nulla in."
+    //     },
+    //     {
+    //         titulo: "Sucesso",
+    //         tipo: "verde",
+    //         text: "adipisicing elit. Est libero facilis debitis assumenda rerum inventore earum repellat, ut porro iste eligendi culpa impedit temporibus facere ipsa adipisci aut nulla in."
+    //     },
+    //     {
+    //         titulo: "Cuidado",
+    //         tipo: "amarelo",
+    //         text: "assumenda rerum inventore earum repellat"
+    //     }
+    // ]
+
+    let container = document.getElementById("quadroDeAlertas")
+    container.innerHTML = ""
+    
+
+    alertas = []
 
     contadorAlerta.innerText = alertas.length
     corAlerta = ""
@@ -166,7 +195,7 @@ function atualizarAlertas(){
         iconQuadroAlertas.className = "fa-solid fa-arrows-rotate"
         iconQuadroAlertas.style = "animation-name: girar; pointer-events: none"
         contadorAlerta.style = "display: none"
-        carregarAlertas()
+        listarAlertas()
         setTimeout(()=>{
             iconQuadroAlertas.className = "fa-solid fa-bell"
             iconQuadroAlertas.style = ""
