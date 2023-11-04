@@ -144,111 +144,91 @@ function carregarMenu(pagina) {
       }
 }
 
-function criarContainerAlertas(){
+function criarContainerAlertas() {
     containerAlertas.innerHTML = `
     <p id="contadorAlerta" onclick="quadroAlertas()"></p>
     <i class="fa-solid fa-bell" onclick="quadroAlertas()" id="iconQuadroAlertas"></i>
-    <ul id="quadroDeAlertas"></ul>`
-    atualizarAlertas()
+    <ul id="quadroDeAlertas"></ul>`;
+    atualizarAlertas();
 }
 
-function listarAlertas() {
-    fetch("/alerta/listarAlertas", {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json"
-        }
-    }).then(function (resposta) {
-        if (resposta.ok) {
-            console.log(resposta);
-            resposta.json().then(json => {
-                console.log(json)
-                criarLiAlertas(json)
-            });
-        }
-        else {
-            resposta.text().then(texto => {
-                console.warn(texto)
-            })
-        }
-    }).catch(function (erro) {
-        console.log(erro);
-    })
-}
+function carregarAlertas(alertas) {
+    quadroDeAlertas.innerHTML = "";
+    contadorAlerta.innerText = alertas.length;
 
-function criarLiAlertas(json){
-    quadroDeAlertas.innerHTML = ""
-    // alertas = [
-    //     {
-    //         titulo: "Perigo",
-    //         tipo: "vermelho",
-    //         text: "O servidor A02E0 estáadipisicing elit. Est libero facilis debitis assumenda rerum inventore earum repellat, ut porro iste eligendi culpa impedit temporibus facere ipsa adipisci aut nulla in."
-    //     },
-    //     {
-    //         titulo: "Sucesso",
-    //         tipo: "verde",
-    //         text: "adipisicing elit. Est libero facilis debitis assumenda rerum inventore earum repellat, ut porro iste eligendi culpa impedit temporibus facere ipsa adipisci aut nulla in."
-    //     },
-    //     {
-    //         titulo: "Cuidado",
-    //         tipo: "amarelo",
-    //         text: "assumenda rerum inventore earum repellat"
-    //     }
-    // ]
-
-    let container = document.getElementById("quadroDeAlertas")
-    container.innerHTML = ""
-    
-
-    alertas = []
-
-    contadorAlerta.innerText = alertas.length
-    corAlerta = ""
-    i = 0
-    while(i < alertas.length){
-        switch(alertas[i].tipo){
-            case "vermelho":
-                corAlerta = "#e64767"
-                break
-            case "amarelo":
-                corAlerta = "#91891b"
-                break
-            case "verde":
-                corAlerta = "#319e41"
-                break
+    alertas.forEach((alerta, i) => {
+        let corAlerta = "";
+        switch (alerta.nivel_alerta) {
+            case 0:
+                corAlerta = "#319e41"; // verde
+                break;
+            case 1:
+                corAlerta = "#91891b"; // amarelo
+                break;
+            case 2:
+                corAlerta = "#e64767"; // vermelho
+                break;
         }
 
         quadroDeAlertas.innerHTML += `
         <li id="alerta${i}" style="background-color: ${corAlerta}">
             <span>
-                <h4>${alertas[i].titulo}</h4>
+                <h4>${alerta.descricao}</h4>
                 <i onclick="expandirAlerta(${i})" id="iconAlerta${i}" class="fa-solid fa-plus"></i>
             </span>
-        <p>${alertas[i].text}</p>
-        </li>
-        `
-        i++
-    }
-    if(alertas.length == 0){
+            <p>${alerta.codigo}</p>
+        </li>`;
+    });
+
+    if (alertas.length === 0) {
         quadroDeAlertas.innerHTML += `
-        <p><br>Nenhum alerta encontrado</p>
-        `
+        <p><br>Nenhum alerta encontrado</p>`;
     }
 }
 
-function atualizarAlertas(){
-    if(iconQuadroAlertas.className.indexOf("iconQuadroAberto") == -1){
-        iconQuadroAlertas.className = "fa-solid fa-arrows-rotate"
-        iconQuadroAlertas.style = "animation-name: girar; pointer-events: none"
-        contadorAlerta.style = "display: none"
-        listarAlertas()
-        setTimeout(()=>{
-            iconQuadroAlertas.className = "fa-solid fa-bell"
-            iconQuadroAlertas.style = ""
-            contadorAlerta.style = ""
-        },1000)
+function atualizarAlertas() {
+    if (iconQuadroAlertas.className.indexOf("iconQuadroAberto") === -1) {
+        iconQuadroAlertas.className = "fa-solid fa-arrows-rotate";
+        iconQuadroAlertas.style = "animation-name: girar; pointer-events: none";
+        contadorAlerta.style = "display: none";
+
+        setTimeout(() => {
+            const alertas = [
+                fetch("/alerta/listarAlertas", {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                }).then(function (resposta) {
+                    if (resposta.ok) {
+                        console.log(resposta);
+                        resposta.json().then(json => {
+                            console.log(json)
+                            carregarAlertas(json)
+                        });
+                    }
+                    else {
+                        resposta.text().then(texto => {
+                            console.warn(texto)
+                        })
+                    }
+                }).catch(function (erro) {
+                    console.log(erro);
+                })
+            ];
+            carregarAlertas(alertas);
+
+            setTimeout(() => {
+                iconQuadroAlertas.className = "fa-solid fa-bell";
+                iconQuadroAlertas.style = "";
+                contadorAlerta.style = "";
+            }, 1000);
+        }, 500);
     }
 }
+
+// Restante do código permanece inalterado...
+
 
 var quadroAberto = false
 function quadroAlertas(){
