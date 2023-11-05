@@ -50,6 +50,53 @@ function criarLiFuncionario(json) {
     }
 }
 
+function semiCadastrar(){
+    var textoErro = "";
+    var validacoes = true;
+    var email = inpEmail.value;
+    var funcao = inpFuncao.value;
+
+    if(email == undefined || funcao == undefined){
+        validacoes = false;
+        textoErro += "Campo inválido";
+    }
+    if((email.indexOf("@") == -1)||(email.indexOf(".") == -1)){
+        validacoes = false;
+        textoErro += "Email inválido.";
+    }
+    if(validacoes==false){
+        Swal.fire({
+            title: "Campos inválidos!",
+            text: textoErro,
+            icon: "error"
+         })
+    }else{
+        fetch("/funcionario/enviarEmail",{
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+              },
+            body: JSON.stringify({
+                emailServer: email,
+                funcaoServer: funcao
+            }),
+        })
+        .then(function(resposta){
+            console.log("Resposta: ", resposta);
+            if (resposta.ok) {
+                console.log("OK")
+
+                finalizarAguardar();
+            }
+            else {
+                console.log("não ok")
+              }
+        }).catch(function (resposta){
+            console.log(`#ERRO: ${resposta}`);
+        })
+    }
+}
+
 function reloadFuncionarios(){
     textoReload.innerText = "Atualizando"
     iconReload.style = "animation-name: girar; animation-duration: 2250ms; pointer-events: none"
