@@ -157,26 +157,34 @@ function carregarAlertas(alertas) {
     contadorAlerta.innerText = alertas.length;
 
     alertas.forEach((alerta, i) => {
+        let tituloAlerta = "";
         let corAlerta = "";
         switch (alerta.nivel_alerta) {
             case 0:
-                corAlerta = "#319e41"; // verde
+                tituloAlerta = "Normal";
+                corAlerta = "#319e41"; // Verde
                 break;
             case 1:
-                corAlerta = "#91891b"; // amarelo
+                tituloAlerta = "Atenção";
+                corAlerta = "#ccc34d"; // Amarelo
                 break;
             case 2:
-                corAlerta = "#e64767"; // vermelho
+                tituloAlerta = "Cuidado";
+                corAlerta = "#f7ae04"; // Laranja
                 break;
+            case 3:
+                tituloAlerta = "Perigo";
+                corAlerta = "#f73504"; // Vermelho
         }
 
         quadroDeAlertas.innerHTML += `
         <li id="alerta${i}" style="background-color: ${corAlerta}">
+            <u><h5>${tituloAlerta}</h5></u>
             <span>
-                <h4>${alerta.descricao}</h4>
+                <p>${alerta.descricao}</p>
                 <i onclick="expandirAlerta(${i})" id="iconAlerta${i}" class="fa-solid fa-plus"></i>
             </span>
-            <p>${alerta.codigo}</p>
+            <p>Servidor: ${alerta.codigo}</p>
         </li>`;
     });
 
@@ -226,9 +234,6 @@ function atualizarAlertas() {
         }, 500);
     }
 }
-
-// Restante do código permanece inalterado...
-
 
 var quadroAberto = false
 function quadroAlertas(){
