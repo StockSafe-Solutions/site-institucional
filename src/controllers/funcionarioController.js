@@ -119,16 +119,14 @@ function terminarCadastro(req, res){
             res.json(resultado)
         }
     ).catch(
-        function (resultado) {
-            res.json(resultado);
-        }).catch(
         function (erro) {
             console.log(erro);
             console.log(
-                "\n Houve um erro ao atualizar os dados! Erro: ", erro.sqlMessage
+                "\n Houve um erro ao realizar o cadastro! Erro: ", erro.sqlMessage
             );
             res.status(500).json(erro.sqlMessage)
-    });
+        }
+    );
 }
 
 function cadastrar(req, res) {

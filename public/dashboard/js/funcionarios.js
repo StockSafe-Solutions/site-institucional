@@ -94,6 +94,60 @@ function semiCadastrar(){
     }
 }
 
+function terminarCadastro(){
+    var idVar = inpId.value;
+    var nomeVar = inpNome.value;
+    var dataVar = inpDate.value;
+    var senhaVar = inpSenha.value;
+    
+    var validacoes = true;
+    
+    if(idVar == undefined){
+        console.log("Id vazio");
+        validacoes = false;
+    }
+    if(nomeVar == undefined){
+        console.log("Nome vazio");
+        validacoes = false;
+    }
+    if(nomeVar.length > 125){
+        validacoes = false;
+        console.log("O nome deve ter no máximo 125 caracteres");
+    }
+    if(dataVar == undefined){
+        console.log("Data vazia");
+        validacoes = false;
+    }
+    if(senhaVar == undefined){
+        console.log("Senha vazio");
+        validacoes = false;
+    }
+    if(senhaVar.length > 20){
+        validacoes = false;
+        console.log("A senha deve ter no máximo 20 caracteres.");
+    }
+    if(validacoes == false){
+        console.log("PRESTA ATENÇÃO")
+    }else{
+        fetch("/funcionario/terminarCadastro/"+idVar,{
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                idServer:idVar,
+                nomeServer: nomeVar,
+                dataServer: dataVar,
+                senhaServer: senhaVar,
+            }),
+        }).then(function(resposta){
+            console.log("resposta: ", resposta);
+        }).catch(function (resposta){
+            console.log(`#ERRO: ${resposta}`);
+        })
+    }
+}
+
 function reloadFuncionarios(){
     textoReload.innerText = "Atualizando"
     iconReload.style = "animation-name: girar; animation-duration: 2250ms; pointer-events: none"

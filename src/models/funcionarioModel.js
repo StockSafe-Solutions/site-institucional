@@ -94,7 +94,7 @@ function enviarEmail(email, funcao) {
 function terminarCadastro(id, nome, dataNascimeto, senha){
     var instrucao = `
     UPDATE tb_funcionario SET nome = '${nome}', data_nascimento = '${dataNascimeto}',
-        senha = ${senha}
+        senha = '${senha}'
         WHERE id_funcionario = ${id};`;
 console.log("Executando a instrução SQL: \n" + instrucao);
 return database.executar(instrucao);
