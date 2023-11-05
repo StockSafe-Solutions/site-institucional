@@ -82,8 +82,8 @@ function enviarEmail(email, funcao) {
   });
 
   var instrucao = `
-    INSERT INTO tb_funcionario
-    VALUES (null,'${funcao}','${email}')`;
+    INSERT INTO tb_funcionario(email, funcao)
+    VALUES ('${funcao}','${email}')`;
   console.log("Executando a instrução SQL: \n" + instrucao);
   return database.executar(instrucao);
 }
