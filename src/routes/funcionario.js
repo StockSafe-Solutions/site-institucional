@@ -19,6 +19,10 @@ router.post("/cadastrar", function (req, res) {
     funcionarioController.cadastrar(req, res);
 });
 
+router.post("/enviarEmail", function(req, res){
+    funcionarioController.enviarEmail(req,res)
+});
+
 router.post('/enviarFoto/:idUsuario', upload.single('foto'), (req, res) => {
     funcionarioController.enviarFoto(req, res);
 });

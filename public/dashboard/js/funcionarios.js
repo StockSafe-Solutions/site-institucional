@@ -65,11 +65,7 @@ function semiCadastrar(){
         textoErro += "Email inválido.";
     }
     if(validacoes==false){
-        Swal.fire({
-            title: "Campos inválidos!",
-            text: textoErro,
-            icon: "error"
-         })
+       console.log("Presta atenção")
     }else{
         fetch("/funcionario/enviarEmail",{
             method: "POST",
@@ -90,6 +86,7 @@ function semiCadastrar(){
             }
             else {
                 console.log("não ok")
+                console.log(`#ERRO: ${resposta}`);
               }
         }).catch(function (resposta){
             console.log(`#ERRO: ${resposta}`);
