@@ -23,6 +23,10 @@ router.post("/enviarEmail", function(req, res){
     funcionarioController.enviarEmail(req,res)
 });
 
+router.put('/terminarCadastro/:idUsuario', function (req, res) {
+    funcionarioController.terminarCadastro(req, res);
+});
+
 router.post('/enviarFoto/:idUsuario', upload.single('foto'), (req, res) => {
     funcionarioController.enviarFoto(req, res);
 });
