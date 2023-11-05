@@ -185,6 +185,7 @@ function carregarAlertas(alertas) {
                 <i onclick="expandirAlerta(${i})" id="iconAlerta${i}" class="fa-solid fa-plus"></i>
             </span>
             <p>Servidor: ${alerta.codigo}</p>
+            <p>Horário: ${formatarDataHora(alerta.data_hora)}</p>
         </li>`;
     });
 
@@ -268,4 +269,18 @@ function expandirAlerta(id){
             icon.style = ""
         },500)
     }
+}
+
+function formatarDataHora(dataHoraString) {
+    const dataHora = new Date(dataHoraString);
+    const formatarNumero = (numero) => (numero < 10 ? `0${numero}` : numero);
+
+    const dia = formatarNumero(dataHora.getDate());
+    const mes = formatarNumero(dataHora.getMonth() + 1);
+    const ano = dataHora.getFullYear().toString().slice(-2);
+    const hora = formatarNumero(dataHora.getHours());
+    const minutos = formatarNumero(dataHora.getMinutes());
+    const segundos = formatarNumero(dataHora.getSeconds());
+
+    return `${dia}/${mes}/${ano} ${hora}:${minutos}:${segundos}`;
 }
