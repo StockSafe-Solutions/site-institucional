@@ -70,7 +70,10 @@ function enviarEmail(email, funcao) {
     from: "stephany.justino@sptech.school",
     to: email,
     subject: "Enviado email com node js. TESTE ",
-    text: `Olá sua função ${funcao}`,
+    text: `
+    Seja bem - vindo. 
+    http://localhost:3333/dashboard/testeFormColaborador.html
+ `,
   };
 
   transporter.sendMail(mailOptions, function (error, info) {
@@ -88,6 +91,15 @@ function enviarEmail(email, funcao) {
   return database.executar(instrucao);
 }
 
+function terminarCadastro(id, nome, dataNascimeto, senha){
+    var instrucao = `
+    UPDATE tb_funcionario SET nome = '${nome}', data_nascimento = '${dataNascimeto}',
+        senha = ${senha}
+        WHERE id_funcionario = ${id};`;
+console.log("Executando a instrução SQL: \n" + instrucao);
+return database.executar(instrucao);
+}
+
 module.exports = {
   listar,
   selecionar,
@@ -97,4 +109,5 @@ module.exports = {
   alterar,
   alterarSenha,
   enviarEmail,
+  terminarCadastro
 };
