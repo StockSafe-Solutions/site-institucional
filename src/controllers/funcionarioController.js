@@ -107,6 +107,30 @@ function enviarEmail(req, res){
     }
 }
 
+function terminarCadastro(req, res){
+    var id = req.params.idFuncionario;
+    var nome = req.body.nomeServer;
+    var dataNascimeto = req.body.dataServer;
+    var senha = req.body.senhaServer;
+
+    funcionarioModel.terminarCadastro(id, nome, dataNascimeto, senha)
+    .then(
+        function (resultado){
+            res.json(resultado)
+        }
+    ).catch(
+        function (resultado) {
+            res.json(resultado);
+        }).catch(
+        function (erro) {
+            console.log(erro);
+            console.log(
+                "\n Houve um erro ao atualizar os dados! Erro: ", erro.sqlMessage
+            );
+            res.status(500).json(erro.sqlMessage)
+    });
+}
+
 function cadastrar(req, res) {
     var nome = req.body.nomeServer;
     var funcao = req.body.funcaoServer;
@@ -190,5 +214,6 @@ module.exports = {
     enviarFoto,
     alterar,
     alterarSenha,
-    enviarEmail
+    enviarEmail,
+    terminarCadastro
 }
