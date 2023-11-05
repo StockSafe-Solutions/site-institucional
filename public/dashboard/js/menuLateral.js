@@ -178,15 +178,25 @@ function carregarAlertas(alertas) {
         }
 
         quadroDeAlertas.innerHTML += `
-        <li id="alerta${i}" style="background-color: ${corAlerta}">
-            <u><h5>${tituloAlerta}</h5></u>
+        <li id="alerta${alerta.id_alerta}" style="background-color: ${corAlerta}">
+            <u>
+                <h5 
+                style="cursor: pointer"  
+                onclick="marcarVisualizado(${alerta.id_alerta})">
+                    ${tituloAlerta}
+                </h5>
+            </u>
             <span>
                 <p>${alerta.descricao}</p>
-                <i onclick="expandirAlerta(${i})" id="iconAlerta${i}" class="fa-solid fa-plus"></i>
+                <i onclick="expandirAlerta(${alerta.id_alerta})" 
+                    id="iconAlerta${alerta.id_alerta}" 
+                    class="fa-solid fa-plus">
+                </i>
             </span>
             <p>Servidor: ${alerta.codigo}</p>
             <p>Horário: ${formatarDataHora(alerta.data_hora)}</p>
         </li>`;
+
     });
 
     if (alertas.length === 0) {
@@ -268,6 +278,34 @@ function expandirAlerta(id){
             icon.className = "fa-solid fa-plus"
             icon.style = ""
         },500)
+    }
+}
+
+function marcarVisualizado(id) {
+
+    console.log("Opa, notificação clicada!")
+
+    var idAlerta = id;
+
+    fetch(`alerta/visualizarAlerta/${idAlerta}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(function (resposta) {
+        if (resposta.ok) {
+            console.log("Visualização alterada!")
+        }
+        else {
+            console.log("Houve um erro ao alterar visualização")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+    })
+
+    var alertaElement = document.getElementById(`alerta${idAlerta}`);
+    if (alertaElement) {
+        alertaElement.style.display = 'none';
     }
 }
 
