@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Fontes -->
+    <script src="https://kit.fontawesome.com/2d69d246f0.js" crossorigin="anonymous"></script>
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/2d69d246f0.js" crossorigin="anonymous"></script>
+    
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="../css/templateStocksafe.min.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/servidores.css">
+
+    <!-- Scripts -->
+    <script src="js/sessao.js"></script>
+    <script src="js/menuLateral.js"></script>
+    <script src="js/servidores.js"></script>
+    <script src="js/servidoresModals.js"></script>
+    <script src="js/dashboard.js"></script>
+
+    <!-- Icone -->
+    <link rel="icon" href="../assets/icon/logo.ico" />
+
+    <title>Stock Safe - Servidores</title>
+</head>
+
+<body id="page-top" onload="carregarMenu('servs'), reloadServidores()">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+        <ul id="accordionSidebar"></ul>
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+            <!-- Main Content -->
+            <div id="content">
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+                    <header class="header-servidores">
+                        <h3 class="nomePagina">Servidores</h3>
+                        <span>
+                            <span>
+                                <p id="textoReload"></p>
+                                <i class="fa-solid fa-arrows-rotate" id="iconReload"></i>
+                            </span>
+
+                            <div id="containerAlertas"></div>
+                            <a href="https://github.com/StockSafe-Solutions/CLI-Java/releases" target="_blank">
+                                <button>Baixar Monitor de Recursos</button>
+                            </a>
+                            <button onclick="abrirModal('cad')">Adicionar novo</button>
+                            <span>
+                                <input type="text" id="iptPesquisa" placeholder="Pesquisar por código"
+                                onkeyup="pesquisarServidores()">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </span>
+                        </span>
+                    </header>
+                    <ul id="container-servidores"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="containerModal">
+        <div class="modalServ" id="modalCadastro">
+            <header>
+                <h3 class="nomePagina">Cadastrando novo servidor</h3>
+                <i class="fa-solid fa-x" onclick="fecharModal('cad')"></i>
+            </header>
+            <span>
+                <input type="text" disabled="true" id="iptCodigo">
+                <button id="btnRegenerarCodigo" onclick="gerarCodigo()">
+                    <p>Gerar outro código</p>
+                    <i class="fa-solid fa-rotate"></i>
+                </button>
+            </span>
+            <button id="btnCadastrar" onclick="cadastrarServidor()">Cadastrar</button>
+        </div>
+
+        <div id="modalDashboard" class="modalServ">
+            <i class="fa-solid fa-x" onclick="fecharModal('dash')"></i>
+            <iframe id="frameDashboard" frameborder="0"></iframe>
+        </div>
+    </div>
+</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
