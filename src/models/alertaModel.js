@@ -8,6 +8,13 @@ function listarAlertas(){
     return database.executar(instrucao);
 }
 
+function visualizarAlerta(id){
+    var instrucao = `UPDATE tb_alerta SET visualizado = 1 WHERE id_alerta = ${id}`
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
-    listarAlertas
+    listarAlertas,
+    visualizarAlerta
 }
