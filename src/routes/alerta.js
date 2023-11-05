@@ -7,7 +7,8 @@ router.get("/listarAlertas", function(req,res){
     alertaController.listarAlertas(req, res);
 })
 
-router.put("/visualizarAlerta/:id", function(req, res){
+router.put("/visualizarAlerta/:idAlerta", function(req, res){
+    console.log("Rota visualizarAlerta alcançada!");
     alertaController.visualizarAlerta(req,res);
 })
 

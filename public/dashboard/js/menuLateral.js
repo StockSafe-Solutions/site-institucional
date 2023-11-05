@@ -182,7 +182,7 @@ function carregarAlertas(alertas) {
             <u>
                 <h5 
                 style="cursor: pointer"  
-                onclick="marcarVisualizado(${alerta.id_alerta})">
+                onclick="visualizarAlerta(${alerta.id_alerta})">
                     ${tituloAlerta}
                 </h5>
             </u>
@@ -281,33 +281,63 @@ function expandirAlerta(id){
     }
 }
 
-function marcarVisualizado(id) {
+function visualizarAlerta(id) {
 
     console.log("Opa, notificação clicada!")
 
     var idAlerta = id;
+    console.log(idAlerta);
 
     fetch(`alerta/visualizarAlerta/${idAlerta}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
-        }
+        },
     }).then(function (resposta) {
         if (resposta.ok) {
-            console.log("Visualização alterada!")
-        }
-        else {
-            console.log("Houve um erro ao alterar visualização")
+            console.log("Visualização alterada!");
+        } else {
+            console.warn(`Erro: ${resposta.status} - ${resposta.statusText}`);
         }
     }).catch(function (erro) {
-        console.log(erro);
-    })
+        console.error(erro);
+    });
+    
 
     var alertaElement = document.getElementById(`alerta${idAlerta}`);
     if (alertaElement) {
         alertaElement.style.display = 'none';
     }
 }
+
+// function visualizarAlerta(idAlerta) {
+//     const url = `http://localhost:3333/dashboard/alerta/visualizarAlerta/${idAlerta}`;
+
+//     fetch(url, {
+//         method: 'PUT',
+//         headers: {
+//             'Content-Type': 'application/json',
+//         },
+//     })
+//     .then(response => {
+//         if (response.ok) {
+//             console.log('Visualização alterada com sucesso!');
+//         } else {
+//             console.error('Houve um erro ao alterar a visualização.');
+//         }
+//     })
+//     .catch(error => {
+//         console.error('Erro na requisição:', error);
+//     })
+//     .finally(() => {
+//         // Após a requisição, oculte a notificação
+//         const alertaElement = document.getElementById(`alerta${idAlerta}`);
+//         if (alertaElement) {
+//             alertaElement.style.display = 'none';
+//         }
+//     });
+// }
+
 
 function formatarDataHora(dataHoraString) {
     const dataHora = new Date(dataHoraString);
