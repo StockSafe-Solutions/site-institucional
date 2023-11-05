@@ -1,4 +1,5 @@
 var database = require("../database/config")
+var nodemailer = require('nodemailer');
 
 function listar(){
     var instrucao = `SELECT nome, email, senha, funcao, DATE_FORMAT(data_nascimento, '%d/%m/%Y') as dtNasc
@@ -56,6 +57,38 @@ function alterarSenha(senha, idUsuario) {
     return database.executar(instrucao);
 }
 
+function enviarEmail(email, funcao){
+    var transporter = nodemailer.createTransport({
+        service: 'outlook',
+        auth: {
+          user: 'stephany.justino@sptech.school',
+          pass: '#Gf24007915890'
+        }
+      });
+      
+      var mailOptions = {
+        from: 'stephany.justino@sptech.school',
+        to: email,
+        subject: 'Enviado email com node js. TESTE ',
+        text: `Olá sua função ${funcao}`
+      };
+      
+      transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+          console.log('Deu algo de errado! 🤦🏽‍♂️: '+error);
+        } else {
+          console.log('Email foi enviado com sucesso! 🩵: ' + info.response);
+        }
+      });
+}
+
+function cadastrarParte(email, funcao){
+    var instrucao = `
+    INSERT INTO tb_funcionario
+    VALUES (null,'${funcao}','${email}')`
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
 module.exports = {
     listar,
     selecionar,
@@ -63,5 +96,7 @@ module.exports = {
     cadastrar,
     enviarFoto,
     alterar,
-    alterarSenha
+    alterarSenha,
+    enviarEmail,
+    cadastrarParte
 };

@@ -83,6 +83,29 @@ function autenticar(req, res) {
             )
     }
 }
+function enviarEmail(req, res){
+    var email = req.body.emailServer;
+    var funcao = req.body.funcaoServer;
+    if(email==undefined){
+        res.status(400).send("Email está vazio, digite um email do colaborador");
+    }else if(funcao == undefined){
+        res.status(400).send("O cargo está vazio, digite o cargo do colaborador")
+    }else{
+        funcionarioModel.enviarEmail(email, funcao).then(
+            function(resultado){
+                res.json(resultado)
+            }
+        ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\n Houve um erro ao realizar o cadastro! Erro: ", erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage)
+                }
+        )
+    }
+}
 
 function cadastrar(req, res) {
     var nome = req.body.nomeServer;
@@ -166,5 +189,6 @@ module.exports = {
     cadastrar,
     enviarFoto,
     alterar,
-    alterarSenha
+    alterarSenha,
+    enviarEmail
 }
