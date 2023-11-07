@@ -11,6 +11,8 @@ function carregarMenu(pagina, geral, codServidor) {
     destFuncs = ""
     destPerf = ""
     destConfig = ""
+    destEspecifica = ""
+    destExemplo = ""
 
     switch (pagina) {
         case "geral":
@@ -27,6 +29,12 @@ function carregarMenu(pagina, geral, codServidor) {
             break;
         case "config":
             destConfig = " active"
+            break;
+        case "especifica":
+            destEspecifica = " active"
+            break;
+        case "exemplo":
+            destExemplo = " active" // SE O NOME DA PÁGINA FOR "exemplo", OS LINKS DE EXEMPLO ESTARÃO ATIVOS
             break;
     }
 
@@ -130,7 +138,7 @@ function carregarMenu(pagina, geral, codServidor) {
             <hr class="sidebar-divider my-0">
         
             <!-- Dashboard -->
-            <li class="nav-item${destGeral}">
+            <li class="nav-item${destEspecifica}">
                 <a class="nav-link" href="${saida}index.html?${codServidor}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Visão geral</span></a>
@@ -140,16 +148,16 @@ function carregarMenu(pagina, geral, codServidor) {
             <!-- COLOCAR O codServidor COMO PARAMETRO GET NAS PAGINAS SE PRECISAR ->
 
             <!-- Exemplo -->
-            <li class="nav-item${destGeral}">
+            <li class="nav-item${destExemplo}">
                 <a class="nav-link" href="${pasta}base.html?${codServidor}">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <i class="fa-solid fa-question"></i>
                     <span>Exemplo 1</span></a>
             </li>
 
             <!-- Exemplo -->
-            <li class="nav-item${destGeral}">
+            <li class="nav-item${destExemplo}">
                 <a class="nav-link" href="${pasta}base.html?${codServidor}">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <i class="fa-solid fa-person-circle-question"></i>
                     <span>Exemplo 2</span></a>
             </li>
 
