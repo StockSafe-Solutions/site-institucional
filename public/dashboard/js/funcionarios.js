@@ -1,3 +1,5 @@
+const { text } = require("express");
+
 function listarFuncionarios() {
     fetch("/funcionario/listar", {
         method: "GET",
@@ -18,6 +20,27 @@ function listarFuncionarios() {
             })
         }
     }).catch(function (erro) {
+        console.log(erro);
+    })
+}
+
+function listarSolicitacoes(){
+    fetch("/funcionario/solicitacoesFuncionarios", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }). then(function(resposta){
+        if(resposta.ok){
+            resposta.json().then(json => {
+                criarLiFuncionario(json)
+            });
+        } else{
+            resposta.text().then(texto => {
+                console.warn(texto);
+            })
+        }
+    }).catch(function(erro){
         console.log(erro);
     })
 }
