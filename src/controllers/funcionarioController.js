@@ -134,7 +134,7 @@ function cadastrar(req, res) {
     var funcao = req.body.funcaoServer;
     var dataNasc = req.body.dataServer;
     var email = req.body.emailServer;
-    var senha = req.body.senhaServer
+    var senha = req.body.senhaServer;
 
     funcionarioModel.cadastrar(nome, funcao, dataNasc, email, senha)
         .then(

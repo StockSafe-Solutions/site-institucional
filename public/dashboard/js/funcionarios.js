@@ -52,21 +52,19 @@ function criarLiFuncionario(json) {
 
 function semiCadastrar(){
     var textoErro = "";
-    var validacoes = true;
     var email = inpEmail.value;
     var funcao = inpFuncao.value;
 
     if(email == undefined || funcao == undefined){
-        validacoes = false;
+       
         textoErro += "Campo inválido";
+        return 
     }
     if((email.indexOf("@") == -1)||(email.indexOf(".") == -1)){
-        validacoes = false;
         textoErro += "Email inválido.";
+        return
     }
-    if(validacoes==false){
-       console.log("Presta atenção")
-    }else{
+   
         fetch("/funcionario/enviarEmail",{
             method: "POST",
             headers: {
@@ -91,7 +89,6 @@ function semiCadastrar(){
         }).catch(function (resposta){
             console.log(`#ERRO: ${resposta}`);
         })
-    }
 }
 
 function terminarCadastro(){
