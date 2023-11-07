@@ -27,15 +27,8 @@ function visualizarAlerta(req, res) {
     
     console.log("Antes de chamar o model.visualizarAlerta");
     alertaModel.visualizarAlerta(id).then(
-        function (linhasAfetadas) {
-            console.log(`\n Linhas afetadas: ${linhasAfetadas}`);
-            if (linhasAfetadas > 0) {  
-                console.log("Visualização alterada!");
-                res.status(204).send();  
-            } else {
-                console.log("Alerta não encontrado.");
-                res.status(404).send();  
-            }
+        function () {
+            res.status(200).send();
         }).catch(
             function (erro) {
                 console.log(erro);
@@ -45,7 +38,6 @@ function visualizarAlerta(req, res) {
         );
     console.log("Depois de chamar o model.visualizarAlerta");
 }
-
 
 module.exports = {
     listarAlertas,
