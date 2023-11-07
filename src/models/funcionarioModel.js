@@ -123,6 +123,14 @@ function solicitacoesFuncionarios(){
   return database.executar(instrucao);
 }
 
+function deletarSolicitacoes(id){
+  const instrucao = `
+  DELETE FROM tb_funcionario WHERE id = ${id};
+  `;
+  console.log(`Executando a instrução SQL: \n ${instrucao}`);
+  return database.executar(instrucao);
+}
+
 module.exports = {
   listar,
   selecionar,
