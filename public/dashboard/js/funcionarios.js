@@ -129,7 +129,7 @@ function terminarCadastro(){
     if(validacoes == false){
         console.log("PRESTA ATENÇÃO")
     }else{
-        fetch("/funcionario/terminarCadastro/"+idVar,{
+        fetch(`/funcionario/terminarCadastro/${idVar}`,{
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",

@@ -153,14 +153,13 @@ function cadastrar(req, res) {
 }
 
 function alterar(req, res) {
-    var id = req.params.idFuncionario;
+    var id = req.params.idServer;
     
     var nome = req.body.nomeServer;
-    var funcao = req.body.funcaoServer;
     var data = req.body.dataServer;
-    var email = req.body.emailServer;
+    var senha = req.body.senhaServer;
 
-    funcionarioModel.alterar(id, nome, funcao, data, email)
+    funcionarioModel.alterar(id, nome, data, senha)
     .then(
         function (resultado) {
             res.json(resultado);

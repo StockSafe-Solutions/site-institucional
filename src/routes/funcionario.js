@@ -23,7 +23,7 @@ router.post("/enviarEmail", function(req, res){
     funcionarioController.enviarEmail(req,res)
 });
 
-router.put('/terminarCadastro/:idUsuario', function (req, res) {
+router.put('/terminarCadastro/:id', function (req, res) {
     funcionarioController.terminarCadastro(req, res);
 });
 
