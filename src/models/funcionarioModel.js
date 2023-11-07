@@ -69,11 +69,26 @@ function enviarEmail(email, funcao) {
   var mailOptions = {
     from: "stephany.justino@sptech.school",
     to: email,
-    subject: "Enviado email com node js. TESTE ",
+    subject: "Enviado email com node js. TESTE BONITO",
     text: `
     Seja bem - vindo. 
     http://localhost:3333/dashboard/testeFormColaborador.html
- `,
+     `,
+    html: `<!DOCTYPE html>
+          <html lang="pt-br">
+          <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <title>Seja bem - vindo</title>
+          </head>
+          <body>
+              <h1>Para acessar</h1>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, optio minus. Sed quas aliquam necessitatibus eius consequuntur. Quod aliquam magnam tempora neque earum consectetur est corporis, nihil, iusto ipsa culpa?</p>
+              <p>Email de login:${email}</p>
+              <p>Senha: urubu100</p>
+          </body>
+          </html>
+      `,
   };
 
   transporter.sendMail(mailOptions, function (error, info) {
@@ -86,18 +101,18 @@ function enviarEmail(email, funcao) {
 
   var instrucao = `
     INSERT INTO tb_funcionario(email, funcao, senha)
-    VALUES ('${funcao}','${email}', 'urubu100')`;
+    VALUES ('${email}','${funcao}', 'urubu100')`;
   console.log("Executando a instrução SQL: \n" + instrucao);
   return database.executar(instrucao);
 }
 
-function terminarCadastro(id, nome, dataNascimeto, senha){
-    var instrucao = `
+function terminarCadastro(id, nome, dataNascimeto, senha) {
+  var instrucao = `
     UPDATE tb_funcionario SET nome = '${nome}', data_nascimento = '${dataNascimeto}',
         senha = '${senha}'
         WHERE id_funcionario = ${id};`;
-console.log("Executando a instrução SQL: \n" + instrucao);
-return database.executar(instrucao);
+  console.log("Executando a instrução SQL: \n" + instrucao);
+  return database.executar(instrucao);
 }
 
 module.exports = {

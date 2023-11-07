@@ -89,6 +89,9 @@ function semiCadastrar(){
         }).catch(function (resposta){
             console.log(`#ERRO: ${resposta}`);
         })
+
+    inpEmail.value = "";
+    inpFuncao.value ="";
 }
 
 function terminarCadastro(){
@@ -143,6 +146,10 @@ function terminarCadastro(){
             console.log(`#ERRO: ${resposta}`);
         })
     }
+    inpId.value = "";
+    inpNome.value = "";
+    inpDate.value = "";
+    inpSenha.value = "";
 }
 
 function reloadFuncionarios(){
