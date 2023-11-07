@@ -61,10 +61,6 @@ function deletarSolicitacoes(id){
         })
 }
 
-function teste(){
-    console.log("TESTE RODOU")
-}
-
 function criarLiFuncionario(json, tipo) {
     let container = document.getElementById("container-funcionarios")
     container.innerHTML = ""
