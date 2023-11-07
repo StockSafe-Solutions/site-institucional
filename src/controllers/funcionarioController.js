@@ -108,11 +108,11 @@ function enviarEmail(req, res){
 }
 
 function terminarCadastro(req, res){
-    var id = req.params.idFuncionario;
-    var nome = req.body.nomeServer;
-    var dataNascimeto = req.body.dataServer;
-    var senha = req.body.senhaServer;
-
+    const id = req.body.idServer;
+    const nome = req.body.nomeServer;
+    const dataNascimeto = req.body.dataServer;
+    const senha = req.body.senhaServer;
+    console.log({id,params:req.params});
     funcionarioModel.terminarCadastro(id, nome, dataNascimeto, senha)
     .then(
         function (resultado){
