@@ -9,16 +9,18 @@ function carregarDados(){
         urlGraficos = "../dash/graficosGerais"
 
         nomePagina.innerText = "Dashboard - Visão Geral"
+        carregarMenu("geral",true)
     } else{
         urlKPIs = "../dash/kpiEspecifica/"+params
         urlGraficos = "../dash/graficosEspecificos/"+params
 
-        accordionSidebar.style = "display: none"
         nomePagina.innerText = "Dashboard - Servidor "+params
         reload_e_alertas.style = "left: -45px"
 
         iconKPI2.className = "fa-solid fa-arrow-right-arrow-left"
         nomeKPI2.innerText = "Taxa de transferência"
+        
+        carregarMenu("especifica",false,params)
     }
 
     fetch(urlKPIs, {

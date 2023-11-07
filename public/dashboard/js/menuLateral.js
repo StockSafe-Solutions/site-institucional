@@ -1,4 +1,4 @@
-function carregarMenu(pagina) {
+function carregarMenu(pagina, geral, codServidor) {
     jsonFunc = JSON.parse(sessionStorage.funcionario)
     nomeUsuario = jsonFunc.nome;
     fotoUsuario = jsonFunc.foto;
@@ -30,13 +30,9 @@ function carregarMenu(pagina) {
             break;
     }
 
-    var conteudo = `
+    let conteudoGeral = `
     <!-- Marca -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <!-- Carinha feliz -->
-        <!-- <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
-        </div> -->
         <div class="sidebar-brand-text mx-3">StockSafe</div>
     </a>
 
@@ -89,6 +85,59 @@ function carregarMenu(pagina) {
                 <a onclick="sair()">Sair</a>
             </p>
             </li>`
+
+        let pasta = ""
+        let saida = "../"
+        if(pagina == "especifica"){
+            pasta = "dashsEspecificas/"
+            saida = ""
+        }
+        //Como as dashs especificas estão em uma página separada da geral, devemos manipular os links
+        //da navbar de acordo para não dar bug
+
+        let conteudoEspecifica = `
+            <!-- Marca -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <div class="sidebar-brand-text mx-3 codServidorNavbar">Servidor ${codServidor}</div>
+            </a>
+        
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+        
+            <!-- Dashboard -->
+            <li class="nav-item${destGeral}">
+                <a class="nav-link" href="${saida}index.html?${codServidor}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Visão geral</span></a>
+            </li>
+            <!-- COPIAR ESSE <li> PARA CRIAR MAIS LINKS
+            PARA MUDAR O ÍCONE, MUDAR A CLASSE DO FONTAWESOME ->
+            <!-- COLOCAR O codServidor COMO PARAMETRO GET NAS PAGINAS SE PRECISAR ->
+
+            <!-- Exemplo -->
+            <li class="nav-item${destGeral}">
+                <a class="nav-link" href="${pasta}base.html?${codServidor}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Exemplo 1</span></a>
+            </li>
+
+            <!-- Exemplo -->
+            <li class="nav-item${destGeral}">
+                <a class="nav-link" href="${pasta}base.html?${codServidor}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Exemplo 2</span></a>
+            </li>
+
+            <!-- Divisor -->
+            <hr class="sidebar-divider d-none d-md-block">`
+
+    let conteudo = null
+    if(geral){
+        conteudo = conteudoGeral
+    } else{
+        conteudo = conteudoEspecifica
+    }
+
     accordionSidebar.className = "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
     accordionSidebar.innerHTML = conteudo;
 
