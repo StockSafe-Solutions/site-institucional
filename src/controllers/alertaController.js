@@ -22,11 +22,11 @@ function listarAlertas(req, res) {
 }
 
 function visualizarAlerta(req, res) {
-    var idAlerta = req.params.idServer;
-    console.log(`ID do alerta: ${idAlerta}`);
+    var id = req.params.idAlerta;
+    console.log(`ID do alerta: ${id}`);
     
     console.log("Antes de chamar o model.visualizarAlerta");
-    alertaModel.visualizarAlerta(idAlerta).then(
+    alertaModel.visualizarAlerta(id).then(
         function (linhasAfetadas) {
             console.log(`\n Linhas afetadas: ${linhasAfetadas}`);
             if (linhasAfetadas > 0) {  
