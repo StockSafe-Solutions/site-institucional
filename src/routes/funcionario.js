@@ -27,6 +27,10 @@ router.put('/terminarCadastro/:id', function (req, res) {
     funcionarioController.terminarCadastro(req, res);
 });
 
+router.get('/solicitacoesFuncionarios', function(req, res){
+    funcionarioController.solicitacoesFuncionarios(req, res);
+})
+
 router.post('/enviarFoto/:idUsuario', upload.single('foto'), (req, res) => {
     funcionarioController.enviarFoto(req, res);
 });
