@@ -227,7 +227,20 @@ function enviarFoto(req, res) {
 }
 
 function deletarSolicitacoes(req, res){
-    
+    const id = req.body.idServer;
+    funcionarioModel.deletarSolicitacoes(id).then(
+        function(resultado){
+            res.json(resultado);
+        }
+    ).catch(
+        function(erro){
+            console.log(erro);
+            console.log(
+                "\n Houve um erro ao deletar! Erro: ", erro.sqlMessage
+            );
+            res.status(500).json(erro.sqlMessage)
+        }
+    )
 }
 
 module.exports = {
@@ -240,5 +253,6 @@ module.exports = {
     alterarSenha,
     enviarEmail,
     terminarCadastro,
-    solicitacoesFuncionarios
+    solicitacoesFuncionarios,
+    deletarSolicitacoes
 }
