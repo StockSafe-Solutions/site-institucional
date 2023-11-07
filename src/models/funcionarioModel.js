@@ -125,7 +125,7 @@ function solicitacoesFuncionarios(){
 
 function deletarSolicitacoes(id){
   const instrucao = `
-  DELETE FROM tb_funcionario WHERE id = ${id};
+  DELETE FROM tb_funcionario WHERE id_funcionario = ${id};
   `;
   console.log(`Executando a instrução SQL: \n ${instrucao}`);
   return database.executar(instrucao);

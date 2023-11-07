@@ -43,7 +43,7 @@ router.put('/alterarSenha/:idFuncionario', function (req, res) {
     funcionarioController.alterarSenha(req, res);
 });
 
-router.delete('deletarSolicitacoes/:idFuncionario', function(req, res){
+router.delete('/deletarSolicitacoes/:idFuncionario', function(req, res){
     funcionarioController.deletarSolicitacoes(req, res);
 })
 
