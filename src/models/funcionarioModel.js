@@ -132,5 +132,6 @@ module.exports = {
   alterar,
   alterarSenha,
   enviarEmail,
-  terminarCadastro
+  terminarCadastro,
+  solicitacoesFuncionarios,
 };
