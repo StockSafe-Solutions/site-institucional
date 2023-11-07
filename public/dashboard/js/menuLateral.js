@@ -161,6 +161,7 @@ function carregarMenu(pagina, geral, codServidor) {
         conteudo = conteudoGeral
     } else{
         conteudo = conteudoEspecifica
+        reload_e_alertas.style = "left: -45px" // Adicionando espaço para que o mural de notifics. não fique embaixo do X
     }
 
     accordionSidebar.className = "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
