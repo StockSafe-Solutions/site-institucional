@@ -192,6 +192,29 @@ function alterarSenha(req, res) {
         );
 }
 
+
+function solicitacoesFuncionarios(req, res) {
+    funcionarioModel.solicitacoesFuncionarios().then(
+       function(resultadoAutenticar){
+        console.log(`Resultados encontrados: ${solicitacoesFuncionarios.length}`);
+        console.log(`Resultados: ${JSON.stringify(solicitacoesFuncionarios)}`);
+
+        if(solicitacoesFuncionarios.length >0){
+            console.log(resultadoAutenticar);
+            res.json(resultadoAutenticar);
+        }else{
+            res.send(204).send();
+        }
+       }
+    ).catch(
+        function (erro){
+            console.log(erro);
+            console.log("\n Houve um erro ao carregar funcionários! Erro: ", erro.sqlMessage);
+            res.status(500), json(erro.sqlMessage);
+        }
+    )
+}
+
 function enviarFoto(req, res) {
     const imagem = req.file.filename;
     const idUsuario = req.params.idUsuario
@@ -212,5 +235,6 @@ module.exports = {
     alterar,
     alterarSenha,
     enviarEmail,
-    terminarCadastro
+    terminarCadastro,
+    solicitacoesFuncionarios
 }
