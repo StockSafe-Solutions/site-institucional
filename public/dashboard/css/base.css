@@ -111,7 +111,6 @@ body > div > *{
 #quadroDeAlertas i{
     animation-duration: 500ms;
     animation-iteration-count: 1;
-    cursor: pointer;
 }
 @keyframes rodar{
     0% {transform: rotate(0deg);}
