@@ -22,7 +22,7 @@ function listarAlertas(req, res) {
 }
 
 function visualizarAlerta(req, res) {
-    var id = req.params.idAlerta;
+    var id = req.params.id;
     console.log(`ID do alerta: ${id}`);
     
     console.log("Antes de chamar o model.visualizarAlerta");
@@ -44,7 +44,7 @@ function visualizarAlerta(req, res) {
             }
         );
     console.log("Depois de chamar o model.visualizarAlerta");
-} 
+}
 
 
 module.exports = {

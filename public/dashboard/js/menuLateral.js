@@ -98,6 +98,8 @@ function carregarMenu(pagina) {
     },sessionStorage.intervalo_atualizacao)
 }
 
+// ========================================================== ALERTAS
+
 function criarContainerAlertas() {
     containerAlertas.innerHTML = `
     <p id="contadorAlerta" onclick="quadroAlertas()"></p>
@@ -134,18 +136,13 @@ function carregarAlertas(alertas) {
         quadroDeAlertas.innerHTML += `
         <li id="alerta${alerta.id_alerta}" style="background-color: ${corAlerta}">
             <u>
-                <h5 
-                style="cursor: pointer"  
-                onclick="visualizarAlerta(${alerta.id_alerta})">
+                <h5 style="cursor: pointer" onclick="visualizarAlerta(${alerta.id_alerta})">
                     ${tituloAlerta}
                 </h5>
             </u>
             <span>
                 <p>${alerta.descricao}</p>
-                <i onclick="expandirAlerta(${alerta.id_alerta})" 
-                    id="iconAlerta${alerta.id_alerta}" 
-                    class="fa-solid fa-plus">
-                </i>
+                <i onclick="expandirAlerta(${alerta.id_alerta})" id="iconAlerta${alerta.id_alerta}" class="fa-solid fa-plus"></i>
             </span>
             <p>Servidor: ${alerta.codigo}</p>
             <p>Horário: ${formatarDataHora(alerta.data_hora)}</p>
@@ -237,61 +234,36 @@ function expandirAlerta(id){
 
 function visualizarAlerta(id) {
 
+    alertaAlvo = document.getElementById(`alerta${id}`);
+
     console.log("Opa, notificação clicada!")
 
-    var idAlerta = id;
-    console.log(idAlerta);
+    console.log(id);
 
-    fetch(`alerta/visualizarAlerta/${idAlerta}`, {
+    fetch(`alerta/visualizarAlerta/${id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
         },
-    }).then(function (resposta) {
+    })
+    .then(function (resposta) {
         if (resposta.ok) {
             console.log("Visualização alterada!");
         } else {
             console.warn(`Erro: ${resposta.status} - ${resposta.statusText}`);
         }
-    }).catch(function (erro) {
+    })
+    .catch(function (erro) {
         console.error(erro);
-    });
-    
-
-    var alertaElement = document.getElementById(`alerta${idAlerta}`);
-    if (alertaElement) {
-        alertaElement.style.display = 'none';
-    }
+    })
+    .finally(function (){
+        if (alertaAlvo) {
+            alertaAlvo.style.display = 'none';
+        }
+    });    
 }
 
-// function visualizarAlerta(idAlerta) {
-//     const url = `http://localhost:3333/dashboard/alerta/visualizarAlerta/${idAlerta}`;
-
-//     fetch(url, {
-//         method: 'PUT',
-//         headers: {
-//             'Content-Type': 'application/json',
-//         },
-//     })
-//     .then(response => {
-//         if (response.ok) {
-//             console.log('Visualização alterada com sucesso!');
-//         } else {
-//             console.error('Houve um erro ao alterar a visualização.');
-//         }
-//     })
-//     .catch(error => {
-//         console.error('Erro na requisição:', error);
-//     })
-//     .finally(() => {
-//         // Após a requisição, oculte a notificação
-//         const alertaElement = document.getElementById(`alerta${idAlerta}`);
-//         if (alertaElement) {
-//             alertaElement.style.display = 'none';
-//         }
-//     });
-// }
-
+// ========================================================================
 
 function formatarDataHora(dataHoraString) {
     const dataHora = new Date(dataHoraString);
