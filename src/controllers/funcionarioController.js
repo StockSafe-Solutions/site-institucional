@@ -226,6 +226,10 @@ function enviarFoto(req, res) {
         });
 }
 
+function deletarSolicitacoes(req, res){
+    
+}
+
 module.exports = {
     listar,
     selecionar,
