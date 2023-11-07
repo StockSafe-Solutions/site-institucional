@@ -201,3 +201,29 @@ function reloadFuncionarios(){
     }
 }
 setInterval(reloadFuncionarios,sessionStorage.intervalo_atualizacao)
+
+function reloadSolicitacoes(){
+    textoReload.innerText = "Atualizando"
+    iconReload.style = "animation-name: girar; animation-duration: 2250ms; pointer-events: none"
+    let i = 0
+    let animacaoTexto = setInterval(()=>{
+        if(i == 2){
+            clearInterval(animacaoTexto)
+        }
+        textoReload.innerText += "."
+        i++
+    },1000)
+
+    setTimeout(()=>{
+        let now = new Date()
+        textoReload.innerText = "Atualizado pela ultima vez às "+now.getHours()+":"+
+        (String(now.getMinutes()).length == 1 ? "0"+now.getMinutes() : now.getMinutes())
+        iconReload.style = ""
+    },4500)
+
+    if(iptPesquisa.value == ""){
+        listarSolicitacoes();
+    } else{
+        listarSolicitacoes();
+    }
+}setInterval(reloadSolicitacoes,sessionStorage.intervalo_atualizacao);
