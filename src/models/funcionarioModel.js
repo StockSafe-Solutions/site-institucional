@@ -115,6 +115,14 @@ function terminarCadastro(id, nome, dataNascimeto, senha) {
   return database.executar(instrucao);
 }
 
+function solicitacoesFuncionarios(){
+  const instrucao = `
+    SELECT * FROM tb_funcionario WHERE nome IS NULL;
+  `;
+  console.log(`Executanto a instrução SQL: \n ${instrucao}`);
+  return database.executar(instrucao);
+}
+
 module.exports = {
   listar,
   selecionar,
