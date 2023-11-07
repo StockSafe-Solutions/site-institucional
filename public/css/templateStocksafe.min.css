@@ -11656,9 +11656,8 @@ a:focus {
     font-weight: 800;
     padding: 1.5rem 1rem;
     text-align: center;
-    text-transform: uppercase;
-    letter-spacing: .05rem;
-    z-index: 1
+    z-index: 1;
+    line-height: 1;
 }
 
 .sidebar .sidebar-brand .sidebar-brand-icon i {

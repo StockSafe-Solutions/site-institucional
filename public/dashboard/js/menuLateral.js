@@ -1,4 +1,4 @@
-function carregarMenu(pagina) {
+function carregarMenu(pagina, geral, codServidor) {
     jsonFunc = JSON.parse(sessionStorage.funcionario)
     nomeUsuario = jsonFunc.nome;
     fotoUsuario = jsonFunc.foto;
@@ -30,13 +30,9 @@ function carregarMenu(pagina) {
             break;
     }
 
-    var conteudo = `
+    let conteudoGeral = `
     <!-- Marca -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <!-- Carinha feliz -->
-        <!-- <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
-        </div> -->
         <div class="sidebar-brand-text mx-3">StockSafe</div>
     </a>
 
@@ -89,6 +85,60 @@ function carregarMenu(pagina) {
                 <a onclick="sair()">Sair</a>
             </p>
             </li>`
+
+        let pasta = ""
+        let saida = "../"
+        if(pagina == "especifica"){
+            pasta = "dashsEspecificas/"
+            saida = ""
+        }
+        //Como as dashs especificas estão em uma página separada da geral, devemos manipular os links
+        //da navbar de acordo para não dar bug
+
+        let conteudoEspecifica = `
+            <!-- Marca -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <div class="sidebar-brand-text mx-3 codServidorNavbar">Servidor ${codServidor}</div>
+            </a>
+        
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+        
+            <!-- Dashboard -->
+            <li class="nav-item${destGeral}">
+                <a class="nav-link" href="${saida}index.html?${codServidor}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Visão geral</span></a>
+            </li>
+            <!-- COPIAR ESSE <li> PARA CRIAR MAIS LINKS
+            PARA MUDAR O ÍCONE, MUDAR A CLASSE DO FONTAWESOME ->
+            <!-- COLOCAR O codServidor COMO PARAMETRO GET NAS PAGINAS SE PRECISAR ->
+
+            <!-- Exemplo -->
+            <li class="nav-item${destGeral}">
+                <a class="nav-link" href="${pasta}base.html?${codServidor}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Exemplo 1</span></a>
+            </li>
+
+            <!-- Exemplo -->
+            <li class="nav-item${destGeral}">
+                <a class="nav-link" href="${pasta}base.html?${codServidor}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Exemplo 2</span></a>
+            </li>
+
+            <!-- Divisor -->
+            <hr class="sidebar-divider d-none d-md-block">`
+
+    let conteudo = null
+    if(geral){
+        conteudo = conteudoGeral
+    } else{
+        conteudo = conteudoEspecifica
+        reload_e_alertas.style = "left: -45px" // Adicionando espaço para que o mural de notifics. não fique embaixo do X
+    }
+
     accordionSidebar.className = "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
     accordionSidebar.innerHTML = conteudo;
 
@@ -98,80 +148,105 @@ function carregarMenu(pagina) {
     },sessionStorage.intervalo_atualizacao)
 }
 
-function criarContainerAlertas(){
+function criarContainerAlertas() {
     containerAlertas.innerHTML = `
     <p id="contadorAlerta" onclick="quadroAlertas()"></p>
     <i class="fa-solid fa-bell" onclick="quadroAlertas()" id="iconQuadroAlertas"></i>
-    <ul id="quadroDeAlertas"></ul>`
-    atualizarAlertas()
+    <ul id="quadroDeAlertas"></ul>`;
+    atualizarAlertas();
 }
 
-function carregarAlertas(){
-    quadroDeAlertas.innerHTML = ""
-    alertas = [
-        {
-            titulo: "Perigo",
-            tipo: "vermelho",
-            text: "O servidor A02E0 estáadipisicing elit. Est libero facilis debitis assumenda rerum inventore earum repellat, ut porro iste eligendi culpa impedit temporibus facere ipsa adipisci aut nulla in."
-        },
-        {
-            titulo: "Sucesso",
-            tipo: "verde",
-            text: "adipisicing elit. Est libero facilis debitis assumenda rerum inventore earum repellat, ut porro iste eligendi culpa impedit temporibus facere ipsa adipisci aut nulla in."
-        },
-        {
-            titulo: "Cuidado",
-            tipo: "amarelo",
-            text: "assumenda rerum inventore earum repellat"
-        }
-    ]
-    // alertas = []
+function carregarAlertas(alertas) {
+    quadroDeAlertas.innerHTML = "";
+    contadorAlerta.innerText = alertas.length;
 
-    contadorAlerta.innerText = alertas.length
-    corAlerta = ""
-    i = 0
-    while(i < alertas.length){
-        switch(alertas[i].tipo){
-            case "vermelho":
-                corAlerta = "#e64767"
-                break
-            case "amarelo":
-                corAlerta = "#91891b"
-                break
-            case "verde":
-                corAlerta = "#319e41"
-                break
+    alertas.forEach((alerta, i) => {
+        let tituloAlerta = "";
+        let corAlerta = "";
+        switch (alerta.nivel_alerta) {
+            case 0:
+                tituloAlerta = "Normal";
+                corAlerta = "#319e41"; // Verde
+                break;
+            case 1:
+                tituloAlerta = "Atenção";
+                corAlerta = "#ccc34d"; // Amarelo
+                break;
+            case 2:
+                tituloAlerta = "Cuidado";
+                corAlerta = "#f7ae04"; // Laranja
+                break;
+            case 3:
+                tituloAlerta = "Perigo";
+                corAlerta = "#f73504"; // Vermelho
         }
 
         quadroDeAlertas.innerHTML += `
-        <li id="alerta${i}" style="background-color: ${corAlerta}">
+        <li id="alerta${alerta.id_alerta}" style="background-color: ${corAlerta}">
+            <u>
+                <h5 
+                style="cursor: pointer"  
+                onclick="visualizarAlerta(${alerta.id_alerta})">
+                    ${tituloAlerta}
+                </h5>
+            </u>
             <span>
-                <h4>${alertas[i].titulo}</h4>
-                <i onclick="expandirAlerta(${i})" id="iconAlerta${i}" class="fa-solid fa-plus"></i>
+                <p>${alerta.descricao}</p>
+                <i onclick="expandirAlerta(${alerta.id_alerta})" 
+                    id="iconAlerta${alerta.id_alerta}" 
+                    class="fa-solid fa-plus">
+                </i>
             </span>
-        <p>${alertas[i].text}</p>
-        </li>
-        `
-        i++
-    }
-    if(alertas.length == 0){
+            <p>Servidor: ${alerta.codigo}</p>
+            <p>Horário: ${formatarDataHora(alerta.data_hora)}</p>
+        </li>`;
+
+    });
+
+    if (alertas.length === 0) {
         quadroDeAlertas.innerHTML += `
-        <p><br>Nenhum alerta encontrado</p>
-        `
+        <p><br>Nenhum alerta encontrado</p>`;
     }
 }
 
-function atualizarAlertas(){
-    if(iconQuadroAlertas.className.indexOf("iconQuadroAberto") == -1){
-        iconQuadroAlertas.className = "fa-solid fa-arrows-rotate"
-        iconQuadroAlertas.style = "animation-name: girar; pointer-events: none"
-        contadorAlerta.style = "display: none"
-        carregarAlertas()
-        setTimeout(()=>{
-            iconQuadroAlertas.className = "fa-solid fa-bell"
-            iconQuadroAlertas.style = ""
-            contadorAlerta.style = ""
-        },1000)
+function atualizarAlertas() {
+    if (iconQuadroAlertas.className.indexOf("iconQuadroAberto") === -1) {
+        iconQuadroAlertas.className = "fa-solid fa-arrows-rotate";
+        iconQuadroAlertas.style = "animation-name: girar; pointer-events: none";
+        contadorAlerta.style = "display: none";
+
+        setTimeout(() => {
+            const alertas = [
+                fetch("/alerta/listarAlertas", {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                }).then(function (resposta) {
+                    if (resposta.ok) {
+                        console.log(resposta);
+                        resposta.json().then(json => {
+                            console.log(json)
+                            carregarAlertas(json)
+                        });
+                    }
+                    else {
+                        resposta.text().then(texto => {
+                            console.warn(texto)
+                        })
+                    }
+                }).catch(function (erro) {
+                    console.log(erro);
+                })
+            ];
+            carregarAlertas(alertas);
+
+            setTimeout(() => {
+                iconQuadroAlertas.className = "fa-solid fa-bell";
+                iconQuadroAlertas.style = "";
+                contadorAlerta.style = "";
+            }, 1000);
+        }, 500);
     }
 }
 
@@ -208,4 +283,76 @@ function expandirAlerta(id){
             icon.style = ""
         },500)
     }
+}
+
+function visualizarAlerta(id) {
+
+    console.log("Opa, notificação clicada!")
+
+    var idAlerta = id;
+    console.log(idAlerta);
+
+    fetch(`alerta/visualizarAlerta/${idAlerta}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+    }).then(function (resposta) {
+        if (resposta.ok) {
+            console.log("Visualização alterada!");
+        } else {
+            console.warn(`Erro: ${resposta.status} - ${resposta.statusText}`);
+        }
+    }).catch(function (erro) {
+        console.error(erro);
+    });
+    
+
+    var alertaElement = document.getElementById(`alerta${idAlerta}`);
+    if (alertaElement) {
+        alertaElement.style.display = 'none';
+    }
+}
+
+// function visualizarAlerta(idAlerta) {
+//     const url = `http://localhost:3333/dashboard/alerta/visualizarAlerta/${idAlerta}`;
+
+//     fetch(url, {
+//         method: 'PUT',
+//         headers: {
+//             'Content-Type': 'application/json',
+//         },
+//     })
+//     .then(response => {
+//         if (response.ok) {
+//             console.log('Visualização alterada com sucesso!');
+//         } else {
+//             console.error('Houve um erro ao alterar a visualização.');
+//         }
+//     })
+//     .catch(error => {
+//         console.error('Erro na requisição:', error);
+//     })
+//     .finally(() => {
+//         // Após a requisição, oculte a notificação
+//         const alertaElement = document.getElementById(`alerta${idAlerta}`);
+//         if (alertaElement) {
+//             alertaElement.style.display = 'none';
+//         }
+//     });
+// }
+
+
+function formatarDataHora(dataHoraString) {
+    const dataHora = new Date(dataHoraString);
+    const formatarNumero = (numero) => (numero < 10 ? `0${numero}` : numero);
+
+    const dia = formatarNumero(dataHora.getDate());
+    const mes = formatarNumero(dataHora.getMonth() + 1);
+    const ano = dataHora.getFullYear().toString().slice(-2);
+    const hora = formatarNumero(dataHora.getHours());
+    const minutos = formatarNumero(dataHora.getMinutes());
+    const segundos = formatarNumero(dataHora.getSeconds());
+
+    return `${dia}/${mes}/${ano} ${hora}:${minutos}:${segundos}`;
 }
