@@ -150,6 +150,110 @@ body > div > *{
     width: 25%;
 }
 
+.imgInterrog {
+    display: flex;
+    height: 45px;
+    transform-style: preserve-3d;
+    transition: all 0.5s;
+    position: relative;
+    left: 5.5rem;
+
+}
+
+
+.imgInterrog:hover {
+    transform: rotateY(200deg);
+    cursor: pointer;
+}
+
+.modalBtn {
+    border: 0;
+    all: unset;
+    outline: revert;
+    
+}
+
+
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+
+    -webkit-animation: scale-in 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940);
+	animation: scale-in 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940);
+}
+
+.modal .content {
+    background-color: #f1f1f1;
+    margin: 15% auto; 
+    padding: 20px;
+    border-radius: 5px;
+    height: 10rem;
+    width: 70%; 
+    justify-content: space-around;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+
+}
+
+@media only screen and (max-width: 600px) {
+    .modal {
+      min-height: 100vh;
+      width: 100vw;
+      margin: 0;
+      border-radius: 0;
+    }
+  }
+
+@keyframes scale-in {
+    0% {
+      -webkit-transform: scale(0);
+              transform: scale(0);
+    }
+    100% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+    }
+}
+
+.jira {
+    transition: all 0.5s ease-out;
+}
+
+.jira:hover {
+    transform: scale(1.1);
+}
+
+.imgJira {
+    height: 100px;
+    width: 315px;
+}
+
+.slack {
+    transition: all 0.5s ease-out;
+}
+
+.slack:hover {
+    transform: scale(1.1);
+}
+
+
+.imgSlack {
+    height: 100px;
+    width: 315px;
+}
+
+
+
 /* Conteúdo principal */
 #content-wrapper{
     height: 590px;
