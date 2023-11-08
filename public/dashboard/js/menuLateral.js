@@ -88,14 +88,60 @@ function carregarMenu(pagina) {
                 <span>${nomeUsuario}</span>
                 <a onclick="sair()">Sair</a>
             </p>
-            </li>`
+            </li>
+            
+            <li class="nav-interrogacao">
+              
+            <button class="modalBtn">
+                <img src="../assets/img/dashboard/interrogacao.png" class="imgInterrog">
+            </button>
+                  
+            <div class="modal">
+                <div class="content">
+                    <div class="jira">
+                        <a href=""><img src="../assets/img/dashboard/jira.png" class="imgJira"></a>
+                    </div>
+
+                    <div class="slack">
+                    <a href="https://stocksafe-solutions.slack.com/"><img src="../assets/img/dashboard/slack.png" class="imgSlack"></a>
+                    </div>
+                </div>
+            </div>
+
+            </li>
+            
+            
+            `
+            
+
     accordionSidebar.className = "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
     accordionSidebar.innerHTML = conteudo;
-
+    
     criarContainerAlertas()
     setInterval(()=>{
         atualizarAlertas()
     },sessionStorage.intervalo_atualizacao)
+
+    const switchModal = () => {
+        const modal = document.querySelector('.modal')
+        const actualStyle = modal.style.display
+        if(actualStyle == 'block') {
+          modal.style.display = 'none'
+        }
+        else {
+          modal.style.display = 'block'
+        }
+      }
+      
+      const btn = document.querySelector('.modalBtn')
+      btn.addEventListener('click', switchModal)
+      
+      window.onclick = function(event) {
+          const modal = document.querySelector('.modal')
+        if (event.target == modal) {
+          switchModal()
+        }
+      }
 }
 
 function criarContainerAlertas(){
