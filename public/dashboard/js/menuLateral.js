@@ -113,11 +113,7 @@ function carregarMenu(pagina, geral, codServidor) {
             </div>
 
             </li>
-            
-            
             `
-            
-
 
         let pasta = ""
         let saida = "../"
