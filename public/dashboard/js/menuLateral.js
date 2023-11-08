@@ -92,7 +92,6 @@ function carregarMenu(pagina, geral, codServidor) {
                 <span>${nomeUsuario}</span>
                 <a onclick="sair()">Sair</a>
             </p>
-<<<<<<< HEAD
             </li>
             
             <li class="nav-interrogacao">
@@ -114,12 +113,7 @@ function carregarMenu(pagina, geral, codServidor) {
             </div>
 
             </li>
-            
-            
             `
-            
-=======
-            </li>`
 
         let pasta = ""
         let saida = "../"
@@ -173,7 +167,6 @@ function carregarMenu(pagina, geral, codServidor) {
         conteudo = conteudoEspecifica
         reload_e_alertas.style = "left: -45px" // Adicionando espaço para que o mural de notifics. não fique embaixo do X
     }
->>>>>>> e239c13136379aeffa70a4443a2806a4526b1288
 
     accordionSidebar.className = "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
     accordionSidebar.innerHTML = conteudo;
