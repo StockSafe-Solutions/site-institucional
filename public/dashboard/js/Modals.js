@@ -14,7 +14,13 @@ function abrirModal(modal, codigo) {
                 modalDashboard.style = "display: flex"
             },1000)
             break
-    }
+        case "func":
+            modalFunc.style = "display: flex; animation-name: aparecer; animation-duration: 500ms;"
+            setTimeout(()=>{
+                modalCadastro.style = "display: flex"
+            },1000)
+            break
+        }
     setTimeout(()=>{
         containerModal.style = "display: flex"
     },500)
@@ -33,7 +39,13 @@ function fecharModal(modal) {
                 modalDashboard.style = "display: none"
             },200)
             break
-    }
+        case "func":
+            modalFunc.style = "display: flex; animation-name: sumir; animation-duration: 300ms;"
+            setTimeout(()=>{
+                modalCadastro.style = "display: none"
+            },200)
+            break
+        }
     setTimeout(()=>{
         containerModal.style = "display: none"
     },200)

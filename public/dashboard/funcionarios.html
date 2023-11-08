@@ -15,11 +15,13 @@
     <link rel="stylesheet" href="../css/templateStocksafe.min.css">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/funcionarios.css">
+    <link rel="stylesheet" href="css/modal.css">
 
     <!-- Scripts -->
     <script src="js/sessao.js"></script>
     <script src="js/menuLateral.js"></script>
     <script src="js/funcionarios.js"></script>
+    <script src="js/Modals.js"></script>
 
     <!-- Icone -->
     <link rel="icon" href="../assets/icon/logo.ico" />
@@ -47,7 +49,7 @@
 
                             <div id="containerAlertas"></div>
 
-                            <button>Adicionar novo</button>
+                            <button onclick="abrirModal('func')">Adicionar novo</button>
                             <span>
                                 
                                 <input type="text" id="iptPesquisa" placeholder="Pesquisar por nome">
@@ -73,10 +75,18 @@
         <!-- End of Content Wrapper -->
     </div>
     <!-- End of Page Wrapper -->
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
+
+    <div id="containerModal">
+        <div class="modalFunc" id="modalFunc">
+            <header>
+                <h3 class="nomePagina">Cadastrando novo funcionário</h3>
+                <i class="fa-solid fa-x" onclick="fecharModal('func')"></i>
+            </header>
+            <span>
+                <input type="text" disabled="true" id="">
+            </span>
+        </div>
+    </div>
 
     <!-- Bootstrap core JavaScript-->
     <script src="../vendor/jquery/jquery.min.js"></script>
