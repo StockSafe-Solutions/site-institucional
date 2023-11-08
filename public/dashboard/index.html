@@ -30,7 +30,7 @@
     <title>StockSafe - Dashboard</title>
 </head>
 
-<body id="page-top" onload="carregarMenu('geral'), reloadDashboard()">
+<body id="page-top" onload="reloadDashboard()">
     <!-- Page Wrapper -->
     <div id="wrapper">
         <ul id="accordionSidebar"></ul>
@@ -53,7 +53,7 @@
                         </span>
                     </header>
                     <div class="kpis">
-                        <div>
+                        <div id="KPI1">
                             <span>
                                 <h3>Uptime</h3>
                                 <i class="fa-regular fa-clock"></i>                           
@@ -62,7 +62,7 @@
                             <p id="baseKPI1" class="baseKPI">de 9 horas</p>
                         </div>
 
-                        <div>
+                        <div id="KPI2">
                             <span>
                                 <h3 id="nomeKPI2">Uso da banda larga</h3>
                                 <i id="iconKPI2" class="fa-solid fa-wifi"></i>                            
@@ -70,8 +70,13 @@
                             <p id="valorKPI2" class="valorKPI" id="bandaLarga"></p>
                             <p id="baseKPI2" class="baseKPI"></p>
                         </div>
+<<<<<<< HEAD
                             
                         <div>
+=======
+
+                        <div id="KPI3">
+>>>>>>> e239c13136379aeffa70a4443a2806a4526b1288
                             <span>
                                 <h3>Pacotes enviados</h3>
                                 <i class="fa-solid fa-box-open"></i>                            
@@ -80,7 +85,7 @@
                             <p id="baseKPI3" class="baseKPI">enviados</p>
                         </div>
 
-                        <div>
+                        <div id="KPI4">
                             <span>
                                 <h3>Uso de disco</h3>
                                 <i class="fa-solid fa-hard-drive"></i>                            
@@ -93,7 +98,7 @@
                         <div class="grafico">
                             <h3>Média de uso da CPU</h3>
                             <canvas id="graficoCPU"></canvas>
-                        </div>
+                        </div>  
                         <div class="grafico">
                             <h3>Média de uso da RAM</h3>
                             <canvas id="graficoRAM"></canvas>
