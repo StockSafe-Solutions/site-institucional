@@ -1,3 +1,15 @@
+@keyframes aparecer{
+    0% { transform: scale(0,0); }
+    50% { transform: scale(1,1); }
+    80% { transform: scale(0.95,0.95); }
+    100% { transform: scale(1,1); }
+}
+
+@keyframes sumir{
+    from {transform: scale(1,1);opacity: 1;}
+    to {transform: scale(0,0);opacity: 0;}
+}
+
 .header-servidores i{
     cursor: pointer;
     margin: 0 5px;
@@ -7,7 +19,7 @@
 
 /*#containerModal*/
 #containerModal{
-    display: none;
+    display: flex;
     position: absolute;
     top: 0;
     z-index: 20;
@@ -32,16 +44,6 @@
     flex-direction: column;
 }
 
-@keyframes aparecer{
-    0% { transform: scale(0,0); }
-    50% { transform: scale(1,1); }
-    80% { transform: scale(0.95,0.95); }
-    100% { transform: scale(1,1); }
-}
-@keyframes sumir{
-    from {transform: scale(1,1);opacity: 1;}
-    to {transform: scale(0,0);opacity: 0;}
-}
 .modalObjeto header{
     display: flex;
     flex-direction: row;
@@ -49,11 +51,13 @@
     align-items: center;
     width: 100%;
 }
+
 .modalObjeto header i{
     cursor: pointer;
     color: whitesmoke;
     transition: 500ms;
 }
+
 .modalObjeto header i:hover{
     color: #858792;
 }
@@ -62,9 +66,11 @@
     height: 100vh;
     position: relative;
 }
+
 #modalDashboard iframe{
     height: 100%;
 }
+
 #modalDashboard i{
     position: absolute;
     right: 50px;
@@ -73,6 +79,7 @@
     cursor: pointer;
     transition: 500ms;
 }
+
 #modalDashboard i:hover{
     opacity: 0.6;
 }
@@ -83,6 +90,7 @@
     background-color: #001a46;
     padding: 20px 50px;
 }
+
 #modalCadastro > span{
     display: flex;
     flex-direction: row;
@@ -93,7 +101,8 @@
     width: fit-content;
     margin: 10px 0;
 }
-#modalCadastro input{
+
+#modalCadastro input {
     background: none;
     padding: 5px 10px;
     border: solid 1px whitesmoke;
@@ -104,4 +113,9 @@
     width: 10vw;
     min-width: 85px;
     text-align: center;
+}
+
+.modalFunc {
+    background-color: #001a46;
+    width: 50vw;
 }
