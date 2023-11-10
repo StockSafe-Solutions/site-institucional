@@ -69,9 +69,9 @@ function enviarEmail(email, funcao) {
   var mailOptions = {
     from: "stephany.justino@sptech.school",
     to: email,
-    subject: "Enviado email com node js. TESTE BONITO",
+    subject: "Você foi convocado para Stocksafe",
     text: `
-    Seja bem - vindo. 
+    Seja bem - vindo.
     http://localhost:3333/dashboard/testeFormColaborador.html
      `,
     html: `<!DOCTYPE html>
@@ -82,12 +82,22 @@ function enviarEmail(email, funcao) {
               <title>Seja bem - vindo</title>
           </head>
           <body>
-              <h1>Para acessar</h1>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, optio minus. Sed quas aliquam necessitatibus eius consequuntur. Quod aliquam magnam tempora neque earum consectetur est corporis, nihil, iusto ipsa culpa?</p>
-              <p>Email de login:${email}</p>
-              <p>Senha: urubu100</p>
+            <h1>Para acessar</h1>
+            <p>É um prazer ter você conosco! Seja bem-vindo à nossa comunidade.</p>
+            <p>Para aproveitar ao máximo sua experiência, pedimos que complete seu cadastro clicando no link abaixo:</p>
+            <a href="http://localhost:3333/dashboard/testeFormColaborador.html">Complete Seu Cadastro</a>
+        
+            <p>Estamos ansiosos para tê-lo totalmente integrado à nossa plataforma. Se precisar de assistência ou tiver alguma dúvida, não hesite em entrar em contato conosco.</p>
+        
+            <p>Obrigado por fazer parte da nossa comunidade!</p>
+            <p>Email de login: ${email}</p>
+            <p>Senha: urubu100</p>
+        
+            <p>Atenciosamente,</p>
+            <p>Stocksafe<p>
           </body>
-          </html>
+      
+        </html>
       `,
   };
 

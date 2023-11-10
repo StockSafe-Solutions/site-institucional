@@ -19,7 +19,7 @@
 
 /*#containerModal*/
 #containerModal{
-    display: flex;
+    display: none;
     position: absolute;
     top: 0;
     z-index: 20;
@@ -164,6 +164,7 @@
 
 #inputFunc p {
     padding: 5px 0;
+    width: 100%;
 }
 
 #btnCadastrar {

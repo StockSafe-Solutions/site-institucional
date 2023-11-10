@@ -17,11 +17,13 @@
     <link rel="stylesheet" href="../css/templateStocksafe.min.css">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/perfil.css">
+    <link rel="stylesheet" href="css/modal.css">
 
     <!-- Scripts -->
     <script src="js/sessao.js"></script>
     <script src="js/menuLateral.js"></script>
     <script src="js/perfil.js"></script>
+    <script src="js/Modals.js"></script>
 
     <!-- Icone -->
     <link rel="icon" href="../assets/icon/logo.ico" />
@@ -62,6 +64,22 @@
                     </form>
                     <button id="btnInfos" onclick="mudarModo()"></button>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="containerModal">
+        <div class="modalFunc" id="modalFunc">
+            <header>
+                <h3 class="nomePagina">Cadastro</h3>
+                <i class="fa-solid fa-x" onclick="fecharModal('func')"></i>
+            </header>
+            <div id="inputFunc">
+                <p> Código de identificação: <input type="number" id="inpId" placeholder="Digite seu código de identificação"></p>
+                <p> Nome completo: <input type="text" id="inpNome" placeholder="Digite seu nome"></p>
+                <p> Data de nascimento: <input type="date" id="inpDate" placeholder="Data de nascimento"></p>
+                <p> Senha: <input type="password" id="inpSenha" placeholder="Digite sua senha"></p>
+                <button id="btnCadastrar" onclick=" terminarCadastro()">Cadastrar</button>
             </div>
         </div>
     </div>
