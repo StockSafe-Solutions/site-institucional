@@ -88,14 +88,14 @@
     opacity: 0.6;
 }
 
-#modalCadastro{
+#modalCadastro {
     align-items: center;
     width: 40vw;
     background-color: #001a46;
     padding: 20px 50px;
 }
 
-#modalCadastro > span{
+#modalCadastro > span {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -121,22 +121,56 @@
 
 .modalFunc header {
     display: flex;
+    margin-bottom: 10px;
+    justify-content: space-between;
 }
 
 .modalFunc i {
-    margin-left: 2px;
+    margin-left: 10px;
 }
 
 .modalFunc {
+    display: flex;
+    flex-direction: column;
     background-color: #001a46;
     width: 35vw;
     padding: 35px;
+    justify-content: center;
+    border-radius: 0.25rem;
+    color: #ffff;
 }
 
-.modalFunc i{
+.modalFunc i {
     right: 50px;
     top: 35px;
     color: #005eff;
     cursor: pointer;
-    transition: 500ms;
+}
+
+.modalFunc h3, .modalFunc i {
+    margin: 0;
+}
+
+#inputFunc {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#inputFunc input {
+    width: 100%;
+}
+
+#inputFunc p {
+    padding: 5px 0;
+}
+
+#btnCadastrar {
+    background-color: #005eff;
+    color: whitesmoke;
+    border: none;
+    border-radius: 0.25rem;
+    padding: 5px;
+    width: 100px;
 }
