@@ -123,7 +123,6 @@ function cadastrar() {
           }, "2000");
 
           limparFormulario();
-          finalizarAguardar();
         } 
         else {
           Swal.fire({

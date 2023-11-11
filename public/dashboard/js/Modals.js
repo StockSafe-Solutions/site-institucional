@@ -17,7 +17,7 @@ function abrirModal(modal, codigo) {
         case "func":
             modalFunc.style = "display: flex; animation-name: aparecer; animation-duration: 500ms;"
             setTimeout(()=>{
-                modalCadastro.style = "display: flex"
+                modalFunc.style = "display: flex"
             },1000)
             break
         }
@@ -42,7 +42,7 @@ function fecharModal(modal) {
         case "func":
             modalFunc.style = "display: flex; animation-name: sumir; animation-duration: 300ms;"
             setTimeout(()=>{
-                modalCadastro.style = "display: none"
+                modalFunc.style = "display: none"
             },200)
             break
         }
