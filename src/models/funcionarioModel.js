@@ -58,13 +58,13 @@ function alterarSenha(senha, idUsuario) {
 }
 
 function enviarEmail(email, funcao) {
-	const senha = Math.floor(Math.random() * 10);
+	var senha = Math.floor(Math.random() * 1000000);
 
 	var transporter = nodemailer.createTransport({
 		service: "outlook",
 		auth: {
-			user: "",
-			pass: "",
+			user: "#",
+			pass: "#",
 		},
 	});
 
