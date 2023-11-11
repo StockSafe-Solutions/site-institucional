@@ -2,79 +2,81 @@ var database = require("../database/config");
 var nodemailer = require("nodemailer");
 
 function listar() {
-  var instrucao = `SELECT nome, email, senha, funcao, DATE_FORMAT(data_nascimento, '%d/%m/%Y') as dtNasc
+	var instrucao = `SELECT nome, email, senha, funcao, DATE_FORMAT(data_nascimento, '%d/%m/%Y') as dtNasc
 	FROM tb_funcionario`;
-  console.log("Executando a instrução SQL: \n" + instrucao);
-  return database.executar(instrucao);
+	console.log("Executando a instrução SQL: \n" + instrucao);
+	return database.executar(instrucao);
 }
 
 function selecionar(id) {
-  var instrucao = `
+	var instrucao = `
     SELECT nome, email, senha, funcao, DATE_FORMAT(data_nascimento, '%d/%m/%Y') as dtNasc
 	FROM tb_funcionario
     WHERE id_funcionario = '${id}'`;
-  console.log("Executando a instrução SQL: \n" + instrucao);
-  return database.executar(instrucao);
+	console.log("Executando a instrução SQL: \n" + instrucao);
+	return database.executar(instrucao);
 }
 
 function autenticar(email, senha) {
-  var instrucao = `
+	var instrucao = `
     SELECT *
     FROM tb_funcionario
     WHERE email = '${email}' AND senha = '${senha}'`;
-  console.log("Executando a instrução SQL: \n" + instrucao);
-  return database.executar(instrucao);
+	console.log("Executando a instrução SQL: \n" + instrucao);
+	return database.executar(instrucao);
 }
 
 function cadastrar(nome, funcao, dataNasc, email, senha) {
-  var instrucao = `
+	var instrucao = `
     INSERT INTO tb_funcionario
     VALUES (null,'${nome}','${funcao}','${dataNasc}',null,'${email}','${senha}')`;
-  console.log("Executando a instrução SQL: \n" + instrucao);
-  return database.executar(instrucao);
+	console.log("Executando a instrução SQL: \n" + instrucao);
+	return database.executar(instrucao);
 }
 
 function enviarFoto(imagem, idUsuario) {
-  var instrucao = `
+	var instrucao = `
          UPDATE funcionario SET foto = '${imagem}' where idFuncionario = ${idUsuario};`;
-  console.log("Executando a instrução SQL: \n" + instrucao);
-  return database.executar(instrucao);
+	console.log("Executando a instrução SQL: \n" + instrucao);
+	return database.executar(instrucao);
 }
 
 function alterar(id, nome, funcao, data, email) {
-  var instrucao = `
+	var instrucao = `
         UPDATE tb_funcionario SET nome = '${nome}', funcao = '${funcao}', data_nascimento = '${data}',
             email = '${email}'
             WHERE id_funcionario = ${id};`;
-  console.log("Executando a instrução SQL: \n" + instrucao);
-  return database.executar(instrucao);
+	console.log("Executando a instrução SQL: \n" + instrucao);
+	return database.executar(instrucao);
 }
 
 function alterarSenha(senha, idUsuario) {
-  var instrucao = `
+	var instrucao = `
     UPDATE usuario SET senha = '${senha}' where idUsuario = ${idUsuario};`;
-  console.log("Executando a instrução SQL: \n" + instrucao);
-  return database.executar(instrucao);
+	console.log("Executando a instrução SQL: \n" + instrucao);
+	return database.executar(instrucao);
 }
 
 function enviarEmail(email, funcao) {
-  var transporter = nodemailer.createTransport({
-    service: "outlook",
-    auth: {
-      user: "stephany.justino@sptech.school",
-      pass: "#Gf24007915890"
-    }
-  });
+	const senha = Math.floor(Math.random() * 10);
 
-  var mailOptions = {
-    from: "stephany.justino@sptech.school",
-    to: email,
-    subject: "Você foi convocado para Stocksafe",
-    text: `
+	var transporter = nodemailer.createTransport({
+		service: "outlook",
+		auth: {
+			user: "",
+			pass: "",
+		},
+	});
+
+	var mailOptions = {
+		from: "stephany.justino@sptech.school",
+		to: email,
+		subject: "Você foi convocado para Stocksafe",
+		text: `
     Seja bem - vindo.
     http://localhost:3333/dashboard/testeFormColaborador.html
      `,
-    html:`
+		html: `
     <!DOCTYPE html>
       <html lang="pt-br">
       <head>
@@ -93,65 +95,65 @@ function enviarEmail(email, funcao) {
     
         <p>Obrigado por fazer parte da nossa comunidade!</p>
         <p>Email de login: ${email}</p>
-        <p>Senha: urubu100</p>
+        <p>Senha: ${senha}</p>
     
         <p>Atenciosamente,</p>
         <p>Stocksafe<p>
       </body>
     </html>
-    `
-  };
+    `,
+	};
 
-  transporter.sendMail(mailOptions, function (error, info) {
-    if (error) {
-      console.log("Deu algo de errado! 🤦🏽‍♂️: " + error);
-    } else {
-      console.log("Email foi enviado com sucesso! 🩵: " + info.response);
-    }
-  });
+	transporter.sendMail(mailOptions, function (error, info) {
+		if (error) {
+			console.log("Deu algo de errado! 🤦🏽‍♂️: " + error);
+		} else {
+			console.log("Email foi enviado com sucesso! 🩵: " + info.response);
+		}
+	});
 
-  var instrucao = `
+	var instrucao = `
     INSERT INTO tb_funcionario(email, funcao, senha)
-    VALUES ('${email}','${funcao}', 'urubu100')`;
-  console.log("Executando a instrução SQL: \n" + instrucao);
-  return database.executar(instrucao);
+    VALUES ('${email}','${funcao}', '${senha}')`;
+	console.log("Executando a instrução SQL: \n" + instrucao);
+	return database.executar(instrucao);
 }
 
 function terminarCadastro(id, nome, dataNascimeto, senha) {
-  var instrucao = `
+	var instrucao = `
     UPDATE tb_funcionario SET nome = '${nome}', data_nascimento = '${dataNascimeto}',
         senha = '${senha}'
         WHERE id_funcionario = ${id};`;
-  console.log("Executando a instrução SQL: \n" + instrucao);
-  return database.executar(instrucao);
+	console.log("Executando a instrução SQL: \n" + instrucao);
+	return database.executar(instrucao);
 }
 
-function solicitacoesFuncionarios(){
-  const instrucao = `
+function solicitacoesFuncionarios() {
+	const instrucao = `
     SELECT * FROM tb_funcionario WHERE nome IS NULL;
   `;
-  console.log(`Executanto a instrução SQL: \n ${instrucao}`);
-  return database.executar(instrucao);
+	console.log(`Executanto a instrução SQL: \n ${instrucao}`);
+	return database.executar(instrucao);
 }
 
-function deletarSolicitacoes(id){
-  const instrucao = `
+function deletarSolicitacoes(id) {
+	const instrucao = `
   DELETE FROM tb_funcionario WHERE id_funcionario = ${id};
   `;
-  console.log(`Executando a instrução SQL: \n ${instrucao}`);
-  return database.executar(instrucao);
+	console.log(`Executando a instrução SQL: \n ${instrucao}`);
+	return database.executar(instrucao);
 }
 
 module.exports = {
-  listar,
-  selecionar,
-  autenticar,
-  cadastrar,
-  enviarFoto,
-  alterar,
-  alterarSenha,
-  enviarEmail,
-  terminarCadastro,
-  solicitacoesFuncionarios,
-  deletarSolicitacoes,
+	listar,
+	selecionar,
+	autenticar,
+	cadastrar,
+	enviarFoto,
+	alterar,
+	alterarSenha,
+	enviarEmail,
+	terminarCadastro,
+	solicitacoesFuncionarios,
+	deletarSolicitacoes,
 };
