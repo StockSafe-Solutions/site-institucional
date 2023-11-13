@@ -89,13 +89,13 @@ function chamarGraficos(json){
     json_cpu = json[0]
     uso_cpu = []
     for(i in json_cpu){
-        uso_cpu.push(json_cpu[i].uso_cpu)
+        uso_cpu.push(json_cpu[i].uso_da_cpu)
     }
 
     json_ram = json[1]
     uso_ram = []
     for(i in json_ram){
-        uso_ram.push(json_ram[i].uso_ram)
+        uso_ram.push(json_ram[i].uso_da_ram)
     }
 
     gerenciarGraficos('graficoCPU',uso_cpu)
