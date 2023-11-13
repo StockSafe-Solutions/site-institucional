@@ -6,9 +6,8 @@ var alertaController = require("../controllers/alertaController");
 router.get("/listarAlertas", function(req,res){
     alertaController.listarAlertas(req, res);
 })
-
-router.put("/visualizarAlerta/:idAlerta", function(req, res){
-    console.log("Rota visualizarAlerta alcançada!");
+    
+router.put("/visualizarAlerta/:id", function(req, res){
     alertaController.visualizarAlerta(req,res);
 })
 
