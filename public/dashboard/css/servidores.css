@@ -68,7 +68,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     padding: 15px;
-    height: 80vh;
+    max-height: 80vh;
     overflow-y: scroll;
 }
 

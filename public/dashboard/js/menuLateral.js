@@ -103,7 +103,7 @@ function carregarMenu(pagina, geral, codServidor) {
             <div class="modal">
                 <div class="content">
                     <div class="jira">
-                        <a href="" target="_blank"><img src="../assets/img/dashboard/jira.png" class="imgJira"></a>
+                        <a href="https://stock-safe-solutions.atlassian.net/servicedesk/customer/portal/1" target="_blank"><img src="../assets/img/dashboard/jira.png" class="imgJira"></a>
                     </div>
 
                     <div class="slack">
