@@ -12,9 +12,10 @@
 
 .modalServ{
     display: none;
+    border-radius: 0.25rem;
 }
 
-.modalFunc{
+#modalCadFunc{
     display: none;
     flex-direction: column;
     background-color: #001a46;
@@ -25,13 +26,13 @@
     color: #ffff;
 }
 
-.modalFunc header {
+#modalCadFunc header {
     display: flex;
     margin-bottom: 10px;
     justify-content: space-between;
 }
 
-.modalFunc i {
+#modalCadFunc i {
     right: 50px;
     top: 35px;
     color: #005eff;
@@ -39,7 +40,7 @@
     margin-left: 10px;
 }
 
-.modalFunc h3, .modalFunc i {
+#modalCadFunc h3, #modalCadFunc i {
     margin: 0;
 }
 
@@ -158,6 +159,73 @@
     width: 10vw;
     min-width: 85px;
     text-align: center;
+}
+
+#modalCadFunc header {
+    display: flex;
+    margin-bottom: 10px;
+    justify-content: space-between;
+}
+
+
+#modalCadFunc {
+    display: none;
+    flex-direction: column;
+    background-color: #001a46;
+    width: 35vw;
+    padding: 35px;
+    justify-content: center;
+    border-radius: 0.25rem;
+    color: #ffff;
+}
+
+#modalCadFunc i {
+    right: 50px;
+    top: 35px;
+    color: #005eff;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+#modalCadFunc h3, #modalCadFunc i {
+    margin: 0;
+}
+
+#modalSolic {
+    background-color: #001a46;
+    color: white;
+    border-radius: .35rem;
+    display: none;
+    flex-direction: column;
+    padding: 15px;
+    width: 65vw;
+    height: 80vh;
+    overflow-y: scroll;
+    list-style: none;
+}
+
+#modalSolic header{
+    display: flex;
+    margin-bottom: 10px;
+    justify-content: space-between;
+}
+#modalSolic i {
+    cursor: pointer;
+}
+#modalSolic h3, #modalSolic i {
+    margin: 0;
+}
+#container-funcionarios-solicitacao{
+    background-color: white;
+    height: 80vh;
+    border-radius: 0.35rem;
+}
+.containerVazio{
+    padding: 0px;
+    color: #001a46;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #inputFunc {

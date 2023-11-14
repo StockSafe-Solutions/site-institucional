@@ -176,24 +176,24 @@ function carregarMenu(pagina, geral, codServidor) {
         atualizarAlertas()
     },sessionStorage.intervalo_atualizacao)
 
-    // BOTÃO DE AJUDA
-    const switchModalHelpDesk = () => {
-        const modal = document.querySelector('.modal')
-        const actualStyle = modal.style.display
-        if(actualStyle == 'block') {
-          modal.style.display = 'none'
-        }
-        else {
-          modal.style.display = 'block'
-        }
-      }
-      
+    // BOTÃO DE AJUDA      
       window.onclick = function(event) {
           const modal = document.querySelector('.modal')
         if (event.target == modal) {
             switchModalHelpDesk()
         }
       }
+}
+
+function switchModalHelpDesk(){
+    const modal = document.querySelector('.modal')
+    const actualStyle = modal.style.display
+    if(actualStyle == 'block') {
+      modal.style.display = 'none'
+    }
+    else {
+      modal.style.display = 'block'
+    }
 }
 
 // ========================================================== ALERTAS
