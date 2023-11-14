@@ -25,7 +25,7 @@ function abrirModal(modal, codigo) {
             modalSolic.style ="display: flex; animation-name: aparecer; animation-duration: 500ms;"
                     setInterval(()=>{
                         modalSolic.style = "display: flex";
-                    });
+                    }, 1000);
             break;
         }
     setTimeout(()=>{

@@ -179,13 +179,7 @@
 .modalSolic h3, .modalSolic i {
     margin: 0;
 }
-#containerSolicitacoes{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    background-color: orange;
-}
+
 
 #inputFunc {
     display: flex;
