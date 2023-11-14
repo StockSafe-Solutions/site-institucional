@@ -198,13 +198,12 @@ function cadastrar(req, res) {
 }
 
 function alterar(req, res) {
-    var id = req.params.idServer;
-    
+    var id = req.body.idServer;
     var nome = req.body.nomeServer;
     var data = req.body.dataServer;
-    var senha = req.body.senhaServer;
+    var email = req.body.emailServer;
 
-    funcionarioModel.alterar(id, nome, data, senha)
+    funcionarioModel.alterar(id, nome, data, email)
     .then(
         function (resultado) {
             res.json(resultado);

@@ -41,9 +41,9 @@ function enviarFoto(imagem, idUsuario) {
 	return database.executar(instrucao);
 }
 
-function alterar(id, nome, funcao, data, email) {
+function alterar(id, nome, data, email) {
 	var instrucao = `
-        UPDATE tb_funcionario SET nome = '${nome}', funcao = '${funcao}', data_nascimento = '${data}',
+        UPDATE tb_funcionario SET nome = '${nome}', data_nascimento = '${data}',
             email = '${email}'
             WHERE id_funcionario = ${id};`;
 	console.log("Executando a instrução SQL: \n" + instrucao);
