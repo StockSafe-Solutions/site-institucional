@@ -96,7 +96,7 @@ function carregarMenu(pagina, geral, codServidor) {
             
             <li class="nav-interrogacao">
               
-            <button class="modalBtn">
+            <button class="modalBtn" onclick="switchModalHelpDesk()">
                 <img src="../assets/img/dashboard/interrogacao.png" class="imgInterrog">
             </button>
                   
@@ -187,9 +187,6 @@ function carregarMenu(pagina, geral, codServidor) {
           modal.style.display = 'block'
         }
       }
-      
-      const btn = document.querySelector('.modalBtn')
-      btn.addEventListener('click', switchModalHelpDesk)
       
       window.onclick = function(event) {
           const modal = document.querySelector('.modal')
