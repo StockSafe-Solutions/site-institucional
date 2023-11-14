@@ -91,9 +91,9 @@ function criarLiFuncionario(json, tipo) {
 			"container-funcionarios-solicitacao"
 	    );
         container.innerHTML = "";
-
+        console.log(json.length)
         if(json.length > 0){
-            containerVazio.className = ""
+            //containerVazio.className = ""
 
             for (servidor in json) {
                 item = json[servidor]

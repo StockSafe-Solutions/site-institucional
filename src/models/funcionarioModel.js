@@ -63,8 +63,8 @@ function enviarEmail(email, funcao) {
 	var transporter = nodemailer.createTransport({
 		service: "outlook",
 		auth: {
-			user: "#",
-			pass: "#",
+			user: "Stock.safe@outlook.com",
+			pass: "urubu100",
 		},
 	});
 
