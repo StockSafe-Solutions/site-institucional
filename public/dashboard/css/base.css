@@ -161,7 +161,7 @@ body > div > *{
 
 
 .imgInterrog:hover {
-    transform: rotateY(200deg);
+    transform: rotateY(360deg);
     cursor: pointer;
 }
 

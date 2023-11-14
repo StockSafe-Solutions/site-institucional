@@ -103,11 +103,11 @@ function carregarMenu(pagina, geral, codServidor) {
             <div class="modal">
                 <div class="content">
                     <div class="jira">
-                        <a href=""><img src="../assets/img/dashboard/jira.png" class="imgJira"></a>
+                        <a href="" target="_blank"><img src="../assets/img/dashboard/jira.png" class="imgJira"></a>
                     </div>
 
                     <div class="slack">
-                    <a href="https://stocksafe-solutions.slack.com/"><img src="../assets/img/dashboard/slack.png" class="imgSlack"></a>
+                    <a href="https://stocksafe-solutions.slack.com/" target="_blank"><img src="../assets/img/dashboard/slack.png" class="imgSlack"></a>
                     </div>
                 </div>
             </div>
@@ -176,7 +176,8 @@ function carregarMenu(pagina, geral, codServidor) {
         atualizarAlertas()
     },sessionStorage.intervalo_atualizacao)
 
-    const switchModal = () => {
+    // BOTÃO DE AJUDA
+    const switchModalHelpDesk = () => {
         const modal = document.querySelector('.modal')
         const actualStyle = modal.style.display
         if(actualStyle == 'block') {
@@ -188,12 +189,12 @@ function carregarMenu(pagina, geral, codServidor) {
       }
       
       const btn = document.querySelector('.modalBtn')
-      btn.addEventListener('click', switchModal)
+      btn.addEventListener('click', switchModalHelpDesk)
       
       window.onclick = function(event) {
           const modal = document.querySelector('.modal')
         if (event.target == modal) {
-          switchModal()
+            switchModalHelpDesk()
         }
       }
 }
