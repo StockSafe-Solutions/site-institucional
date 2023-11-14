@@ -80,21 +80,25 @@
     <div id="containerModal">
         <div class="modalFunc" id="modalCadFunc">
             <header>
-                <h3 class="nomePagina">Cadastrando novo funcionário</h3>
+                <h3 class="nomePagina">Convidar novo funcionário</h3>
                 <i class="fa-solid fa-x" onclick="fecharModal('func'), reloadFuncionarios()"></i>
             </header>
             <div id="inputFunc" class="funcionarioInfo">
                 <p> Email: <input type="email" id="inpEmail" placeholder="Digite o email"></p>
                 <p> Função: <input type="text" id="inpFuncao" placeholder="Digite a função"></p>
-                <button id="btnCadastrar" onclick="semiCadastrar()">Cadastrar</button>
+                <button id="btnCadastrar" onclick="semiCadastrar()">Enviar convite</button>
             </div>
         </div>
-            <div class="modalSolic" id="modalSolic">
-                <header class="header-funcionarios" onload="reloadSolicitacoes()">
+            <div class="modalFunc" id="modalSolic">
+                <header onload="reloadSolicitacoes()">
                     <h3 class="nomePagina">Solicitações dos novos funcionários</h3>
                     <i class="fa-solid fa-x" onclick="fecharModal('solicitacoes'), reloadFuncionarios()"></i>
                 </header>
                 <ul id="container-funcionarios-solicitacao"></ul>          
+            </div>
+            <div class="modalFunc" id="modalEditFunc">
+                <i class="fa-solid fa-x" onclick="fecharModal('editFunc')"></i>
+                <iframe id="frameFuncionario" frameborder="0"></iframe>
             </div>
     </div>
 </body>

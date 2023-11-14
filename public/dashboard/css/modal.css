@@ -72,6 +72,8 @@
     border-radius: 0.25rem;
     overflow-y: scroll;
     flex-direction: column;
+    height: 100vh;
+    position: relative;
 }
 
 #modalDashboard header{
@@ -80,21 +82,6 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-}
-
-#modalDashboard header i{
-    cursor: pointer;
-    color: whitesmoke;
-    transition: 500ms;
-}
-
-#modalDashboard header i:hover{
-    color: #858792;
-}
-
-#modalDashboard{
-    height: 100vh;
-    position: relative;
 }
 
 #modalDashboard iframe{
@@ -109,7 +96,6 @@
     cursor: pointer;
     transition: 500ms;
 }
-
 #modalDashboard i:hover{
     opacity: 0.6;
 }
@@ -167,7 +153,6 @@
     justify-content: space-between;
 }
 
-
 #modalCadFunc {
     display: none;
     flex-direction: column;
@@ -208,9 +193,11 @@
     display: flex;
     margin-bottom: 10px;
     justify-content: space-between;
+    align-items: center;
 }
 #modalSolic i {
     cursor: pointer;
+    color: #005eff;
 }
 #modalSolic h3, #modalSolic i {
     margin: 0;
@@ -249,6 +236,42 @@
     color: whitesmoke;
     border: none;
     border-radius: 0.25rem;
-    padding: 5px;
-    width: 100px;
+    padding: 5px 10px;
+    width: fit-content;
+}
+
+
+#modalEditFunc{
+    display: none;
+    width: 80vw;
+    height: fit-content;
+    border-radius: 0.25rem;
+    overflow-y: scroll;
+    flex-direction: column;
+    height: 100vh;
+    position: relative;
+}
+
+#modalEditFunc header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+#modalEditFunc iframe{
+    height: 100%;
+}
+
+#modalEditFunc i{
+    position: absolute;
+    right: 80px;
+    top: 35px;
+    color: #005eff;
+    cursor: pointer;
+    transition: 500ms;
+}
+#modalEditFunc i:hover{
+    opacity: 0.6;
 }

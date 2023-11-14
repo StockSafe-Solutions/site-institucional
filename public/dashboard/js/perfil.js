@@ -20,9 +20,16 @@ function carregarPerfil(){
     btnSenha.disabled = true
     btnSenha.className = "btnDesabilitado"
 
-    idUsuarioLogado = JSON.parse(sessionStorage["funcionario"]).id_funcionario
+    indiceParm = location.href.indexOf('?')
+    params = location.href.slice(indiceParm+1,indiceParm+7)
+    if(indiceParm == -1){
+        idUsuario = JSON.parse(sessionStorage["funcionario"]).id_funcionario
+    } else{
+        idUsuario = params
+        accordionSidebar.style = "display: none"
+    }
 
-    fetch("/funcionario/selecionar/"+idUsuarioLogado, {
+    fetch("/funcionario/selecionar/"+idUsuario, {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -98,14 +105,22 @@ function editarPerfil(){
           icon: "error"
        })
     } else{
-        idUsuarioLogado = JSON.parse(sessionStorage["funcionario"]).id_funcionario
+        indiceParm = location.href.indexOf('?')
+        params = location.href.slice(indiceParm+1,indiceParm+7)
+        if(indiceParm == -1){
+            idUsuario = JSON.parse(sessionStorage["funcionario"]).id_funcionario
+        } else{
+            idUsuario = params
+            accordionSidebar.style = "display: none"
+        }
+
         fetch("/funcionario/alterar/", {
             method: "PUT",
             headers: {
             "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                idServer: idUsuarioLogado,
+                idServer: idUsuario,
                 nomeServer: nomeVar,
                 funcaoServer: funcaoVar,
                 dataServer: dataVar,

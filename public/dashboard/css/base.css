@@ -156,13 +156,12 @@ body > div > *{
     transition: all 0.5s;
     position: relative;
     left: 5.5rem;
-
+    cursor: pointer;
 }
 
 
 .imgInterrog:hover {
     transform: rotateY(360deg);
-    cursor: pointer;
 }
 
 .modalBtn {

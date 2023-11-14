@@ -27,6 +27,13 @@ function abrirModal(modal, codigo) {
                 modalSolic.style = "display: flex";
             }, 1000);
             break;
+        case "editFunc":
+            frameFuncionario.src="perfil.html?"+codigo
+            modalEditFunc.style ="display: flex; animation-name: aparecer; animation-duration: 500ms;"
+            setTimeout(()=>{
+                modalEditFunc.style = "display: flex";
+            }, 1000);
+            break;
         }
     setTimeout(()=>{
         containerModal.style = "display: flex"
@@ -57,6 +64,12 @@ function fecharModal(modal) {
 				setTimeout(() => {
 					modalSolic.style = "";
 				}, 200);
+            break;    
+        case "editFunc":
+            modalEditFunc.style = "display: flex; animation-name: sumir; animation-duration: 300ms;";
+            setTimeout(() => {
+                modalEditFunc.style = "";
+            }, 200);
             break;
         }
     setTimeout(()=>{
