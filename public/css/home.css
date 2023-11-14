@@ -24,6 +24,11 @@
 
 /* ============================================= ESTILO PRINCIPAL DA HOME PAGE */
 
+.imgLogo{
+  width: 50px;
+  margin: 10px 40px 0 10px;
+}
+
 body {
   margin: 0;
 }
