@@ -3,7 +3,7 @@ var nodemailer = require("nodemailer");
 
 function listar() {
 	var instrucao = `SELECT nome, email, senha, funcao, DATE_FORMAT(data_nascimento, '%d/%m/%Y') as dtNasc
-	FROM tb_funcionario`;
+	FROM tb_funcionario WHERE nome != "null"`;
 	console.log("Executando a instrução SQL: \n" + instrucao);
 	return database.executar(instrucao);
 }
