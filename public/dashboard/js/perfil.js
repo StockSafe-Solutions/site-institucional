@@ -61,6 +61,8 @@ function modoEditar(){
 }
 
 function editarPerfil(){
+    idUsuarioLogado = JSON.parse(sessionStorage["funcionario"]).id_funcionario
+
     nomeVar = iptNome.value
     funcaoVar = iptFuncao.value
     dataVar = iptDataNasc.value
@@ -97,12 +99,13 @@ function editarPerfil(){
        })
     } else{
         idUsuarioLogado = JSON.parse(sessionStorage["funcionario"]).id_funcionario
-        fetch("/funcionario/alterar/"+idUsuarioLogado, {
+        fetch("/funcionario/alterar/", {
             method: "PUT",
             headers: {
             "Content-Type": "application/json",
             },
             body: JSON.stringify({
+                idServer: idUsuarioLogado,
                 nomeServer: nomeVar,
                 funcaoServer: funcaoVar,
                 dataServer: dataVar,

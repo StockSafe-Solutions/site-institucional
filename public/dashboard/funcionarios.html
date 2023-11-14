@@ -29,7 +29,7 @@
     <title>Stock Safe - Funcionarios</title>
 </head>
 
-<body id="page-top" onload="carregarMenu('funcs'), reloadFuncionarios()">
+<body id="page-top" onload="carregarMenu('funcs',true), reloadFuncionarios()">
     <!-- Page Wrapper -->
     <div id="wrapper">
         <ul id="accordionSidebar"></ul>
@@ -78,7 +78,7 @@
     <!-- End of Page Wrapper -->
 
     <div id="containerModal">
-        <div class="modalFunc" id="modalFunc">
+        <div class="modalFunc" id="modalCadFunc">
             <header>
                 <h3 class="nomePagina">Cadastrando novo funcionário</h3>
                 <i class="fa-solid fa-x" onclick="fecharModal('func'), reloadFuncionarios()"></i>
@@ -90,34 +90,13 @@
             </div>
         </div>
             <div class="modalSolic" id="modalSolic">
-                        <header class="header-funcionarios" onload="reloadSolicitacoes()">
-                            <h3 class="nomePagina">Solicitações dos novos funcionário</h3>
-                            <i class="fa-solid fa-x" onclick="fecharModal('solicitacoes'), reloadFuncionarios()"></i>
-                        </header>
-                        <ul id="container-funcionarios-solicitacao"></ul>
-                             
+                <header class="header-funcionarios" onload="reloadSolicitacoes()">
+                    <h3 class="nomePagina">Solicitações dos novos funcionários</h3>
+                    <i class="fa-solid fa-x" onclick="fecharModal('solicitacoes'), reloadFuncionarios()"></i>
+                </header>
+                <ul id="container-funcionarios-solicitacao"></ul>          
             </div>
     </div>
-
-    <!-- Bootstrap core JavaScript-->
-    <script src="../vendor/jquery/jquery.min.js"></script>
-    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="../js/sb-admin.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="../vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="../js/demo/chart-area-demoM.js"></script>
-    <script src="../js/demo/chart-pie-demoM.js"></script>
-
 </body>
-
 </html>
-
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

@@ -9,16 +9,18 @@ function carregarDados(){
         urlGraficos = "../dash/graficosGerais"
 
         nomePagina.innerText = "Dashboard - Visão Geral"
+        carregarMenu("geral",true)
     } else{
         urlKPIs = "../dash/kpiEspecifica/"+params
         urlGraficos = "../dash/graficosEspecificos/"+params
 
-        accordionSidebar.style = "display: none"
         nomePagina.innerText = "Dashboard - Servidor "+params
         reload_e_alertas.style = "left: -45px"
 
         iconKPI2.className = "fa-solid fa-arrow-right-arrow-left"
         nomeKPI2.innerText = "Taxa de transferência"
+        
+        carregarMenu("especifica",false,params)
     }
 
     fetch(urlKPIs, {
@@ -67,22 +69,55 @@ function carregarDados(){
 }
 
 function definirKPIs(tipo, json){
+    KPI1.className = "kpiBoa";
+    KPI2.className = "kpiBoa";
+    KPI4.className = "kpiBoa";
+
     if(tipo == "geral"){
         valorKPI2.innerText = Math.round(Number(json.kpi_banda_larga))+"Mb/s"
-        // baseKPI2.innerText = "de "+Math.round(Number(json.base_taxa))+"Mb/s"
 
         valorKPI4.innerText = Math.round(Number(json.kpi_armazenamento)/1000,1)+"TB"
         baseKPI4.innerText = "de "+Math.round(Number(json.base_armazenamento)/1000,1)+"TB"
     } else{
         valorKPI2.innerText = Math.round(Number(json.kpi_taxa))+"Mb/s"
-        // baseKPI2.innerText = "de "+Math.round(Number(json.base_taxa))+"Mb/s"
+        baseKPI2.innerText = "De "+sessionStorage.taxa_transferencia+"Mb/s"
+        pctTaxaTrasnf = Number(json.kpi_taxa)*100/Number(
+            sessionStorage.taxa_transferencia.replace(",",".")
+        )
+        if(pctTaxaTrasnf < 90){
+            KPI2.className = "kpiRuim"
+            if(pctTaxaTrasnf < 80){
+                KPI2.className = "kpiMuitoRuim"
+            }
+        }
 
         valorKPI4.innerText = Math.round(Number(json.kpi_armazenamento))+"GB"
         baseKPI4.innerText = "de "+Math.round(Number(json.base_armazenamento))+"GB"
     }
+    if(json.kpi_uptime > 100){
+        json.kpi_uptime = 100
+    }
     valorKPI1.innerText = Math.round(Number(json.kpi_uptime))+"%"
+    if(json.kpi_uptime < 98){
+        KPI1.className = "kpiRuim"
+        if(json.kpi_uptime < 95){
+            KPI1.className = "kpiMuitoRuim"
+        }
+    }
+
     valorKPI2.style = "font-size: 28px"
     valorKPI3.innerText = Math.round(Number(json.kpi_pacotes_enviados))
+
+    pctArmazenamento = Math.round(Number(json.kpi_armazenamento)*100/Number(json.base_armazenamento))
+        if(pctArmazenamento > 15){
+            if(pctArmazenamento > 90){
+                KPI4.className = "kpiMuitoRuim"
+            } else{
+                KPI4.className = "kpiRuim";
+            }
+        } else{
+            KPI4.className = "kpiRuim";
+        }
 }
 
 function chamarGraficos(json){

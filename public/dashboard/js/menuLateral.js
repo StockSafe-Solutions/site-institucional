@@ -1,4 +1,4 @@
-function carregarMenu(pagina) {
+function carregarMenu(pagina, geral, codServidor) {
     jsonFunc = JSON.parse(sessionStorage.funcionario)
     nomeUsuario = jsonFunc.nome;
     fotoUsuario = jsonFunc.foto;
@@ -11,6 +11,8 @@ function carregarMenu(pagina) {
     destFuncs = ""
     destPerf = ""
     destConfig = ""
+    destEspecifica = ""
+    destExemplo = ""
 
     switch (pagina) {
         case "geral":
@@ -28,15 +30,17 @@ function carregarMenu(pagina) {
         case "config":
             destConfig = " active"
             break;
+        case "especifica":
+            destEspecifica = " active"
+            break;
+        case "exemplo":
+            destExemplo = " active" // SE O NOME DA PÁGINA FOR "exemplo", OS LINKS DE EXEMPLO ESTARÃO ATIVOS
+            break;
     }
 
-    var conteudo = `
+    let conteudoGeral = `
     <!-- Marca -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <!-- Carinha feliz -->
-        <!-- <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
-        </div> -->
         <div class="sidebar-brand-text mx-3">StockSafe</div>
     </a>
 
@@ -88,90 +92,210 @@ function carregarMenu(pagina) {
                 <span>${nomeUsuario}</span>
                 <a onclick="sair()">Sair</a>
             </p>
-            </li>`
+            </li>
+            
+            <li class="nav-interrogacao">
+              
+            <button class="modalBtn" onclick="switchModalHelpDesk()">
+                <img src="../assets/img/dashboard/interrogacao.png" class="imgInterrog">
+            </button>
+                  
+            <div class="modal">
+                <div class="content">
+                    <div class="jira">
+                        <a href="https://stock-safe-solutions.atlassian.net/servicedesk/customer/portal/1" target="_blank"><img src="../assets/img/dashboard/jira.png" class="imgJira"></a>
+                    </div>
+
+                    <div class="slack">
+                    <a href="https://stocksafe-solutions.slack.com/" target="_blank"><img src="../assets/img/dashboard/slack.png" class="imgSlack"></a>
+                    </div>
+                </div>
+            </div>
+
+            </li>
+            `
+
+        let pasta = ""
+        let saida = "../"
+        if(pagina == "especifica"){
+            pasta = "dashsEspecificas/"
+            saida = ""
+        }
+        //Como as dashs especificas estão em uma página separada da geral, devemos manipular os links
+        //da navbar de acordo para não dar bug
+
+        let conteudoEspecifica = `
+            <!-- Marca -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <div class="sidebar-brand-text mx-3 codServidorNavbar">Servidor ${codServidor}</div>
+            </a>
+        
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+        
+            <!-- Dashboard -->
+            <li class="nav-item${destEspecifica}">
+                <a class="nav-link" href="${saida}index.html?${codServidor}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Visão geral</span></a>
+            </li>
+            <!-- COPIAR ESSE <li> PARA CRIAR MAIS LINKS
+            PARA MUDAR O ÍCONE, MUDAR A CLASSE DO FONTAWESOME ->
+            <!-- COLOCAR O codServidor COMO PARAMETRO GET NAS PAGINAS SE PRECISAR ->
+
+            <!-- Exemplo -->
+            <li class="nav-item${destExemplo}">
+                <a class="nav-link" href="${pasta}base.html?${codServidor}">
+                    <i class="fa-solid fa-question"></i>
+                    <span>Exemplo 1</span></a>
+            </li>
+
+            <!-- Exemplo -->
+            <li class="nav-item${destExemplo}">
+                <a class="nav-link" href="${pasta}base.html?${codServidor}">
+                    <i class="fa-solid fa-person-circle-question"></i>
+                    <span>Exemplo 2</span></a>
+            </li>
+
+            <!-- Divisor -->
+            <hr class="sidebar-divider d-none d-md-block">`
+
+    let conteudo = null
+    if(geral){
+        conteudo = conteudoGeral
+    } else{
+        conteudo = conteudoEspecifica
+        reload_e_alertas.style = "left: -45px" // Adicionando espaço para que o mural de notifics. não fique embaixo do X
+    }
+
     accordionSidebar.className = "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
     accordionSidebar.innerHTML = conteudo;
-
+    
     criarContainerAlertas()
     setInterval(()=>{
         atualizarAlertas()
     },sessionStorage.intervalo_atualizacao)
+
+    // BOTÃO DE AJUDA      
+      window.onclick = function(event) {
+          const modal = document.querySelector('.modal')
+        if (event.target == modal) {
+            switchModalHelpDesk()
+        }
+      }
 }
 
-function criarContainerAlertas(){
+function switchModalHelpDesk(){
+    const modal = document.querySelector('.modal')
+    const actualStyle = modal.style.display
+    if(actualStyle == 'block') {
+      modal.style.display = 'none'
+    }
+    else {
+      modal.style.display = 'block'
+    }
+}
+
+// ========================================================== ALERTAS
+
+function criarContainerAlertas() {
     containerAlertas.innerHTML = `
     <p id="contadorAlerta" onclick="quadroAlertas()"></p>
     <i class="fa-solid fa-bell" onclick="quadroAlertas()" id="iconQuadroAlertas"></i>
-    <ul id="quadroDeAlertas"></ul>`
-    atualizarAlertas()
+    <ul id="quadroDeAlertas"></ul>`;
+    atualizarAlertas();
 }
 
-function carregarAlertas(){
-    quadroDeAlertas.innerHTML = ""
-    alertas = [
-        {
-            titulo: "Perigo",
-            tipo: "vermelho",
-            text: "O servidor A02E0 estáadipisicing elit. Est libero facilis debitis assumenda rerum inventore earum repellat, ut porro iste eligendi culpa impedit temporibus facere ipsa adipisci aut nulla in."
-        },
-        {
-            titulo: "Sucesso",
-            tipo: "verde",
-            text: "adipisicing elit. Est libero facilis debitis assumenda rerum inventore earum repellat, ut porro iste eligendi culpa impedit temporibus facere ipsa adipisci aut nulla in."
-        },
-        {
-            titulo: "Cuidado",
-            tipo: "amarelo",
-            text: "assumenda rerum inventore earum repellat"
-        }
-    ]
-    // alertas = []
+function carregarAlertas(alertas) {
+    quadroDeAlertas.innerHTML = "";
+    contadorAlerta.innerText = alertas.length;
 
-    contadorAlerta.innerText = alertas.length
-    corAlerta = ""
-    i = 0
-    while(i < alertas.length){
-        switch(alertas[i].tipo){
-            case "vermelho":
-                corAlerta = "#e64767"
-                break
-            case "amarelo":
-                corAlerta = "#91891b"
-                break
-            case "verde":
-                corAlerta = "#319e41"
-                break
+    alertas.forEach((alerta, i) => {
+        let tituloAlerta = "";
+        let corAlerta = "";
+        switch (alerta.nivel_alerta) {
+            case 0:
+                tituloAlerta = "Normal";
+                corAlerta = "#319e41"; // Verde
+                break;
+            case 1:
+                tituloAlerta = "Atenção";
+                corAlerta = "#ccc34d"; // Amarelo
+                break;
+            case 2:
+                tituloAlerta = "Cuidado";
+                corAlerta = "#f7ae04"; // Laranja
+                break;
+            case 3:
+                tituloAlerta = "Perigo";
+                corAlerta = "#f73504"; // Vermelho
         }
 
         quadroDeAlertas.innerHTML += `
-        <li id="alerta${i}" style="background-color: ${corAlerta}">
+        <li id="alerta${alerta.id_alerta}" 
+        style="background-color: ${corAlerta}; cursor: pointer;" 
+        onclick="visualizarAlerta(${alerta.id_alerta})" 
+        onmouseover="expandirAlerta(${alerta.id_alerta})"
+        onmouseleave="comprimirAlerta(${alerta.id_alerta})">
+            <u>
+                <h4>
+                    ${tituloAlerta}
+                </h4>
+            </u>
             <span>
-                <h4>${alertas[i].titulo}</h4>
-                <i onclick="expandirAlerta(${i})" id="iconAlerta${i}" class="fa-solid fa-plus"></i>
+                <p>${alerta.descricao}</p>
+                <i id="iconAlerta${alerta.id_alerta}" class="fa-solid fa-plus"></i>
             </span>
-        <p>${alertas[i].text}</p>
-        </li>
-        `
-        i++
-    }
-    if(alertas.length == 0){
+            <p>Servidor: ${alerta.codigo}</p>
+            <p>Horário: ${formatarDataHora(alerta.data_hora)}</p>
+        </li>`;
+
+    });
+
+    if (alertas.length === 0) {
         quadroDeAlertas.innerHTML += `
-        <p><br>Nenhum alerta encontrado</p>
-        `
+        <p><br>Nenhum alerta encontrado</p>`;
     }
 }
 
-function atualizarAlertas(){
-    if(iconQuadroAlertas.className.indexOf("iconQuadroAberto") == -1){
-        iconQuadroAlertas.className = "fa-solid fa-arrows-rotate"
-        iconQuadroAlertas.style = "animation-name: girar; pointer-events: none"
-        contadorAlerta.style = "display: none"
-        carregarAlertas()
-        setTimeout(()=>{
-            iconQuadroAlertas.className = "fa-solid fa-bell"
-            iconQuadroAlertas.style = ""
-            contadorAlerta.style = ""
-        },1000)
+function atualizarAlertas() {
+    if (iconQuadroAlertas.className.indexOf("iconQuadroAberto") === -1) {
+        iconQuadroAlertas.className = "fa-solid fa-arrows-rotate";
+        iconQuadroAlertas.style = "animation-name: girar; pointer-events: none";
+        contadorAlerta.style = "display: none";
+
+        setTimeout(() => {
+            const alertas = [
+                fetch("/alerta/listarAlertas", {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                }).then(function (resposta) {
+                    if (resposta.ok) {
+                        console.log(resposta);
+                        resposta.json().then(json => {
+                            console.log(json)
+                            carregarAlertas(json)
+                        });
+                    }
+                    else {
+                        resposta.text().then(texto => {
+                            console.warn(texto)
+                        })
+                    }
+                }).catch(function (erro) {
+                    console.log(erro);
+                })
+            ];
+            carregarAlertas(alertas);
+
+            setTimeout(() => {
+                iconQuadroAlertas.className = "fa-solid fa-bell";
+                iconQuadroAlertas.style = "";
+                contadorAlerta.style = "";
+            }, 1000);
+        }, 500);
     }
 }
 
@@ -190,22 +314,76 @@ function quadroAlertas(){
 }
 
 function expandirAlerta(id){
-    alertaAlvo = document.getElementById("alerta"+id)
-    icon = document.getElementById("iconAlerta"+id)
+    alertaAlvo = document.getElementById(`alerta${id}`)
+    icon = document.getElementById(`iconAlerta${id}`)
+    
+    icon.style = "animation-name: rodar";
+    alertaAlvo.className = "alertaAberto"
+    setTimeout(()=>{
+        icon.className = "fa-solid fa-minus aberto"
+        icon.style = ""
+    },100)
+}
 
-    if(icon.className.indexOf("aberto") == -1){
-        icon.style = "animation-name: rodar";
-        alertaAlvo.className = "alertaAberto";
-        setTimeout(()=>{
-            icon.className = "fa-solid fa-minus aberto"
-            icon.style = ""
-        },500)
-    } else{
-        icon.style = "animation-name: rodar; animation-direction: reverse";
-        alertaAlvo.className = "";
-        setTimeout(()=>{
-            icon.className = "fa-solid fa-plus"
-            icon.style = ""
-        },500)
-    }
+function comprimirAlerta(id){
+
+    alertaAlvo = document.getElementById(`alerta${id}`)
+    icon = document.getElementById(`iconAlerta${id}`)
+
+    icon.style = "animation-name: rodar; animation-direction: reverse";
+    alertaAlvo.className = "";
+    setTimeout(()=>{
+        icon.className = "fa-solid fa-plus"
+        icon.style = ""
+    },100)
+}
+
+function visualizarAlerta(id) {
+
+    alertaAlvo = document.getElementById(`alerta${id}`);
+
+    console.log("Opa, notificação clicada!")
+
+    console.log(id);
+
+    fetch(`/alerta/visualizarAlerta/${id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            id_alerta: id
+        }),
+    })
+    .then(function (resposta) {
+        if (resposta.ok) {
+            console.log("Visualização alterada!");
+        } else {
+            console.warn(`Erro: ${resposta.status} - ${resposta.statusText}`);
+        }
+    })
+    .catch(function (erro) {
+        console.error(erro);
+    })
+    .finally(function (){
+        if (alertaAlvo) {
+            alertaAlvo.style.display = 'none';
+        }
+    });    
+}
+
+// ========================================================================
+
+function formatarDataHora(dataHoraString) {
+    const dataHora = new Date(dataHoraString);
+    const formatarNumero = (numero) => (numero < 10 ? `0${numero}` : numero);
+
+    const dia = formatarNumero(dataHora.getDate());
+    const mes = formatarNumero(dataHora.getMonth() + 1);
+    const ano = dataHora.getFullYear().toString().slice(-2);
+    const hora = formatarNumero(dataHora.getHours());
+    const minutos = formatarNumero(dataHora.getMinutes());
+    const segundos = formatarNumero(dataHora.getSeconds());
+
+    return `${dia}/${mes}/${ano} ${hora}:${minutos}:${segundos}`;
 }

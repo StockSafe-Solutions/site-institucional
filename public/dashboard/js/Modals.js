@@ -16,16 +16,16 @@ function abrirModal(modal, codigo) {
             },1000)
             break
         case "func":
-            modalFunc.style = "display: flex; animation-name: aparecer; animation-duration: 500ms;"
+            modalCadFunc.style = "display: flex; animation-name: aparecer; animation-duration: 500ms;"
             setTimeout(()=>{
-                modalFunc.style = "display: flex"
+                modalCadFunc.style = "display: flex"
             },1000)
             break
         case "solicitacoes":
             modalSolic.style ="display: flex; animation-name: aparecer; animation-duration: 500ms;"
-                    setInterval(()=>{
-                        modalSolic.style = "display: flex";
-                    }, 1000);
+            setTimeout(()=>{
+                modalSolic.style = "display: flex";
+            }, 1000);
             break;
         }
     setTimeout(()=>{
@@ -37,25 +37,25 @@ function fecharModal(modal) {
         case "cad":
             modalCadastro.style = "display: flex; animation-name: sumir; animation-duration: 300ms;"
             setTimeout(()=>{
-                modalCadastro.style = "display: none"
+                modalCadastro.style = ""
             },200)
             break
         case "dash":
             modalDashboard.style = "display: flex; animation-name: sumir; animation-duration: 300ms;"
             setTimeout(()=>{
-                modalDashboard.style = "display: none"
+                modalDashboard.style = ""
             },200)
             break
         case "func":
-            modalFunc.style = "display: flex; animation-name: sumir; animation-duration: 300ms;"
+            modalCadFunc.style = "display: flex; animation-name: sumir; animation-duration: 300ms;"
             setTimeout(()=>{
-                modalFunc.style = "display: none"
+                modalCadFunc.style = ""
             },200)
             break
         case "solicitacoes":
             modalSolic.style = "display: flex; animation-name: sumir; animation-duration: 300ms;";
 				setTimeout(() => {
-					modalSolic.style = "display: none";
+					modalSolic.style = "";
 				}, 200);
             break;
         }

@@ -35,7 +35,7 @@ router.post('/enviarFoto/:idUsuario', upload.single('foto'), (req, res) => {
     funcionarioController.enviarFoto(req, res);
 });
 
-router.put('/alterar/:idFuncionario', function (req, res) {
+router.put('/alterar/', function (req, res) {
     funcionarioController.alterar(req, res);
 });
 

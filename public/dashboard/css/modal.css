@@ -10,11 +10,38 @@
     to {transform: scale(0,0);opacity: 0;}
 }
 
-.header-servidores i{
-    cursor: pointer;
-    margin: 0 5px;
+.modalServ{
+    display: none;
+    border-radius: 0.25rem;
+}
+
+#modalCadFunc{
+    display: none;
+    flex-direction: column;
+    background-color: #001a46;
+    width: 35vw;
+    padding: 35px;
+    justify-content: center;
+    border-radius: 0.25rem;
+    color: #ffff;
+}
+
+#modalCadFunc header {
+    display: flex;
+    margin-bottom: 10px;
+    justify-content: space-between;
+}
+
+#modalCadFunc i {
+    right: 50px;
+    top: 35px;
     color: #005eff;
-    animation-iteration-count: infinite;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+#modalCadFunc h3, #modalCadFunc i {
+    margin: 0;
 }
 
 /*#containerModal*/
@@ -39,16 +66,15 @@
 }
 
 /*.modalServ*/
-.modalObjeto{
+#modalDashboard{
     width: 80vw;
     height: fit-content;
     border-radius: 0.25rem;
     overflow-y: scroll;
-    display: none;
     flex-direction: column;
 }
 
-.modalObjeto header{
+#modalDashboard header{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -56,13 +82,13 @@
     width: 100%;
 }
 
-.modalObjeto header i{
+#modalDashboard header i{
     cursor: pointer;
     color: whitesmoke;
     transition: 500ms;
 }
 
-.modalObjeto header i:hover{
+#modalDashboard header i:hover{
     color: #858792;
 }
 
@@ -90,9 +116,25 @@
 
 #modalCadastro {
     align-items: center;
+    flex-direction: column;
     width: 40vw;
     background-color: #001a46;
     padding: 20px 50px;
+}
+
+#modalCadastro > header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+#modalCadastro > header > *{
+    margin: 0px 5px;
+}
+#modalCadastro i{
+    color: #005eff;
+    cursor: pointer;
+    transition: 500ms;
 }
 
 #modalCadastro > span {
@@ -119,15 +161,15 @@
     text-align: center;
 }
 
-.modalFunc header {
+#modalCadFunc header {
     display: flex;
     margin-bottom: 10px;
     justify-content: space-between;
 }
 
 
-.modalFunc {
-    display: flex;
+#modalCadFunc {
+    display: none;
     flex-direction: column;
     background-color: #001a46;
     width: 35vw;
@@ -137,7 +179,7 @@
     color: #ffff;
 }
 
-.modalFunc i {
+#modalCadFunc i {
     right: 50px;
     top: 35px;
     color: #005eff;
@@ -145,14 +187,15 @@
     margin-left: 10px;
 }
 
-.modalFunc h3, .modalFunc i {
+#modalCadFunc h3, #modalCadFunc i {
     margin: 0;
 }
 
-.modalSolic {
-    background-color: whitesmoke;
+#modalSolic {
+    background-color: #001a46;
+    color: white;
     border-radius: .35rem;
-    display: flex;
+    display: none;
     flex-direction: column;
     padding: 15px;
     width: 65vw;
@@ -161,25 +204,29 @@
     list-style: none;
 }
 
-.modalSolic header{
+#modalSolic header{
     display: flex;
     margin-bottom: 10px;
     justify-content: space-between;
 }
-.modalSolic h3{
-    color: #001a46;
-}
-.modalSolic i {
-    right: 50px;
-    top: 35px;
-    color: #005eff;
+#modalSolic i {
     cursor: pointer;
-    margin-left: 10px;
 }
-.modalSolic h3, .modalSolic i {
+#modalSolic h3, #modalSolic i {
     margin: 0;
 }
-
+#container-funcionarios-solicitacao{
+    background-color: white;
+    height: 80vh;
+    border-radius: 0.35rem;
+}
+.containerVazio{
+    padding: 0px;
+    color: #001a46;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 #inputFunc {
     display: flex;
