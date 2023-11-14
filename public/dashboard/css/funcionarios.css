@@ -121,3 +121,12 @@
     height: 16px;
     object-fit: contain;
 }
+
+.funcionarioInfo input{
+    border-radius: 10rem;
+    border: 1px solid #858796;
+    padding: 0.5rem 1rem;
+    background-color: #001A46;
+    color: whitesmoke;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
