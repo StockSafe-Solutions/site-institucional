@@ -47,9 +47,10 @@
                                 <i class="fa-solid fa-arrows-rotate" id="iconReload"></i>
                             </span>
 
-                            <div id="containerAlertas"></div>
+                           <div id="containerAlertas"></div>
 
                             <button onclick="abrirModal('func')">Adicionar novo</button>
+                            <button onclick="abrirModal('solicitacoes'), reloadSolicitacoes()">Solicitações</button>
                             <span>
                                 
                                 <input type="text" id="iptPesquisa" placeholder="Pesquisar por nome">
@@ -88,6 +89,14 @@
                 <button id="btnCadastrar" onclick="semiCadastrar()">Cadastrar</button>
             </div>
         </div>
+            <div class="modalSolic" id="modalSolic">
+                        <header class="header-funcionarios" onload="reloadSolicitacoes()">
+                            <h3 class="nomePagina">Solicitações dos novos funcionário</h3>
+                            <i class="fa-solid fa-x" onclick="fecharModal('solicitacoes'), reloadFuncionarios()"></i>
+                        </header>
+                        <ul id="container-funcionarios-solicitacao"></ul>
+                             
+            </div>
     </div>
 
     <!-- Bootstrap core JavaScript-->

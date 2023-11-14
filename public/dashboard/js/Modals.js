@@ -1,4 +1,5 @@
 function abrirModal(modal, codigo) {
+    containerModal.value = "";
     switch (modal) {
         case "cad":
             gerarCodigo()
@@ -20,6 +21,12 @@ function abrirModal(modal, codigo) {
                 modalFunc.style = "display: flex"
             },1000)
             break
+        case "solicitacoes":
+            modalSolic.style ="display: flex; animation-name: aparecer; animation-duration: 500ms;"
+                    setInterval(()=>{
+                        modalSolic.style = "display: flex";
+                    });
+            break;
         }
     setTimeout(()=>{
         containerModal.style = "display: flex"
@@ -45,6 +52,12 @@ function fecharModal(modal) {
                 modalFunc.style = "display: none"
             },200)
             break
+        case "solicitacoes":
+            modalSolic.style = "display: flex; animation-name: sumir; animation-duration: 300ms;";
+				setTimeout(() => {
+					modalSolic.style = "display: none";
+				}, 200);
+            break;
         }
     setTimeout(()=>{
         containerModal.style = "display: none"
