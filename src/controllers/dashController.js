@@ -19,13 +19,33 @@ function kpiEspecifica(req, res) {
 }
 
 function listarRegistrosData(req, res){
-  var data = req.params.data;
-  console.log(data)
-
+  const data = req.params.data;
   if(data == undefined){
     res.status(400).send("Data vazia.");
   }else{
     dashboardModel.listarRegistrosData(data).then(
+      function(resultado){
+        res.json(resultado);
+      }
+    ).catch(
+      function(erro){
+        console.log(erro);
+        console.log(
+          `\n houve um erro ao listar registro!`, erro.sqlMessage
+        );
+        res.status(500).json(erro.sqlMessage);
+      }
+    )
+  }
+}
+
+function listarRegistrosDataEspeficico(req, res){
+  const data = req.params.data;
+  const codServidor = req.params.codServidor;
+  if(data == undefined || codServidor == undefined){
+    res.status(400).send("Vazio");
+  }else{
+    dashboardModel.listarRegistrosDataEspeficico(codServidor,data).then(
       function(resultado){
         res.json(resultado);
       }
@@ -104,5 +124,6 @@ module.exports = {
     graficosEspecificos,
     kpiGeral,
     graficosGerais,
-    listarRegistrosData
+    listarRegistrosData,
+    listarRegistrosDataEspeficico
 }
