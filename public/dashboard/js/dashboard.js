@@ -153,8 +153,6 @@ function chamarGraficos(json) {
 }
 
 function chamarRegistros() {
-
-
     var data = pesquisaData.value;
     console.log(data);
 

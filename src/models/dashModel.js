@@ -6,7 +6,7 @@ function kpiEspecifica(codServidor){
     return database.executar(instrucao);
 }
 function listarRegistrosData(data){
-    var instrucao = `SELECT * FROM vw_servidor WHERE data_hora LIKE '%${data}%'`;
+    var instrucao = `SELECT * FROM vw_registro WHERE data_hora LIKE '%${data}%'`;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
   }

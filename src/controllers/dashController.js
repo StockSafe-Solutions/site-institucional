@@ -20,6 +20,7 @@ function kpiEspecifica(req, res) {
 
 function listarRegistrosData(req, res){
   const data = req.params.data;
+  console.log(data)
   if(data == undefined){
     res.status(400).send("Data vazia.");
   }else{
