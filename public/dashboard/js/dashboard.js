@@ -119,22 +119,30 @@ function definirKPIs(tipo, json){
             KPI4.className = "kpiRuim";
         }
 }
+function getHorasMinutos(data) {
+	const dataSplit = data.split(" ");
+	const horaMinuto = dataSplit[1];
+	return horaMinuto;
+}
 
 function chamarGraficos(json){
     json_cpu = json[0]
     uso_cpu = []
+    data_cpu = [];
     for(i in json_cpu){
         uso_cpu.push(json_cpu[i].uso_da_cpu)
+        data_cpu.push(getHorasMinutos(json_cpu[i].dataDados));
     }
 
     json_ram = json[1]
     uso_ram = []
+    data_ram = [];
     for(i in json_ram){
         uso_ram.push(json_ram[i].uso_da_ram)
+        data_ram.push(getHorasMinutos(json_ram[i].dataDados));
     }
-
-    gerenciarGraficos('graficoCPU',uso_cpu)
-    gerenciarGraficos('graficoRAM',uso_ram)
+    gerenciarGraficos('graficoCPU',uso_cpu, data_cpu);
+    gerenciarGraficos('graficoRAM',uso_ram, data_ram);
 }
 
 function reloadDashboard(){
