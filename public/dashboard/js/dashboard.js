@@ -1,5 +1,22 @@
 //import csv from "csv";
+function csv(json) {
+	const colunas = Object.keys(json[0]);
 
+	var csv = colunas.join(",");
+
+	for (const item of json) {
+		const linha = Object.values(item).join(",");
+		csv += "\n" + linha;
+	}
+
+	console.log(csv);
+
+	const blob = new Blob([csv], { type: "text/csv" });
+	const link = document.createElement("a");
+	link.href = window.URL.createObjectURL(blob);
+	link.download = "dados.csv";
+	link.click();
+}
 
 function carregarDados() {
     indiceParm = location.href.indexOf('?')
@@ -86,7 +103,7 @@ function carregarDados() {
 
             resposta.json().then(json => {
                 console.log(json)
-                //csv(json);
+                csv(json);
             });
         } else {
             console.log("não ok")
@@ -214,25 +231,7 @@ function chamarRegistros() {
 
 }
 
-function csv(json) {
-    const colunas = Object.keys(json[0]);
 
-    var csv = colunas.join(",");
-
-    for (const item of json) {
-        const linha = Object.values(item).join(",");
-        csv += "\n" + linha;
-    }
-
-    console.log(csv);
-
-
-    const blob = new Blob([csv], { type: "text/csv" });
-    const link = document.createElement("a");
-    link.href = window.URL.createObjectURL(blob);
-    link.download = "dados.csv";
-    link.click();
-}
 
 function reloadDashboard() {
     textoReload.innerText = "Atualizando"
