@@ -147,9 +147,37 @@ function chamarGraficos(json){
     gerenciarGraficos('graficoRAM',uso_ram, data_ram);
 }
 
-function chamarRegistros(json){
-   // url = `../dash/listarRegistrosData/${}`
+function chamarRegistros(){
 
+    var data = pesquisaData.value;
+    console.log(data);
+    urlGeral = `/dash/listarRegistrosData`
+    fetch(
+        urlGeral, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }.then(function(resposta){
+            if (resposta.ok) {
+            
+                resposta.json().then(json => {
+                   csv(json);
+                });
+            }
+            else {
+                resposta.text().then(texto => {
+                    console.warn(texto)
+                })
+            }
+        }).catch(function(erro){
+            console.log(erro);
+        })
+    )
+
+}
+
+function csv(json){
     json_dados = json[0];
     json_registros = [];
     
