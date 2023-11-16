@@ -19,7 +19,7 @@ router.get("/graficosGerais", (req, res) => {
     dashController.graficosGerais(req, res);
 })
 
-router.get("/listarRegistrosData/:codServidor", (req, res) => {
+router.get("/listarRegistrosData", (req, res) => {
     dashController.listarRegistrosData(req, res);
 });
 
