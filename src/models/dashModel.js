@@ -11,6 +11,13 @@ function listarRegistrosData(data){
     return database.executar(instrucao);
   }
 
+  function listarRegistrosDataEspeficico(codServidor, data){
+    var instrucao = `SELECT * FROM vw_registro WHERE fk_servidor = (SELECT id_servidor FROM tb_servidor WHERE codigo = '${codServidor}')
+     and data_hora LIKE '%${data}%';`;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+  }
+
 function cpuEspecifico(codServidor){
     var instrucao = `SELECT * FROM vw_cpu 
         WHERE fk_servidor = 
@@ -52,5 +59,6 @@ module.exports = {
     kpiGeral,
     cpuGeral,
     ramGeral,
-    listarRegistrosData
+    listarRegistrosData,
+    listarRegistrosDataEspeficico
 }
