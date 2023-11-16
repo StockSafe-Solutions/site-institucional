@@ -160,6 +160,21 @@ function chamarRegistros(json){
     csv.write("dados.csv", json_registros, {
         headers: true,
     });
+
+    // Baixar o CSV
+    const url = "dados.csv";
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", url, true);
+    xhr.responseType = "arraybuffer";
+    xhr.onload = function() {
+    const arrayBuffer = xhr.response;
+    const blob = new Blob([arrayBuffer], { type: "application/octet-stream" });
+    const link = document.createElement("a");
+    link.href = window.URL.createObjectURL(blob);
+    link.download = "dados.csv";
+    link.click();
+    };
+    xhr.send();
 }
 
 function reloadDashboard(){
