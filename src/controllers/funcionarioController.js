@@ -99,7 +99,7 @@ function enviarEmail(req, res){
                 function (erro) {
                     console.log(erro);
                     console.log(
-                        "\n Houve um erro ao realizar o cadastro! Erro: ", erro.sqlMessage
+                        "\n Houve um erro ao enviar email! Erro: ", erro.sqlMessage
                     );
                     res.status(500).json(erro.sqlMessage)
                 }
