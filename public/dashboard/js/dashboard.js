@@ -1,3 +1,5 @@
+import csv from "csv";
+
 function carregarDados(){
     indiceParm = location.href.indexOf('?')
     params = location.href.slice(indiceParm+1,indiceParm+7)
@@ -143,6 +145,21 @@ function chamarGraficos(json){
     }
     gerenciarGraficos('graficoCPU',uso_cpu, data_cpu);
     gerenciarGraficos('graficoRAM',uso_ram, data_ram);
+}
+
+function chamarRegistros(json){
+   // url = `../dash/listarRegistrosData/${}`
+
+    json_dados = json[0];
+    json_registros = [];
+    
+    for(i in json_dados){
+        json_registros.push(json_dados[i]);
+    }
+
+    csv.write("dados.csv", json_registros, {
+        headers: true,
+    });
 }
 
 function reloadDashboard(){
