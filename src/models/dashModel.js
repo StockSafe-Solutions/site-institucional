@@ -9,7 +9,7 @@ function kpiEspecifica(codServidor){
 function cpuEspecifico(codServidor){
     var instrucao = `SELECT * FROM vw_cpu 
         WHERE fk_servidor = 
-            (SELECT id_servidor FROM tb_servidor WHERE codigo = '${codServidor}');`
+            (SELECT id_servidor FROM tb_servidor WHERE codigo = '${codServidor}' ORDER BY dataDados DESC);`
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
@@ -17,7 +17,7 @@ function cpuEspecifico(codServidor){
 function ramEspecifico(codServidor){
     var instrucao = `SELECT * FROM vw_ram 
         WHERE fk_servidor = 
-            (SELECT id_servidor FROM tb_servidor WHERE codigo = '${codServidor}');`
+            (SELECT id_servidor FROM tb_servidor WHERE codigo = '${codServidor}' ORDER BY dataDados DESC);`;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
