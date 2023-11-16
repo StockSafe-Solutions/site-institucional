@@ -5,11 +5,16 @@ function kpiEspecifica(codServidor){
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
+function listarRegistrosData(codServidor, data){
+    var instrucao = `SELECT * FROM vw_servidor WHERE fk_servidor = (SELECT id_servidor FROM tb_servidor WHERE codigo = '${codServidor}') AND data_hora LIKE '%${data}%';`;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+  }
 
 function cpuEspecifico(codServidor){
     var instrucao = `SELECT * FROM vw_cpu 
         WHERE fk_servidor = 
-            (SELECT id_servidor FROM tb_servidor WHERE codigo = '${codServidor}' ORDER BY dataDados DESC);`
+            (SELECT id_servidor FROM tb_servidor WHERE codigo = '${codServidor}') ORDER BY dataDados DESC;`
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
@@ -17,7 +22,7 @@ function cpuEspecifico(codServidor){
 function ramEspecifico(codServidor){
     var instrucao = `SELECT * FROM vw_ram 
         WHERE fk_servidor = 
-            (SELECT id_servidor FROM tb_servidor WHERE codigo = '${codServidor}' ORDER BY dataDados DESC);`;
+            (SELECT id_servidor FROM tb_servidor WHERE codigo = '${codServidor}') ORDER BY dataDados DESC;`;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
@@ -46,5 +51,6 @@ module.exports = {
     ramEspecifico,
     kpiGeral,
     cpuGeral,
-    ramGeral
+    ramGeral,
+    listarRegistrosData
 }
