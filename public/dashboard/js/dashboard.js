@@ -1,4 +1,5 @@
-import csv from "csv";
+//import csv from "csv";
+
 
 function carregarDados(){
     indiceParm = location.href.indexOf('?')
@@ -148,61 +149,43 @@ function chamarGraficos(json){
 }
 
 function chamarRegistros(){
+   
 
     var data = pesquisaData.value;
     console.log(data);
-    urlGeral = `/dash/listarRegistrosData`
-    fetch(
-        urlGeral, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        }.then(function(resposta){
-            if (resposta.ok) {
-            
+
+    fetch(`/dash/listarRegistrosData/${data}`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+        },
+       /* body: JSON.stringify({
+            dataServer: data
+        }), */
+    }).then(function(resposta){
+        console.log("Resposta: ", resposta);
+        if(resposta.ok){
+            console.log("OK")
+                
                 resposta.json().then(json => {
-                   csv(json);
+                    console.log(json)
+                    csv(json);
                 });
-            }
-            else {
-                resposta.text().then(texto => {
-                    console.warn(texto)
-                })
-            }
-        }).catch(function(erro){
-            console.log(erro);
-        })
-    )
+        }else{
+            console.log("não ok")
+            console.log(`#ERRO: ${resposta}`);
+        }
+    }).catch(function (resposta){
+        console.log(`#ERRO: ${resposta}`);
+    })
+    
 
 }
 
 function csv(json){
-    json_dados = json[0];
-    json_registros = [];
-    
-    for(i in json_dados){
-        json_registros.push(json_dados[i]);
-    }
-
-    csv.write("dados.csv", json_registros, {
-        headers: true,
-    });
-
-    // Baixar o CSV
-    const url = "dados.csv";
-    const xhr = new XMLHttpRequest();
-    xhr.open("GET", url, true);
-    xhr.responseType = "arraybuffer";
-    xhr.onload = function() {
-    const arrayBuffer = xhr.response;
-    const blob = new Blob([arrayBuffer], { type: "application/octet-stream" });
-    const link = document.createElement("a");
-    link.href = window.URL.createObjectURL(blob);
-    link.download = "dados.csv";
-    link.click();
-    };
-    xhr.send();
+    const csv = Object.keys(json[0]).map(key => json.map(item => item[key])).join(",");
+    console.log("CSV:");
+    console.log(csv);
 }
 
 function reloadDashboard(){

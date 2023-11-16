@@ -19,8 +19,9 @@ router.get("/graficosGerais", (req, res) => {
     dashController.graficosGerais(req, res);
 })
 
-router.get("/listarRegistrosData", (req, res) => {
+router.get("/listarRegistrosData/:data", (req, res) => {
     dashController.listarRegistrosData(req, res);
+    console.log("sdsdsdfsdfsdffffffffffffffffffffffff")
 });
 
 module.exports = router;
