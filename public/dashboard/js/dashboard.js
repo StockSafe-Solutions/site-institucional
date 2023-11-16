@@ -6,16 +6,21 @@ function carregarDados() {
     params = location.href.slice(indiceParm + 1, indiceParm + 7)
     urlKPIs = ""
     urlGraficos = ""
+    urlDados = "";
+    var data = pesquisaData.value;
+    console.log(data);
 
     if (indiceParm == -1) {
         urlKPIs = "../dash/kpiGeral"
         urlGraficos = "../dash/graficosGerais"
+        urlDados = `../dash/listarRegistrosData/${data}`;
 
         nomePagina.innerText = "Dashboard - Visão Geral"
         carregarMenu("geral", true)
     } else {
         urlKPIs = "../dash/kpiEspecifica/" + params
         urlGraficos = "../dash/graficosEspecificos/" + params
+        urlDados = `../dash/listarRegistrosDataEspeficico/${params}/${data}`
 
         nomePagina.innerText = "Dashboard - Servidor " + params
         reload_e_alertas.style = "left: -45px"
@@ -64,6 +69,31 @@ function carregarDados() {
         }
     }).catch(function (erro) {
         console.log(erro);
+    })
+    
+    fetch(urlDados, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        /* body: JSON.stringify({
+             dataServer: data
+         }), */
+    }).then(function (resposta) {
+        console.log("Resposta: ", resposta);
+        if (resposta.ok) {
+            console.log("OK")
+
+            resposta.json().then(json => {
+                console.log(json)
+                //csv(json);
+            });
+        } else {
+            console.log("não ok")
+            console.log(`#ERRO: ${resposta}`);
+        }
+    }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
     })
 
     now = new Date()
@@ -153,7 +183,7 @@ function chamarGraficos(json) {
 }
 
 function chamarRegistros() {
-    var data = pesquisaData.value;
+   /* var data = pesquisaData.value;
     console.log(data);
 
     fetch(`/dash/listarRegistrosData/${data}`, {
@@ -163,7 +193,7 @@ function chamarRegistros() {
         },
         /* body: JSON.stringify({
              dataServer: data
-         }), */
+         }), 
     }).then(function (resposta) {
         console.log("Resposta: ", resposta);
         if (resposta.ok) {
@@ -180,7 +210,7 @@ function chamarRegistros() {
     }).catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
     })
-
+ */
 
 }
 
