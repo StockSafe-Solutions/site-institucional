@@ -1,4 +1,4 @@
-const { json } = require("express");
+//const { json } = require("express");
 
 //import csv from "csv";
 function csv(json) {
@@ -214,7 +214,7 @@ function chamarGraficos(json) {
 	data_cpu = [];
 	for (i in json_cpu) {
 		uso_cpu.push(json_cpu[i].uso_da_cpu);
-		data_cpu.push(getHorasMinutos(json_cpu[i].dataDados));
+		data_cpu.push(json_cpu[i].dataDados);
 	}
 
 	json_ram = json[1];
@@ -222,7 +222,7 @@ function chamarGraficos(json) {
 	data_ram = [];
 	for (i in json_ram) {
 		uso_ram.push(json_ram[i].uso_da_ram);
-		data_ram.push(getHorasMinutos(json_ram[i].dataDados));
+		data_ram.push(json_ram[i].dataDados);
 	}
 	gerenciarGraficos("graficoCPU", uso_cpu, data_cpu);
 	gerenciarGraficos("graficoRAM", uso_ram, data_ram);
