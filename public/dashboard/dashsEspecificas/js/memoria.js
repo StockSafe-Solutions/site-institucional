@@ -6,6 +6,7 @@ function carregarExemplo(){
     nomePagina.innerText = "Dashboard Memória - Servidor "+params
     urlKPIs = "";
 	urlGraficos = "";
+	urlDados = "";
 
     carregarMenu("memoria", false, params);
     //CARREGANDO O MENU, false PARA PAG. ESPECÍFICA

@@ -27,9 +27,10 @@ function cpuEspecifico(codServidor){
 }
 
 function ramEspecifico(codServidor){
-    var instrucao = `SELECT * FROM vw_ram 
-        WHERE fk_servidor = 
-            (SELECT id_servidor FROM tb_servidor WHERE codigo = '${codServidor}') ORDER BY dataDados DESC;`;
+    var instrucao = `
+            SELECT * FROM vw_ram_g
+        WHERE fk_servidor = (SELECT id_servidor FROM tb_servidor WHERE codigo = '${codServidor}') ORDER BY dataDados DESC;`;
+            
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
