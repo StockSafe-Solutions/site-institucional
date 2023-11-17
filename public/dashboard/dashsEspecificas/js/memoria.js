@@ -72,7 +72,8 @@ function chamarGraficosRAM(tipo, json){
 			for (i in json_livre) {
 				livres.push(i);
 			}
-			liv = livres[1];
+			console.log(livre);
+			liv = livre;
 		}
     else if(tipo == "usado"){
 			json_usado = json[0];
@@ -82,8 +83,6 @@ function chamarGraficosRAM(tipo, json){
 			}
 			usu = usado[1];
 		}
-		
-		console.log(usu)
-		gerenciarGraficosRosquinha("qtdRAM",liv, usu);
+    gerenciarGraficosRosquinha("graficoQuantidadeRAM", liv, usu);
 }
 
