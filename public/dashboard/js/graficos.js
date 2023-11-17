@@ -17,15 +17,19 @@ function gerenciarGraficos(id, vetorDados, vetorData) {
 }
 
 function gerenciarGraficosRosquinha(id, vetorLivre, vetorUso) {
-	if (contadorDeCharts == 3) {
-		chartCPU.destroy();
-		chartRAM.destroy();
-		contadorDeCharts = 1;
+	console.log("ffvfvf" + id)
+	chartRosca = "";
+	if (cont == 2) {
+		//chartRosca.destroy();
+		cont = 1;
 	} else {
 		cont++;
 	}
+	
+	if(id == "qtdRAM"){
+		chartRosca = criaGraficoRosquinha(id, vetorLivre, vetorUso)
+	}
 
-	chartRosca = criaGraficoRosquinha(id, vetorLivre, vetorUso)
 }
 
 function criarGrafico(id, vetorDados, vetorData) {
