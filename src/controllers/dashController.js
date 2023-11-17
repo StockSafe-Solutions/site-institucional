@@ -72,7 +72,15 @@ function graficosEspecificos(req, res) {
     if (resultado1.length > 0) {
       dashboardModel.ramEspecifico(codServidor).then((resultado2) => {
         if (resultado2.length > 0) {
-          res.status(200).json([resultado1,resultado2])
+          dashboardModel.ramLivreEspeficico(codServidor).then((resultado3) => {
+            if(resultado3.length >0){
+              dashboardModel.ramUsadaEspeficico(codServidor).then((resultado4) => {
+                if(resultado4.length > 0){
+                  res.status(200).json([resultado1,resultado2,resultado3 , resultado4])
+                }
+              })
+            }
+          })
         } else {
           res.status(404).send()
         }}).catch((error) => {
