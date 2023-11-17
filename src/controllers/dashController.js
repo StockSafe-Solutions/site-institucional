@@ -72,15 +72,7 @@ function graficosEspecificos(req, res) {
     if (resultado1.length > 0) {
       dashboardModel.ramEspecifico(codServidor).then((resultado2) => {
         if (resultado2.length > 0) {
-          dashboardModel.ramLivreEspeficico(codServidor).then((resultado3) => {
-            if(resultado3.length >0){
-              dashboardModel.ramUsadaEspeficico(codServidor).then((resultado4) => {
-                if(resultado4.length > 0){
-                  res.status(200).json([resultado1,resultado2,resultado3 , resultado4])
-                }
-              })
-            }
-          })
+          res.status(200).json([resultado1,resultado2])
         } else {
           res.status(404).send()
         }}).catch((error) => {
@@ -91,6 +83,33 @@ function graficosEspecificos(req, res) {
     }}).catch((error) => {
     console.log(error)
     console.log("Erro nas Dashboards\n", erro.sqlMessage)
+  })
+}
+
+function graficosEspecificosRAM(req, res){
+  var codServidor = req.params.codServidor;
+
+	if (codServidor == undefined) {
+		res.status(400).send("Undefined");
+	}
+  dashboardModel.ramLivreEspeficico(codServidor).then((resultado1) => {
+    if(resultado1 > 0){
+      dashboardModel.ramUsadaEspeficico(codServidor). then((resultado2) => {
+        if(resultado2 > 0){
+          res.status(200).json([resultado1, resultado2]);
+        }else{
+          res.status(404).send()
+        }
+      }).catch((error) => {
+        console.log(error);
+			console.log("Erro nas Dashboards\n", erro.sqlMessage);
+      })
+    }else{
+       res.status(404).send();
+    }
+  }).catch((error) => {
+    console.log(error);
+		console.log("Erro nas Dashboards\n", erro.sqlMessage);
   })
 }
 
@@ -129,10 +148,11 @@ function graficosGerais(req, res) {
 }
 
 module.exports = {
-    kpiEspecifica,
-    graficosEspecificos,
-    kpiGeral,
-    graficosGerais,
-    listarRegistrosData,
-    listarRegistrosDataEspeficico
-}
+	kpiEspecifica,
+	graficosEspecificos,
+	kpiGeral,
+	graficosGerais,
+	listarRegistrosData,
+	listarRegistrosDataEspeficico,
+	graficosEspecificosRAM,
+};

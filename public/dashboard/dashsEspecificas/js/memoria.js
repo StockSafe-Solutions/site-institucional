@@ -8,6 +8,7 @@ function carregarExemplo(){
 	urlGraficos = "";
 	urlDados = "";
 
+    urlGraficos = "../dash/graficosEspecificos/" + params;
     carregarMenu("memoria", false, params);
     //CARREGANDO O MENU, false PARA PAG. ESPECÍFICA
 }

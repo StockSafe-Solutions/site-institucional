@@ -26,4 +26,8 @@ router.get("/listarRegistrosDataEspeficico/:codServidor/:data", (req, res) => {
     dashController.listarRegistrosDataEspeficico(req, res);
 });
 
+router.get("/graficosEspecificosRAM/:codServidor", (req, res) => {
+	dashController.graficosEspecificosRAM(req, res);
+});
+
 module.exports = router;
