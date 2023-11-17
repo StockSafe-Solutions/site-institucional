@@ -22,7 +22,7 @@ function carregarDadosRam(){
 				if (resposta.ok) {
 					console.log("Livre deu OK");
 					resposta.json().then((json) => {
-						chamarGraficos("livre", json);
+						chamarGraficosRAM("livre", json);
 					});
 				} else {
 					console.log("UUUUUUUUUUUUUUUUU");
@@ -47,7 +47,7 @@ function carregarDadosRam(){
 						console.log("Usada deu  OK");
 						resposta.json().then((json) => {
                             console.log("Usada  está indo");
-							chamarGraficos("usado", json)
+							chamarGraficosRAM("usado", json)
 						});
 					} else {
 						console.log("UUUUUUUUUUUUUUUUU");
@@ -64,7 +64,8 @@ function carregarDadosRam(){
 var liv;
 var usu; 
 
-function chamarGraficos(tipo, json){
+function chamarGraficosRAM(tipo, json){
+	console.log("Chamou a função gráfico de RAM");
   if(tipo == "livre"){
 			json_livre = json[0];
 			livre = [];
@@ -72,7 +73,7 @@ function chamarGraficos(tipo, json){
 				livre.push(i);
 			}
 			console.log(livre);
-			liv = livre;
+			liv = livre[1];
 		}
     else if(tipo == "usado"){
 			json_usado = json[0];
@@ -80,8 +81,11 @@ function chamarGraficos(tipo, json){
 			for (i in json_usado) {
 				usado.push(i);
 			}
-			usu = usado;
+			usu = usado[1];
 		}
-    gerenciarGraficosRosquinha("graficoQuantidadeRAM", liv, usu);
+
+		console.log(liv)
+		console.log(usu)
+		gerenciarGraficosRosquinha("myChart",liv, usu);
 }
 
