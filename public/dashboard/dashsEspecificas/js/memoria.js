@@ -8,11 +8,11 @@ function carregarDadosRam(){
 	urlGraficos = "";
 	urlDados = "";
 
-    urlGraficos = "../dash/graficosEspecificos/" + params;
+    //urlGraficos = "../dash/graficosEspecificos/" + params;
     carregarMenu("memoria", false, params);
     //CARREGANDO O MENU, false PARA PAG. ESPECÍFICA
 
-    fetch(urlGraficos, {
+    fetch(`/dash/ramLivreEspeficico/${params}`, {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",
@@ -20,35 +20,68 @@ function carregarDadosRam(){
 		})
 			.then(function (resposta) {
 				if (resposta.ok) {
+					console.log("Livre deu OK");
 					resposta.json().then((json) => {
-						chamarGraficos(json);
+						chamarGraficos("livre", json);
 					});
 				} else {
-                    console.log("UUUUUUUUUUUUUUUUU");
+					console.log("UUUUUUUUUUUUUUUUU");
+					console.log(`#ERRO: ${resposta}`);
 					resposta.text().then((texto) => {
 						console.warn(texto);
 					});
 				}
 			})
-			.catch(function (erro) {
-				console.log(erro);
-                console.log("aaaaaa")
+			.catch(function (resposta) {
+				console.log(`#ERRO: ${resposta}`);
 			});
+
+       fetch(`/dash/ramUsadoEspeficico/${params}`, {
+				method: "GET",
+				headers: {
+					"Content-Type": "application/json",
+				},
+			})
+				.then(function (resposta) {
+					if (resposta.ok) {
+						console.log("Usada deu  OK");
+						resposta.json().then((json) => {
+                            console.log("Usada  está indo");
+							chamarGraficos("usado", json)
+						});
+					} else {
+						console.log("UUUUUUUUUUUUUUUUU");
+						resposta.text().then((texto) => {
+							console.warn(texto);
+						});
+					}
+				})
+				.catch(function (resposta) {
+					console.log(`#ERRO: ${resposta}`);
+				});
+
+}
+var liv;
+var usu; 
+
+function chamarGraficos(tipo, json){
+  if(tipo == "livre"){
+			json_livre = json[0];
+			livre = [];
+			for (i in json_livre) {
+				livre.push(i);
+			}
+			console.log(livre);
+			liv = livre;
+		}
+    else if(tipo == "usado"){
+			json_usado = json[0];
+			usado = [];
+			for (i in json_usado) {
+				usado.push(i);
+			}
+			usu = usado;
+		}
+    gerenciarGraficosRosquinha("graficoQuantidadeRAM", liv, usu);
 }
 
-function chamarGraficos(json){
-    json_livre = json[0];
-    livre = [];
-    for(i in json_livre){
-        livre.push(i);
-    }
-
-    json_usando = json[1];
-    usando = [];
-    for(i in json_usando){
-        usando.push(i);
-    }
-
-    gerenciarGraficosRosquinha("graficoQuantidade", livre, usando);
-
-}

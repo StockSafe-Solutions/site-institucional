@@ -211,7 +211,7 @@ function chamarGraficos(json) {
 		uso_cpu.push(json_cpu[i].uso_da_cpu);
 		data_cpu.push(json_cpu[i].dataDados);
 	}
-
+    
 	json_ram = json[1];
 	uso_ram = [];
 	data_ram = [];

@@ -62,6 +62,46 @@ function listarRegistrosDataEspeficico(req, res){
   }
 }
 
+function ramLivreEspeficico(req, res) {
+	const codServidor = req.params.codServidor;
+	if ( codServidor == undefined) {
+		res.status(400).send("Vazio");
+	} else {
+		dashboardModel.ramLivreEspeficico(codServidor)
+			.then(function (resultado) {
+				res.json(resultado);
+			})
+			.catch(function (erro) {
+				console.log(erro);
+				console.log(
+					`\n houve um erro ao ver livre registro!`,
+					erro.sqlMessage
+				);
+				res.status(500).json(erro.sqlMessage);
+			});
+	}
+}
+function ramUsadoEspeficico(req, res) {
+	const codServidor = req.params.codServidor;
+	if (codServidor == undefined) {
+		res.status(400).send("Vazio");
+	} else {
+		dashboardModel
+			.ramUsadaEspeficico(codServidor)
+			.then(function (resultado) {
+				res.json(resultado);
+			})
+			.catch(function (erro) {
+				console.log(erro);
+				console.log(
+					`\n houve um erro ao ver usado registro!`,
+					erro.sqlMessage
+				);
+				res.status(500).json(erro.sqlMessage);
+			});
+	}
+}
+
 function graficosEspecificos(req, res) {
   var codServidor = req.params.codServidor
 
@@ -72,15 +112,7 @@ function graficosEspecificos(req, res) {
     if (resultado1.length > 0) {
       dashboardModel.ramEspecifico(codServidor).then((resultado2) => {
         if (resultado2.length > 0) {
-          dashboardModel.ramLivreEspeficico(codServidor).then((resultado3) => {
-            if(resultado3.length > 0){
-              dashboardModel.ramUsadaEspeficico(codServidor).then((resultado4) => {
-                if(resultado4.length > 0){
-                  res.status(200).json([resultado1,resultado2])
-                }
-              })
-            }
-          })
+          res.status(200).json([resultado1,resultado2])
         } else {
           res.status(404).send()
         }}).catch((error) => {
@@ -129,10 +161,12 @@ function graficosGerais(req, res) {
 }
 
 module.exports = {
-    kpiEspecifica,
-    graficosEspecificos,
-    kpiGeral,
-    graficosGerais,
-    listarRegistrosData,
-    listarRegistrosDataEspeficico
-}
+	kpiEspecifica,
+	graficosEspecificos,
+	kpiGeral,
+	graficosGerais,
+	listarRegistrosData,
+	listarRegistrosDataEspeficico,
+	ramLivreEspeficico,
+	ramUsadoEspeficico,
+};

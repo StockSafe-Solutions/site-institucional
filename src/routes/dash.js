@@ -26,9 +26,12 @@ router.get("/listarRegistrosDataEspeficico/:codServidor/:data", (req, res) => {
     dashController.listarRegistrosDataEspeficico(req, res);
 });
 
-router.get("/graficosEspecificosRAM/:codServidor", (req, res) => {
-    console.log("Estou na rora")
-	dashController.graficosEspecificosRAM(req, res);
+router.get("/ramLivreEspeficico/:codServidor", (req, res) => {
+	console.log("Estou na rora");
+	dashController.ramLivreEspeficico(req, res);
 });
-
+router.get("/ramUsadoEspeficico/:codServidor", (req, res) => {
+	console.log("Estou na rora");
+	dashController.ramUsadoEspeficico(req, res);
+});
 module.exports = router;
