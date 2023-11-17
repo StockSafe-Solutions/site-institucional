@@ -27,6 +27,7 @@ router.get("/listarRegistrosDataEspeficico/:codServidor/:data", (req, res) => {
 });
 
 router.get("/graficosEspecificosRAM/:codServidor", (req, res) => {
+    console.log("Estou na rora")
 	dashController.graficosEspecificosRAM(req, res);
 });
 
