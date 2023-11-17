@@ -1,4 +1,5 @@
 var contadorDeCharts = 0
+var cont = 0;
 function gerenciarGraficos(id, vetorDados, vetorData) {
 	if (contadorDeCharts == 2) {
 		chartCPU.destroy();
@@ -16,15 +17,19 @@ function gerenciarGraficos(id, vetorDados, vetorData) {
 }
 
 function gerenciarGraficosRosquinha(id, vetorLivre, vetorUso) {
-	if (contadorDeCharts == 2) {
-		chartCPU.destroy();
-		chartRAM.destroy();
-		contadorDeCharts = 1;
+	console.log("ffvfvf" + id)
+	chartRosca = "";
+	if (cont == 2) {
+		//chartRosca.destroy();
+		cont = 1;
 	} else {
-		contadorDeCharts++;
+		cont++;
+	}
+	
+	if(id == "myChart"){
+		chartRosca = criaGraficoRosquinha(id, vetorLivre, vetorUso)
 	}
 
-	chartRosca = criaGraficoRosquinha(id, vetorLivre, vetorUso)
 }
 
 function criarGrafico(id, vetorDados, vetorData) {
@@ -55,8 +60,9 @@ function criarGrafico(id, vetorDados, vetorData) {
 }
 
 function criaGraficoRosquinha(id, vetorLivre, vetorUso) {
-	const ctx = document.getElementById(id);
-	return new Chart(ctx, {
+	const ctxs = document.getElementById(id);
+	console.log(ctxs);
+	return new Chart(ctxs, {
 		type: "doughnut",
 		data: {
 			labels: ["Em uso", "Livre"],
