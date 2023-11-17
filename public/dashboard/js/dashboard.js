@@ -1,25 +1,3 @@
-//const { json } = require("express");
-
-//import csv from "csv";
-function csv(json) {
-	const colunas = Object.keys(json[0]);
-
-	var csv = colunas.join(",");
-
-	for (const item of json) {
-		const linha = Object.values(item).join(",");
-		csv += "\n" + linha;
-	}
-
-	console.log(csv);
-
-	const blob = new Blob([csv], { type: "text/csv" });
-	const link = document.createElement("a");
-	link.href = window.URL.createObjectURL(blob);
-	link.download = "dados.csv";
-	link.click();
-}
-
 function carregarDados() {
 	indiceParm = location.href.indexOf("?");
 	params = location.href.slice(indiceParm + 1, indiceParm + 7);
@@ -143,7 +121,24 @@ function chamarRegistros() {
 			.catch(function (resposta) {
 				console.log(`#ERRO: ${resposta}`);
 			});
+}
 
+function csv(json) {
+	const colunas = Object.keys(json[0]);
+	var csv = colunas.join(",");
+
+	for (const item of json) {
+		const linha = Object.values(item).join(",");
+		csv += "\n" + linha;
+	}
+
+	console.log(csv);
+
+	const blob = new Blob([csv], { type: "text/csv" });
+	const link = document.createElement("a");
+	link.href = window.URL.createObjectURL(blob);
+	link.download = "dados.csv";
+	link.click();
 }
 
 function definirKPIs(tipo, json) {
