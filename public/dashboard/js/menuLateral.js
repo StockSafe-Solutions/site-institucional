@@ -8,6 +8,7 @@ function carregarMenu(pagina, geral, codServidor) {
 
     destGeral = ""
     destServs = ""
+    destTags = ""
     destFuncs = ""
     destPerf = ""
     destConfig = ""
@@ -20,6 +21,9 @@ function carregarMenu(pagina, geral, codServidor) {
             break;
         case "servs":
             destServs = " active"
+            break;
+        case "tags":
+            destTags = " active"
             break;
         case "funcs":
             destFuncs = " active"
@@ -58,7 +62,14 @@ function carregarMenu(pagina, geral, codServidor) {
             <li class="nav-item${destServs}">
                 <a class="nav-link" href="servidores.html">
                     <i class="fa-solid fa-server"></i>
-                    <span>Servidores</span></a>
+                    <span>Todos os servidores</span></a>
+            </li>
+
+            <!-- Tags -->
+            <li class="nav-item${destTags}">
+                <a class="nav-link" href="tags.html">
+                    <i class="fa-solid fa-server"></i>
+                    <span>Servidores por tags</span></a>
             </li>
 
             <!-- Funcionários -->
