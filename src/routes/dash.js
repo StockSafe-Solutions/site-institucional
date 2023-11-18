@@ -27,11 +27,14 @@ router.get("/listarRegistrosDataEspeficico/:codServidor/:data", (req, res) => {
 });
 
 router.get("/ramLivreEspeficico/:codServidor", (req, res) => {
-	console.log("Estou na rora");
 	dashController.ramLivreEspeficico(req, res);
 });
 router.get("/ramUsadoEspeficico/:codServidor", (req, res) => {
-	console.log("Estou na rora");
 	dashController.ramUsadoEspeficico(req, res);
 });
+
+router.get("/horaRam/:codServidor", (req, res) => {
+    dashController.horaRam(req, res);
+})
+
 module.exports = router;
