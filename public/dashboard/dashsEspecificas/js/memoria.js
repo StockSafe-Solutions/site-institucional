@@ -56,9 +56,9 @@ function carregarDadosRam() {
 		});
 }
 
+var liv;
+var usu;
 function chamarGraficosRAM(tipo, json) {
-	var liv;
-	var usu;
 	legendas = ["Em uso", "Livre"];
 	label = ["Porcentagem de uso"];
 	console.log(label);
