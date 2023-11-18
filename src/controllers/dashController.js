@@ -160,6 +160,26 @@ function graficosGerais(req, res) {
   })
 }
 
+function horaRam(req, res){
+  const codServidor = req.params.codServidor;
+  	if (codServidor == undefined) {
+		res.status(400).send("Vazio");
+	} else {
+		dashboardModel.horaRam(codServidor)
+			.then(function (resultado) {
+				res.json(resultado);
+			})
+			.catch(function (erro) {
+				console.log(erro);
+				console.log(
+					`\n houve um erro ao ver hora RAM registro!`,
+					erro.sqlMessage
+				);
+				res.status(500).json(erro.sqlMessage);
+			});
+	}
+}
+
 module.exports = {
 	kpiEspecifica,
 	graficosEspecificos,
@@ -169,4 +189,5 @@ module.exports = {
 	listarRegistrosDataEspeficico,
 	ramLivreEspeficico,
 	ramUsadoEspeficico,
+  horaRam
 };
