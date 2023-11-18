@@ -219,6 +219,8 @@ function chamarGraficos(json) {
 		uso_ram.push(json_ram[i].uso_da_ram);
 		data_ram.push(json_ram[i].dataDados);
 	}
+
+	console.log(111111111111111111111111, data_ram, json)
 	gerenciarGraficos("graficoCPU", uso_cpu, data_cpu);
 	gerenciarGraficos("graficoRAM", uso_ram, data_ram);
 }

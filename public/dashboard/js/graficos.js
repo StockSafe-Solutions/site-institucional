@@ -14,13 +14,23 @@ function gerenciarGraficos(id, vetorDados, vetorData) {
 	}
 }
 
-function gerenciarGraficosRosquinha(id, vetorLivre, vetorUso, legendas, label) {
+function gerenciarGraficoHora(id, label, legendas, dados){
+	const existeRamMin = Chart.getChart(id);
+	if(existeRamMin){
+		existeRamMin.destroy();
+	}
+	if (id == "graficoRAMinutos") {
+		chartMin = criarGraficoHora(id, label, legendas, dados);
+	}
+}
+
+function gerenciarGraficosRosquinha(id, dados, legendas, label) {
 	const existingChart = Chart.getChart("qtdRAM");
 	if (existingChart) {
 		existingChart.destroy();
 	}
 
-	newChart = criaGraficoRosquinha(id, vetorLivre, vetorUso, legendas, label);
+	newChart = criaGraficoRosquinha(id, dados, legendas, label);
 }
 
 function criarGrafico(id, vetorDados, vetorData) {
@@ -50,10 +60,8 @@ function criarGrafico(id, vetorDados, vetorData) {
 	});
 }
 
-function criaGraficoRosquinha(id, vetorLivre, vetorUso, legendas, label) {
+function criaGraficoRosquinha(id, dados, legendas, label) {
 	const ctxs = document.getElementById(id);
-	
-	console.log(ctxs);
 	return new Chart(ctxs, {
 		type: "doughnut",
 		data: {
@@ -61,11 +69,30 @@ function criaGraficoRosquinha(id, vetorLivre, vetorUso, legendas, label) {
 			datasets: [
 				{
 					label: `${label}`,
-					data: [vetorLivre, vetorUso],
+					data: dados,
 					backgroundColor: ["#001A46", "#005EFF"],
 					hoverOffset: 4,
 				},
 			],
 		},
 	});
+}
+
+function criarGraficoHora(id,label,legendas, dados){
+		const ctx = document.getElementById(id);
+		return new Chart(ctx, {
+			type: "line",
+			data: {
+				labels: legendas,
+				datasets: [
+					{
+						label: `${label}`,
+						data: dados,
+						fill: false,
+						borderColor: "#005EFF",
+						tension: 0.1,
+					},
+				],
+			},
+		});
 }
