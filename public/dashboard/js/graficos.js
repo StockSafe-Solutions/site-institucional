@@ -1,14 +1,12 @@
-var contadorDeCharts = 0
-var cont = 0;
-function gerenciarGraficos(id, vetorDados, vetorData) {
-	if (contadorDeCharts == 2) {
-		chartCPU.destroy();
-		chartRAM.destroy();
-		contadorDeCharts = 1;
-	} else {
-		contadorDeCharts++;
-	}
 
+var contadorDeCharts = 0
+function gerenciarGraficos(id, vetorDados, vetorData) {
+	const existeCPU = Chart.getChart("graficoCPU");
+	const existeRAM = Chart.getChart("graficoRam");
+	if (existeCPU && existeRAM) {
+		existeCPU.destroy();
+		existeRAM.destroy();
+	} 
 	if (id == "graficoCPU") {
 		chartCPU = criarGrafico(id, vetorDados, vetorData);
 	} else {
@@ -16,20 +14,13 @@ function gerenciarGraficos(id, vetorDados, vetorData) {
 	}
 }
 
-function gerenciarGraficosRosquinha(id, vetorLivre, vetorUso) {
-	console.log("ffvfvf" + id)
-	chartRosca = "";
-	if (cont == 2) {
-		//chartRosca.destroy();
-		cont = 1;
-	} else {
-		cont++;
-	}
-	
-	if(id == "qtdRAM"){
-		chartRosca = criaGraficoRosquinha(id, vetorLivre, vetorUso)
+function gerenciarGraficosRosquinha(id, vetorLivre, vetorUso, legendas, label) {
+	const existingChart = Chart.getChart("qtdRAM");
+	if (existingChart) {
+		existingChart.destroy();
 	}
 
+	newChart = criaGraficoRosquinha(id, vetorLivre, vetorUso, legendas, label);
 }
 
 function criarGrafico(id, vetorDados, vetorData) {
@@ -59,18 +50,19 @@ function criarGrafico(id, vetorDados, vetorData) {
 	});
 }
 
-function criaGraficoRosquinha(id, vetorLivre, vetorUso) {
+function criaGraficoRosquinha(id, vetorLivre, vetorUso, legendas, label) {
 	const ctxs = document.getElementById(id);
+	
 	console.log(ctxs);
 	return new Chart(ctxs, {
 		type: "doughnut",
 		data: {
-			labels: ["Em uso", "Livre"],
+			labels: legendas,
 			datasets: [
 				{
-					label: "Porcentagem de uso: ",
+					label: `${label}`,
 					data: [vetorLivre, vetorUso],
-					backgroundColor: ["#005EFF", "#001A46"],
+					backgroundColor: ["#001A46", "#005EFF"],
 					hoverOffset: 4,
 				},
 			],

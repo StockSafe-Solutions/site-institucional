@@ -23,6 +23,7 @@ function carregarDadosRam(){
 					console.log("Livre deu OK");
 					resposta.json().then((json) => {
 						chamarGraficosRAM("livre", json);
+						console.log("sdfsdfdsfdfds LIVRE" , json)
 					});
 				} else {
 					console.log("UUUUUUUUUUUUUUUUU");
@@ -46,7 +47,7 @@ function carregarDadosRam(){
 					if (resposta.ok) {
 						console.log("Usada deu  OK");
 						resposta.json().then((json) => {
-                            console.log("Usada  está indo");
+                            console.log("Usada  está indo", json);
 							chamarGraficosRAM("usado", json)
 						});
 					} else {
@@ -65,24 +66,18 @@ var liv;
 var usu; 
 
 function chamarGraficosRAM(tipo, json){
-	console.log("Chamou a função gráfico de RAM");
+	legendas = ["Em uso", "Livre"];
+	label = ["Porcentagem de uso"];
+	console.log(label)
+	const jsonArray = Array.from(json);
   if(tipo == "livre"){
-			json_livre = json[0];
-			livres = [];
-			for (i in json_livre) {
-				livres.push(i);
-			}
-			console.log(livres);
-			liv = livres;
+		const ramLivre = Number(jsonArray[0]["ram_livre"]);
+		liv = ramLivre;
 		}
     else if(tipo == "usado"){
-			json_usado = json[0];
-			usado = [];
-			for (i in json_usado) {
-				usado.push(i);
-			}
-			usu = usado[1];
+			const ramUso = Number(jsonArray[0]["ram_uso"]);
+			usu = ramUso;
 		}
-    gerenciarGraficosRosquinha("qtdRAM", liv, usu);
+    gerenciarGraficosRosquinha("qtdRAM", liv, usu, legendas, label);
 }
 
