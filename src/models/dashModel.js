@@ -48,6 +48,13 @@ function ramLivreEspeficico(codServidor) {
 	return database.executar(instrucao);
 }
 
+function horaRam(codServidor){
+	const instrucao = `SELECT fk_servidor, uso_da_ram as uso_da_ram, data_hora AS dataDados 
+	FROM vw_registro  WHERE fk_servidor = (SELECT id_servidor FROM tb_servidor WHERE codigo = '${codServidor}');`;
+	console.log("Executando a instrução SQL: \n" + instrucao);
+	return database.executar(instrucao);
+}
+
 function kpiGeral() {
 	var instrucao = `CALL sp_kpi_geral(1);`;
 	console.log("Executando a instrução SQL: \n" + instrucao);
@@ -77,4 +84,5 @@ module.exports = {
 	listarRegistrosDataEspeficico,
 	ramUsadaEspeficico,
 	ramLivreEspeficico,
+	horaRam
 };
