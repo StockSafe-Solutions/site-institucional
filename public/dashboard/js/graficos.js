@@ -33,8 +33,16 @@ function criarGrafico(id, vetorDados){
         y: {
           max: 100,
           beginAtZero: true,
-          border: { color: 'black' }
-        }, x: { border: { color: 'black' } }
+          border: { color: 'black' },
+          ticks: {
+            color: 'white',
+          },
+        }, x: { 
+          border: { color: 'black' },
+          ticks: {
+            color: 'white',
+          },
+        }
       },
       plugins: { legend: { 
         display: false,
