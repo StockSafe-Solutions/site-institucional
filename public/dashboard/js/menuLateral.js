@@ -68,8 +68,8 @@ function carregarMenu(pagina, geral, codServidor) {
             <!-- Tags -->
             <li class="nav-item${destTags}">
                 <a class="nav-link" href="tags.html">
-                    <i class="fa-solid fa-server"></i>
-                    <span>Servidores por tags</span></a>
+                    <i class="fa-solid fa-tags"></i>
+                    <span>Filtrar por tags</span></a>
             </li>
 
             <!-- Funcionários -->

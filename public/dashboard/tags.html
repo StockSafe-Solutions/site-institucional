@@ -16,13 +16,12 @@
     <!-- Estilos -->
     <link rel="stylesheet" href="../css/templateStocksafe.min.css">
     <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/tags.css">
 
     <!-- Scripts -->
     <script src="js/sessao.js"></script>
     <script src="js/menuLateral.js"></script>
-    <script src="js/dashboard.js"></script>
-    <script src="js/graficos.js"></script>
+    <script src="js/tags.js"></script>
 
     <!-- Icone -->
     <link rel="icon" href="../assets/icon/logo.ico" />
@@ -30,21 +29,77 @@
     <title>StockSafe - Tags</title>
 </head>
 
-<body id="page-top" <!--onload="reloadDashboard()"--></body>
+<body id="page-top" onload="carregarDashboardTags(null),carregarMenu('tags',true)">
     <div id="wrapper">
         <ul id="accordionSidebar"></ul>
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
                 <div class="container-fluid">
-                    <div id="containerTags">
-                        <h3>Tags</h3>
-                        <ul id="ulTags">
-                            <li>Principal</li>
-                            <li>Em operação</li>
-                            <li>Em manutenção</li>
-                            <li>Fora de serviço</li>
-                        </ul>
+                    <div id="kpisTags">
+                        <div>
+                            <h3>Tag com mais servidores</h3>
+                            <span class="tag"><u>8</u> backup</span>
+                        </div>
+                        <div>
+                            <h3>Tag com menos servidores</h3>
+                            <span class="tag"><u>1</u> Manutenção</span>
+                        </div>
+                        <div>
+                            <h3>Tag com maior uso de recursos</h3>
+                            <span class="tag"><u>87%</u> Principal</span>
+                        </div>
+                        <div>
+                            <h3>Tag com mais erros</h3>
+                            <span class="tag"><u>2</u> manutenção</span>
+                        </div>
+                        <button>Histórico de alertas por tags</button>
                     </div>
+
+                    <div id="containerTags">
+                        <h3>Selecionar tags para a visualização</h3>
+                        <div id="cabecalhoTags">
+                            <span id="spanBuscarTag">
+                                <input id="iptNomeTag" placeholder="Buscar tag por nome">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </span>
+                            <span>
+                                <button>
+                                    <i class="fa-solid fa-plus"></i>
+                                    Nova tag
+                                </button>
+                                <button>
+                                    <i class="fa-solid fa-trash-can"></i>
+                                    Excluir tag
+                                </button>
+                            </span>
+                        </div>
+                        <div id="containerSeletorTags">
+                            <div id="filtroSeletorTags">
+                                <span>
+                                    <h4>Filtros</h4>
+                                    <i class="fa-solid fa-filter"></i>
+                                </span>
+                                <span>
+                                    <i class="fa-solid fa-arrow-up-a-z"></i>
+                                    <i class="fa-solid fa-arrow-up-1-9"></i>
+                                </span>
+                            </div>
+                            <ul>
+                                <li class="tag"><input type="checkbox">Principal</li>
+                                <li class="tag"><input type="checkbox">Em operação</li>
+                                <li class="tag"><input type="checkbox">Em manutenção</li>
+                                <li class="tag"><input type="checkbox">Fora de serviço</li>
+                            </ul>
+                            <div id="rodapeSeletorTags">
+                                <p>Total: 6</p>
+                                <p>Selecionadas: 4</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <iframe frameborder="0" id="frameTags">
+
+                    </iframe>
                 </div>
             </div>
         </div>

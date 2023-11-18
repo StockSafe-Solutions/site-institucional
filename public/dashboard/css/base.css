@@ -129,15 +129,18 @@ body > div > *{
 /* Barra lateral */
 #accordionSidebar {
     border-radius: 15px;
-    height: 590px;
+    height: 570px;
     background-color: #005EFF;
+}
+
+.nav-link{
+    padding: 15px !important;
 }
 
 .nav-profile .nav-link{
     display: flex !important;
     flex-direction: column;
     align-items: center;
-    padding: 10px 0px !important;
     cursor: default;
 }
 .nav-profile .nav-link a:hover{
@@ -148,18 +151,25 @@ body > div > *{
 .nav-profile img{
     width: 25%;
 }
-
-.imgInterrog {
-    display: flex;
-    height: 45px;
-    transform-style: preserve-3d;
-    transition: all 0.5s;
-    position: relative;
-    left: 5.5rem;
-    cursor: pointer;
+.nav-profile .nav-link{
+    margin: 0px;
+    padding: 0px !important;
 }
 
-
+.nav-interrogacao{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 14rem;
+    margin: 10px 0;
+}
+.imgInterrog {
+    display: flex;
+    height: 25px;
+    transform-style: preserve-3d;
+    transition: all 0.5s;
+    cursor: pointer;
+}
 .imgInterrog:hover {
     transform: rotateY(360deg);
 }
@@ -168,7 +178,6 @@ body > div > *{
     border: 0;
     all: unset;
     outline: revert;
-    
 }
 
 
@@ -313,4 +322,20 @@ body > div > *{
         margin: 90px 40px 80px 0px;
         height: 515px;
     }
+}
+
+.tag{
+    background-color: black;
+    font-weight: 700;
+    padding: 2.5px 5px;
+    border-radius: 5px;
+    width: fit-content;
+    cursor: default;
+}
+.tag u{
+    font-size: 1.2em;
+}
+.tag input{
+    margin-right: 2.5px;
+    pointer-events: none;
 }

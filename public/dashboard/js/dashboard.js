@@ -1,6 +1,7 @@
 function carregarDados(){
     indiceParm = location.href.indexOf('?')
-    params = location.href.slice(indiceParm+1,indiceParm+7)
+    params = location.href.slice(indiceParm+1)
+    params = params.split("&")
     urlKPIs = ""
     urlGraficos = ""
 
@@ -10,7 +11,10 @@ function carregarDados(){
 
         nomePagina.innerText = "Dashboard - Visão Geral"
         carregarMenu("geral",true)
-    } else{
+    } else if(params[0].slice(0,2) == "id"){
+        params = params[0]
+        params = params.slice(3)
+
         urlKPIs = "../dash/kpiEspecifica/"+params
         urlGraficos = "../dash/graficosEspecificos/"+params
 
@@ -21,6 +25,9 @@ function carregarDados(){
         nomeKPI2.innerText = "Taxa de transferência"
         
         carregarMenu("especifica",false,params)
+    } else{
+        document.body.className += " contentTags"
+        accordionSidebar.style = "display: none"
     }
 
     fetch(urlKPIs, {

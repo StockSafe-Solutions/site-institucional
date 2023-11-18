@@ -23,7 +23,8 @@ function criarGrafico(id, vetorDados){
     data: {
       labels: ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
       datasets: [{
-        data: vetorDados
+        data: vetorDados,
+        borderColor: "#FFFFFF"
       }]
     },
     options: {
@@ -35,6 +36,9 @@ function criarGrafico(id, vetorDados){
           border: { color: 'black' }
         }, x: { border: { color: 'black' } }
       },
-      plugins: { legend: { display: false } }
+      plugins: { legend: { 
+        display: false,
+        fontColor: 'white'
+      } }
     }});
 }
