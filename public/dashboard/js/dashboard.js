@@ -197,12 +197,6 @@ function definirKPIs(tipo, json) {
 		KPI4.className = "kpiRuim";
 	}
 }
-function getHorasMinutos(data) {
-	const dataSplit = data.split(" ");
-	const horaMinuto = dataSplit[1];
-	return horaMinuto;
-}
-
 function chamarGraficos(json) {
 	json_cpu = json[0];
 	uso_cpu = [];
@@ -211,7 +205,7 @@ function chamarGraficos(json) {
 		uso_cpu.push(json_cpu[i].uso_da_cpu);
 		data_cpu.push(json_cpu[i].dataDados);
 	}
-    
+
 	json_ram = json[1];
 	uso_ram = [];
 	data_ram = [];
@@ -220,7 +214,6 @@ function chamarGraficos(json) {
 		data_ram.push(json_ram[i].dataDados);
 	}
 
-	console.log(111111111111111111111111, data_ram, json)
 	gerenciarGraficos("graficoCPU", uso_cpu, data_cpu);
 	gerenciarGraficos("graficoRAM", uso_ram, data_ram);
 }

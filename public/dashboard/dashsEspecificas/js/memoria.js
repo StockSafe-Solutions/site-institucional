@@ -100,25 +100,13 @@ function chamarGraficosRAM(tipo, json) {
 
 
 function chamarGraficoHora(json) {
-	const newJson = json.map((item) => {
-		const data = new Date(item.Dia);
-		item.Dia = data.toLocaleDateString();
-		return item;
-	});
-
 	label = "Tempo de resposta";
-	jsonD = newJson[1];
-	dia = [];
-	let minutos = [];
-
-	for (let i in jsonD) {
-		dia.push(jsonD[i].Dia);
-		minutos.push(jsonD[i].Minutos);
-	}
-
-
-
-	console.log(dia, 111)
-
-	gerenciarGraficoHora("graficoRAMinutos", label, dia, minutos);
+		dia = [];
+		hora = [];
+		for (i in json) {
+			dia.push(json[i].Dia);
+			hora.push(json[i].Minutos)
+		}
+	gerenciarGraficoHora("graficoRAMinutos", label, dia, hora);
 }
+
