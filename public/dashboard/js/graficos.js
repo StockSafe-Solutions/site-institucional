@@ -70,7 +70,7 @@ function criaGraficoRosquinha(id, dados, legendas, label) {
 				{
 					label: `${label}`,
 					data: dados,
-					backgroundColor: ["#001A46", "#005EFF"],
+					backgroundColor: [ "#005EFF","#001A46"],
 					hoverOffset: 4,
 				},
 			],

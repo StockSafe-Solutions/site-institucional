@@ -84,7 +84,7 @@ function carregarDadosRam() {
 var liv;
 var usu;
 function chamarGraficosRAM(tipo, json) {
-	legendas = ["Em uso", "Livre"];
+	legendas = ["Livre", "Em uso"];
 	label = ["Porcentagem de uso"];
 	const jsonArray = Array.from(json);
 	if (tipo == "livre") {
