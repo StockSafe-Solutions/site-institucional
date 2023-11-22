@@ -44,6 +44,7 @@ function carregarDadosRam() {
 			if (resposta.ok) {
 				resposta.json().then((json) => {
 					chamarGraficosRAM("usado", json);
+					console.log(44444444444444444444444444, json)
 				});
 			} else {
 				resposta.text().then((texto) => {
@@ -91,7 +92,7 @@ function chamarGraficosRAM(tipo, json) {
 		const ramLivre = Number(jsonArray[0]["ram_livre"]);
 		liv = ramLivre;
 	} else if (tipo == "usado") {
-		const ramUso = Number(jsonArray[0]["ram_uso"]);
+		const ramUso = Number(jsonArray[0]["uso_da_ram"]);
 		usu = ramUso;
 	}
 	dados = [liv, usu]

@@ -35,7 +35,7 @@ function ramEspecifico(codServidor) {
 }
 
 function ramUsadaEspeficico(codServidor) {
-	const instrucao = `SELECT * FROM vw_ram_usada WHERE fk_servidor
+	const instrucao = `SELECT * FROM vw_ram WHERE fk_servidor
      = (SELECT id_servidor FROM tb_servidor WHERE codigo = '${codServidor}' ) ORDER BY dataDados DESC LIMIT 1;`;
 	console.log("Executando a instrução SQL: \n" + instrucao);
 	return database.executar(instrucao);
