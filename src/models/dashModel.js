@@ -11,7 +11,6 @@ function kpiRam(codServidor) {
 			ORDER BY dataDados DESC
 			LIMIT 1 ;`;
 
-
 	console.log("Executando a instrução SQL: \n" + instrucao);
 	return database.executar(instrucao);
 }
@@ -89,6 +88,20 @@ function ramGeral() {
 	return database.executar(instrucao);
 }
 
+function csvRam(data, codServidor) {
+	const instrucao = `SELECT DATE_FORMAT(data_hora, '%Y-%m-%d %h:%i') AS dataDados,
+       ROUND(AVG(uso_da_ram)) AS avgUsoRam,
+       ROUND(AVG(uso_disponivel_da_ram)) AS avgUsoDisponivelRam,
+       ROUND(AVG(uso_total_da_ram)) AS avgUsoTotalRam
+				FROM vw_registro
+				WHERE fk_servidor = (SELECT id_servidor FROM tb_servidor WHERE codigo = '${codServidor}')
+     		and data_hora LIKE '%${codServidor}%'
+				GROUP BY DATE_FORMAT(data_hora, '%Y-%m-%d %h:%i')
+				ORDER BY dataDados;`;
+	console.log("Executando a instrução SQL: \n" + instrucao);
+	return database.executar(instrucao);
+}
+
 module.exports = {
 	kpiEspecifica,
 	cpuEspecifico,
@@ -102,4 +115,5 @@ module.exports = {
 	ramLivreEspeficico,
 	horaRam,
 	kpiRam,
+	csvRam
 };
