@@ -1,8 +1,15 @@
 var database = require("../database/config");
 
 function kpiRam(codServidor){
-	const instrucao = `SELECT data_hora, uso_da_ram, uso_disponivel_da_ram, uso_total_da_ram FROM vw_registro 
-	WHERE fk_servidor = (SELECT id_servidor FROM tb_servidor WHERE codigo = '${codServidor}' )ORDER BY data_hora DESC LIMIT 1 ;`;
+	const instrucao = ` SELECT DATE_FORMAT(data_hora, '%Y-%m-%d %h:%i') AS dataDados,
+       ROUND(AVG(uso_da_ram)) AS avgUsoRam,
+       ROUND(AVG(uso_disponivel_da_ram)) AS avgUsoDisponivelRam,
+       ROUND(AVG(uso_total_da_ram)) AS avgUsoTotalRam
+FROM vw_registro
+	WHERE fk_servidor = (SELECT id_servidor FROM tb_servidor WHERE codigo = '${codServidor}' )
+	GROUP BY DATE_FORMAT(data_hora, '%Y-%m-%d %h:%i')
+	ORDER BY dataDados DESC
+	LIMIT 1 ;`;
 	console.log("Executando a instrução SQL: \n" + instrucao);
 	return database.executar(instrucao);
 }

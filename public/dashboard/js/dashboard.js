@@ -83,7 +83,7 @@ function chamarRegistros() {
 	indiceParm = location.href.indexOf("?");
 	params = location.href.slice(indiceParm + 1, indiceParm + 7);
 	var data = pesquisaData.value;
-	console.log(data)
+
 
 	if (indiceParm == -1) {
 		urlDados = `/dash/listarRegistrosData/${data}`;

@@ -4,9 +4,6 @@ function carregarDadosRam() {
 	// PEGANDO O PARAMETRO GET
 
 	nomePagina.innerText = "Dashboard Memória - Servidor " + params;
-	urlKPIs = "";
-	urlGraficos = "";
-	urlDados = "";
 
 	//urlGraficos = "../dash/graficosEspecificos/" + params;
 	carregarMenu("memoria", false, params);
@@ -44,7 +41,6 @@ function carregarDadosRam() {
 			if (resposta.ok) {
 				resposta.json().then((json) => {
 					chamarGraficosRAM("usado", json);
-					console.log(44444444444444444444444444, json)
 				});
 			} else {
 				resposta.text().then((texto) => {
@@ -56,30 +52,31 @@ function carregarDadosRam() {
 			console.log(`#ERRO: ${resposta}`);
 		});
 
-			fetch(`/dash/horaRam/${params}`, {
-				method: "GET",
-				headers: {
-					"Content-Type": "application/json",
-				},
-			})
-				.then(function (resposta) {
-					if (resposta.ok) {
-						resposta.json().then((json) => {
-							chamarGraficoHora(json);
-							console.log(87979797979797979797979797979,json)
-						});
-					} else {	
-						console.log(`#ERRO: ${resposta}`);
-						resposta.text().then((texto) => {
-							console.warn(texto);
-						});
-					}
-				})
-				.catch(function (resposta) {
-					console.log(`#ERRO: ${resposta}`);
-				});
-
 	
+
+
+	fetch(`/dash/kpiRam/${params}`, {
+		method: "GET",
+		headers: {
+			"Content-Type": "application/json",
+		},
+	})
+		.then(function (resposta) {
+			console.log("Resposta: ", resposta);
+			if (resposta.ok) {
+				console.log("OK");
+				resposta.json().then((json) => {
+					console.log(`sdfsdfsd2663`, json);
+				
+				});
+			} else {
+				console.log("não ok");
+				console.log(`#ERRO: ${resposta}`);
+			}
+		})
+		.catch(function (resposta) {
+			console.log(`#ERRO: ${resposta}`);
+		});
 }
 
 var liv;
@@ -95,19 +92,19 @@ function chamarGraficosRAM(tipo, json) {
 		const ramUso = Number(jsonArray[0]["uso_da_ram"]);
 		usu = ramUso;
 	}
-	dados = [liv, usu]
-	gerenciarGraficosRosquinha("qtdRAM", dados,  legendas, label);
+	dados = [liv, usu];
+	gerenciarGraficosRosquinha("qtdRAM", dados, legendas, label);
 }
-
 
 function chamarGraficoHora(json) {
 	label = "Tempo de resposta";
-		dia = [];
-		hora = [];
-		for (i in json) {
-			dia.push(json[i].Dia);
-			hora.push(json[i].Minutos)
-		}
+	dia = [];
+	hora = [];
+	for (i in json) {
+		dia.push(json[i].Dia);
+		hora.push(json[i].Minutos);
+	}
 	gerenciarGraficoHora("graficoRAMinutos", label, dia, hora);
 }
 
+function definirKPIs(json) {}

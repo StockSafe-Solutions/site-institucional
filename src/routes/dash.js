@@ -38,6 +38,7 @@ router.get("/horaRam/:codServidor", (req, res) => {
 })
 
 router.get("/kpiRam/:codServidor", (req, res) => {
+    console.log(`TEEEEEEEEEEEEEEEEEEEEEEEEEEEEE`)
     dashController.kpiRam(req, res);
 });
 

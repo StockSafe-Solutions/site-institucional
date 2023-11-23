@@ -1,25 +1,6 @@
 var dashboardModel = require("../models/dashModel");
 
-function kpiRam(req, res){
-  var codServidor = req.params.codServidor;
 
-  if (codServidor == undefined) {
-		res.status(400).send("Undefined");
-  }
-  dashboardModel.kpiRam(codServidor)
-		.then((resultado) => {
-			if (resultado.length > 0) {
-				console.log(resultado);
-				res.status(200).json(resultado[0][0]);
-			} else {
-				res.status(404).send();
-			}
-		})
-		.catch((error) => {
-			console.log(error);
-			console.log("Erro nas KPIS RAM Dashboards\n", erro.sqlMessage);
-		});
-}
 
 function kpiEspecifica(req, res) {
   var codServidor = req.params.codServidor
@@ -187,6 +168,27 @@ function horaRam(req, res){
 		res.status(400).send("Vazio");
 	} else {
 		dashboardModel.horaRam(codServidor)
+			.then(function (resultado) {
+				res.json(resultado);
+			})
+			.catch(function (erro) {
+				console.log(erro);
+				console.log(
+					`\n houve um erro ao ver hora RAM registro!`,
+					erro.sqlMessage
+				);
+				res.status(500).json(erro.sqlMessage);
+			});
+	}
+}
+
+function kpiRam(req, res) {
+	const codServidor = req.params.codServidor;
+	if (codServidor == undefined) {
+		res.status(400).send("Vazio");
+	} else {
+		dashboardModel
+			.kpiRam(codServidor)
 			.then(function (resultado) {
 				res.json(resultado);
 			})
