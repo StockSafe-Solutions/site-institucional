@@ -275,3 +275,25 @@
 #modalEditFunc i:hover{
     opacity: 0.6;
 }
+
+.modalGraficoFunc{
+    background-color: #001a46;
+    color: white;
+    border-radius: .35rem;
+    display: none;
+    flex-direction: column;
+    padding: 15px;
+    width: 85vw;
+    height: 90vh;
+    overflow-y: scroll;
+    list-style: none;
+}
+
+.modalGraficoFunc header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+

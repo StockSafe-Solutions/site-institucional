@@ -51,6 +51,7 @@
 
                             <button onclick="abrirModal('func')">Adicionar novo</button>
                             <button onclick="abrirModal('solicitacoes'), reloadSolicitacoes()">Solicitações</button>
+                            <button onclick="abrirModal('grafico')">Gráfico</button>
                             <span>
                                 
                                 <input type="text" id="iptPesquisa" placeholder="Pesquisar por nome">
@@ -96,9 +97,15 @@
                 </header>
                 <ul id="container-funcionarios-solicitacao"></ul>          
             </div>
-            <div class="modalFunc" id="modalEditFunc">
+            <div class="modalGrafico" id="modalEditFunc">
                 <i class="fa-solid fa-x" onclick="fecharModal('editFunc')"></i>
                 <iframe id="frameFuncionario" frameborder="0"></iframe>
+            </div>
+            <div class="modalGraficoFunc" id="modalGraficoFunc">
+                <header>
+                    <h3 class="nomePagina"> Gráficos de funcionário</h3>
+                    <i class="fa-solid fa-x" onclick="fecharModal('grafico'), reloadFuncionarios()"></i>
+                </header>
             </div>
     </div>
 </body>

@@ -4,77 +4,91 @@ function abrirModal(modal, codigo) {
         case "cad":
             gerarCodigo()
             modalCadastro.style = "display: flex; animation-name: aparecer; animation-duration: 500ms;"
-            setTimeout(()=>{
+            setTimeout(() => {
                 modalCadastro.style = "display: flex"
-            },1000)
+            }, 1000)
             break
         case "dash":
-            frameDashboard.src="index.html?"+codigo
+            frameDashboard.src = "index.html?" + codigo
             modalDashboard.style = "display: flex; animation-name: aparecer; animation-duration: 500ms;"
-            setTimeout(()=>{
+            setTimeout(() => {
                 modalDashboard.style = "display: flex"
-            },1000)
+            }, 1000)
             break
         case "func":
             modalCadFunc.style = "display: flex; animation-name: aparecer; animation-duration: 500ms;"
-            setTimeout(()=>{
+            setTimeout(() => {
                 modalCadFunc.style = "display: flex"
-            },1000)
+            }, 1000)
             break
         case "solicitacoes":
-            modalSolic.style ="display: flex; animation-name: aparecer; animation-duration: 500ms;"
-            setTimeout(()=>{
+            modalSolic.style = "display: flex; animation-name: aparecer; animation-duration: 500ms;"
+            setTimeout(() => {
                 modalSolic.style = "display: flex";
             }, 1000);
             break;
         case "editFunc":
-            frameFuncionario.src="perfil.html?"+codigo
-            modalEditFunc.style ="display: flex; animation-name: aparecer; animation-duration: 500ms;"
-            setTimeout(()=>{
+            frameFuncionario.src = "perfil.html?" + codigo
+            modalEditFunc.style = "display: flex; animation-name: aparecer; animation-duration: 500ms;"
+            setTimeout(() => {
                 modalEditFunc.style = "display: flex";
             }, 1000);
             break;
-        }
-    setTimeout(()=>{
+        case "grafico":
+            modalGraficoFunc.style = "display: flex; animation-name: aparecer; animation-duration: 500ms;"
+            setTimeout(() => {
+                modalGraficoFunc.style = "display: flex"
+            }, 1000)
+            break
+
+    }
+    setTimeout(() => {
         containerModal.style = "display: flex"
-    },500)
+    }, 500)
 }
 function fecharModal(modal) {
     switch (modal) {
         case "cad":
             modalCadastro.style = "display: flex; animation-name: sumir; animation-duration: 300ms;"
-            setTimeout(()=>{
+            setTimeout(() => {
                 modalCadastro.style = ""
-            },200)
+            }, 200)
             break
         case "dash":
             modalDashboard.style = "display: flex; animation-name: sumir; animation-duration: 300ms;"
-            setTimeout(()=>{
+            setTimeout(() => {
                 modalDashboard.style = ""
-            },200)
+            }, 200)
             break
         case "func":
             modalCadFunc.style = "display: flex; animation-name: sumir; animation-duration: 300ms;"
-            setTimeout(()=>{
+            setTimeout(() => {
                 modalCadFunc.style = ""
-            },200)
+            }, 200)
             break
         case "solicitacoes":
             modalSolic.style = "display: flex; animation-name: sumir; animation-duration: 300ms;";
-				setTimeout(() => {
-					modalSolic.style = "";
-				}, 200);
-            break;    
+            setTimeout(() => {
+                modalSolic.style = "";
+            }, 200);
+            break;
         case "editFunc":
             modalEditFunc.style = "display: flex; animation-name: sumir; animation-duration: 300ms;";
             setTimeout(() => {
                 modalEditFunc.style = "";
             }, 200);
             break;
-        }
-    setTimeout(()=>{
+        case "grafico":
+        modalGraficoFunc.style = "display: flex; animation-name: sumir; animation-duration: 300ms;";
+            setTimeout(() => {
+                modalGraficoFunc.style= "";
+            }, 200);
+            break;
+
+    }
+    setTimeout(() => {
         containerModal.style = "display: none"
-    },200)
+    }, 200)
 }
 
 function gerarCodigo() {
@@ -135,8 +149,9 @@ function cadastrarServidor() {
                 text: 'Erro no servidor do aplicativo. Contate seu administrador de TI.',
                 icon: 'error'
             })
-        }}).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
         }
+    }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+    }
     );
 }
