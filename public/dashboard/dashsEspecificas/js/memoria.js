@@ -163,7 +163,6 @@ function definirKPIs(json){
 }
 
 function chamarRegistrosRam() {
-    carregarDadosRam();
 	indiceParm = location.href.indexOf("?");
 	params = location.href.slice(indiceParm + 1, indiceParm + 7);
 	var data = pesquisaData.value;
@@ -198,7 +197,7 @@ function csv(json) {
 	const colunas = Object.keys(json[0]);
 	var csv = colunas.join(",");
 
-	for (const item of json) {
+	for (let item of json) {
 		const linha = Object.values(item).join(",");
 		csv += "\n" + linha;
 	}

@@ -88,7 +88,7 @@ function ramGeral() {
 	return database.executar(instrucao);
 }
 
-function csvRam(data, codServidor) {
+function csvRam(codServidor, data) {
 	const instrucao = `SELECT DATE_FORMAT(data_hora, '%Y-%m-%d %h:%i') AS dataDados,
        ROUND(AVG(uso_da_ram)) AS avgUsoRam,
        ROUND(AVG(uso_disponivel_da_ram)) AS avgUsoDisponivelRam,
