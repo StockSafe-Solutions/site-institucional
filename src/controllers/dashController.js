@@ -1,5 +1,26 @@
 var dashboardModel = require("../models/dashModel");
 
+function kpiRam(req, res){
+  var codServidor = req.params.codServidor;
+
+  if (codServidor == undefined) {
+		res.status(400).send("Undefined");
+  }
+  dashboardModel.kpiRam(codServidor)
+		.then((resultado) => {
+			if (resultado.length > 0) {
+				console.log(resultado);
+				res.status(200).json(resultado[0][0]);
+			} else {
+				res.status(404).send();
+			}
+		})
+		.catch((error) => {
+			console.log(error);
+			console.log("Erro nas KPIS RAM Dashboards\n", erro.sqlMessage);
+		});
+}
+
 function kpiEspecifica(req, res) {
   var codServidor = req.params.codServidor
 
@@ -189,5 +210,6 @@ module.exports = {
 	listarRegistrosDataEspeficico,
 	ramLivreEspeficico,
 	ramUsadoEspeficico,
-  horaRam
+	horaRam,
+	kpiRam,
 };
