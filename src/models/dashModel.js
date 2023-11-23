@@ -4,7 +4,7 @@ function kpiRam(codServidor) {
 	const instrucao = ` SELECT  MINUTE(data_hora)  AS dataDados,
        ROUND(AVG(uso_da_ram)) AS avgUsoRam,
        ROUND(AVG(uso_disponivel_da_ram)) AS avgUsoDisponivelRam,
-       ROUND(AVG(uso_total_da_ram)) AS avgUsoTotalRam
+       ROUND(AVG(uso_total_da_ram)) AS avgTotalRam
 			 FROM vw_registro
 			WHERE fk_servidor = (SELECT id_servidor FROM tb_servidor WHERE codigo = '${codServidor}' )
 			GROUP BY MINUTE(data_hora)

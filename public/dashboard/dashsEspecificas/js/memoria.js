@@ -126,5 +126,21 @@ function chamarGraficoHora(json) {
 }
 
 function definirKPIs(json){
-	console.log(json)
+	const jsonArray = Array.from(json);
+	console.log(json);	
+	KPI1.className = "kpiBoa";
+	KPI2.className = "kpiBoa";
+	KPI4.className = "kpiBoa";
+	console.log(jsonArray[0]["dataDados"]);
+	valorKPI2.innerText = Number(jsonArray[0]["dataDados"]) + "Min";
+	valorKPI1.innerText = jsonArray[0]["avgUsoRam"] + "%";
+	valorKPI4.innerText = jsonArray[0]["avgTotalRam"] + "GB";
+
+	//..Metricas
+	if (Number(jsonArray[0]["dataDados"]) > 15) {
+		KPI1.className = "kpiRuim";
+	 if (Number(jsonArray[0]["dataDados"]) > 40) {
+		KPI1.className = "kpiMuitoRuim";
+	}
+}
 }
