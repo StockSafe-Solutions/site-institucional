@@ -42,4 +42,8 @@ router.get("/kpiRam/:codServidor", (req, res) => {
     dashController.kpiRam(req, res);
 });
 
+router.get("/csvRam/:codServidor/:data", (req, res) => {
+	dashController.csvRam(req, res);
+});
+
 module.exports = router;
