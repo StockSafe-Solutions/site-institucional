@@ -161,3 +161,53 @@ function definirKPIs(json){
 		}
 	}
 }
+
+function chamarRegistros() {
+	carregarDados();
+	indiceParm = location.href.indexOf("?");
+	params = location.href.slice(indiceParm + 1, indiceParm + 7);
+	var data = pesquisaData.value;
+
+		urlDados = `/dash/csvRam/${params}/${data}`;
+	
+	fetch(urlDados, {
+		method: "GET",
+		headers: {
+			"Content-Type": "application/json",
+		},
+	})
+		.then(function (resposta) {
+			console.log("Resposta: ", resposta);
+			if (resposta.ok) {
+				console.log("OK");
+				resposta.json().then((json) => {
+					console.log(json);
+					csv(json);
+				});
+			} else {
+				console.log("não ok");
+				console.log(`#ERRO: ${resposta}`);
+			}
+		})
+		.catch(function (resposta) {
+			console.log(`#ERRO: ${resposta}`);
+		});
+}
+
+function csv(json) {
+	const colunas = Object.keys(json[0]);
+	var csv = colunas.join(",");
+
+	for (const item of json) {
+		const linha = Object.values(item).join(",");
+		csv += "\n" + linha;
+	}
+
+	console.log(csv);
+
+	const blob = new Blob([csv], { type: "text/csv" });
+	const link = document.createElement("a");
+	link.href = window.URL.createObjectURL(blob);
+	link.download = "dados.csv";
+	link.click();
+}
