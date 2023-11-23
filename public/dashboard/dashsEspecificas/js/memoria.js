@@ -207,6 +207,6 @@ function csv(json) {
 	const blob = new Blob([csv], { type: "text/csv" });
 	const link = document.createElement("a");
 	link.href = window.URL.createObjectURL(blob);
-	link.download = "dados.csv";
+	link.download = "dadosRAM.csv";
 	link.click();
 }
