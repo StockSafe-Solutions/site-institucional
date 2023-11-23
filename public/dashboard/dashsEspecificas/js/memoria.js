@@ -1,3 +1,4 @@
+
 function carregarDadosRam() {
 	indiceParm = location.href.indexOf("?");
 	params = location.href.slice(indiceParm + 1, indiceParm + 7);
@@ -52,31 +53,47 @@ function carregarDadosRam() {
 			console.log(`#ERRO: ${resposta}`);
 		});
 
-	
-
-
-	fetch(`/dash/kpiRam/${params}`, {
-		method: "GET",
-		headers: {
-			"Content-Type": "application/json",
-		},
-	})
-		.then(function (resposta) {
-			console.log("Resposta: ", resposta);
-			if (resposta.ok) {
-				console.log("OK");
-				resposta.json().then((json) => {
-					console.log(`sdfsdfsd2663`, json);
-				
+			fetch(`/dash/horaRam/${params}`, {
+				method: "GET",
+				headers: {
+					"Content-Type": "application/json",
+				},
+			})
+				.then(function (resposta) {
+					if (resposta.ok) {
+						resposta.json().then((json) => {
+							chamarGraficoHora(json);
+						});
+					} else {	
+						console.log(`#ERRO: ${resposta}`);
+						resposta.text().then((texto) => {
+							console.warn(texto);
+						});
+					}
+				})
+				.catch(function (resposta) {
+					console.log(`#ERRO: ${resposta}`);
 				});
-			} else {
-				console.log("não ok");
-				console.log(`#ERRO: ${resposta}`);
-			}
-		})
-		.catch(function (resposta) {
-			console.log(`#ERRO: ${resposta}`);
-		});
+
+				fetch(`/dash/kpiRam/${params}`, {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+					},
+				}).then(function(resposta){
+					if(resposta.ok){
+						resposta.json().then((json) => {
+							definirKPIs(json);
+						});
+					}else{
+						resposta.text().then((texto) => {
+							console.warn(texto);
+						});
+					}
+				}).catch(function (erro){
+					console.log(erro);
+				});
+	
 }
 
 var liv;
@@ -92,19 +109,22 @@ function chamarGraficosRAM(tipo, json) {
 		const ramUso = Number(jsonArray[0]["uso_da_ram"]);
 		usu = ramUso;
 	}
-	dados = [liv, usu];
-	gerenciarGraficosRosquinha("qtdRAM", dados, legendas, label);
+	dados = [liv, usu]
+	gerenciarGraficosRosquinha("qtdRAM", dados,  legendas, label);
 }
+
 
 function chamarGraficoHora(json) {
 	label = "Tempo de resposta";
-	dia = [];
-	hora = [];
-	for (i in json) {
-		dia.push(json[i].Dia);
-		hora.push(json[i].Minutos);
-	}
+		dia = [];
+		hora = [];
+		for (i in json) {
+			dia.push(json[i].Dia);
+			hora.push(json[i].Minutos)
+		}
 	gerenciarGraficoHora("graficoRAMinutos", label, dia, hora);
 }
 
-function definirKPIs(json) {}
+function definirKPIs(json){
+	console.log(json)
+}
