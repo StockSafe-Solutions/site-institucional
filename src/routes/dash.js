@@ -38,12 +38,11 @@ router.get("/horaRam/:codServidor", (req, res) => {
 })
 
 router.get("/kpiRam/:codServidor", (req, res) => {
-    console.log(`TEEEEEEEEEEEEEEEEEEEEEEEEEEEEE`)
     dashController.kpiRam(req, res);
 });
 
 router.get("/csvRam/:codServidor/:data", (req, res) => {
-	dashController.csvRam(req, res);
+    dashController.csvRam(req, res);
 });
 
 module.exports = router;

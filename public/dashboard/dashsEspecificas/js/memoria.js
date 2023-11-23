@@ -163,35 +163,35 @@ function definirKPIs(json){
 }
 
 function chamarRegistrosRam() {
-	carregarDadosRam();
+    carregarDadosRam();
 	indiceParm = location.href.indexOf("?");
 	params = location.href.slice(indiceParm + 1, indiceParm + 7);
 	var data = pesquisaData.value;
 
-		urlDados = `/dash/csvRam/${params}/${data}`;
-	
-	fetch(urlDados, {
-		method: "GET",
-		headers: {
-			"Content-Type": "application/json",
-		},
-	})
-		.then(function (resposta) {
-			console.log("Resposta: ", resposta);
-			if (resposta.ok) {
-				console.log("OK");
-				resposta.json().then((json) => {
-					console.log(json);
-					csv(json);
-				});
-			} else {
-				console.log("não ok");
-				console.log(`#ERRO: ${resposta}`);
-			}
+
+
+    fetch(`/dash/csvRam/${params}/${data}`, {
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json",
+			},
 		})
-		.catch(function (resposta) {
-			console.log(`#ERRO: ${resposta}`);
-		});
+			.then(function (resposta) {
+				console.log("Resposta: ", resposta);
+				if (resposta.ok) {
+					console.log("OK");
+					resposta.json().then((json) => {
+                        console.log(json);
+                        csv(json);
+					});
+				} else {
+					console.log("não ok");
+					console.log(`#ERRO: ${resposta}`);
+				}
+			})
+			.catch(function (resposta) {
+				console.log(`#ERRO: ${resposta}`);
+			});
 }
 
 function csv(json) {
