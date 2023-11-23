@@ -37,4 +37,8 @@ router.get("/horaRam/:codServidor", (req, res) => {
     dashController.horaRam(req, res);
 })
 
+router.get("/kpiRam/:codServidor", (req, res) => {
+    dashController.kpiRam(req, res);
+});
+
 module.exports = router;
