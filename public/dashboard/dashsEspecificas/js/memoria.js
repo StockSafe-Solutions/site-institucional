@@ -162,8 +162,8 @@ function definirKPIs(json){
 	}
 }
 
-function chamarRegistros() {
-	carregarDados();
+function chamarRegistrosRam() {
+	carregarDadosRam();
 	indiceParm = location.href.indexOf("?");
 	params = location.href.slice(indiceParm + 1, indiceParm + 7);
 	var data = pesquisaData.value;
