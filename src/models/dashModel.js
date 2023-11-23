@@ -1,5 +1,12 @@
 var database = require("../database/config");
 
+function kpiRam(codServidor){
+	const instrucao = `SELECT data_hora, uso_da_ram, uso_disponivel_da_ram, uso_total_da_ram FROM vw_registro 
+	WHERE fk_servidor = (SELECT id_servidor FROM tb_servidor WHERE codigo = '${codServidor}' )ORDER BY data_hora DESC LIMIT 1 ;`;
+	console.log("Executando a instrução SQL: \n" + instrucao);
+	return database.executar(instrucao);
+}
+
 function kpiEspecifica(codServidor) {
 	var instrucao = `CALL sp_kpi_especifica(1, '${codServidor}');`;
 	console.log("Executando a instrução SQL: \n" + instrucao);
@@ -84,5 +91,6 @@ module.exports = {
 	listarRegistrosDataEspeficico,
 	ramUsadaEspeficico,
 	ramLivreEspeficico,
-	horaRam
+	horaRam,
+	kpiRam,
 };
