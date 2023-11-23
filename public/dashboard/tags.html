@@ -22,6 +22,7 @@
     <script src="js/sessao.js"></script>
     <script src="js/menuLateral.js"></script>
     <script src="js/tags.js"></script>
+    <script src="js/Modals.js"></script>
 
     <!-- Icone -->
     <link rel="icon" href="../assets/icon/logo.ico" />
@@ -52,7 +53,7 @@
                             <h3>Tag com mais erros</h3>
                             <span class="tag"><u>2</u> manutenção</span>
                         </div>
-                        <button>Histórico de alertas por tags</button>
+                        <button onclick="abrirModal('hist')">Histórico de alertas por tags</button>
                     </div>
 
                     <div id="containerTags">
@@ -97,10 +98,21 @@
                         </div>
                     </div>
 
-                    <iframe frameborder="0" id="frameTags">
-
-                    </iframe>
+                    <iframe frameborder="0" id="frameTags"></iframe>
                 </div>
+            </div>
+        </div>
+
+        <div id="containerModal">
+            <div id="modalTagHistorico">
+                <header>
+                    <span>
+                        <h3>Histórico de erros por tags</h3>
+                        <p>Últimos 30 dias</p>
+                        <button>Imprimir</button>
+                    </span>
+                    <i class="fa-solid fa-x" onclick="fecharModal('hist')"></i>
+                </header>
             </div>
         </div>
     </div>

@@ -34,44 +34,46 @@ function abrirModal(modal, codigo) {
                 modalEditFunc.style = "display: flex";
             }, 1000);
             break;
-        }
+        case "hist":
+            modalTagHistorico.style ="display: flex; animation-name: aparecer; animation-duration: 500ms;"
+            setTimeout(()=>{
+                modalTagHistorico.style = "display: flex";
+            }, 1000);
+            break;
+    }
     setTimeout(()=>{
         containerModal.style = "display: flex"
     },500)
 }
 function fecharModal(modal) {
+    let idDaModal = ""
     switch (modal) {
         case "cad":
-            modalCadastro.style = "display: flex; animation-name: sumir; animation-duration: 300ms;"
-            setTimeout(()=>{
-                modalCadastro.style = ""
-            },200)
+            idDaModal = "modalCadastro"
             break
         case "dash":
-            modalDashboard.style = "display: flex; animation-name: sumir; animation-duration: 300ms;"
-            setTimeout(()=>{
-                modalDashboard.style = ""
-            },200)
+            idDaModal = "modalDashboard"
             break
         case "func":
-            modalCadFunc.style = "display: flex; animation-name: sumir; animation-duration: 300ms;"
-            setTimeout(()=>{
-                modalCadFunc.style = ""
-            },200)
+            idDaModal = "modalCadFunc"
             break
         case "solicitacoes":
-            modalSolic.style = "display: flex; animation-name: sumir; animation-duration: 300ms;";
-				setTimeout(() => {
-					modalSolic.style = "";
-				}, 200);
+            idDaModal = "modalSolic"
             break;    
         case "editFunc":
-            modalEditFunc.style = "display: flex; animation-name: sumir; animation-duration: 300ms;";
-            setTimeout(() => {
-                modalEditFunc.style = "";
-            }, 200);
+            idDaModal = "modalEditFunc"
+            break;
+        case "hist":
+            idDaModal = "modalTagHistorico"
             break;
         }
+
+    let modalEscolhida = document.getElementById(idDaModal)
+    modalEscolhida.style = "display: flex; animation-name: sumir; animation-duration: 300ms;"
+            setTimeout(()=>{
+                modalEscolhida.style = ""
+            },200)
+
     setTimeout(()=>{
         containerModal.style = "display: none"
     },200)
