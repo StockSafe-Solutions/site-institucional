@@ -133,14 +133,28 @@ function definirKPIs(json){
 	KPI4.className = "kpiBoa";
 	console.log(jsonArray[0]["dataDados"]);
 	valorKPI2.innerText = Number(jsonArray[0]["dataDados"]) + "Min";
-	valorKPI1.innerText = jsonArray[0]["avgUsoRam"] + "%";
-	valorKPI4.innerText = jsonArray[0]["avgTotalRam"] + "GB";
+	valorKPI1.innerText = Number(jsonArray[0]["avgUsoRam"]) + "%";
+	valorKPI4.innerText = Number(jsonArray[0]["avgTotalRam"]) + "GB";
 
 	//..Metricas
-	if (Number(jsonArray[0]["dataDados"]) > 15) {
+	if (Number(jsonArray[0]["avgUsoRam"]) > 75) {
 		KPI1.className = "kpiRuim";
+		if (Number(jsonArray[0]["avgUsoRam"]) > 90) {
+			KPI1.className = "kpiMuitoRuim";
+		}
+	}
+	
+	if (Number(jsonArray[0]["dataDados"]) > 15) {
+		KPI2.className = "kpiRuim";
 	 if (Number(jsonArray[0]["dataDados"]) > 40) {
-		KPI1.className = "kpiMuitoRuim";
+		KPI2.className = "kpiMuitoRuim";
 	}
 }
+
+	if (Number(jsonArray[0]["avgTotalRam"]) < 15) {
+		KPI4.className = "kpiRuim";
+		if (Number(jsonArray[0]["avgTotalRam"]) < 10) {
+			KPI4.className = "kpiMuitoRuim";
+		}
+	}
 }
