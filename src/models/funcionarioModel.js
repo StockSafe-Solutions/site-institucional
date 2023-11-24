@@ -164,6 +164,16 @@ function contarFuncionarios() {
 	return database.executar(instrucao);
 }
 
+function contarCargos() {
+	const instrucao = `
+		SELECT funcao, COUNT(*) AS qtd
+		FROM tb_funcionario
+		GROUP BY funcao
+		ORDER BY qtd DESC
+  `;
+	console.log(`Executanto a instrução SQL: \n ${instrucao}`);
+	return database.executar(instrucao);
+}
 module.exports = {
 	listar,
 	selecionar,
@@ -178,4 +188,5 @@ module.exports = {
 	deletarSolicitacoes,
 	contarSolicitacoes,
 	contarFuncionarios,
+	contarCargos
 };
