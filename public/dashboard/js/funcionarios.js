@@ -249,7 +249,6 @@ function carregarDadosFunc(){
 			.then(function (resposta) {
 				if (resposta.ok) {
 					resposta.json().then((json) => {
-                    console.log(`SOCORRO DEUS`, json)
 						chamarGraficos("nao", json);
 					});
 				} else {
@@ -273,7 +272,6 @@ function carregarDadosFunc(){
 					.then(function (resposta) {
 						if (resposta.ok) {
 							resposta.json().then((json) => {
-                                console.log(`Alguem me ajuda`, json)
 								chamarGraficos("aceito", json);
 							});
 						} else {
@@ -292,7 +290,7 @@ var liv;
 var usu;
 function chamarGraficos(tipo, json) {
 	legendas = ["Aceito", "Em espera"];
-	label = ["Porcentagem de aceitação"];
+	label = ["Quantidade de aceitação"];
 	const jsonArray = Array.from(json);
 	if (tipo == "aceito") {
 		const aceito = Number(jsonArray[0]["qtd_nomes"]);
