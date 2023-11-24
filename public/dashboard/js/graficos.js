@@ -23,9 +23,16 @@ function gerenciarGraficoHora(id, label, legendas, dados){
 		chartMin = criarGraficoHora(id, label, legendas, dados);
 	}
 }
+function gerenciarGraficosBarra(id, dados, legendas, label) {
+	const existingChart = Chart.getChart(id);
+	if (existingChart) {
+		existingChart.destroy();
+	}
+
+	newChart = criaGraficoBarra(id, label, legendas, dados);
+}
 
 function gerenciarGraficosRosquinha(id, dados, legendas, label) {
-	console.log(id)
 	const existingChart = Chart.getChart(id);
 	if (existingChart) {
 		existingChart.destroy();
@@ -96,4 +103,22 @@ function criarGraficoHora(id,label,legendas, dados){
 				],
 			},
 		});
+}
+
+function criaGraficoBarra(id, label, legendas, dados) {
+	const ctxs = document.getElementById(id);
+	return new Chart(ctxs, {
+		type: "bar",
+		data: {
+			labels: legendas,
+			datasets: [
+				{
+					label: `${label}`,
+					data: dados,
+					backgroundColor: ["#005EFF", "#001A46"],
+					hoverOffset: 4,
+				},
+			],
+		},
+	});
 }
