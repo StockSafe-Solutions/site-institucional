@@ -341,7 +341,7 @@ function chamarBarra(json) {
    }
 
    console.log(cargo ,`vxvxvxffvsdfvsds`, quantidade)
-    gerenciarGraficosBarra("graficoFuncoes", quantidade,cargo,label);
+    gerenciarGraficosBarra("graficoFuncoes", quantidade,cargo, label);
 }
 
 function reloadFuncionarios() {
