@@ -91,7 +91,7 @@ function criarLiFuncionario(json, tipo) {
 			"container-funcionarios-solicitacao"
 	    );
         container.innerHTML = "";
-        console.log(json.length)
+   
         if(json.length > 0){
             //containerVazio.className = ""
 
@@ -249,7 +249,8 @@ function carregarDadosFunc(){
 			.then(function (resposta) {
 				if (resposta.ok) {
 					resposta.json().then((json) => {
-						//chamarGraficosRAM("livre", json);
+                    console.log(`SOCORRO DEUS`, json)
+						chamarGraficos("nao", json);
 					});
 				} else {
 					console.log(`#ERRO: ${resposta}`);
@@ -272,7 +273,8 @@ function carregarDadosFunc(){
 					.then(function (resposta) {
 						if (resposta.ok) {
 							resposta.json().then((json) => {
-								//chamarGraficosRAM("livre", json);
+                                console.log(`Alguem me ajuda`, json)
+								chamarGraficos("aceito", json);
 							});
 						} else {
 							console.log(`#ERRO: ${resposta}`);
@@ -284,6 +286,24 @@ function carregarDadosFunc(){
 					.catch(function (resposta) {
 						console.log(`#ERRO: ${resposta}`);
 					});
+}
+
+var liv;
+var usu;
+function chamarGraficos(tipo, json) {
+	legendas = ["Aceito", "Em espera"];
+	label = ["Porcentagem de aceitação"];
+	const jsonArray = Array.from(json);
+	if (tipo == "aceito") {
+		const aceito = Number(jsonArray[0]["qtd_nomes"]);
+		liv = aceito; 
+	} else if (tipo == "nao") {
+		const nao = Number(jsonArray[0]["qtd_nomes_nulos"]);
+		usu = nao; 
+	}
+	dados = [liv, usu];
+    console.log(dados)
+	gerenciarGraficosRosquinha("graficoFuncSA", dados, legendas, label);
 }
 
 function reloadFuncionarios(){

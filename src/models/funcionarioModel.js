@@ -156,7 +156,7 @@ function contarSolicitacoes(){
 
 function contarFuncionarios() {
 	const instrucao = `
-		SELECT COUNT(*) AS qtd_nomes_nulos
+		SELECT COUNT(*) AS qtd_nomes
 		FROM tb_funcionario
 		WHERE nome IS NOT NULL;
   `;

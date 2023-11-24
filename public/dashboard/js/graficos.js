@@ -25,7 +25,8 @@ function gerenciarGraficoHora(id, label, legendas, dados){
 }
 
 function gerenciarGraficosRosquinha(id, dados, legendas, label) {
-	const existingChart = Chart.getChart("qtdRAM");
+	console.log(id)
+	const existingChart = Chart.getChart(id);
 	if (existingChart) {
 		existingChart.destroy();
 	}
