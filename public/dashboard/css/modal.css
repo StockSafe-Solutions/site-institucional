@@ -312,3 +312,9 @@
 
 }
 
+#modalGraficoFunc i{
+    color: #005eff;
+    cursor: pointer;
+    transition: 500ms;
+}
+
