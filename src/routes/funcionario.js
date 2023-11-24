@@ -55,5 +55,8 @@ router.get("/contarFuncionarios", function (req, res) {
 	funcionarioController.contarFuncionarios(req, res);
 });
 
+router.get("/contarCargos", function (req, res) {
+	funcionarioController.contarCargos(req, res);
+});
 
 module.exports = router;
