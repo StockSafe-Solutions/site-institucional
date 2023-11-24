@@ -239,6 +239,53 @@ function terminarCadastro(){
     inpSenha.value = "";
 }
 
+function carregarDadosFunc(){
+    	fetch(`/funcionario/contarSolicitacoes`, {
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json",
+			},
+		})
+			.then(function (resposta) {
+				if (resposta.ok) {
+					resposta.json().then((json) => {
+						//chamarGraficosRAM("livre", json);
+					});
+				} else {
+					console.log(`#ERRO: ${resposta}`);
+					resposta.text().then((texto) => {
+						console.warn(texto);
+					});
+				}
+			})
+			.catch(function (resposta) {
+				console.log(`#ERRO: ${resposta}`);
+			});
+
+
+            fetch(`/funcionario/contarFuncionarios`, {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+					},
+				})
+					.then(function (resposta) {
+						if (resposta.ok) {
+							resposta.json().then((json) => {
+								//chamarGraficosRAM("livre", json);
+							});
+						} else {
+							console.log(`#ERRO: ${resposta}`);
+							resposta.text().then((texto) => {
+								console.warn(texto);
+							});
+						}
+					})
+					.catch(function (resposta) {
+						console.log(`#ERRO: ${resposta}`);
+					});
+}
+
 function reloadFuncionarios(){
     textoReload.innerText = "Atualizando"
     iconReload.style = "animation-name: girar; animation-duration: 2250ms; pointer-events: none"

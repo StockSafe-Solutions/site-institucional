@@ -287,16 +287,42 @@ function deletarSolicitacoes(req, res){
     )
 }
 
-module.exports = {
-    listar,
-    selecionar,
-    autenticar,
-    cadastrar,
-    enviarFoto,
-    alterar,
-    alterarSenha,
-    enviarEmail,
-    terminarCadastro,
-    solicitacoesFuncionarios,
-    deletarSolicitacoes
+function contarSolicitacoes(req, res) {
+	funcionarioModel.contarSolicitacoes()
+		.then((resultado) => {
+		    res.json(resultado);
+		})
+		.catch((error) => {
+			console.log(error);
+			console.log("Erro nas Dashboards\n", error.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+		});
 }
+
+function contarFuncionarios(req, res) {
+	funcionarioModel
+		.contarFuncionarios()
+		.then((resultado) => {
+			res.json(resultado);
+		})
+		.catch((error) => {
+			console.log(error);
+			console.log("Erro nas Dashboards\n", error.sqlMessage);
+			res.status(500).json(erro.sqlMessage);
+		});
+}
+module.exports = {
+	listar,
+	selecionar,
+	autenticar,
+	cadastrar,
+	enviarFoto,
+	alterar,
+	alterarSenha,
+	enviarEmail,
+	terminarCadastro,
+	solicitacoesFuncionarios,
+	deletarSolicitacoes,
+	contarSolicitacoes,
+	contarFuncionarios,
+};

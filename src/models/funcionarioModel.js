@@ -154,6 +154,16 @@ function contarSolicitacoes(){
 	return database.executar(instrucao);
 }
 
+function contarFuncionarios() {
+	const instrucao = `
+		SELECT COUNT(*) AS qtd_nomes_nulos
+		FROM tb_funcionario
+		WHERE nome IS NOT NULL;
+  `;
+	console.log(`Executanto a instrução SQL: \n ${instrucao}`);
+	return database.executar(instrucao);
+}
+
 module.exports = {
 	listar,
 	selecionar,
@@ -167,4 +177,5 @@ module.exports = {
 	solicitacoesFuncionarios,
 	deletarSolicitacoes,
 	contarSolicitacoes,
+	contarFuncionarios,
 };
