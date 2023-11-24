@@ -295,7 +295,7 @@ function contarSolicitacoes(req, res) {
 		.catch((error) => {
 			console.log(error);
 			console.log("Erro nas Dashboards\n", error.sqlMessage);
-            res.status(500).json(erro.sqlMessage);
+            res.status(500).json(error.sqlMessage);
 		});
 }
 
@@ -308,7 +308,7 @@ function contarFuncionarios(req, res) {
 		.catch((error) => {
 			console.log(error);
 			console.log("Erro nas Dashboards\n", error.sqlMessage);
-			res.status(500).json(erro.sqlMessage);
+			res.status(500).json(error.sqlMessage);
 		});
 }
 
@@ -321,7 +321,7 @@ function contarCargos(req, res) {
 		.catch((error) => {
 			console.log(error);
 			console.log("Erro nas Dashboards\n", error.sqlMessage);
-			res.status(500).json(erro.sqlMessage);
+			res.status(500).json(error.sqlMessage);
 		});
 }
 module.exports = {
