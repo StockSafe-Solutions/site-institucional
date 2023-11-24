@@ -311,6 +311,19 @@ function contarFuncionarios(req, res) {
 			res.status(500).json(erro.sqlMessage);
 		});
 }
+
+function contarCargos(req, res) {
+	funcionarioModel
+		.contarCargos()
+		.then((resultado) => {
+			res.json(resultado);
+		})
+		.catch((error) => {
+			console.log(error);
+			console.log("Erro nas Dashboards\n", error.sqlMessage);
+			res.status(500).json(erro.sqlMessage);
+		});
+}
 module.exports = {
 	listar,
 	selecionar,
@@ -325,4 +338,5 @@ module.exports = {
 	deletarSolicitacoes,
 	contarSolicitacoes,
 	contarFuncionarios,
+	contarCargos,
 };
