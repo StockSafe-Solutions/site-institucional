@@ -1,23 +1,16 @@
 function carregarDados(){
     indiceParm = location.href.indexOf('?')
     params = location.href.slice(indiceParm+1)
-    params = params.split("&")
-    urlKPIs = ""
-    urlGraficos = ""
 
     if(indiceParm == -1){
-        urlKPIs = "../dash/kpiGeral"
-        urlGraficos = "../dash/graficosGerais"
-
+        carregarViaGET("../dash/kpiGeral", "../dash/graficosGerais")
         nomePagina.innerText = "Dashboard - Visão Geral"
         carregarMenu("geral",true)
     } else if(params[0].slice(0,2) == "id"){
         params = params[0]
         params = params.slice(3)
-
-        urlKPIs = "../dash/kpiEspecifica/"+params
-        urlGraficos = "../dash/graficosEspecificos/"+params
-
+        carregarViaGET("../dash/kpiEspecifica/"+params, "../dash/graficosEspecificos/"+params)
+        
         nomePagina.innerText = "Dashboard - Servidor "+params
         reload_e_alertas.style = "left: -45px"
 
@@ -25,11 +18,42 @@ function carregarDados(){
         nomeKPI2.innerText = "Taxa de transferência"
         
         carregarMenu("especifica",false,params)
+
+        now = new Date()
+        dataAtual = 
+        now.getFullYear()+
+        "-"+(now.getMonth()+1)+
+        "-"+now.getDate()
+        pesquisaData.value=dataAtual
     } else{
         document.body.className += " contentTags"
         accordionSidebar.style = "display: none"
-    }
 
+        tags = params.slice(5).split("+")
+        carregarViaPOST("../tag/kpisPorTags",tags,"../tag/graficosPorTags",tags)
+
+        now = new Date()
+        dataAtual = 
+        now.getFullYear()+
+        "-"+(now.getMonth()+1)+
+        "-"+now.getDate()
+        pesquisaData.value=dataAtual
+    } if(params == "tags="){
+        reloadContinuo = ""
+
+        document.body.style = `
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh !important;`
+        document.body.innerHTML = `
+            <div>
+                Selecione tags para visualizar gráficos e KPIs de acordo com elas.
+            </div>`
+    }
+}
+
+function carregarViaGET(urlKPIs, urlGraficos){
     fetch(urlKPIs, {
         method: "GET",
         headers: {
@@ -58,7 +82,42 @@ function carregarDados(){
     }).then(function (resposta) {
         if (resposta.ok) {
             resposta.json().then(json => {
-                chamarGraficos(json)
+                json_cpu = json[0]
+                uso_cpu = []
+                for(i in json_cpu){
+                    uso_cpu.push(json_cpu[i].uso_da_cpu)
+                }
+
+                json_ram = json[1]
+                uso_ram = []
+                for(i in json_ram){
+                    uso_ram.push(json_ram[i].uso_da_ram)
+                }
+
+                gerenciarGraficos('graficoCPU',uso_cpu)
+                gerenciarGraficos('graficoRAM',uso_ram)
+            });
+        }
+        else{
+            resposta.text().then(texto => { console.warn(texto) })}}).catch(function (erro) {
+        console.log(erro);
+    })
+}
+
+function carregarViaPOST(urlKPIs, corpoKPIs, urlGraficos, corpoGraficos){
+    fetch(urlKPIs, {
+        method: "POST",
+        body: JSON.stringify({
+            tagServer: corpoKPIs
+        }),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(function (resposta) {
+        if (resposta.ok) {
+            resposta.json().then(json => {
+                console.log(json)
+                definirKPIs("tag",json[0])
             });
         }
         else{
@@ -66,13 +125,32 @@ function carregarDados(){
         console.log(erro);
     })
 
-    now = new Date()
-    dataAtual = 
-    now.getFullYear()+
-    "-"+(now.getMonth()+1)+
-    "-"+now.getDate()
+    fetch(urlGraficos, {
+        method: "POST",
+        body: JSON.stringify({
+            tagServer: corpoGraficos
+        }),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(function (resposta) {
+        if (resposta.ok) {
+            resposta.json().then(json => {
+                uso_cpu = []
+                uso_ram = []
+                for(i in json){
+                    uso_cpu.push(json[i].uso_da_cpu)
+                    uso_ram.push(json[i].uso_da_ram)
+                }
 
-    pesquisaData.value=dataAtual
+                gerenciarGraficos('graficoCPU',uso_cpu)
+                gerenciarGraficos('graficoRAM',uso_ram)
+            });
+        }
+        else{
+            resposta.text().then(texto => { console.warn(texto) })}}).catch(function (erro) {
+        console.log(erro);
+    })
 }
 
 function definirKPIs(tipo, json){
@@ -87,7 +165,7 @@ function definirKPIs(tipo, json){
         baseKPI4.innerText = "de "+Math.round(Number(json.base_armazenamento)/1000,1)+"TB"
     } else{
         valorKPI2.innerText = Math.round(Number(json.kpi_taxa))+"Mb/s"
-        baseKPI2.innerText = "De "+sessionStorage.taxa_transferencia+"Mb/s"
+        baseKPI2.innerText = "de "+sessionStorage.taxa_transferencia+"Mb/s"
         pctTaxaTrasnf = Number(json.kpi_taxa)*100/Number(
             sessionStorage.taxa_transferencia.replace(",",".")
         )
@@ -112,7 +190,6 @@ function definirKPIs(tipo, json){
         }
     }
 
-    valorKPI2.style = "font-size: 28px"
     valorKPI3.innerText = Math.round(Number(json.kpi_pacotes_enviados))
 
     pctArmazenamento = Math.round(Number(json.kpi_armazenamento)*100/Number(json.base_armazenamento))
@@ -125,23 +202,10 @@ function definirKPIs(tipo, json){
         } else{
             KPI4.className = "kpiRuim";
         }
-}
-
-function chamarGraficos(json){
-    json_cpu = json[0]
-    uso_cpu = []
-    for(i in json_cpu){
-        uso_cpu.push(json_cpu[i].uso_da_cpu)
+    if(tipo == "tag"){
+        KPI1.style = "display: none"
+        nomeKPI2.innerText = "Uso da banda"
     }
-
-    json_ram = json[1]
-    uso_ram = []
-    for(i in json_ram){
-        uso_ram.push(json_ram[i].uso_da_ram)
-    }
-
-    gerenciarGraficos('graficoCPU',uso_cpu)
-    gerenciarGraficos('graficoRAM',uso_ram)
 }
 
 function reloadDashboard(){
@@ -165,4 +229,4 @@ function reloadDashboard(){
 
     carregarDados()
 }
-setInterval(reloadDashboard,sessionStorage.intervalo_atualizacao)
+reloadContinuo = setInterval(reloadDashboard,sessionStorage.intervalo_atualizacao)

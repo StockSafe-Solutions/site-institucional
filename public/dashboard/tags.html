@@ -30,28 +30,24 @@
     <title>StockSafe - Tags</title>
 </head>
 
-<body id="page-top" onload="carregarDashboardTags(null),carregarMenu('tags',true)">
+<body id="page-top" onload="reloadTags(),carregarMenu('tags',true)">
     <div id="wrapper">
         <ul id="accordionSidebar"></ul>
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
                 <div class="container-fluid">
                     <div id="kpisTags">
-                        <div>
+                        <div id="kpi1">
                             <h3>Tag com mais servidores</h3>
-                            <span class="tag"><u>8</u> backup</span>
                         </div>
-                        <div>
+                        <div id="kpi2">
                             <h3>Tag com menos servidores</h3>
-                            <span class="tag"><u>1</u> Manutenção</span>
                         </div>
-                        <div>
+                        <div id="kpi3">
                             <h3>Tag com maior uso de recursos</h3>
-                            <span class="tag"><u>87%</u> Principal</span>
                         </div>
-                        <div>
+                        <div id="kpi4">
                             <h3>Tag com mais erros</h3>
-                            <span class="tag"><u>2</u> manutenção</span>
                         </div>
                         <button onclick="abrirModal('hist')">Histórico de alertas por tags</button>
                     </div>
@@ -60,15 +56,15 @@
                         <h3>Selecionar tags para a visualização</h3>
                         <div id="cabecalhoTags">
                             <span id="spanBuscarTag">
-                                <input id="iptNomeTag" placeholder="Buscar tag por nome">
+                                <input id="iptNomeTag" placeholder="Buscar tag por nome" onkeyup="tagsPorNome()">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </span>
                             <span>
-                                <button>
+                                <button onclick="abrirModal('tagAdd')">
                                     <i class="fa-solid fa-plus"></i>
                                     Nova tag
                                 </button>
-                                <button>
+                                <button onclick="abrirModal('tagExcl')">
                                     <i class="fa-solid fa-trash-can"></i>
                                     Excluir tag
                                 </button>
@@ -85,15 +81,10 @@
                                     <i class="fa-solid fa-arrow-up-1-9"></i>
                                 </span>
                             </div>
-                            <ul>
-                                <li class="tag"><input type="checkbox">Principal</li>
-                                <li class="tag"><input type="checkbox">Em operação</li>
-                                <li class="tag"><input type="checkbox">Em manutenção</li>
-                                <li class="tag"><input type="checkbox">Fora de serviço</li>
-                            </ul>
+                            <div id="containerResultadosBuscaTags"></div>
                             <div id="rodapeSeletorTags">
-                                <p>Total: 6</p>
-                                <p>Selecionadas: 4</p>
+                                <p id="contagemTagsBuscaTotal"></p>
+                                <p id="contagemTagsBuscaSelecionadas"></p>
                             </div>
                         </div>
                     </div>
@@ -114,9 +105,26 @@
                     <i class="fa-solid fa-x" onclick="fecharModal('hist')"></i>
                 </header>
             </div>
+            <div id="modalTagNova">
+                <header>
+                    <span>
+                        <h3>Adicionar nova tag</h3>
+                    </span>
+                    <i class="fa-solid fa-x" onclick="fecharModal('tagAdd')"></i>
+                </header>
+            </div>
+            <div id="modalTagExcluir">
+                <header>
+                    <span>
+                        <h3>Excluir tag</h3>
+                    </span>
+                    <i class="fa-solid fa-x" onclick="fecharModal('tagExcl')"></i>
+                </header>
+            </div>
         </div>
     </div>
 </body>
 </html>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

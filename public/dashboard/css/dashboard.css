@@ -171,7 +171,20 @@
     flex-direction: column;
     height: inherit;
 }
+.contentTags .kpis span{
+    margin: 0 0 2.5px 0;
+}
+.contentTags .valorKPI{
+    font-size: 1.2em;
+    margin: 0px;
+    font-weight: bold;
+}
+.contentTags .baseKPI{
+    margin: 0px;
+}
+
 .contentTags .kpis > div{
     width: 150px;
-    height: 130px;
+    height: fit-content;
+    margin: 5px;
 }

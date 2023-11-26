@@ -127,8 +127,7 @@
     background-color: white;
     border-radius: 10px;
 }
-#containerSeletorTags > div,
-#containerSeletorTags > ul{
+#containerSeletorTags > div{
     padding: 5px 10px;
 }
 
@@ -167,13 +166,15 @@
     color: #001A46;    
 }
 
-#containerSeletorTags ul{
-    list-style: none;
+#containerResultadosBuscaTags{
     height: 280px;
     overflow-y: scroll;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
-#containerSeletorTags ul > *{
-    margin: 5px 0;
+#containerResultadosBuscaTags > *{
+    margin: 0px 5px;
     cursor: pointer;
 }
 

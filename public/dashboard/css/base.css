@@ -327,10 +327,14 @@ body > div > *{
 .tag{
     background-color: black;
     font-weight: 700;
-    padding: 2.5px 5px;
+    padding: 7.5px 5px;
     border-radius: 5px;
     width: fit-content;
+    height: fit-content;
     cursor: default;
+    transition: 500ms;
+    line-height: 1;
+    user-select: none;
 }
 .tag u{
     font-size: 1.2em;
@@ -338,4 +342,8 @@ body > div > *{
 .tag input{
     margin-right: 2.5px;
     pointer-events: none;
+}
+
+.tagClicavel:hover{
+    transform: scale(1.15);
 }

@@ -40,6 +40,18 @@ function abrirModal(modal, codigo) {
                 modalTagHistorico.style = "display: flex";
             }, 1000);
             break;
+        case "tagAdd":
+            modalTagNova.style ="display: flex; animation-name: aparecer; animation-duration: 500ms;"
+            setTimeout(()=>{
+                modalTagNova.style = "display: flex";
+            }, 1000);
+            break;
+        case "tagExcl":
+            modalTagExcluir.style ="display: flex; animation-name: aparecer; animation-duration: 500ms;"
+            setTimeout(()=>{
+                modalTagExcluir.style = "display: flex";
+            }, 1000);
+            break;
     }
     setTimeout(()=>{
         containerModal.style = "display: flex"
@@ -65,6 +77,12 @@ function fecharModal(modal) {
             break;
         case "hist":
             idDaModal = "modalTagHistorico"
+            break;
+        case "tagAdd":
+            idDaModal = "modalTagNova"
+            break;
+        case "tagExcl":
+            idDaModal = "modalTagExcluir"
             break;
         }
 
