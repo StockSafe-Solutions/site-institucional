@@ -9,8 +9,11 @@ function carregarPaginaProcessos(){
     //CARREGANDO O MENU, false PARA PAG. ESPECÍFICA
 }
 
-function carregarProcessos() {
+function carregarProcessos(processos) {
 
+    processos.forEach((processo, i) => {
+        console.log(processo.pid_proc)
+    });
 }
 
 function atualizarProcessos() {
@@ -27,7 +30,7 @@ function atualizarProcessos() {
                     console.log(resposta);
                     resposta.json().then(json => {
                         console.log(json)
-                        carregarAlertas(json)
+                        carregarProcessos(json)
                     });
                 }
                 else {
@@ -39,5 +42,7 @@ function atualizarProcessos() {
                 console.log(erro);
             })
         ];
+        carregarProcessos(processos)
     })
+
 }

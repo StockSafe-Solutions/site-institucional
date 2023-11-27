@@ -28,7 +28,7 @@ app.use("/funcionario", funcionarioRouter)
 app.use("/configuracao", configuracaoRouter)
 app.use("/dash", dashRouter)
 app.use("/alerta", alertaRouter)
-app.use("/processo",processoRouter)
+app.use("/processo", processoRouter)
 
 app.listen(PORTA, function () {
     console.log(`Servidor do seu site já está rodando! Acesse o caminho a seguir para visualizar: http://localhost:${PORTA} \n
