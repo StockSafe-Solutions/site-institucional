@@ -7,12 +7,29 @@ function carregarPaginaProcessos(){
 
     carregarMenu("Processos",false,params)
     //CARREGANDO O MENU, false PARA PAG. ESPECÍFICA
+
+    setTimeout(()=>{
+        atualizarProcessos()
+    },sessionStorage.intervalo_atualizacao)
 }
 
 function carregarProcessos(processos) {
+    var listaProcessos = document.getElementById("listaProcessos");
+    listaProcessos.innerHTML = ""
 
     processos.forEach((processo, i) => {
-        console.log(processo.pid_proc)
+        var linha = document.createElement("li");
+
+        linha.innerHTML = `
+        <ol>
+        <span>PID: ${processo.pid_proc}</span>
+        <span>Nome: ${processo.nome_proc}</span>
+        <span>Uso de CPU: ${processo.uso_cpu}</span>
+        <span>Uso de RAM: ${processo.uso_ram}</span>
+        </ol>
+        `
+
+        listaProcessos.appendChild(linha)
     });
 }
 

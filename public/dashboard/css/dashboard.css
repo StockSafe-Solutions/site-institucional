@@ -124,3 +124,10 @@
     padding: 15px;
     color: #001a46;
 }
+
+#listaProcessos {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    left: 15px;
+}
