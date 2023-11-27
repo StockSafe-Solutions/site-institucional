@@ -21,7 +21,7 @@ function carregarProcessos(processos) {
         var linha = document.createElement("li");
 
         linha.innerHTML = `
-        <ol>
+        <ol style = "margin: 0;">
         <span>PID: ${processo.pid_proc}</span>
         <span>Nome: ${processo.nome_proc}</span>
         <span>Uso de CPU: ${processo.uso_cpu}</span>

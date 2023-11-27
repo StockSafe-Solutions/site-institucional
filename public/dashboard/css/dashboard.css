@@ -125,9 +125,15 @@
     color: #001a46;
 }
 
-#listaProcessos {
+#header_processos {
     display: flex;
-    flex-direction: column;
-    list-style: none;
-    left: 15px;
+    flex-direction: row;
+    width: 100%;
+    color: #fff;
+}
+
+#header_processos div{
+    width: 95%;
+    background-color: #005eff;
+    border: 1px black;
 }
