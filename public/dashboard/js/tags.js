@@ -45,7 +45,6 @@ function carregarKPIs(){
             
         }
         else if (resposta.ok) {
-            console.log(resposta);
             resposta.json().then(json => {
                 dadosKpis = json[0]
 
@@ -329,7 +328,7 @@ function criarTag(){
         let servidores = modalAddTagServidores.getElementsByTagName("span")
         let servidoresSelecionados = []
         
-        for(var i = 0; i < servidoresSelecionados.length; i++){
+        for(var i = 0; i < servidores.length; i++){
             let checkboxServidor = servidores[i].getElementsByTagName("input")[0]
             if(checkboxServidor.checked){
                 servidoresSelecionados.push(checkboxServidor.id)
@@ -350,6 +349,8 @@ function criarTag(){
                     cadastrarTag(nomeTag, corSelecionada,servidoresSelecionados)
                 }
             })
+        } else{
+            cadastrarTag(nomeTag, corSelecionada,servidoresSelecionados)
         }
     }
 }
@@ -364,7 +365,7 @@ function cadastrarTag(nome, cor, servidores){
         }),
     }).then(function (resposta) {
         if (resposta.ok) {
-           colocarTagsNosServidores(servidores)
+           colocarTagsNosServidores(servidores, nome)
         } 
         else {
             if(resposta.status == 409){
@@ -386,6 +387,33 @@ function cadastrarTag(nome, cor, servidores){
     })
 }
 
-function colocarTagsNosServidores(servidores){
-    alert("ah!")
+function colocarTagsNosServidores(servidores, nomeTag){
+    let idsServidores = []
+    for(var i = 0; i < servidores.length; i++){
+        idsServidores.push(servidores[i].slice(4))
+    }
+
+    fetch("/tag/colocarTagEmServidor/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            idsServidoresServer: idsServidores,
+            nomeTagServer: nomeTag
+        })}).then(function (resposta) {
+        if (resposta.ok) {
+            swal({
+                title: 'Tag cadastrada com sucesso!',
+                text: `A tag ${nomeTag} foi cadastrada com sucesso, e atribuída à seus respectivos servidores.`,
+                icon: 'success'
+            })
+            iptModalAddTagNomeTag.value = ""
+        } 
+        else {
+            swal({
+                title: 'Erro interno!',
+                text: 'Erro no servidor do aplicativo. Contate seu administrador de TI.',
+                icon: 'error'
+            })
+        }
+    })
 }

@@ -133,23 +133,26 @@ function inserirTag(req, res){
 }
 
 function colocarTagEmServidor(req, res){
-    var idServidor = req.body.idServidorServer;
+    var idsServidores = req.body.idsServidoresServer;
     var nomeTag = req.body.nomeTagServer;
 
-    if(idServidor == undefined || nomeTag == undefined){
+    if(idsServidores == undefined || nomeTag == undefined){
         res.status(400).send()
     }
-    tagModel.colocarTagEmServidor(idServidor, nomeTag).then(
-        function (resultado) {
-            res.json(resultado);
-        }).catch(
-        function (erro) {
-            console.log(erro);
-            console.log(
-                "\n Houve um erro ao realizar o cadastro! Erro: ", erro.sqlMessage
-            );
-            res.status(500).json(erro.sqlMessage)
-        });
+
+    for(let i = 0; i < idsServidores.length; i++){
+        tagModel.colocarTagEmServidor(idsServidores[i], nomeTag).then(
+            function (resultado) {
+                res.json(resultado);
+            }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\n Houve um erro ao realizar o cadastro! Erro: ", erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage)
+            });
+    }
 }
 
 
