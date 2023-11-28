@@ -22,6 +22,7 @@ function carregarDashboardTags(){
             Selecione tags para visualizar gráficos e KPIs de acordo com elas.
         </div>`
     carregarKPIs()
+    tagsPorNome()
 
     setInterval(sessionStorage.intervalo_atualizacao, reloadTags())
 }
@@ -99,7 +100,7 @@ function gerarTag(id, cor, info, nome, clicavel){
     return novaTag
 }
 
-function tagsPorNome(){
+function tagsPorNome(tipoOrdenacao, sentidoOrdenacao){
     let buscaTags = iptNomeTag.value
 
     let letras = ["A","B","C","D","E","F","G","H",
@@ -122,37 +123,39 @@ function tagsPorNome(){
     }
 
     if(buscaAprovada){
-        containerResultadosBuscaTags.innerHTML = ""
-
-        fetch("/tag/tagsPorNome/"+buscaTags, {
-            method: "GET",
+        fetch("/tag/tagsPorNome", {
+            method: "POST",
+            body: JSON.stringify({
+                nomeTagServer: buscaTags,
+                ordTipoServer: tipoOrdenacao,
+                ordSentServer: sentidoOrdenacao
+            }),
             headers: {
                 "Content-Type": "application/json"
             }
         }).then(function (resposta) {
-            if (resposta.status == 204) { 
-                
+            if (resposta.status == 204) {
+                //COLOCAR SE NÃO TIVER TAG!!!
             }
             else if (resposta.ok) {
                 resposta.json().then(json => {
                     containerResultadosBuscaTags.innerHTML = ""
-                    for(i in json){
-                        containerResultadosBuscaTags.appendChild(
-                            gerarTag(
-                                json[i].id_tag,
-                                json[i].cor_tag,
-                                '<input type="checkbox" name="" id="">',
-                                json[i].nome_tag,
-                                true
-                            )
-                        )
-                    }
-                    contagemTagsBuscaTotal.innerText = `
+                for(i in json){
+                    containerResultadosBuscaTags.appendChild(
+                        gerarTag(
+                            json[i].id_tag,
+                            json[i].cor_tag,
+                            '<input type="checkbox">',
+                            json[i].nome_tag,
+                            true
+                        ))
+                }
+                contagemTagsBuscaTotal.innerText = `
                     Total: ${json.length}
-                    `
-                    contagemTagsBuscaSelecionadas.innerText = `
+                `
+                contagemTagsBuscaSelecionadas.innerText = `
                     Selecionadas: ${tagsClicaveisChecadas}
-                    `
+                `
                 });
             }
             else { resposta.text().then(texto => {
@@ -169,6 +172,27 @@ function tagsPorNome(){
         })
         iptNomeTag.value = ""
     }
+}
+
+function ordenarTags(tipoOrdenacao){
+    let iconeClicado
+    let sentidoOrdenacao
+
+    if(tipoOrdenacao == "nome_tag"){
+        iconeClicado = document.getElementById("iconOrdernarPorNome")
+    } else{
+        iconeClicado = document.getElementById("iconOrdernarPorNumero")
+    }
+
+    if(iconeClicado.className.indexOf("up") != -1){
+        iconeClicado.className = iconeClicado.className.replace("up","down")
+        sentidoOrdenacao = "DESC"
+    } else{
+        iconeClicado.className = iconeClicado.className.replace("down","up")
+        sentidoOrdenacao = "ASC"
+    }
+
+    tagsPorNome(tipoOrdenacao, sentidoOrdenacao)
 }
 
 tagsAtivas = []

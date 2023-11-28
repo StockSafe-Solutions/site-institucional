@@ -11,10 +11,7 @@ router.get("/kpisTags", function(req, res){
     tagController.kpisTags(req, res)
 })
 
-router.get("/tagsPorNome/", function(req, res){
-    tagController.tagsPorNome(req, res);
-})
-router.get("/tagsPorNome/:nomeTags", function(req, res){
+router.post("/tagsPorNome", function(req, res){
     tagController.tagsPorNome(req, res);
 })
 

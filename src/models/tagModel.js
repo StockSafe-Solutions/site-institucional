@@ -1,7 +1,7 @@
 var database = require("../database/config")
 
 function listarTags(){
-    var instrucao = "SELECT * FROM tb_tag"
+    var instrucao = "SELECT * FROM tb_tag;"
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
@@ -12,11 +12,15 @@ function kpisTags(){
     return database.executar(instrucao);
 }
 
-function tagsPorNome(nome){
+function tagsPorNome(nome, ordenacao){
     var instrucao = `
-        SELECT * FROM tb_tag
-        WHERE nome_tag LIKE '%${nome}%'`
-    console.log("Executando a instrução SQL: \n" + instrucao);
+    SELECT t.*, COUNT(ts.fk_servidor) AS qtdServidores
+        FROM tb_tag AS t
+        JOIN tb_tag_servidor AS ts ON t.id_tag = ts.fk_tag
+        WHERE nome_tag LIKE '%${nome}%'
+		GROUP BY(id_tag)
+        ${ordenacao};`
+    // console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
 

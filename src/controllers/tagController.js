@@ -44,14 +44,22 @@ function kpisTags(req, res){
 }
 
 function tagsPorNome(req, res) {
-    var nomeTag = req.params.nomeTags;    
+    var nomeTag = req.body.nomeTagServer;    
     if(nomeTag == null){
         nomeTag = ""
     }
-    tagModel.tagsPorNome(nomeTag).then(
+
+    tipoOrdenacao = req.body.ordTipoServer
+    sentidoOrdenacao = req.body.ordSentServer
+
+    ordenacao = ""
+    if(tipoOrdenacao != undefined && sentidoOrdenacao != undefined){
+        ordenacao = `ORDER BY ${tipoOrdenacao} ${sentidoOrdenacao}`
+    }
+
+    tagModel.tagsPorNome(nomeTag, ordenacao).then(
         function (resultado) {
             if (resultado.length > 0) {
-                console.log(resultado);
                 res.json(resultado);
             } else if (resultado.length == 0){
                 res.status(204).send()

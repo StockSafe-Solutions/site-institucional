@@ -77,8 +77,12 @@
                                     <i class="fa-solid fa-filter"></i>
                                 </span>
                                 <span>
-                                    <i class="fa-solid fa-arrow-up-a-z"></i>
-                                    <i class="fa-solid fa-arrow-up-1-9"></i>
+                                    <i id="iconOrdernarPorNome" class="fa-solid fa-arrow-up-a-z" onclick='ordenarTags("nome_tag")'>
+
+                                    </i>
+                                    <i id="iconOrdernarPorNumero" class="fa-solid fa-arrow-up-1-9" onclick='ordenarTags("qtdServidores")'>
+
+                                    </i>
                                 </span>
                             </div>
                             <div id="containerResultadosBuscaTags"></div>
@@ -146,5 +150,4 @@
 </body>
 </html>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
