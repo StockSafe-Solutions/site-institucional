@@ -1,3 +1,5 @@
+
+
 function semServidores(pesquisa) {
     if (!pesquisa) {
         document.getElementById("iptPesquisa").disabled = true
@@ -24,7 +26,6 @@ function listarServidores() {
         else if (resposta.ok) {
             console.log(resposta);
             resposta.json().then(json => {
-                console.log(json)
                 criarLiServidor(json)
             });
         }
@@ -63,7 +64,7 @@ function pesquisarServidores() {
         listarServidores()
     }
     else if (!valido) {
-        Swal.fire({
+        swal({
             title: 'Pesquisa inválida',
             text: 'Você utilizou caracteres inválidos na sua pesquisa de servidores.',
             icon: 'error'
@@ -133,7 +134,7 @@ function criarLiServidor(json) {
     }
 }
 function avisoNaoAutenticado(){
-    Swal.fire({
+    swal({
         icon: 'error',
         title: 'Servidor não autenticado!',
         text: 'Você instalar o Monitor de Recursos neste servidor, autenticá-lo com o código de 6 dígitos e coletar dados antes de abrir sua dashboard.'

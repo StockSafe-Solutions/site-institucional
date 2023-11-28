@@ -9,6 +9,12 @@ body > div > *{
 *::-webkit-scrollbar {
     width: 10px;
 }
+*{
+    /* Retirando a habilidade de selecionar textos */
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
 
 /*Quadro de alertas*/
 #containerAlertas{
@@ -169,6 +175,10 @@ body > div > *{
     transform-style: preserve-3d;
     transition: all 0.5s;
     cursor: pointer;
+    color: #f1f1f1;
+    border: solid 1px white;
+    border-radius: 100%;
+    padding: 10px 10px 25px 10px;
 }
 .imgInterrog:hover {
     transform: rotateY(360deg);

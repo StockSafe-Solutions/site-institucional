@@ -30,7 +30,7 @@
     <title>StockSafe - Tags</title>
 </head>
 
-<body id="page-top" onload="reloadTags(),carregarMenu('tags',true)">
+<body id="page-top" onload="carregarDashboardTags(),carregarMenu('tags',true)">
     <div id="wrapper">
         <ul id="accordionSidebar"></ul>
         <div id="content-wrapper" class="d-flex flex-column">
@@ -112,6 +112,26 @@
                     </span>
                     <i class="fa-solid fa-x" onclick="fecharModal('tagAdd')"></i>
                 </header>
+                <form id="formTagNova" action="#">
+                    <label for="iptModalAddTagNomeTag">Nome da tag</label>
+                    <input type="text" id="iptModalAddTagNomeTag">
+                    <label for="">Selecionar cor da tag</label>
+                    <div id="seletorCor">
+                        <span style="background-color: #4AB432;" onclick="selecionarCor(0)"></span>
+                        <span style="background-color: #FFE120;" onclick="selecionarCor(1)"></span>
+                        <span style="background-color: #FF2F2F;" onclick="selecionarCor(2)"></span>
+                        <span class="bordaSeletor" style="background-color: #C4C4C4;" onclick="selecionarCor(3)"></span>
+                        <span class="bordaSeletor" style="background-color: #FAFAFA;" onclick="selecionarCor(4)"></span>
+                        <span style="background-color: #A04B93;" onclick="selecionarCor(5)"></span>
+                        <span style="background-color: #BB5432;" onclick="selecionarCor(6)"></span>
+                        <span style="background-color: #6A6AC6;" onclick="selecionarCor(7)"></span>
+                    </div>
+                    <label for="">Selecionar servidores</label>
+                    <div id="modalAddTagServidores">
+                        Nenhum servidor cadastrado.
+                    </div>
+                    <button onclick="criarTag()">Adicionar tag</button>
+                </form>
             </div>
             <div id="modalTagExcluir">
                 <header>
@@ -127,4 +147,4 @@
 </html>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

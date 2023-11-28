@@ -1,3 +1,5 @@
+
+
 function listarFuncionarios() {
     fetch("/funcionario/listar", {
         method: "GET",
@@ -158,7 +160,7 @@ function semiCadastrar(){
             console.log("Resposta: ", resposta);
             if (resposta.ok) {
                 console.log("OK")
-                Swal.fire({
+                swal({
                     icon: 'success',
                     title: 'Email enviado com sucesso!',
                     text: 'Contate o colaborador para que finalize seu cadastro!'
@@ -167,7 +169,7 @@ function semiCadastrar(){
             else {
                 console.log("não ok")
                 console.log(`#ERRO: ${resposta}`);
-                Swal.fire({
+                swal({
                     icon: 'error',
                     title: 'Erro interno!',
                     text: 'Erro no servidor do aplicativo. Contate seu administrador de TI.'

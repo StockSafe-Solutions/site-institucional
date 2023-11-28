@@ -1,3 +1,5 @@
+
+
 function abrirModal(modal, codigo) {
     containerModal.value = "";
     switch (modal) {
@@ -142,7 +144,7 @@ function cadastrarServidor() {
         console.log("resposta: ", resposta);
         fecharModal("cad")
         if (resposta.ok) {
-            Swal.fire({
+            swal({
                 icon: 'success',
                 title: 'Servidor cadastrado com sucesso!',
                 text: 'Você deve autenticar o Monitor de Recursos com o código desse servidor para visualizar suas informações.'
@@ -150,7 +152,7 @@ function cadastrarServidor() {
             reloadServidores()
         }
         else {
-            Swal.fire({
+            swal({
                 title: 'Erro interno!',
                 text: 'Erro no servidor do aplicativo. Contate seu administrador de TI.',
                 icon: 'error'

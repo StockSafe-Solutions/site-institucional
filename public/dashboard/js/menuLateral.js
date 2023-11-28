@@ -108,7 +108,7 @@ function carregarMenu(pagina, geral, codServidor) {
             <li class="nav-interrogacao">
               
             <button class="modalBtn" onclick="switchModalHelpDesk()">
-                <img src="../assets/img/dashboard/interrogacao.png" class="imgInterrog">
+                <i class="fa-solid fa-headset imgInterrog"></i>
             </button>
                   
             <div class="modal">

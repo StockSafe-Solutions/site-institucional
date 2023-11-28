@@ -1,3 +1,5 @@
+
+
 function entrar() {
 
     var emailVar = iptEmail.value;
@@ -20,7 +22,7 @@ function entrar() {
     }
 
     if(!validacoes){
-    Swal.fire({
+    swal({
         title: "Campos inválidos!",
         text: textoErro,
         icon: "error"
@@ -46,7 +48,7 @@ function entrar() {
         } 
         else {
             resposta.text().then(texto => {
-                Swal.fire({
+                swal({
                     icon: 'error',
                     title: 'Erro ao realizar o login',
                     text: texto
