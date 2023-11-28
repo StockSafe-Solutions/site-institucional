@@ -49,6 +49,7 @@ function abrirModal(modal, codigo) {
             }, 1000);
             break;
         case "tagExcl":
+            carregarTagsModalExcl()
             modalTagExcluir.style ="display: flex; animation-name: aparecer; animation-duration: 500ms;"
             setTimeout(()=>{
                 modalTagExcluir.style = "display: flex";

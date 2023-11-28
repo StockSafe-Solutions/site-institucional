@@ -20,7 +20,7 @@ function tagsPorNome(nome, ordenacao){
         WHERE nome_tag LIKE '%${nome}%'
 		GROUP BY(id_tag)
         ${ordenacao};`
-    // console.log("Executando a instrução SQL: \n" + instrucao);
+    console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
 
@@ -92,6 +92,24 @@ function colocarTagEmServidor(fkServidor, nomeTag){
     return database.executar(instrucao);
 }
 
+function desassociarTagsDeServidores(fkTag){
+    var instrucao = `
+        DELETE FROM tb_tag_servidor
+        WHERE fk_tag = ${fkTag};
+    `
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function excluirTag(idTag){
+    var instrucao = `
+        DELETE FROM tb_tag
+        WHERE id_tag = ${idTag}
+    `
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
     listarTags,
     kpisTags,
@@ -99,5 +117,7 @@ module.exports = {
     graficosPorTags,
     kpisPorTags,
     inserirTag,
-    colocarTagEmServidor
+    colocarTagEmServidor,
+    desassociarTagsDeServidores,
+    excluirTag
 }

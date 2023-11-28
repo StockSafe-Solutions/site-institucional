@@ -30,4 +30,8 @@ router.post("/colocarTagEmServidor", function(req, res){
     tagController.colocarTagEmServidor(req, res);
 })
 
+router.delete("/excluirTag", function(req, res){
+    tagController.excluirTag(req, res);
+})
+
 module.exports = router;

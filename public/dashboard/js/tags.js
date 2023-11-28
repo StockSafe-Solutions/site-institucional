@@ -403,7 +403,7 @@ function cadastrarTag(nome, cor, servidores){
                     title: 'Erro interno!',
                     text: 'Erro no servidor do aplicativo. Contate seu administrador de TI.',
                     icon: 'error'
-                    })
+                })
             }
         }
     }).catch(function (resposta) {
@@ -437,6 +437,74 @@ function colocarTagsNosServidores(servidores, nomeTag){
                 title: 'Erro interno!',
                 text: 'Erro no servidor do aplicativo. Contate seu administrador de TI.',
                 icon: 'error'
+            })
+        }
+    })
+}
+
+function carregarTagsModalExcl(){
+    fetch("/tag/tagsPorNome", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(function (resposta) {
+        if (resposta.ok) {
+            resposta.json().then(json => {
+                modalExclTags.innerHTML = ""
+                for(i in json){
+                    modalExclTags.innerHTML += `
+                    <span>
+                        <button onclick="excluirTag('${json[i].id_tag}','${json[i].nome_tag}')">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                        <span class="tag" style="background-color: ${json[i].cor_tag}; color: white">
+                            ${json[i].nome_tag}
+                        </span>
+                    </span>
+                    `
+                }
+            });
+        }
+        else { resposta.text().then(texto => {
+            console.warn(texto)
+        })}
+    }).catch(function (erro) {
+        console.log(erro);
+    })
+}
+
+function excluirTag(idTag, nomeTag){
+    swal({
+        title: `Tem certeza que deseja excluir a tag '${nomeTag}'?`,
+        text: "A tag será excluída permanentemente, e não será possível recuperá-la. Quaisquer servidores associados à ela NÃO serão deletados.",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true
+    }).then((excluir)=>{
+        if(excluir){
+            fetch("/tag/excluirTag", {
+                method: "DELETE",
+                body: JSON.stringify({ idTagServer: idTag }),
+                headers: { "Content-Type": "application/json" }
+            }).then(function (resposta) {
+                if (resposta.ok) {
+                    swal({
+                        title: `Tag excluída com sucesso!`,
+                        icon: "success"
+                    })
+                    carregarTagsModalExcl()
+                }
+                else { resposta.text().then(texto => {
+                    console.warn(texto)
+                })}
+            }).catch(function (erro) {
+                console.log(erro);
+                swal({
+                    title: 'Erro interno!',
+                    text: 'Erro no servidor do aplicativo. Contate seu administrador de TI.',
+                    icon: 'error'
+                })
             })
         }
     })

@@ -77,12 +77,18 @@
                                     <i class="fa-solid fa-filter"></i>
                                 </span>
                                 <span>
-                                    <i id="iconOrdernarPorNome" class="fa-solid fa-arrow-up-a-z" onclick='ordenarTags("nome_tag")'>
-
-                                    </i>
-                                    <i id="iconOrdernarPorNumero" class="fa-solid fa-arrow-up-1-9" onclick='ordenarTags("qtdServidores")'>
-
-                                    </i>
+                                    <i 
+                                        id="iconOrdernarPorNome"
+                                        class="fa-solid fa-arrow-up-a-z"
+                                        onclick='ordenarTags("nome_tag")'
+                                        title="Ordenar por nome"    
+                                    ></i>
+                                    <i 
+                                        id="iconOrdernarPorNumero"
+                                        class="fa-solid fa-arrow-up-1-9"
+                                        onclick='ordenarTags("qtdServidores")'
+                                        title="Ordenar por número de servidores" 
+                                    ></i>
                                 </span>
                             </div>
                             <div id="containerResultadosBuscaTags"></div>
@@ -119,7 +125,7 @@
                 <form id="formTagNova" action="#">
                     <label for="iptModalAddTagNomeTag">Nome da tag</label>
                     <input type="text" id="iptModalAddTagNomeTag">
-                    <label for="">Selecionar cor da tag</label>
+                    <label>Selecionar cor da tag</label>
                     <div id="seletorCor">
                         <span style="background-color: rgb(75, 181, 51);" onclick="selecionarCor(0)"></span>
                         <span style="background-color: rgb(255, 225, 31);" onclick="selecionarCor(1)"></span>
@@ -130,8 +136,8 @@
                         <span style="background-color: rgb(92, 90, 66);" onclick="selecionarCor(6)"></span>
                         <span style="background-color: rgb(51, 51, 51);" onclick="selecionarCor(7)"></span>
                     </div>
-                    <label for="">Selecionar servidores</label>
-                    <div id="modalAddTagServidores">
+                    <label>Selecionar servidores</label>
+                    <div id="modalAddTagServidores" class="modalTagSeletor">
                         Nenhum servidor cadastrado.
                     </div>
                     <button onclick="criarTag()">Adicionar tag</button>
@@ -144,6 +150,12 @@
                     </span>
                     <i class="fa-solid fa-x" onclick="fecharModal('tagExcl')"></i>
                 </header>
+                <form id="formExcluirTag" action="#">
+                    <label>Selecionar tag para excluir</label>
+                    <div id="modalExclTags" class="modalTagSeletor">
+                        <p>Nenhuma tag cadastrada</p>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

@@ -163,6 +163,31 @@ function colocarTagEmServidor(req, res){
     }
 }
 
+function excluirTag(req, res){
+    idTag = req.body.idTagServer
+    if(idTag == undefined){
+        res.status(400).send()
+    }
+
+    tagModel.desassociarTagsDeServidores(idTag).then(
+        tagModel.excluirTag(idTag).then(
+            function(resultado){
+                res.json(resultado)
+            }).catch(
+                function (erro){
+                    console.log(erro)
+                    res.status(500).json(erro.sqlMessage)
+                }
+            )
+        ).catch(
+        function (erro) {
+            console.log(erro);
+            console.log(
+                "\n Houve um erro ao realizar o cadastro! Erro: ", erro.sqlMessage
+            );
+            res.status(500).json(erro.sqlMessage)
+        });
+}
 
 module.exports = {
     listarTags,
@@ -171,5 +196,6 @@ module.exports = {
     graficosPorTags,
     kpisPorTags,
     inserirTag,
-    colocarTagEmServidor
+    colocarTagEmServidor,
+    excluirTag
 }
