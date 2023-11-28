@@ -84,8 +84,11 @@ var tagsClicaveisChecadas = 0
 function gerarTag(id, cor, info, nome, clicavel){
     novaTag = document.createElement("span")
     novaTag.className = "tag"
-    novaTag.style = `background-color: #`+
-        cor
+    novaTag.style = `background-color: `+ cor
+
+    if(cor == "rgb(196, 196, 196)"){
+        novaTag.className += " corEscura"
+    }
     
     novaTag.innerHTML = `${info} ${nome}`
 
@@ -132,7 +135,6 @@ function tagsPorNome(){
                 
             }
             else if (resposta.ok) {
-                console.log(resposta);
                 resposta.json().then(json => {
                     containerResultadosBuscaTags.innerHTML = ""
                     for(i in json){
@@ -223,7 +225,6 @@ function carregarServidoresModalAdicionarTag(){
     }).then(function (resposta) {
         if (resposta.status != 204 && resposta.ok) {
             resposta.json().then(json => {
-                console.log(json)
                 if(json.length > 0){
                     modalAddTagServidores.innerHTML = ""
                     for(i in json){
@@ -334,7 +335,6 @@ function criarTag(){
                 servidoresSelecionados.push(checkboxServidor.id)
             }
         }
-        console.log(servidoresSelecionados)
 
         if(servidoresSelecionados.length == 0){
             swal({
@@ -347,9 +347,45 @@ function criarTag(){
                 if(!continuar){
                     return null
                 } else{
-                    //FAZER FETCH PARA INSERT EM TB_TAG E TB_TAG_SERVIDOR
+                    cadastrarTag(nomeTag, corSelecionada,servidoresSelecionados)
                 }
             })
         }
     }
+}
+
+function cadastrarTag(nome, cor, servidores){
+    fetch("/tag/inserirTag/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            nomeTagServer: nome,
+            corTagServer: cor
+        }),
+    }).then(function (resposta) {
+        if (resposta.ok) {
+           colocarTagsNosServidores(servidores)
+        } 
+        else {
+            if(resposta.status == 409){
+                swal({
+                    title: 'Nome de tag duplicado!',
+                    text: `Já existe uma tag chamada "${nome}". Por favor, escolha outro nome.`,
+                    icon: 'error'
+                    })
+            } else{
+                swal({
+                    title: 'Erro interno!',
+                    text: 'Erro no servidor do aplicativo. Contate seu administrador de TI.',
+                    icon: 'error'
+                    })
+            }
+        }
+    }).catch(function (resposta) {
+        console.log(resposta);
+    })
+}
+
+function colocarTagsNosServidores(servidores){
+    alert("ah!")
 }

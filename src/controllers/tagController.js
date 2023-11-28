@@ -113,10 +113,52 @@ function kpisPorTags(req, res){
         );
 }
 
+function inserirTag(req, res){
+    var nome = req.body.nomeTagServer;
+    var cor = req.body.corTagServer;
+
+    if(nome == undefined || cor == undefined){
+        res.status(400).send()
+    }
+    tagModel.inserirTag(nome, cor).then(
+        function (resultado) {
+            res.json(resultado);
+        }).catch(
+        function (erro) {
+            if(erro.sqlState == 23000){
+                res.status(409).json(erro.sqlMessage)
+            }
+            res.status(500).json(erro.sqlMessage)
+        });
+}
+
+function colocarTagEmServidor(req, res){
+    var idServidor = req.body.idServidorServer;
+    var nomeTag = req.body.nomeTagServer;
+
+    if(idServidor == undefined || nomeTag == undefined){
+        res.status(400).send()
+    }
+    tagModel.colocarTagEmServidor(idServidor, nomeTag).then(
+        function (resultado) {
+            res.json(resultado);
+        }).catch(
+        function (erro) {
+            console.log(erro);
+            console.log(
+                "\n Houve um erro ao realizar o cadastro! Erro: ", erro.sqlMessage
+            );
+            res.status(500).json(erro.sqlMessage)
+        });
+}
+
+
 module.exports = {
     listarTags,
     kpisTags,
     tagsPorNome,
     graficosPorTags,
-    kpisPorTags
+    kpisPorTags,
+    inserirTag,
+    colocarTagEmServidor
 }

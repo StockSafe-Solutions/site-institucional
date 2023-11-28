@@ -346,6 +346,11 @@ body > div > *{
     line-height: 1;
     user-select: none;
 }
+.corEscura{
+    border: solid 2px #4d4d4d;
+    color: #4d4d4d;
+}
+
 .tag u{
     font-size: 1.2em;
 }

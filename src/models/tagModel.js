@@ -71,10 +71,29 @@ function kpisPorTags(tags){
     return database.executar(instrucao);
 }
 
+function inserirTag(nome, cor){
+    var instrucao = `INSERT INTO tb_tag (nome_tag, cor_tag) VALUE ('${nome}', '${cor}')`
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function colocarTagEmServidor(fkServidor, nomeTag){
+    var instrucao = `
+        INSERT INTO tb_tag_servidor
+        VALUE ('${fkServidor}', (
+            SELECT id_tag FROM tb_tag WHERE nome_tag = '${nomeTag}')
+        );
+    `
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
     listarTags,
     kpisTags,
     tagsPorNome,
     graficosPorTags,
-    kpisPorTags
+    kpisPorTags,
+    inserirTag,
+    colocarTagEmServidor
 }

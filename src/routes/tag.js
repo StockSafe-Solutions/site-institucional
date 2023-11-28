@@ -26,4 +26,11 @@ router.post("/kpisPorTags", function(req, res){
     tagController.kpisPorTags(req, res);
 })
 
+router.post("/inserirTag", function(req, res){
+    tagController.inserirTag(req, res);
+})
+router.post("/colocarTagEmServidor", function(req, res){
+    tagController.colocarTagEmServidor(req, res);
+})
+
 module.exports = router;
