@@ -125,12 +125,36 @@
     color: #001a46;
 }
 
+h4 {
+    margin-top: 2vh;
+}
+
 /* =============================================== Tabela de processos */
 
 #table_processo {
     height: 45vh;
     border: 1px #001a46 solid;
     overflow-y: scroll;
+}
+
+#table_processo::-webkit-scrollbar {
+    width: thin;
+}
+
+#table_processo::-webkit-scrollbar-thumb {
+    background-color: #577bb9;
+    border-radius: 6px;
+}
+
+#table_processo::-webkit-scrollbar-track {
+    background-color: #ddd;
+}
+
+@-moz-document url-prefix() {
+    #table_processo {
+        scrollbar-width: thin;
+        scrollbar-color: #577bb9 #ddd;
+    }
 }
 
 table {
@@ -147,6 +171,16 @@ th, td {
 th {
     position: sticky;
     color: #fff;
-    background-color: #005eff;
+    background-color: #577bb9;
     top: 0;
 }
+
+/* =============================================== KPI de processos */
+
+#kpi_area {
+    height: 300px;
+    width: 100%;
+
+    background-color: #001a46;
+}
+
