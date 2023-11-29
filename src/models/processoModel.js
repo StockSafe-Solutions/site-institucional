@@ -8,6 +8,14 @@ function listarProcessos(){
     return database.executar(instrucao);
 }
 
+function atualizarKpis(){
+    console.log("To no model");
+    var instrucao = `SELECT * FROM vw_proc_kpi;`
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
-    listarProcessos
+    listarProcessos,
+    atualizarKpis
 }

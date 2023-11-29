@@ -21,6 +21,31 @@ function listarProcessos(req, res) {
         )
 }
 
+function atualizarKpis(req, res) {
+    console.log("To no controller");
+    processoModel.atualizarKpis()
+    .then(
+        function (resultado) {
+            
+            console.log(`\n Resultados encontrados: ${resultado.length}`);
+            console.log(`Resultados: ${JSON.stringify(resultado)}`);
+
+            if (resultado.length > 0) {
+                console.log(resultado);
+                res.json(resultado);
+            } else {
+                res.status(404).send()
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("\n Houve um erro ao atualizar as Kpis dos processos! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        )
+}
+
 module.exports = {
-    listarProcessos
+    listarProcessos,
+    atualizarKpis
 }

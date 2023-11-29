@@ -7,4 +7,9 @@ router.get("/listarProcessos", function(req,res){
     processoController.listarProcessos(req, res);
 })
 
+router.get("/atualizarKpis", function(req,res) {
+    console.log("To no route");
+    processoController.atualizarKpis(req, res);
+})
+
 module.exports = router;

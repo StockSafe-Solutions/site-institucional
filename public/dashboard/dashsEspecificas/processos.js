@@ -5,7 +5,7 @@ function carregarPaginaProcessos(){
 
     carregarMenu("Processos",false,params)
  
-    atualizarProcessos()
+    atualizarDadosProcessos()
 }
 
 function carregarProcessos(processos) {
@@ -33,7 +33,32 @@ function carregarProcessos(processos) {
     });
 }
 
-function atualizarProcessos() {
+function atualizarKpis(json) {
+}
+
+function atualizarDadosProcessos() {
+
+    fetch("/processo/atualizarKpis", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(function (resposta) {
+        if (resposta.ok) {
+            console.log(resposta);
+            resposta.json().then(json => {
+                console.log(`FOI DEU CERTOOOOOOOOOOO`, json);
+                atualizarKpis(json)
+            });
+        }
+        else {
+            resposta.text().then(texto => {
+                console.warn(texto)
+            })
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+    })
 
     fetch("/processo/listarProcessos", {
         method: "GET",
@@ -56,6 +81,6 @@ function atualizarProcessos() {
     }).catch(function (erro) {
         console.log(erro);
     }).finally(function () {
-            setTimeout(atualizarProcessos, sessionStorage.intervalo_atualizacao);
+            setTimeout(atualizarDadosProcessos, sessionStorage.intervalo_atualizacao);
     })
 }
