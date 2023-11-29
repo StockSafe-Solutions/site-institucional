@@ -1,65 +1,61 @@
 function carregarPaginaProcessos(){
     indiceParm = location.href.indexOf('?')
     params = location.href.slice(indiceParm+1,indiceParm+7)
-    // PEGANDO O PARAMETRO GET
-
     nomePagina.innerText = "Processos - Servidor "+params
 
     carregarMenu("Processos",false,params)
-    //CARREGANDO O MENU, false PARA PAG. ESPECÍFICA
-
-    setTimeout(()=>{
-        atualizarProcessos()
-    },sessionStorage.intervalo_atualizacao)
+ 
+    atualizarProcessos()
 }
 
 function carregarProcessos(processos) {
-    var listaProcessos = document.getElementById("listaProcessos");
-    listaProcessos.innerHTML = ""
+    var tbody = document.getElementById("cell_processos");
+    tbody.innerHTML = ""
 
     processos.forEach((processo, i) => {
-        var linha = document.createElement("li");
+        var tr = document.createElement('tr');
+        tbody.appendChild(tr)
 
-        linha.innerHTML = `
-        <ol style = "margin: 0;">
-        <span>PID: ${processo.pid_proc}</span>
-        <span>Nome: ${processo.nome_proc}</span>
-        <span>Uso de CPU: ${processo.uso_cpu}</span>
-        <span>Uso de RAM: ${processo.uso_ram}</span>
-        </ol>
-        `
+        var tdPid = document.createElement('td');
+        var tdNome = document.createElement('td');
+        var tdCpu = document.createElement('td');
+        var tdRam = document.createElement('td');
 
-        listaProcessos.appendChild(linha)
+        tdPid.textContent = processo.pid_proc;
+        tdNome.textContent = processo.nome_proc;
+        tdCpu.textContent = processo.uso_cpu + "%";
+        tdRam.textContent = processo.uso_ram + "%";
+
+        tr.appendChild(tdPid);
+        tr.appendChild(tdNome);
+        tr.appendChild(tdCpu);
+        tr.appendChild(tdRam);
     });
 }
 
 function atualizarProcessos() {
 
-    setTimeout(() => {
-        const processos = [
-            fetch("/processo/listarProcessos", {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            }).then(function (resposta) {
-                if (resposta.ok) {
-                    console.log(resposta);
-                    resposta.json().then(json => {
-                        console.log(json)
-                        carregarProcessos(json)
-                    });
-                }
-                else {
-                    resposta.text().then(texto => {
-                        console.warn(texto)
-                    })
-                }
-            }).catch(function (erro) {
-                console.log(erro);
+    fetch("/processo/listarProcessos", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(function (resposta) {
+        if (resposta.ok) {
+            console.log(resposta);
+            resposta.json().then(json => {
+                console.log(json)
+                carregarProcessos(json)
+            });
+        }
+        else {
+            resposta.text().then(texto => {
+                console.warn(texto)
             })
-        ];
-        carregarProcessos(processos)
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+    }).finally(function () {
+            setTimeout(atualizarProcessos, sessionStorage.intervalo_atualizacao);
     })
-
 }

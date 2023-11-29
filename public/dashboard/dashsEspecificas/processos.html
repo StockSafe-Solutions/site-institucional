@@ -52,13 +52,27 @@
                 </div>
 
                 <h4>Lista de processos</h4>
-                <div id="header_processos">
-                    <div id="pid_div">PID</div>
-                    <div id="nome_div">Nome</div>
-                    <div id="cpu_div">CPU%</div>
-                    <div id="ram_div">RAM%</div>
-                </div>
-
+                <div id="table_processo">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>PID</th>
+                                <th>Nome</th>
+                                <th>CPU%</th>
+                                <th>RAM%</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cell_processos">
+                            <tr>
+                                <td>1234</td>
+                                <td>Idle</td>
+                                <td>59%</td>
+                                <td>9%</td>
+                            </tr>
+                            <!--Outros <tr> com valores pegos do json-->
+                        </tbody>
+                    </table>
+                </div>   
             </div>
         </div>
     </div>

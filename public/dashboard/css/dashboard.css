@@ -125,15 +125,28 @@
     color: #001a46;
 }
 
-#header_processos {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    color: #fff;
+/* =============================================== Tabela de processos */
+
+#table_processo {
+    height: 45vh;
+    border: 1px #001a46 solid;
+    overflow-y: scroll;
 }
 
-#header_processos div{
-    width: 95%;
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 6px;
+    text-align: left;
+}
+
+th {
+    position: sticky;
+    color: #fff;
     background-color: #005eff;
-    border: 1px black;
+    top: 0;
 }
