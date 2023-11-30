@@ -1,16 +1,22 @@
 var database = require("../database/config")
 
-function listarProcessos(){
-    var instrucao = `SELECT *
-    FROM tb_processo
+function listarProcessos(codServidor){
+    var instrucao = `SELECT proc.*,
+    serv.codigo
+    FROM tb_processo as proc
+    JOIN tb_servidor as serv
+    ON proc.fk_servidor = serv.id_servidor
+    WHERE serv.codigo = '${codServidor}'
     ORDER BY nome_proc;`
+
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
 
-function atualizarKpis(){
-    console.log("To no model");
-    var instrucao = `SELECT * FROM vw_proc_kpi;`
+function atualizarKpis(codServidor){
+    var instrucao = `SELECT * 
+    FROM vw_proc_kpi
+    WHERE codigo = '${codServidor}';`
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }

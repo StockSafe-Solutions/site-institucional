@@ -1,7 +1,7 @@
 var dashboardModel = require("../models/dashModel");
 
 function kpiEspecifica(req, res) {
-  var codServidor = req.params.codServidor
+  var codServidor = req.params.codServidor;
 
   if (codServidor == undefined) {
     res.status(400).send("Undefined")

@@ -1,7 +1,9 @@
 var processoModel = require("../models/processoModel");
 
 function listarProcessos(req, res) {
-    processoModel.listarProcessos().then(
+    var codServidor = req.params.codServidor;
+
+    processoModel.listarProcessos(codServidor).then(
         function (resultado) {
             console.log(`\n Resultados encontrados: ${resultado.length}`);
             console.log(`Resultados: ${JSON.stringify(resultado)}`);
@@ -22,8 +24,9 @@ function listarProcessos(req, res) {
 }
 
 function atualizarKpis(req, res) {
-    console.log("To no controller");
-    processoModel.atualizarKpis()
+    var codServidor = req.params.codServidor;
+
+    processoModel.atualizarKpis(codServidor)
     .then(
         function (resultado) {
             
