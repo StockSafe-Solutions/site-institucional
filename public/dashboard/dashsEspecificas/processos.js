@@ -1,11 +1,11 @@
 function carregarPaginaProcessos(){
-    indiceParm = location.href.indexOf('?')
-    params = location.href.slice(indiceParm+1,indiceParm+7)
-    nomePagina.innerText = "Processos - Servidor "+params
+    indiceParm = location.href.indexOf('?');
+    params = location.href.slice(indiceParm+1,indiceParm+7);
+    nomePagina.innerText = "Processos - Servidor "+ params;
 
-    carregarMenu("Processos",false,params)
- 
-    atualizarDadosProcessos(params)
+    carregarMenu("Processos",false,params);
+
+    atualizarDadosProcessos(params);
 }
 
 function carregarProcessos(processos) {
@@ -51,7 +51,9 @@ function atualizarKpis(valor) {
     baseKpi4.innerHTML = `com ${parseInt(valor[0].proc_total_ram)}% de uso` 
 }
 
-function atualizarDadosProcessos(codServidor) {
+function atualizarDadosProcessos(params) {
+
+    const codServidor = params;
 
     fetch(`/processo/atualizarKpis/${codServidor}`, {
         method: "GET",
@@ -94,7 +96,10 @@ function atualizarDadosProcessos(codServidor) {
         }
     }).catch(function (erro) {
         console.log(erro);
-    }).finally(function () {
-            setTimeout(atualizarDadosProcessos, sessionStorage.intervalo_atualizacao);
     })
+
+    setTimeout(function() {
+        atualizarDadosProcessos(codServidor);
+    }, sessionStorage.intervalo_atualizacao);    
 }
+

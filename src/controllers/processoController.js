@@ -33,7 +33,7 @@ function atualizarKpis(req, res) {
             console.log(`\n Resultados encontrados: ${resultado.length}`);
             console.log(`Resultados: ${JSON.stringify(resultado)}`);
 
-            if (resultado.length > 0) {
+            if (resultado) {
                 console.log(resultado);
                 res.json(resultado);
             } else {
