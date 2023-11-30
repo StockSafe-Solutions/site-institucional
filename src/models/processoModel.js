@@ -21,7 +21,23 @@ function atualizarKpis(codServidor){
     return database.executar(instrucao);
 }
 
+function atualizarGraficoProc(codServidor){
+    var instrucao = `SELECT proc.nome_proc AS nome, 
+    COUNT(proc.nome_proc) AS quantidade,
+    serv.codigo AS codigo
+    FROM tb_processo AS proc
+    JOIN tb_servidor AS serv
+    ON proc.fk_servidor = serv.id_servidor
+    WHERE codigo = '${codServidor}'
+    GROUP BY nome_proc,
+    codigo
+    ORDER BY quantidade DESC LIMIT 5;';`
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
     listarProcessos,
-    atualizarKpis
+    atualizarKpis,
+    atualizarGraficoProc
 }

@@ -11,4 +11,8 @@ router.get("/atualizarKpis/:codServidor", function(req,res) {
     processoController.atualizarKpis(req, res);
 })
 
+router.get("/atualizarGraficoProc/:codServidor", function(req,res) {
+    processoController.atualizarGraficoProc(req, res);
+})
+
 module.exports = router;

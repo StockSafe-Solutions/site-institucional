@@ -48,7 +48,33 @@ function atualizarKpis(req, res) {
         )
 }
 
+function atualizarGraficoProc(req, res){
+    var codServidor = req.params.codServidor;
+
+    processoModel.atualizarGraficoProc(codServidor)
+    .then(
+        function (resultado) {
+            
+            console.log(`\n Resultados encontrados: ${resultado.length}`);
+            console.log(`Resultados: ${JSON.stringify(resultado)}`);
+
+            if (resultado) {
+                console.log(resultado);
+                res.json(resultado);
+            } else {
+                res.status(404).send()
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("\n Houve um erro ao atualizar o gráfico dos processos! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        )
+}
+
 module.exports = {
     listarProcessos,
-    atualizarKpis
+    atualizarKpis,
+    atualizarGraficoProc
 }

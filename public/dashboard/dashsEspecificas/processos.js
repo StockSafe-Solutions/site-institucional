@@ -51,6 +51,26 @@ function atualizarKpis(valor) {
     baseKpi4.innerHTML = `com ${parseInt(valor[0].proc_total_ram)}% de uso` 
 }
 
+function carregarGraficoProcesso(valor) {
+    
+    var graficoProc = document.getElementById('graficoProcessos');
+
+	return new Chart(graficoProc, {
+		type: "bar",
+		data: {
+			labels: legendas,
+			datasets: [
+				{
+					label: `${valor.nome_proc}`,
+					data: valor.quantide,
+					backgroundColor: ["#005EFF", "#001A46"],
+					hoverOffset: 4
+                }
+            ]
+        }
+    });
+}
+
 function atualizarDadosProcessos(params) {
 
     const codServidor = params;
@@ -65,6 +85,27 @@ function atualizarDadosProcessos(params) {
             console.log(resposta);
             resposta.json().then(json => {
                 atualizarKpis(json)
+            });
+        }
+        else {
+            resposta.text().then(texto => {
+                console.warn(texto)
+            })
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+    })
+
+    fetch(`/processo/atualizarGraficoProc/${codServidor}`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(function (resposta) {
+        if (resposta.ok) {
+            console.log(resposta);
+            resposta.json().then(json => {
+                carregarGraficoProcesso(json)
             });
         }
         else {
@@ -102,4 +143,3 @@ function atualizarDadosProcessos(params) {
         atualizarDadosProcessos(codServidor);
     }, sessionStorage.intervalo_atualizacao);    
 }
-
