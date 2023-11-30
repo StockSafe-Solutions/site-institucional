@@ -37,10 +37,12 @@ function abrirModal(modal, codigo) {
             }, 1000);
             break;
         case "hist":
-            reloadHistorico()
+            graficoTagHistorico.innerHTML = '<img src="../assets/img/dashboard/loading.gif">'
+            graficoTagHistorico.className = "graficoCarregando"
             modalTagHistorico.style ="display: flex; animation-name: aparecer; animation-duration: 500ms;"
             setTimeout(()=>{
                 modalTagHistorico.style = "display: flex";
+                reloadHistorico()
             }, 1000);
             break;
         case "tagAdd":

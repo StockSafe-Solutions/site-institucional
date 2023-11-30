@@ -37,6 +37,7 @@
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
                 <div class="container-fluid">
+                    <div id="containerAlertas" style="display: none"></div>
                     <div id="kpisTags">
                         <div id="kpi1">
                             <h3>Tag com mais servidores</h3>
@@ -105,17 +106,19 @@
             </div>
         </div>
 
-        <div id="containerModal" style="display: flex;">
-            <div id="modalTagHistorico" style="display: flex;">
+        <div id="containerModal">
+            <div id="modalTagHistorico">
                 <header>
                     <span>
                         <h3>Histórico de erros por tags</h3>
                         <p>Últimos 30 dias</p>
-                        <button onclick="reloadHistorico()">Imprimir</button>
+                        <button>Imprimir</button>
                     </span>
                     <i class="fa-solid fa-x" onclick="fecharModal('hist')"></i>
                 </header>
-                <div id="graficoTagHistorico"></div>
+                <div id="graficoTagHistorico" class="graficoCarregando">
+                    <img src="../assets/img/dashboard/loading.gif">
+                </div>
             </div>
             <div id="modalTagNova">
                 <header>

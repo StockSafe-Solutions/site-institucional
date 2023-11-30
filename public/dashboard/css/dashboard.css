@@ -98,7 +98,8 @@
     margin-left: 10px;
 }
 .valorKPI{
-    font-size: 36px;
+    font-size: 32px;
+    font-weight: bold;
     line-height: 0.8;
     margin-bottom: 10px;
 }

@@ -273,7 +273,7 @@
     border: solid 1px whitesmoke;
     color: white;
 }
-#containerModal > div div{
+#containerModal div > form > div{
     display: flex;
     width: 100%;
     border-radius: 0.25rem;
@@ -283,6 +283,10 @@
 
 #modalTagHistorico header{
     margin-bottom: 10px;
+}
+
+.tooltipHistorico{
+    width: 250px;
 }
 
 #modalTagNova{
@@ -371,9 +375,27 @@
     margin: 0 10px;
 }
 
-#graficoTagHistorico{
-    overflow: hidden;
+.graficoCarregando{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
+#graficoTagHistorico{
+    display: flex !important;
+    width: 100%;
+    border-radius: 0.25rem !important;
+    background-color: whitesmoke !important;
+    overflow-y: scroll;
+}
+#graficoTagHistorico div{
+    display: inherit;
+    background-color: inherit;
+}
+.apexcharts-toolbar > div > i{
+    color: #005eff;
+}
+
 
 @keyframes aparecer{
     0% { transform: scale(0,0); }

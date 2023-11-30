@@ -32,9 +32,10 @@ function carregarLocalizacao(dados){
 
 function formatarDados(localizacao, dados){
     let dadosFormatados = []
-    let cores = ['rgb(255, 46, 46)','rgb(255, 225, 31)','rgb(255, 225, 31)','rgb(255, 46, 46)']
+    let cores = ['rgb(255, 46, 46)','rgb(213, 187, 30)','rgb(213, 187, 30)','rgb(255, 46, 46)']
 
     let tags = []
+    let descr = []
     for(let i = 0; i < dados.length; i++){
         let tagJaExiste = false
         for(let c = 0; c < tags.length; c++){
@@ -49,45 +50,38 @@ function formatarDados(localizacao, dados){
                 iniciada: false
             })
         }
+        descr.push({
+            info: dados[i].descricao.slice(0,3),
+            valor: dados[i].descricao.slice(7,10)
+        })
     }
+
+    console.log(descr)
 
     for(let i = 0; i < dados.length; i++){
         let horarioAlerta = new Date(dados[i].data_hora)
         let horarioFimAlerta = new Date(horarioAlerta)
         horarioFimAlerta.setDate(horarioAlerta.getDate()+1)
 
-        for(let c = 0; c < tags.length; c++){
-            if(tags[c].nome_tag == dados[i].nome_tag){
-                if(!tags[c].iniciada){
-                    dadosFormatados.push({
-                        x: dados[i].nome_tag,
-                        y: [
-                            horarioAlerta.getTime(),
-                            horarioFimAlerta.getTime()
-                        ],
-                        fillColor: cores[dados[i].nivel_alerta]
-                    })
-                    tags[c].iniciada = true
-                } else{
-                    for(let a = 0; a < dadosFormatados.length; a++){
-                        if(dadosFormatados[a].x == dados[i].nome_tag){
-                            dadosFormatados[a].y.push(
-                                horarioAlerta.getTime(),
-                                horarioFimAlerta.getTime())
-                        }
-                    }
-                }
-                break
-            }
-        }
+        dadosFormatados.push({
+            x: (dados[i].nome_tag).split(" "),
+            y: [
+                horarioAlerta.getTime(),
+                horarioFimAlerta.getTime()
+            ],
+            fillColor: cores[dados[i].nivel_alerta]
+        })
     }
-    console.log(dadosFormatados)
-    gerarGrafico(localizacao, dadosFormatados)
+    gerarGrafico(localizacao, dadosFormatados, descr)
 }
 
-function gerarGrafico(localizacao, dados){
+function gerarGrafico(localizacao, dados, descricoes){
+    graficoTagHistorico.innerHTML = ""
+
     let trintaDiasAtras = new Date()
     trintaDiasAtras = trintaDiasAtras.setMonth(new Date().getMonth() - 1)
+
+    var iDescricao = -1
 
     let opcoes = {
         chart: {
@@ -95,8 +89,14 @@ function gerarGrafico(localizacao, dados){
             width: 1200,
             type: 'rangeBar',
             fontFamily: 'Nunito',
-            // locales: [localizacao],
-            // defaultLocale: 'br'
+            locales: [localizacao],
+            defaultLocale: 'br',
+            toolbar: {
+                show: false
+            },
+            zoom: {
+                enabled: false,      
+            }
         },
         plotOptions: {
             bar: {
@@ -107,20 +107,35 @@ function gerarGrafico(localizacao, dados){
             }
         },
         grid: {
+            show: true,
             row: {
               colors: ['#f3f4f5', '#fff'],
               opacity: 1
             },
             padding: {
-                left: -8
-            }
+                left: -10,
+                top: -30
+            },
+            borderColor: '#111',
+            strokeDashArray: 0,
+            position: 'back',
+            xaxis: {
+                lines: {
+                    show: true
+                }
+            },   
+            yaxis: {
+                lines: {
+                    show: true
+                }
+            },  
         },
         yaxis: {
             labels: {
                 style: {
-                    fontSize: '16px'
+                    fontSize: '14px'
                 },
-                offsetX: 5,
+                offsetX: 10,
             }
         },
         xaxis: {
@@ -128,21 +143,25 @@ function gerarGrafico(localizacao, dados){
             min: trintaDiasAtras,
             max: new Date().getTime()
         },
-        // dataLabels: {
-        //     enabled: true,
-        //     formatter: function() {
-        //         iAlertas++
-        //         return textoAlertas[iAlertas]
-        //     }
-        // },
+        dataLabels: {
+            enabled: true,
+            formatter: function() {
+                iDescricao++
+                return [descricoes[iDescricao].info, descricoes[iDescricao].valor]
+            }
+        },
         series: [{
             data: dados
-        }]
+        }],
+        tooltip: {  
+            enabled: true
+        }
       }
       
       let chartHistorico = new ApexCharts(
         document.querySelector("#graficoTagHistorico"),
         opcoes);
-      
+
+      graficoTagHistorico.className = ""
       chartHistorico.render();
 }
