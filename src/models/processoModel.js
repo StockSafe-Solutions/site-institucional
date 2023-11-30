@@ -31,7 +31,7 @@ function atualizarGraficoProc(codServidor){
     WHERE codigo = '${codServidor}'
     GROUP BY nome_proc,
     codigo
-    ORDER BY quantidade DESC LIMIT 5;';`
+    ORDER BY quantidade DESC LIMIT 5;`
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }

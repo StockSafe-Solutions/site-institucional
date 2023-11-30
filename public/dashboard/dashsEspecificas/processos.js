@@ -52,18 +52,25 @@ function atualizarKpis(valor) {
 }
 
 function carregarGraficoProcesso(valor) {
+
+    var nome = [];
+    var qtd = [];
+
+    for (i in valor) {
+        nome.push(valor[i].nome);
+        qtd.push(valor[i].quantidade);
+    }
     
     var graficoProc = document.getElementById('graficoProcessos');
-
 	return new Chart(graficoProc, {
 		type: "bar",
 		data: {
-			labels: legendas,
+            labels: nome,
 			datasets: [
 				{
-					label: `${valor.nome_proc}`,
-					data: valor.quantide,
-					backgroundColor: ["#005EFF", "#001A46"],
+					label: "Processos",
+					data: qtd,
+                    backgroundColor: ["#00093f", "#000d63", "#011387", "#011abc", "#0020f4"],
 					hoverOffset: 4
                 }
             ]
