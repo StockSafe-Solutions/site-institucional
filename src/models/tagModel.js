@@ -110,6 +110,12 @@ function excluirTag(idTag){
     return database.executar(instrucao);
 }
 
+function historicoAlerta(){
+    var instrucao = "SELECT * FROM vw_historico_tags;"
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
     listarTags,
     kpisTags,
@@ -119,5 +125,6 @@ module.exports = {
     inserirTag,
     colocarTagEmServidor,
     desassociarTagsDeServidores,
-    excluirTag
+    excluirTag,
+    historicoAlerta
 }

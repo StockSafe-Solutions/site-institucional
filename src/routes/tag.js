@@ -34,4 +34,8 @@ router.delete("/excluirTag", function(req, res){
     tagController.excluirTag(req, res);
 })
 
+router.get("/historicoAlerta", function(req, res){
+    tagController.historicoAlerta(req, res);
+})
+
 module.exports = router;

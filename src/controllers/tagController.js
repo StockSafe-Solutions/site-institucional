@@ -189,6 +189,29 @@ function excluirTag(req, res){
         });
 }
 
+function historicoAlerta(req, res) {
+    tagModel.historicoAlerta().then(
+        function (resultado) {
+            console.log(`\n Resultados encontrados: ${resultado.length}`);
+            console.log(`Resultados: ${JSON.stringify(resultado)}`);
+
+            if (resultado.length > 0) {
+                console.log(resultado);
+                res.json(resultado);
+            } else if (resultado.length == 0){
+                res.status(204).send()
+            } else{
+                res.status(404).send()
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        )
+}
+
 module.exports = {
     listarTags,
     kpisTags,
@@ -197,5 +220,6 @@ module.exports = {
     kpisPorTags,
     inserirTag,
     colocarTagEmServidor,
-    excluirTag
+    excluirTag,
+    historicoAlerta
 }

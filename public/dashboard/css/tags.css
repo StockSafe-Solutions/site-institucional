@@ -281,8 +281,8 @@
     overflow-y: scroll;
 }
 
-#modalHistorico{
-    width: 50vw;
+#modalTagHistorico header{
+    margin-bottom: 10px;
 }
 
 #modalTagNova{
@@ -369,6 +369,10 @@
 }
 #modalExclTags > span > *{
     margin: 0 10px;
+}
+
+#graficoTagHistorico{
+    overflow: hidden;
 }
 
 @keyframes aparecer{
