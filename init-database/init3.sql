@@ -1,3 +1,4 @@
+USE StockSafe;
 -- SESSÃO DAS VIEWS
 
 -- VIEWS MESTRAS
@@ -72,11 +73,11 @@ SELECT * FROM vw_ram_geral;
 
 -- -------------------------------------------------------------------- KPI
 -- Taxa de Transferencia
-CREATE OR REPLACE VIEW vw_taxa_de_transferência AS
-	SELECT fk_servidor, avg(taxa_de_transferência) as taxa_de_transferência, data_hora FROM vw_registro
+CREATE OR REPLACE VIEW vw_taxa_de_transferencia AS
+	SELECT fk_servidor, avg(taxa_de_transferencia) as taxa_de_transferencia, data_hora FROM vw_registro
 		GROUP BY data_hora, fk_servidor;
 
-SELECT * FROM vw_taxa_de_transferência;
+SELECT * FROM vw_taxa_de_transferencia;
 
 -- PACOTES ENVIADOS POR DATA/HORA
 CREATE OR REPLACE VIEW vw_pacotes_enviados 
@@ -108,13 +109,13 @@ BEGIN
 		id_servidor,
         codigo,
 		avg((qr.qtd_registros * 100) / (9 / taxa_atualizacao)) as kpi_uptime,
-		avg(taxt.taxa_de_transferência) AS kpi_taxa,
-		avg(opt.taxa_de_transferência) AS base_taxa,
+		avg(taxt.taxa_de_transferencia) AS kpi_taxa,
+		avg(opt.taxa_de_transferencia) AS base_taxa,
 		sum(pct.pacotes_enviados) AS kpi_pacotes_enviados,
 		avg((armazenamento_usado * 100) / armazenamento_total) AS kpi_armazenamento,
 		avg(armazenamento_total) AS base_armazenamento
 		FROM tb_servidor
-			JOIN vw_taxa_de_transferência AS taxt ON taxt.fk_servidor = id_servidor
+			JOIN vw_taxa_de_transferencia AS taxt ON taxt.fk_servidor = id_servidor
 			JOIN tb_opcao AS opt
 			JOIN vw_pacotes_enviados AS pct ON pct.fk_servidor = id_servidor
             JOIN quantidade_registros AS qr ON qr.fk_servidor = id_servidor
@@ -141,7 +142,7 @@ BEGIN
     DROP TABLE IF EXISTS banda_larga;
     
     CREATE TEMPORARY TABLE banda_larga ( 
-    SELECT round(sum(taxa_de_transferência), 2) AS 'uso_banda_larga' from vw_taxa_de_transferência LIMIT limite
+    SELECT round(sum(taxa_de_transferencia), 2) AS 'uso_banda_larga' from vw_taxa_de_transferencia LIMIT limite
     );
     
     select * from banda_larga;
@@ -173,13 +174,13 @@ BEGIN
 		id_servidor,
         codigo,
 		avg((qr.qtd_registros * 100) / (9 / taxa_atualizacao)) as kpi_uptime,
-		avg(taxt.taxa_de_transferência) AS kpi_taxa,
-		avg(opt.taxa_de_transferência) AS base_taxa,
+		avg(taxt.taxa_de_transferencia) AS kpi_taxa,
+		avg(opt.taxa_de_transferencia) AS base_taxa,
 		sum(pct.pacotes_enviados) AS kpi_pacotes_enviados,
 		avg((armazenamento_usado * 100) / armazenamento_total) AS kpi_armazenamento,
 		avg(armazenamento_total) AS base_armazenamento
 		FROM tb_servidor
-			JOIN vw_taxa_de_transferência AS taxt ON taxt.fk_servidor = id_servidor
+			JOIN vw_taxa_de_transferencia AS taxt ON taxt.fk_servidor = id_servidor
 			JOIN tb_opcao AS opt
 			JOIN vw_pacotes_enviados AS pct ON pct.fk_servidor = id_servidor
             JOIN quantidade_registros AS qr ON qr.fk_servidor = id_servidor
@@ -187,7 +188,7 @@ BEGIN
     );
 	
     CREATE TEMPORARY TABLE banda_larga ( 
-    SELECT round(sum(taxa_de_transferência), 2) AS 'uso_banda_larga' from vw_taxa_de_transferência LIMIT limite
+    SELECT round(sum(taxa_de_transferencia), 2) AS 'uso_banda_larga' from vw_taxa_de_transferencia LIMIT limite
     );
 
     CREATE TEMPORARY TABLE kpi_geral(
@@ -195,7 +196,7 @@ BEGIN
 	SELECT
 		avg(kpi_esp.kpi_uptime) as kpi_uptime,
 		avg(banda_larga.uso_banda_larga) as kpi_banda_larga,
-		avg(opt.taxa_de_transferência) AS base_taxa,
+		avg(opt.taxa_de_transferencia) AS base_taxa,
 		sum(pct.pacotes_enviados) AS kpi_pacotes_enviados,
 		sum(armazenamento_usado) AS kpi_armazenamento,
 		sum(armazenamento_total) as base_armazenamento

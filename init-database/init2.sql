@@ -1,3 +1,4 @@
+USE StockSafe;
 -- LISTA DE INSERTS
   
 INSERT INTO tb_funcionario VALUES (1, 'Danilo Marques', 'Analista', '2005-07-11', null, 'danilo@b3.com', 'urubu100');
@@ -18,7 +19,7 @@ INSERT INTO tb_categoria VALUES
 		(1, "Pacotes enviados", null),
 		(2, "Uso da CPU", "%"),
 		(3, "Uso da RAM", "%"),
-		(4, "Taxa de transferência", "MB/s");
+		(4, "Taxa de transferencia", "MB/s");
 
 INSERT INTO tb_monitorar VALUES 
 		(2000,1),(2000,2),(2000,3),(2000,4),
