@@ -14,7 +14,7 @@ function kpiEspecifica(req, res) {
       res.status(404).send()
     }}).catch((error) => {
     console.log(error)
-    console.log("Erro nas Dashboards\n", erro.sqlMessage)
+    console.log("Erro nas Dashboards\n", error.sqlMessage)
   })
 }
 
@@ -38,7 +38,7 @@ function graficosEspecificos(req, res) {
       res.status(404).send()
     }}).catch((error) => {
     console.log(error)
-    console.log("Erro nas Dashboards\n", erro.sqlMessage)
+    console.log("Erro nas Dashboards\n", error.sqlMessage)
   })
 }
 
@@ -52,7 +52,7 @@ function kpiGeral(req, res) {
       res.status(404).send()
     }}).catch((error) => {
     console.log(error)
-    console.log("Erro nas Dashboards\n", erro.sqlMessage)
+    console.log("Erro nas Dashboards\n", error.sqlMessage)
   })
 }
 
@@ -72,7 +72,7 @@ function graficosGerais(req, res) {
       res.status(404).send()
     }}).catch((error) => {
     console.log(error)
-    console.log("Erro nas Dashboards\n", erro.sqlMessage)
+    console.log("Erro nas Dashboards\n", error.sqlMessage)
   })
 }
 
