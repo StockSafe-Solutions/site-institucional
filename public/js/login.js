@@ -83,7 +83,7 @@ function carregarConfigs() {
             console.log(resposta);
             resposta.json().then(json => {
                 sessionStorage.banda_larga = json['banda_larga']
-                sessionStorage.taxa_transferencia = json['taxa_de_transferência'].replace(".",",")
+                sessionStorage.taxa_transferencia = json['taxa_de_transferencia'].replace(".",",")
                 sessionStorage.intervalo_atualizacao = json['intervalo_atualizacao']
                 window.location = "../dashboard/index.html"
             });
