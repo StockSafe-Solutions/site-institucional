@@ -45,7 +45,15 @@ function entrar() {
                 sessionStorage.funcionario = JSON.stringify(json)
                 carregarConfigs()
             });
-        } 
+        } else if(resposta.status == 406){
+            resposta.text().then(texto => {
+                swal({
+                    icon: 'error',
+                    title: 'Login inválido',
+                    text: 'As credenciais informadas não correspondem à nenhum registro no nosso sistema.'
+                })
+            }) 
+        }
         else {
             resposta.text().then(texto => {
                 swal({
