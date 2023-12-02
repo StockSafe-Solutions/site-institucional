@@ -13,6 +13,7 @@ function carregarMenu(pagina, geral, codServidor) {
     destConfig = ""
     destEspecifica = ""
     destExemplo = ""
+    destRede = ""
 
     switch (pagina) {
         case "geral":
@@ -35,6 +36,9 @@ function carregarMenu(pagina, geral, codServidor) {
             break;
         case "exemplo":
             destExemplo = " active" // SE O NOME DA PÁGINA FOR "exemplo", OS LINKS DE EXEMPLO ESTARÃO ATIVOS
+            break;
+        case "rede":
+            destRede = " active"
             break;
     }
 
@@ -143,18 +147,14 @@ function carregarMenu(pagina, geral, codServidor) {
             PARA MUDAR O ÍCONE, MUDAR A CLASSE DO FONTAWESOME ->
             <!-- COLOCAR O codServidor COMO PARAMETRO GET NAS PAGINAS SE PRECISAR ->
 
-            <!-- Exemplo -->
-            <li class="nav-item${destExemplo}">
-                <a class="nav-link" href="${pasta}base.html?${codServidor}">
-                    <i class="fa-solid fa-question"></i>
-                    <span>Exemplo 1</span></a>
-            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
 
-            <!-- Exemplo -->
-            <li class="nav-item${destExemplo}">
-                <a class="nav-link" href="${pasta}base.html?${codServidor}">
-                    <i class="fa-solid fa-person-circle-question"></i>
-                    <span>Exemplo 2</span></a>
+            <!-- Rede -->
+            <li class="nav-item${destRede}">
+                <a class="nav-link" href="${pasta}rede.html?${codServidor}">
+                    <i class="fa-solid fa-wifi"></i>
+                    <span>Rede</span></a>
             </li>
 
             <!-- Divisor -->

@@ -19,7 +19,9 @@ INSERT INTO tb_categoria VALUES
 		(1, "Pacotes enviados", null),
 		(2, "Uso da CPU", "%"),
 		(3, "Uso da RAM", "%"),
-		(4, "Taxa de transferencia", "MB/s");
+		(4, "Taxa de transferencia", "MB/s"),
+                (5, "Pacotes recebidos", null),
+                (6, "Uso da banda larga", "%");
 
 INSERT INTO tb_monitorar VALUES 
 		(2000,1),(2000,2),(2000,3),(2000,4),
@@ -34,7 +36,7 @@ INSERT INTO tb_registro VALUES
 		(null, 2000, 2, '2023-10-23 10:00:00', 23),
 		(null, 2000, 3, '2023-10-23 10:00:00', 34),
 		(null, 2000, 4, '2023-10-23 10:00:00', 499),
-        
+
         (null, 2000, 1, '2023-10-23 12:00:00', 84),
 		(null, 2000, 2, '2023-10-23 12:00:00', 5),
 		(null, 2000, 3, '2023-10-23 12:00:00', 21),
