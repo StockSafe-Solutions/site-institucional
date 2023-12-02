@@ -175,6 +175,20 @@ th {
     top: 0;
 }
 
+#above_list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between ;
+    padding-right: 5px;
+}
+
+#icone_filtro {
+    width: 7vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
 /* =============================================== KPI de processos */
 
 #kpi_area {

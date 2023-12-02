@@ -53,14 +53,15 @@
 
                 <!--======================================================KPIS-->
 
+                <h4>Agora</h4> 
                 <div class="kpis">
                     <div id="KPI1">
                         <span>
                             <h3>Uso atual de CPU</h3>
                             <i class="fa-solid fa-microchip"></i>                          
                          </span>
-                        <p id="valorKPI1" class="valorKPI">89%</p>
-                        <p id="baseKPI1" class="baseKPI"></p>
+                        <p id="valorKPI1" class="valorKPI">0%</p>
+                        <p id="baseKPI1" class="baseKPI">de uso da CPU</p>
                     </div>
 
                     <div id="KPI2">
@@ -68,8 +69,8 @@
                             <h3 id="nomeKPI2">Uso atual de RAM</h3>
                             <i class="fa-solid fa-memory"></i>                           
                         </span>
-                        <p id="valorKPI2" class="valorKPI">59%</p>
-                        <p id="baseKPI2" class="baseKPI"></p>
+                        <p id="valorKPI2" class="valorKPI">0%</p>
+                        <p id="baseKPI2" class="baseKPI">de uso da RAM</p>
                     </div>
 
                     <div id="KPI3">
@@ -77,7 +78,7 @@
                             <h3>Maior consumidor de CPU</h3>
                             <i class="fa-solid fa-weight-scale"></i>          
                         </span>
-                        <p id="valorKPI3" class="valorKPI">Idle</p>
+                        <p id="valorKPI3" class="valorKPI">Nenhum</p>
                         <p id="baseKPI3" class="baseKPI"></p>
                     </div>
 
@@ -86,23 +87,23 @@
                             <h3>Maior consumidor de RAM</h3>
                             <i class="fa-solid fa-weight-hanging"></i>                           
                         </span>
-                        <p id="valorKPI4" class="valorKPI">Firefox</p>
+                        <p id="valorKPI4" class="valorKPI">Nenhum</p>
                         <p id="baseKPI4" class="baseKPI"></p>
-                    </div>
-                </div>
-
-                <!--======================================================Grafico-->
-
-                <div class="containerGraficoProcesso">
-                    <div class="graficoProc">
-                        <h3>Processos mais aparentes</h3>
-                        <canvas id="graficoProcessos"></canvas>
                     </div>
                 </div>
 
                 <!--======================================================Lista-->
 
-                <h4>Lista de processos</h4>
+                <div id="above_list">
+                    <h4>Lista de processos - <span id="qtdProcessos"></span></h4>
+                    
+                    <div id="icone_filtro">
+                        <h5>Filtro</h5>
+                        <i class="fa-solid fa-filter"></i>
+                    </div>
+                </div>
+                
+                
                 <div id="table_processo">
                     <table>
                         <thead>
@@ -115,15 +116,27 @@
                         </thead>
                         <tbody id="cell_processos">
                             <tr>
-                                <td>1234</td>
-                                <td>Idle</td>
-                                <td>59%</td>
-                                <td>9%</td>
+                                <td>0</td>
+                                <td>Nenhum</td>
+                                <td>0%</td>
+                                <td>0%</td>
                             </tr>
                             <!--Outros <tr> com valores pegos do json-->
                         </tbody>
                     </table>
                 </div>   
+
+                <!--======================================================Grafico-->
+
+                <h4>Hoje</h4>
+                <div class="containerGraficoProcesso">
+                    <div class="graficoProc">
+                        <h3>Processos mais aparentes</h3>
+                        <canvas id="graficoProcessos"></canvas>
+                    </div>
+                </div>
+
+                
             </div>
         </div>
     </div>
