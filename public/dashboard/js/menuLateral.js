@@ -150,7 +150,7 @@ function carregarMenu(pagina, geral, codServidor) {
         
             <!-- Dashboard -->
             <li class="nav-item${destEspecifica}">
-                <a class="nav-link" href="${saida}index.html?${codServidor}">
+                <a class="nav-link" href="${saida}index.html?id=${codServidor}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Visão geral</span></a>
             </li>
