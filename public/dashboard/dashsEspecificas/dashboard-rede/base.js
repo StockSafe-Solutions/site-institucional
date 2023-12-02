@@ -1,10 +1,21 @@
-function carregarExemplo(){
-    indiceParm = location.href.indexOf('?')
-    params = location.href.slice(indiceParm+1,indiceParm+7)
-    // PEGANDO O PARAMETRO GET
+indiceParm = location.href.indexOf('?')
+params = location.href.slice(indiceParm+1,indiceParm+7)
 
-    nomePagina.innerText = "Página exemplo - Servidor "+params
+function carregarPagina(){
 
-    carregarMenu("exemplo",false,params)
-    //CARREGANDO O MENU, false PARA PAG. ESPECÍFICA
+    nomePagina.innerText = " - Servidor "+params
+
+    carregarMenu("dashboard rede" ,false,params)
+    carregarDados()
+}
+
+function carregarDados(){
+
+    fetch(`dashboardRede/kpiBandaLarga/${params}`, {cache: 'no-store'}).then((resposta) => {
+
+        console.log(resposta);
+    }).catch((erro) => {
+
+        console.log(erro);
+    })
 }

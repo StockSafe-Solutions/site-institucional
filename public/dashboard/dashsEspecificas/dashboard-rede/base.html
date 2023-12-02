@@ -12,23 +12,23 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Estilos -->
-    <link rel="stylesheet" href="../../css/templateStocksafe.min.css">
-    <link rel="stylesheet" href="../css/base.css">
-    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../../../css/templateStocksafe.min.css">
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/dashboard.css">
 
     <!-- Scripts -->
-    <script src="../js/sessao.js"></script>
-    <script src="../js/menuLateral.js"></script>
-    <script src="../js/graficos.js"></script>
+    <script src="../../js/sessao.js"></script>
+    <script src="../../js/menuLateral.js"></script>
+    <script src="../../js/graficos.js"></script>
     <script src="base.js"></script> <!-- JS DE CADA PÁGINA -->
 
     <!-- Icone -->
-    <link rel="icon" href="../assets/icon/logo.ico" />
+    <link rel="icon" href="../../assets/icon/logo.ico" />
 
     <title>StockSafe - Dashboard</title>
 </head>
 
-<body id="page-top" onload="carregarExemplo()">
+<body id="page-top" onload="carregarPagina()">
     <!-- Page Wrapper -->
     <div id="wrapper">
         <ul id="accordionSidebar"></ul>
@@ -36,19 +36,55 @@
         <div id="content-wrapper" class="d-flex flex-column">
             <!-- Main Content -->
             <div id="content">
-                <div class="container-fluid">
-                    <header>
-                        <span>
-                            <h3 id="nomePagina" class="nomePagina"></h3>
-                        </span>
-                        <span id="reload_e_alertas">
+
+                    <div class="kpis">
+                        <div id="KPI1">
                             <span>
-                                <p id="textoReload"></p>
-                                <i class="fa-solid fa-arrows-rotate" id="iconReload"></i>
+                                <h3>Uso da banda larga</h3>
+                                <i class="fa-solid fa-network-wired"></i>
+                             </span>
+                            <p id="valorKPI1" class="valorKPI" id="bandaLarga"></p>
+                            <p id="baseKPI2" class="baseKPI"></p>
+                        </div>
+
+                        <div id="KPI2">
+                            <span>
+                                <h3>Pacotes enviados</h3>
+                                <i class="fa-solid fa-box-open"></i>
                             </span>
-                            <div id="containerAlertas"></div>
-                        </span>
-                    </header>
+                            <p id="valorKPI2" class="valorKPI" id="pacotesEnviados"></p>
+                            <p id="baseKPI2" class="baseKPI">enviados</p>
+                        </div>
+
+                        <div id="KPI3">
+                            <span>
+                                <h3>Pacotes recebidos</h3>
+                                <i class="fa-solid fa-box-open"></i>
+                            </span>
+                            <p id="valorKPI3" class="valorKPI" id="pacotesRecebidos"></p>
+                            <p id="baseKPI3" class="baseKPI">recebidos</p>
+                        </div>
+
+
+                        <div id="KPI4">
+                            <span>
+                                <h3>Taxa de transferência</h3>
+                                <i class="fa-solid fa-wifi"></i>
+                            </span>
+                            <p id="valorKPI4" class="valorKPI" id="taxaTransferencia"></p>
+                            <p id="baseKPI4" class="baseKPI">MB/s</p>
+                        </div>
+                    </div>
+                    <div class="containerGraficos">
+                        <div class="grafico">
+                            <h3>Historico de uso da banda larga</h3>
+                            <canvas id="graficoCPU"></canvas>
+                        </div>
+                        <div class="grafico">
+                            <h3>Historico da taxa de transferência</h3>
+                            <canvas id="graficoRAM"></canvas>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
