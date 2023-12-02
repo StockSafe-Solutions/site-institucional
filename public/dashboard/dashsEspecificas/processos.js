@@ -1,5 +1,5 @@
-var graficoExiste = false;
 var graficoProcesso;
+var orderByString = "ORDER BY proc.nome_proc";
 
 function carregarPaginaProcessos(){
     indiceParm = location.href.indexOf('?');
@@ -127,10 +127,13 @@ function atualizarDadosProcessos(params) {
     })
 
     fetch(`/processo/listarProcessos/${codServidor}`, {
-        method: "GET",
+        method: "POST",
         headers: {
             "Content-Type": "application/json"
-        }
+        },
+        body: JSON.stringify({
+            orderServer: orderByString
+        })
     }).then(function (resposta) {
         if (resposta.ok) {
             console.log(resposta);
@@ -172,4 +175,72 @@ function atualizarDadosProcessos(params) {
     setTimeout(function() {
         atualizarDadosProcessos(codServidor);
     }, sessionStorage.intervalo_atualizacao);    
+}
+
+function dropdownLista() {
+    var dropdown = document.getElementById('dropdown')
+
+    if (dropdown.style.display == 'flex') {
+        dropdown.style.display = 'none';
+    } else {
+        dropdown.style.display = 'flex';
+    }
+}
+
+function organizarLista(modo) {
+
+    indiceParm = location.href.indexOf('?');
+    params = location.href.slice(indiceParm+1,indiceParm+7);
+    
+    var codServidor = params;
+
+    var divAz = document.getElementById('optAz');
+    var divZa = document.getElementById('optZa');
+    var divCpu = document.getElementById('optCpu');
+    var divRam = document.getElementById('optRam');
+
+
+    switch (modo){
+        case 1:
+            orderByString = "ORDER BY proc.nome_proc"
+            divAz.style.backgroundColor = "#486699"; //escuro
+            break;
+        case 2:
+            orderByString = "ORDER BY proc.nome_proc DESC"
+            divAz.style.backgroundColor = "#577bb9"; //claro
+            break;
+        case 3:
+            orderByString = "ORDER BY proc.uso_cpu DESC"
+            divAz.style.backgroundColor = "#577bb9";
+            break;
+        case 4:
+            orderByString = "ORDER BY proc.uso_ram DESC";
+            divAz.style.backgroundColor = "#577bb9";
+            break;
+    }
+
+    fetch(`/processo/listarProcessos/${codServidor}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            orderServer: orderByString
+        })
+    }).then(function (resposta) {
+        if (resposta.ok) {
+            console.log(resposta);
+            resposta.json().then(json => {
+                carregarProcessos(json)
+            });
+        }
+        else {
+            resposta.text().then(texto => {
+                console.warn(texto)
+            })
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+    })
+
 }

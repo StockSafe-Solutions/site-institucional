@@ -189,6 +189,34 @@ th {
     justify-content: space-between;
     cursor: pointer;
 }
+
+#dropdown {
+    color: #fff;
+    height: 220px;
+    width: 170px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    right: 12vw;
+    background-color: #577bb9;
+    z-index: 2;
+    border-radius: 5px;
+    border:2px solid #000000;
+    align-items: stretch;
+}
+
+#dropdown hr {
+    margin: 0;
+    background-color: #3d4242;
+}
+
+#above_list [id^="opt"] {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
 /* =============================================== KPI de processos */
 
 #kpi_area {

@@ -1,6 +1,6 @@
 var database = require("../database/config")
 
-function listarProcessos(codServidor){
+function listarProcessos(codServidor, orderByString){
     var instrucao = 
     `
     SELECT proc.*,
@@ -9,8 +9,7 @@ function listarProcessos(codServidor){
     JOIN tb_servidor AS serv 
     ON proc.fk_servidor = serv.id_servidor
     WHERE serv.codigo = '${codServidor}' 
-    AND data_hora >= NOW() - INTERVAL 1 MINUTE
-    ORDER BY proc.nome_proc;
+    ${orderByString};
     `
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

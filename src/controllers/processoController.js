@@ -2,8 +2,9 @@ var processoModel = require("../models/processoModel");
 
 function listarProcessos(req, res) {
     var codServidor = req.params.codServidor;
+    var orderByString = req.body.orderServer;
 
-    processoModel.listarProcessos(codServidor).then(
+    processoModel.listarProcessos(codServidor, orderByString).then(
         function (resultado) {
             console.log(`\n Resultados encontrados: ${resultado.length}`);
             console.log(`Resultados: ${JSON.stringify(resultado)}`);

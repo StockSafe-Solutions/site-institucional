@@ -97,9 +97,26 @@
                 <div id="above_list">
                     <h4>Lista de processos - <span id="qtdProcessos"></span></h4>
                     
-                    <div id="icone_filtro">
+                    <div id="icone_filtro" onclick="dropdownLista()">
                         <h5>Filtro</h5>
                         <i class="fa-solid fa-filter"></i>
+                    </div>
+                    <div id="dropdown">
+                        <div id="optAz" onclick="organizarLista(1, this)" style="background-color: #486699;"> 
+                            Ordem: A → Z
+                        </div>
+                        <hr>
+                        <div id="optZa" onclick="organizarLista(2, this)">
+                            Ordem: Z → A
+                        </div>
+                        <hr>
+                        <div id="optCpu" onclick="organizarLista(3, this)">
+                            Maior consumo <br>de CPU
+                        </div>
+                        <hr>
+                        <div id="optRam" onclick="organizarLista(4, this)">
+                            Maior consumo <br>de RAM
+                        </div>
                     </div>
                 </div>
                 
