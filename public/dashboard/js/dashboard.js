@@ -6,8 +6,7 @@ function carregarDados(){
         carregarViaGET("../dash/kpiGeral", "../dash/graficosGerais")
         nomePagina.innerText = "Dashboard - Visão Geral"
         carregarMenu("geral",true)
-    } else if(params[0].slice(0,2) == "id"){
-        params = params[0]
+    } else if(params.slice(0,2) == "id"){
         params = params.slice(3)
         carregarViaGET("../dash/kpiEspecifica/"+params, "../dash/graficosEspecificos/"+params)
         
