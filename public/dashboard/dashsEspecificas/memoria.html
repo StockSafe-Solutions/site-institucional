@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="PT-BR">
-
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -14,15 +12,15 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Estilos -->
-    <link rel="stylesheet" href="../css/templateStocksafe.min.css">
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="../../css/templateStocksafe.min.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
 
     <!-- Scripts -->
-    <script src="js/sessao.js"></script>
-    <script src="js/menuLateral.js"></script>
-    <script src="js/dashboard.js"></script>
-    <script src="js/graficos.js"></script>
+    <script src="../js/sessao.js"></script>
+    <script src="../js/menuLateral.js"></script>
+    <script src="../js/graficos.js"></script>
+    <script src="./js/memoria.js"></script> <!-- JS DE CADA PÁGINA -->
 
     <!-- Icone -->
     <link rel="icon" href="../assets/icon/logo.ico" />
@@ -30,20 +28,20 @@
     <title>StockSafe - Dashboard</title>
 </head>
 
-<body id="page-top" onload="reloadDashboard()">
+<body id="page-top" onload="carregarDadosRam()">
     <!-- Page Wrapper -->
     <div id="wrapper">
         <ul id="accordionSidebar"></ul>
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
             <!-- Main Content -->
-            <div id="content" >
+            <div id="content">
                 <div class="container-fluid">
                     <header>
                         <span>
-                            <h3 id="nomePagina" class="nomePagina">Dashboard</h3>
+                            <h3 id="nomePagina" class="nomePagina"></h3>
                             <input type="date" name="pesquisaData" id="pesquisaData">
-                            <button onclick="chamarRegistros()" >baixar csv</button>
+                            <button onclick="chamarRegistrosRam()">baixar csv</button>
                         </span>
                         <span id="reload_e_alertas">
                             <span>
@@ -56,49 +54,48 @@
                     <div class="kpis">
                         <div id="KPI1">
                             <span>
-                                <h3>Uptime</h3>
-                                <i class="fa-regular fa-clock"></i>                           
-                             </span>
+                                <h3>Uso de RAM</h3>
+                                <i class="fa-solid fa-hard-drive"></i>
+                                
+                            </span>
                             <p id="valorKPI1" class="valorKPI" id="uptime"></p>
-                            <p id="baseKPI1" class="baseKPI">de 9 horas</p>
+                            <p id="baseKPI1" class="baseKPI">De uso frequente</p>
                         </div>
-
+                    
                         <div id="KPI2">
                             <span>
-                                <h3 id="nomeKPI2">Uso da banda larga</h3>
-                                <i id="iconKPI2" class="fa-solid fa-wifi"></i>                            
+                                <h3 id="nomeKPI2">Status da RAM</h3>
+                               <i class="fa-solid">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-info-circle"
+                                    viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                    <path
+                                        d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
+                                </svg>
+                               </i>
                             </span>
                             <p id="valorKPI2" class="valorKPI" id="bandaLarga"></p>
                             <p id="baseKPI2" class="baseKPI"></p>
                         </div>
-
-                        <div id="KPI3">
-                            <span>
-                                <h3>Pacotes enviados</h3>
-                                <i class="fa-solid fa-box-open"></i>                            
-                            </span>
-                            <p id="valorKPI3" class="valorKPI" id="pacotesEnviados"></p>
-                            <p id="baseKPI3" class="baseKPI">enviados</p>
-                        </div>
-
+                   
                         <div id="KPI4">
                             <span>
-                                <h3>Uso de disco</h3>
-                                <i class="fa-solid fa-hard-drive"></i>                            
+                                <h3>Espaço total RAM</h3>
+                                <i class="fa-solid fa-box-open"></i>
                             </span>
                             <p id="valorKPI4" class="valorKPI" id="espacoUsado"></p>
-                            <p id="baseKPI4" class="baseKPI">de 124TB</p>
+                            <p id="baseKPI4" class="baseKPI"></p>
                         </div>
                     </div>
                     <div class="containerGraficos">
-                        <div class="grafico">
-                            <h3>Média de uso da CPU</h3>
-                            <canvas id="graficoCPU"></canvas>
-                        </div>  
-                        <div class="grafico">
-                            <h3>Média de uso da RAM</h3>
-                            <canvas id="graficoRAM"></canvas>
+                        <div class="grafico" id="graficoRam">
+                            <h4>Porcentagem de uso</h4>
+                            <canvas id="qtdRAM"></canvas>
                         </div>
+                       <div class="grafico">
+                            <h3>Média temporal da RAM</h3>
+                            <canvas id="graficoRAMinutos"></canvas>
+                       </div>
                     </div>
                 </div>
             </div>

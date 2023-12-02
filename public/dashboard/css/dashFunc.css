@@ -1,0 +1,82 @@
+
+.kpis{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.kpis > div{
+    width: 180px;
+    height: 180px;
+    background-color: #577bb9;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    border-radius: 0.5rem;
+    padding: 20px;
+    color: whitesmoke;
+}
+.kpis > .kpiBoa{
+    box-shadow: 0 0 0 5px rgba(0, 185, 12, 0.688);
+}
+.kpis > .kpiRuim{
+    box-shadow: 0 0 0 5px rgba(185, 172, 0, 0.688)
+}
+.kpis > .kpiMuitoRuim{
+    animation-name: pulsar;
+    animation-duration: 2.5s;
+    animation-iteration-count: infinite;
+}
+@keyframes pulsar{
+    0% {box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.428);}
+    75% {box-shadow: 0 0 0 10px rgba(255, 0, 0, 0.428);}
+    100% {box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.428);}
+}
+
+
+.kpis span{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: space-between;
+    margin-bottom: 20%;
+}
+.kpis h3{
+    margin: 0;
+    font-size: 16px;
+    height: 45px;
+}
+.kpis i{
+    font-size: 35px;
+    margin-left: 10px;
+}
+.valorKPI{
+    font-size: 36px;
+    line-height: 0.8;
+    margin-bottom: 10px;
+}
+
+.containerGraficos{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+
+.grafico{
+    width: 33vw;
+    height: 50vh;
+    background-color: lightgrey;
+    border-radius: 0.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    color: #001a46;
+}

@@ -124,38 +124,80 @@ function carregarViaPOST(urlKPIs, corpoKPIs, urlGraficos, corpoGraficos){
         console.log(erro);
     })
 
-    fetch(urlGraficos, {
-        method: "POST",
-        body: JSON.stringify({
-            tagServer: corpoGraficos
-        }),
-        headers: {
-            "Content-Type": "application/json"
-        }
-    }).then(function (resposta) {
-        if (resposta.ok) {
-            resposta.json().then(json => {
-                uso_cpu = []
-                uso_ram = []
-                for(i in json){
-                    uso_cpu.push(json[i].uso_da_cpu)
-                    uso_ram.push(json[i].uso_da_ram)
-                }
+	now = new Date();
+	dataAtual =
+		now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate();
 
-                gerenciarGraficos('graficoCPU',uso_cpu)
-                gerenciarGraficos('graficoRAM',uso_ram)
-            });
-        }
-        else{
-            resposta.text().then(texto => { console.warn(texto) })}}).catch(function (erro) {
-        console.log(erro);
-    })
+	
 }
 
-function definirKPIs(tipo, json){
-    KPI1.className = "kpiBoa";
-    KPI2.className = "kpiBoa";
-    KPI4.className = "kpiBoa";
+function chamarRegistros() {
+    carregarDados();
+	indiceParm = location.href.indexOf("?");
+	params = location.href.slice(indiceParm + 1, indiceParm + 7);
+	var data = pesquisaData.value;
+
+
+	if (indiceParm == -1) {
+		urlDados = `/dash/listarRegistrosData/${data}`;
+		nomePagina.innerText = "Dashboard - Visão Geral";
+		carregarMenu("geral", true);
+	} else {
+		urlDados = `/dash/listarRegistrosDataEspeficico/${params}/${data}`;
+		nomePagina.innerText = "Dashboard - Servidor " + params;
+		reload_e_alertas.style = "left: -45px";
+
+		iconKPI2.className = "fa-solid fa-arrow-right-arrow-left";
+		nomeKPI2.innerText = "Taxa de transferência";
+
+		carregarMenu("especifica", false, params);
+	}
+    fetch(urlDados, {
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json",
+			},
+		})
+			.then(function (resposta) {
+				console.log("Resposta: ", resposta);
+				if (resposta.ok) {
+					console.log("OK");
+					resposta.json().then((json) => {
+                        console.log(json);
+                        csv(json);
+					});
+				} else {
+					console.log("não ok");
+					console.log(`#ERRO: ${resposta}`);
+				}
+			})
+			.catch(function (resposta) {
+				console.log(`#ERRO: ${resposta}`);
+			});
+}
+
+function csv(json) {
+	const colunas = Object.keys(json[0]);
+	var csv = colunas.join(",");
+
+	for (const item of json) {
+		const linha = Object.values(item).join(",");
+		csv += "\n" + linha;
+	}
+
+	console.log(csv);
+
+	const blob = new Blob([csv], { type: "text/csv" });
+	const link = document.createElement("a");
+	link.href = window.URL.createObjectURL(blob);
+	link.download = "dados.csv";
+	link.click();
+}
+
+function definirKPIs(tipo, json) {
+	KPI1.className = "kpiBoa";
+	KPI2.className = "kpiBoa";
+	KPI4.className = "kpiBoa";
 
     if(tipo == "geral"){
         valorKPI2.innerText = Math.round(Number(json.kpi_banda_larga))+"Mb/s"
@@ -207,25 +249,31 @@ function definirKPIs(tipo, json){
     }
 }
 
-function reloadDashboard(){
-    textoReload.innerText = "Atualizando"
-    iconReload.style = "animation-name: girar; animation-duration: 2250ms; pointer-events: none"
-    let i = 0
-    let animacaoTexto = setInterval(()=>{
-        if(i == 2){
-            clearInterval(animacaoTexto)
-        }
-        textoReload.innerText += "."
-        i++
-    },1000)
+function reloadDashboard() {
+	textoReload.innerText = "Atualizando";
+	iconReload.style =
+		"animation-name: girar; animation-duration: 2250ms; pointer-events: none";
+	let i = 0;
+	let animacaoTexto = setInterval(() => {
+		if (i == 2) {
+			clearInterval(animacaoTexto);
+		}
+		textoReload.innerText += ".";
+		i++;
+	}, 1000);
 
-    setTimeout(()=>{
-        let now = new Date()
-        textoReload.innerText = "Atualizado pela ultima vez às "+now.getHours()+":"+
-            (String(now.getMinutes()).length == 1 ? "0"+now.getMinutes() : now.getMinutes())
-        iconReload.style = ""
-    },4500)
+	setTimeout(() => {
+		let now = new Date();
+		textoReload.innerText =
+			"Atualizado pela ultima vez às " +
+			now.getHours() +
+			":" +
+			(String(now.getMinutes()).length == 1
+				? "0" + now.getMinutes()
+				: now.getMinutes());
+		iconReload.style = "";
+	}, 4500);
 
-    carregarDados()
+	carregarDados();
 }
 reloadContinuo = setInterval(reloadDashboard,sessionStorage.intervalo_atualizacao)

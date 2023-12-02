@@ -6,33 +6,33 @@ function abrirModal(modal, codigo) {
         case "cad":
             gerarCodigo()
             modalCadastro.style = "display: flex; animation-name: aparecer; animation-duration: 500ms;"
-            setTimeout(()=>{
+            setTimeout(() => {
                 modalCadastro.style = "display: flex"
-            },1000)
+            }, 1000)
             break
         case "dash":
             frameDashboard.src="index.html?id="+codigo
             modalDashboard.style = "display: flex; animation-name: aparecer; animation-duration: 500ms;"
-            setTimeout(()=>{
+            setTimeout(() => {
                 modalDashboard.style = "display: flex"
-            },1000)
+            }, 1000)
             break
         case "func":
             modalCadFunc.style = "display: flex; animation-name: aparecer; animation-duration: 500ms;"
-            setTimeout(()=>{
+            setTimeout(() => {
                 modalCadFunc.style = "display: flex"
-            },1000)
+            }, 1000)
             break
         case "solicitacoes":
-            modalSolic.style ="display: flex; animation-name: aparecer; animation-duration: 500ms;"
-            setTimeout(()=>{
+            modalSolic.style = "display: flex; animation-name: aparecer; animation-duration: 500ms;"
+            setTimeout(() => {
                 modalSolic.style = "display: flex";
             }, 1000);
             break;
         case "editFunc":
-            frameFuncionario.src="perfil.html?"+codigo
-            modalEditFunc.style ="display: flex; animation-name: aparecer; animation-duration: 500ms;"
-            setTimeout(()=>{
+            frameFuncionario.src = "perfil.html?" + codigo
+            modalEditFunc.style = "display: flex; animation-name: aparecer; animation-duration: 500ms;"
+            setTimeout(() => {
                 modalEditFunc.style = "display: flex";
             }, 1000);
             break;
@@ -58,10 +58,16 @@ function abrirModal(modal, codigo) {
                 modalTagExcluir.style = "display: flex";
             }, 1000);
             break;
+        case "grafico":
+            modalGraficoFunc.style = "display: flex; animation-name: aparecer; animation-duration: 500ms;"
+            setTimeout(() => {
+                modalGraficoFunc.style = "display: flex"
+            }, 1000)
+            break
     }
     setTimeout(()=>{
         containerModal.style = "display: flex"
-    },500)
+    }, 500)
 }
 function fecharModal(modal) {
     let idDaModal = ""
@@ -90,17 +96,19 @@ function fecharModal(modal) {
         case "tagExcl":
             idDaModal = "modalTagExcluir"
             break;
-        }
-
+        case "grafico":
+            idDaModal = "modalTagExcluir"
+            break;
+    }
     let modalEscolhida = document.getElementById(idDaModal)
     modalEscolhida.style = "display: flex; animation-name: sumir; animation-duration: 300ms;"
             setTimeout(()=>{
                 modalEscolhida.style = ""
             },200)
 
-    setTimeout(()=>{
+    setTimeout(() => {
         containerModal.style = "display: none"
-    },200)
+    }, 200)
 }
 
 function gerarCodigo() {
@@ -161,8 +169,9 @@ function cadastrarServidor() {
                 text: 'Erro no servidor do aplicativo. Contate seu administrador de TI.',
                 icon: 'error'
             })
-        }}).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
         }
+    }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+    }
     );
 }

@@ -14,6 +14,7 @@ function carregarMenu(pagina, geral, codServidor) {
     destConfig = ""
     destEspecifica = ""
     destExemplo = ""
+    destMemoria = ""
 
     switch (pagina) {
         case "geral":
@@ -39,6 +40,9 @@ function carregarMenu(pagina, geral, codServidor) {
             break;
         case "exemplo":
             destExemplo = " active" // SE O NOME DA PÁGINA FOR "exemplo", OS LINKS DE EXEMPLO ESTARÃO ATIVOS
+            break;
+        case "memoria":
+            destMemoria = " active"
             break;
     }
 
@@ -155,10 +159,12 @@ function carregarMenu(pagina, geral, codServidor) {
             <!-- COLOCAR O codServidor COMO PARAMETRO GET NAS PAGINAS SE PRECISAR ->
 
             <!-- Exemplo -->
-            <li class="nav-item${destExemplo}">
-                <a class="nav-link" href="${pasta}base.html?${codServidor}">
-                    <i class="fa-solid fa-question"></i>
-                    <span>Exemplo 1</span></a>
+            <li class="nav-item${destMemoria}">
+                <a class="nav-link" href="${pasta}memoria.html?${codServidor}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="16" fill="currentColor" class="bi bi-memory" viewBox="0 0 16 16">
+    	                <path d="M1 3a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4.586a1 1 0 0 0 .707-.293l.353-.353a.5.5 0 0 1 .708 0l.353.353a1 1 0 0 0 .707.293H15a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H1Zm.5 1h3a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 .5-.5Zm5 0h3a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 .5-.5Zm4.5.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-4ZM2 10v2H1v-2h1Zm2 0v2H3v-2h1Zm2 0v2H5v-2h1Zm3 0v2H8v-2h1Zm2 0v2h-1v-2h1Zm2 0v2h-1v-2h1Zm2 0v2h-1v-2h1Z"/>
+                    </svg>
+                    <span>Memória</span></a>
             </li>
 
             <!-- Exemplo -->
@@ -169,7 +175,7 @@ function carregarMenu(pagina, geral, codServidor) {
             </li>
 
             <!-- Divisor -->
-            <hr class="sidebar-divider d-none d-md-block">`
+            <hr class="sidebar-divider d-none d-md-block">`;
 
     let conteudo = null
     if(geral){

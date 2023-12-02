@@ -1,74 +1,77 @@
 
 
 function listarFuncionarios() {
-    fetch("/funcionario/listar", {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json"
-        }
-    }).then(function (resposta) {
-        if (resposta.ok) {
-            
-            resposta.json().then(json => {
-                
-                criarLiFuncionario(json, "ListarFuncionario")
-            });
-        }
-        else {
-            resposta.text().then(texto => {
-                console.warn(texto)
-            })
-        }
-    }).catch(function (erro) {
-        console.log(erro);
-    })
+	fetch("/funcionario/listar", {
+		method: "GET",
+		headers: {
+			"Content-Type": "application/json",
+		},
+	})
+		.then(function (resposta) {
+			if (resposta.ok) {
+				resposta.json().then((json) => {
+					criarLiFuncionario(json, "ListarFuncionario");
+				});
+			} else {
+				resposta.text().then((texto) => {
+					console.warn(texto);
+				});
+			}
+		})
+		.catch(function (erro) {
+			console.log(erro);
+		});
 }
 
-function listarSolicitacoes(){
-    fetch("/funcionario/solicitacoesFuncionarios", {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json"
-        }
-    }). then(function(resposta){
-        if(resposta.ok){
-            resposta.json().then(json => {
-                criarLiFuncionario(json, "ListarSolicitacoes")
-            });
-        } else{
-            resposta.text().then(texto => {
-                console.warn(texto);
-            })
-        }
-    }).catch(function(erro){
-        console.log(erro);
-    })
+function listarSolicitacoes() {
+	fetch("/funcionario/solicitacoesFuncionarios", {
+		method: "GET",
+		headers: {
+			"Content-Type": "application/json",
+		},
+	})
+		.then(function (resposta) {
+			if (resposta.ok) {
+				resposta.json().then((json) => {
+					criarLiFuncionario(json, "ListarSolicitacoes");
+				});
+			} else {
+				resposta.text().then((texto) => {
+					console.warn(texto);
+				});
+			}
+		})
+		.catch(function (erro) {
+			console.log(erro);
+		});
 }
 
-function deletarSolicitacoes(id){
-    fetch(`/funcionario/deletarSolicitacoes/${id}`,{
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                idServer:id,
-            }),
-        }).then(function(resposta){
-            console.log("resposta: ", resposta);
-        }).catch(function (resposta){
-            console.log(`#ERRO: ${resposta}`);
-        })
+function deletarSolicitacoes(id) {
+	fetch(`/funcionario/deletarSolicitacoes/${id}`, {
+		method: "DELETE",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify({
+			idServer: id,
+		}),
+	})
+		.then(function (resposta) {
+			console.log("resposta: ", resposta);
+		})
+		.catch(function (resposta) {
+			console.log(`#ERRO: ${resposta}`);
+		});
 }
 
 function criarLiFuncionario(json, tipo) {
-    let container = document.getElementById("container-funcionarios")
-    if(tipo == "ListarFuncionario"){
-        container.innerHTML = ""
-        for (servidor in json) {
-            item = json[servidor]
+	let container = document.getElementById("container-funcionarios");
+	if (tipo == "ListarFuncionario") {
+		container.innerHTML = "";
+		for (servidor in json) {
+			item = json[servidor];
 
-            container.innerHTML += `
+			container.innerHTML += `
             <li class="funcionario">
                 <span>
                     <img src="../assets/img/fotosPadrao/undraw_profile.svg" alt="">
@@ -86,21 +89,21 @@ function criarLiFuncionario(json, tipo) {
                         </button>
                     </a>
                 </span>
-            </li>`
-        }
-    } else if( tipo == "ListarSolicitacoes"){
-        let container = document.getElementById(
+            </li>`;
+		}
+	} else if (tipo == "ListarSolicitacoes") {
+		let container = document.getElementById(
 			"container-funcionarios-solicitacao"
-	    );
-        container.innerHTML = "";
+		);
+		container.innerHTML = "";
 
-        if(json.length > 0){
-            containerVazio.className = ""
+		if (json.length > 0) {
+			//containerVazio.className = ""
 
-            for (servidor in json) {
-                item = json[servidor]
-                
-                container.innerHTML += `
+			for (servidor in json) {
+				item = json[servidor];
+
+				container.innerHTML += `
                 <li class="funcionario">
                     <span>
                         <img src="../assets/img/fotosPadrao/undraw_profile.svg" alt="">
@@ -121,171 +124,286 @@ function criarLiFuncionario(json, tipo) {
                         </a>
                     </span>
                 </li>`;
-            }
-        }  else{
-            container.innerHTML = "<p>Nenhum convite pendente</p>"
-            container.className = "containerVazio"
-        }
-    }else{
-        console.log("Erro no tipo de listagem");
-    }
+			}
+		} else {
+			container.innerHTML = "<p>Nenhum convite pendente</p>";
+			container.className = "containerVazio";
+		}
+	} else {
+		console.log("Erro no tipo de listagem");
+	}
 }
 
-function semiCadastrar(){
-    var textoErro = "";
-    var email = inpEmail.value;
-    var funcao = inpFuncao.value;
+function semiCadastrar() {
+	var textoErro = "";
+	var email = inpEmail.value;
+	var funcao = inpFuncao.value;
 
-    if(email == undefined || funcao == undefined){
-       
-        textoErro += "Campo inválido";
-        return 
-    }
-    if((email.indexOf("@") == -1)||(email.indexOf(".") == -1)){
-        textoErro += "Email inválido.";
-        return
-    }
-   
-        fetch("/funcionario/enviarEmail",{
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-              },
-            body: JSON.stringify({
-                emailServer: email,
-                funcaoServer: funcao
-            }),
-        })
-        .then(function(resposta){
-            console.log("Resposta: ", resposta);
-            if (resposta.ok) {
-                console.log("OK")
-                swal({
-                    icon: 'success',
-                    title: 'Email enviado com sucesso!',
-                    text: 'Contate o colaborador para que finalize seu cadastro!'
-                })
-            }
-            else {
-                console.log("não ok")
-                console.log(`#ERRO: ${resposta}`);
-                swal({
-                    icon: 'error',
-                    title: 'Erro interno!',
-                    text: 'Erro no servidor do aplicativo. Contate seu administrador de TI.'
-                })
-              }
-        }).catch(function (resposta){
-            console.log(`#ERRO: ${resposta}`);
-        })
+	if (email == undefined || funcao == undefined) {
+		textoErro += "Campo inválido";
+		return;
+	}
+	if (email.indexOf("@") == -1 || email.indexOf(".") == -1) {
+		textoErro += "Email inválido.";
+		return;
+	}
 
-    inpEmail.value = "";
-    inpFuncao.value ="";
+	fetch("/funcionario/enviarEmail", {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify({
+			emailServer: email,
+			funcaoServer: funcao,
+		}),
+	})
+		.then(function (resposta) {
+			console.log("Resposta: ", resposta);
+			if (resposta.ok) {
+				console.log("OK");
+				Swal.fire({
+					icon: "success",
+					title: "Email enviado com sucesso!",
+					text: "Contate o colaborador para que finalize seu cadastro!",
+				});
+			} else {
+				console.log("não ok");
+				console.log(`#ERRO: ${resposta}`);
+				Swal.fire({
+					icon: "error",
+					title: "Erro interno!",
+					text: "Erro no servidor do aplicativo. Contate seu administrador de TI.",
+				});
+			}
+		})
+		.catch(function (resposta) {
+			console.log(`#ERRO: ${resposta}`);
+		});
+
+	inpEmail.value = "";
+	inpFuncao.value = "";
 }
 
-function terminarCadastro(){
-    var idVar = inpId.value;
-    var nomeVar = inpNome.value;
-    var dataVar = inpDate.value;
-    var senhaVar = inpSenha.value;
+function terminarCadastro() {
+	var idVar = inpId.value;
+	var nomeVar = inpNome.value;
+	var dataVar = inpDate.value;
+	var senhaVar = inpSenha.value;
+
+	var validacoes = true;
+
+	if (idVar == undefined) {
+		console.log("Id vazio");
+		validacoes = false;
+	}
+	if (nomeVar == undefined) {
+		console.log("Nome vazio");
+		validacoes = false;
+	}
+	if (nomeVar.length > 125) {
+		validacoes = false;
+		console.log("O nome deve ter no máximo 125 caracteres");
+	}
+	if (dataVar == undefined) {
+		console.log("Data vazia");
+		validacoes = false;
+	}
+	if (senhaVar == undefined) {
+		console.log("Senha vazio");
+		validacoes = false;
+	}
+	if (senhaVar.length > 20) {
+		validacoes = false;
+		console.log("A senha deve ter no máximo 20 caracteres.");
+	}
+	if (validacoes == false) {
+		console.log("PRESTA ATENÇÃO");
+	} else {
+		fetch(`/funcionario/terminarCadastro/${idVar}`, {
+			method: "PUT",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				idServer: idVar,
+				nomeServer: nomeVar,
+				dataServer: dataVar,
+				senhaServer: senhaVar,
+			}),
+		})
+			.then(function (resposta) {
+				console.log("resposta: ", resposta);
+			})
+			.catch(function (resposta) {
+				console.log(`#ERRO: ${resposta}`);
+			});
+	}
+	inpId.value = "";
+	inpNome.value = "";
+	inpDate.value = "";
+	inpSenha.value = "";
+}
+
+function carregarDadosFunc() {
+	fetch(`/funcionario/contarSolicitacoes`, {
+		method: "GET",
+		headers: {
+			"Content-Type": "application/json",
+		},
+	})
+		.then(function (resposta) {
+			if (resposta.ok) {
+				resposta.json().then((json) => {
+					chamarGraficos("nao", json);
+				});
+			} else {
+				console.log(`#ERRO: ${resposta}`);
+				resposta.text().then((texto) => {
+					console.warn(texto);
+				});
+			}
+		})
+		.catch(function (resposta) {
+			console.log(`#ERRO: ${resposta}`);
+		});
+
+	fetch(`/funcionario/contarFuncionarios`, {
+		method: "GET",
+		headers: {
+			"Content-Type": "application/json",
+		},
+	})
+		.then(function (resposta) {
+			if (resposta.ok) {
+				resposta.json().then((json) => {
+					chamarGraficos("aceito", json);
+				});
+			} else {
+				console.log(`#ERRO: ${resposta}`);
+				resposta.text().then((texto) => {
+					console.warn(texto);
+				});
+			}
+		})
+		.catch(function (resposta) {
+			console.log(`#ERRO: ${resposta}`);
+		});
+
+	fetch(`/funcionario/contarCargos`, {
+		method: "GET",
+		headers: {
+			"Content-Type": "application/json",
+		},
+	})
+		.then(function (resposta) {
+			if (resposta.ok) {
+				resposta.json().then((json) => {
+					console.log(`TESTESSSSSSSSSSSSSSSSSSSSS`, json);
+					chamarBarra(json);
+				});
+			} else {
+				console.log(`#ERRO: ${resposta}`);
+				resposta.text().then((texto) => {
+					console.warn(texto);
+				});
+			}
+		})
+		.catch(function (resposta) {
+			console.log(`#ERRO: ${resposta}`);
+		});
+}
+
+var liv;
+var usu;
+function chamarGraficos(tipo, json) {
+	legendas = ["Aceito", "Em espera"];
+	label = ["Quantidade de aceitação"];
+	const jsonArray = Array.from(json);
+	if (tipo == "aceito") {
+		const aceito = Number(jsonArray[0]["qtd_nomes"]);
+		liv = aceito;
+	} else if (tipo == "nao") {
+		const nao = Number(jsonArray[0]["qtd_nomes_nulos"]);
+		usu = nao;
+	}
+	dados = [liv, usu];
+	gerenciarGraficosRosquinha("graficoFuncSA", dados, legendas, label);
+}
+
+function chamarBarra(json) {
+	label = ["Cargos"];
+	const jsonArray = Array.from(json);
     
-    var validacoes = true;
-    
-    if(idVar == undefined){
-        console.log("Id vazio");
-        validacoes = false;
-    }
-    if(nomeVar == undefined){
-        console.log("Nome vazio");
-        validacoes = false;
-    }
-    if(nomeVar.length > 125){
-        validacoes = false;
-        console.log("O nome deve ter no máximo 125 caracteres");
-    }
-    if(dataVar == undefined){
-        console.log("Data vazia");
-        validacoes = false;
-    }
-    if(senhaVar == undefined){
-        console.log("Senha vazio");
-        validacoes = false;
-    }
-    if(senhaVar.length > 20){
-        validacoes = false;
-        console.log("A senha deve ter no máximo 20 caracteres.");
-    }
-    if(validacoes == false){
-        console.log("PRESTA ATENÇÃO")
-    }else{
-        fetch(`/funcionario/terminarCadastro/${idVar}`,{
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                idServer:idVar,
-                nomeServer: nomeVar,
-                dataServer: dataVar,
-                senhaServer: senhaVar,
-            }),
-        }).then(function(resposta){
-            console.log("resposta: ", resposta);
-        }).catch(function (resposta){
-            console.log(`#ERRO: ${resposta}`);
-        })
-    }
-    inpId.value = "";
-    inpNome.value = "";
-    inpDate.value = "";
-    inpSenha.value = "";
+   cargo = [];
+   quantidade = [];
+   for(i in json){
+    cargo.push(json[i].funcao);
+    quantidade.push(json[i].qtd);
+   }
+
+   console.log(cargo ,`vxvxvxffvsdfvsds`, quantidade)
+    gerenciarGraficosBarra("graficoFuncoes", quantidade,cargo, label);
 }
 
-function reloadFuncionarios(){
-    textoReload.innerText = "Atualizando"
-    iconReload.style = "animation-name: girar; animation-duration: 2250ms; pointer-events: none"
-    let i = 0
-    let animacaoTexto = setInterval(()=>{
-        if(i == 2){
-            clearInterval(animacaoTexto)
-        }
-        textoReload.innerText += "."
-        i++
-    },1000)
+function reloadFuncionarios() {
+	textoReload.innerText = "Atualizando";
+	iconReload.style =
+		"animation-name: girar; animation-duration: 2250ms; pointer-events: none";
+	let i = 0;
+	let animacaoTexto = setInterval(() => {
+		if (i == 2) {
+			clearInterval(animacaoTexto);
+		}
+		textoReload.innerText += ".";
+		i++;
+	}, 1000);
 
-    setTimeout(()=>{
-        let now = new Date()
-        textoReload.innerText = "Atualizado pela ultima vez às "+now.getHours()+":"+
-        (String(now.getMinutes()).length == 1 ? "0"+now.getMinutes() : now.getMinutes())
-        iconReload.style = ""
-    },4500)
+	setTimeout(() => {
+		let now = new Date();
+		textoReload.innerText =
+			"Atualizado pela ultima vez às " +
+			now.getHours() +
+			":" +
+			(String(now.getMinutes()).length == 1
+				? "0" + now.getMinutes()
+				: now.getMinutes());
+		iconReload.style = "";
+	}, 4500);
 
-    if(iptPesquisa.value == ""){
-        listarFuncionarios()
-    } else{
-        listarFuncionarios()
-    }
+	if (iptPesquisa.value == "") {
+		listarFuncionarios();
+	} else {
+		listarFuncionarios();
+	}
 }
-setInterval(reloadFuncionarios,sessionStorage.intervalo_atualizacao)
+setInterval(reloadFuncionarios, sessionStorage.intervalo_atualizacao);
 
-function reloadSolicitacoes(){
-    textoReload.innerText = "Atualizando"
-    iconReload.style = "animation-name: girar; animation-duration: 2250ms; pointer-events: none"
-    let i = 0
-    let animacaoTexto = setInterval(()=>{
-        if(i == 2){
-            clearInterval(animacaoTexto)
-        }
-        textoReload.innerText += "."
-        i++
-    },1000)
+function reloadSolicitacoes() {
+	textoReload.innerText = "Atualizando";
+	iconReload.style =
+		"animation-name: girar; animation-duration: 2250ms; pointer-events: none";
+	let i = 0;
+	let animacaoTexto = setInterval(() => {
+		if (i == 2) {
+			clearInterval(animacaoTexto);
+		}
+		textoReload.innerText += ".";
+		i++;
+	}, 1000);
 
-    setTimeout(()=>{
-        let now = new Date()
-        textoReload.innerText = "Atualizado pela ultima vez às "+now.getHours()+":"+
-        (String(now.getMinutes()).length == 1 ? "0"+now.getMinutes() : now.getMinutes())
-        iconReload.style = ""
-    },4500)
+	setTimeout(() => {
+		let now = new Date();
+		textoReload.innerText =
+			"Atualizado pela ultima vez às " +
+			now.getHours() +
+			":" +
+			(String(now.getMinutes()).length == 1
+				? "0" + now.getMinutes()
+				: now.getMinutes());
+		iconReload.style = "";
+	}, 4500);
 
-    listarSolicitacoes();
-}setInterval(reloadSolicitacoes,sessionStorage.intervalo_atualizacao);
+	listarSolicitacoes();
+}
+setInterval(reloadSolicitacoes, sessionStorage.intervalo_atualizacao);
