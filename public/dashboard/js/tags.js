@@ -1,4 +1,4 @@
-
+window.clearInterval(1)
 
 function carregarDashboardTags(){
     frameTags.contentWindow.document.body.innerHTML = `
@@ -260,7 +260,7 @@ function carregarServidoresModalAdicionarTag(){
                         <span>
                             <input type="checkbox" id="chkb${json[i].id_servidor}">
                             <h3>${json[i].codigo}</h3>
-                            <p>${json[i].qtdTags}
+                            <p>${json[i].qtdTag}
                              outra${plural}
                              tag${plural}
                              associada${plural}</p>
@@ -494,6 +494,7 @@ function excluirTag(idTag, nomeTag){
                         icon: "success"
                     })
                     carregarTagsModalExcl()
+                    tagsPorNome()
                 }
                 else { resposta.text().then(texto => {
                     console.warn(texto)

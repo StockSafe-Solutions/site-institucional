@@ -192,12 +192,11 @@ function excluirTag(req, res){
 function historicoAlerta(req, res) {
     tagModel.historicoAlerta().then(
         function (resultado) {
-            console.log(`\n Resultados encontrados: ${resultado.length}`);
-            console.log(`Resultados: ${JSON.stringify(resultado)}`);
-
             if (resultado.length > 0) {
-                console.log(resultado);
+                console.log(`\n Resultados encontrados: ${resultado.length}`);
+                console.log(`Resultados: ${JSON.stringify(resultado)}`);
                 res.json(resultado);
+
             } else if (resultado.length == 0){
                 res.status(204).send()
             } else{

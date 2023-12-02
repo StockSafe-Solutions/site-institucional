@@ -6,9 +6,17 @@ function carregarHistorico(){
     fetch("../tag/historicoAlerta",{
         method: "GET",
     }).then(function (resposta) {
-        if(resposta.ok){
+        if(resposta.status == 200){
             resposta.json().then( json => {
                 carregarLocalizacao(json)
+            })
+        } else if(resposta.status == 204){
+            swal({
+                title: 'Nenhum alerta encontrado',
+                text: 'Seus servidores não apresentaram nenhum alerta nos últimos 30 dias.',
+                icon: 'warning'
+            }).then(()=>{
+                fecharModal("hist")
             })
         }
     }).catch(function (erro) {

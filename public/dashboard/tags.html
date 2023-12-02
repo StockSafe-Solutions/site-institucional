@@ -37,7 +37,9 @@
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
                 <div class="container-fluid">
-                    <div id="containerAlertas" style="display: none"></div>
+                    <div id="containerAlertas" style="display: none">
+                        <p id="textoReload"></p>
+                    </div>
                     <div id="kpisTags">
                         <div id="kpi1">
                             <h3>Tag com mais servidores</h3>
@@ -132,11 +134,11 @@
                     <input type="text" id="iptModalAddTagNomeTag">
                     <label>Selecionar cor da tag</label>
                     <div id="seletorCor">
-                        <span style="background-color: rgb(75, 181, 51);" onclick="selecionarCor(0)"></span>
+                        <span style="background-color: 'rgb(75, 181, 51)';" onclick="selecionarCor(0)"></span>
                         <span style="background-color: rgb(255, 225, 31);" onclick="selecionarCor(1)"></span>
-                        <span style="background-color: #FF2F2F;" onclick="selecionarCor(2)"></span>
+                        <span style="background-color: rgb(255, 46, 46);" onclick="selecionarCor(2)"></span>
                         <span class="bordaSeletor" style="background-color: rgb(196, 196, 196);" onclick="selecionarCor(3)"></span>
-                        <span style="background-color: #6A6AC6;" onclick="selecionarCor(4)"></span>
+                        <span style="background-color: rgb(107, 107, 199)" onclick="selecionarCor(4)"></span>
                         <span style="background-color: rgb(7, 77, 85);" onclick="selecionarCor(5)"></span>
                         <span style="background-color: rgb(92, 90, 66);" onclick="selecionarCor(6)"></span>
                         <span style="background-color: rgb(51, 51, 51);" onclick="selecionarCor(7)"></span>
