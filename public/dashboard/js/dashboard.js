@@ -80,22 +80,9 @@ function carregarViaGET(urlKPIs, urlGraficos){
         }
     }).then(function (resposta) {
         if (resposta.ok) {
-            resposta.json().then(json => {
-                json_cpu = json[0]
-                uso_cpu = []
-                for(i in json_cpu){
-                    uso_cpu.push(json_cpu[i].uso_da_cpu)
-                }
-
-                json_ram = json[1]
-                uso_ram = []
-                for(i in json_ram){
-                    uso_ram.push(json_ram[i].uso_da_ram)
-                }
-
-                gerenciarGraficos('graficoCPU',uso_cpu)
-                gerenciarGraficos('graficoRAM',uso_ram)
-            });
+           resposta.json().then((json) => {
+					chamarGraficos(json);
+				});
         }
         else{
             resposta.text().then(texto => { console.warn(texto) })}}).catch(function (erro) {
@@ -247,6 +234,27 @@ function definirKPIs(tipo, json) {
         KPI1.style = "display: none"
         nomeKPI2.innerText = "Uso da banda"
     }
+}
+
+function chamarGraficos(json) {
+	json_cpu = json[0];
+	uso_cpu = [];
+	data_cpu = [];
+	for (i in json_cpu) {
+		uso_cpu.push(json_cpu[i].uso_da_cpu);
+		data_cpu.push(json_cpu[i].dataDados);
+	}
+
+	json_ram = json[1];
+	uso_ram = [];
+	data_ram = [];
+	for (i in json_ram) {
+		uso_ram.push(json_ram[i].uso_da_ram);
+		data_ram.push(json_ram[i].dataDados);
+	}
+
+	gerenciarGraficos("graficoCPU", uso_cpu, data_cpu);
+	gerenciarGraficos("graficoRAM", uso_ram, data_ram);
 }
 
 function reloadDashboard() {

@@ -72,34 +72,37 @@ function abrirModal(modal, codigo) {
 function fecharModal(modal) {
     let idDaModal = ""
     switch (modal) {
-        case "cad":
-            idDaModal = "modalCadastro"
-            break
-        case "dash":
-            idDaModal = "modalDashboard"
-            break
-        case "func":
-            idDaModal = "modalCadFunc"
-            break
-        case "solicitacoes":
-            idDaModal = "modalSolic"
-            break;    
-        case "editFunc":
-            idDaModal = "modalEditFunc"
-            break;
-        case "hist":
-            idDaModal = "modalTagHistorico"
-            break;
-        case "tagAdd":
-            idDaModal = "modalTagNova"
-            break;
-        case "tagExcl":
-            idDaModal = "modalTagExcluir"
-            break;
-        case "grafico":
-            idDaModal = "modalTagExcluir"
-            break;
-    }
+			case "cad":
+				idDaModal = "modalCadastro";
+				break;
+			case "dash":
+				idDaModal = "modalDashboard";
+				break;
+			case "func":
+				idDaModal = "modalCadFunc";
+				break;
+			case "solicitacoes":
+				idDaModal = "modalSolic";
+				break;
+			case "editFunc":
+				idDaModal = "modalEditFunc";
+				break;
+			case "hist":
+				idDaModal = "modalTagHistorico";
+				break;
+			case "tagAdd":
+				idDaModal = "modalTagNova";
+				break;
+			case "tagExcl":
+				idDaModal = "modalTagExcluir";
+				break;
+			case "grafico":
+				idDaModal = "modalTagExcluir";
+				break;
+			case "graficoFunc":
+				idDaModal = "modalGraficoFunc";
+				break;
+		}
     let modalEscolhida = document.getElementById(idDaModal)
     modalEscolhida.style = "display: flex; animation-name: sumir; animation-duration: 300ms;"
             setTimeout(()=>{

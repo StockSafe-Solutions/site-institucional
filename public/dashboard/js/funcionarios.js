@@ -1,5 +1,3 @@
-
-
 function listarFuncionarios() {
 	fetch("/funcionario/listar", {
 		method: "GET",
@@ -138,7 +136,7 @@ function semiCadastrar() {
 	var textoErro = "";
 	var email = inpEmail.value;
 	var funcao = inpFuncao.value;
-
+	console.log(email, funcao)
 	if (email == undefined || funcao == undefined) {
 		textoErro += "Campo inválido";
 		return;
@@ -147,7 +145,6 @@ function semiCadastrar() {
 		textoErro += "Email inválido.";
 		return;
 	}
-
 	fetch("/funcionario/enviarEmail", {
 		method: "POST",
 		headers: {
@@ -334,16 +331,16 @@ function chamarGraficos(tipo, json) {
 function chamarBarra(json) {
 	label = ["Cargos"];
 	const jsonArray = Array.from(json);
-    
-   cargo = [];
-   quantidade = [];
-   for(i in json){
-    cargo.push(json[i].funcao);
-    quantidade.push(json[i].qtd);
-   }
 
-   console.log(cargo ,`vxvxvxffvsdfvsds`, quantidade)
-    gerenciarGraficosBarra("graficoFuncoes", quantidade,cargo, label);
+	cargo = [];
+	quantidade = [];
+	for (i in json) {
+		cargo.push(json[i].funcao);
+		quantidade.push(json[i].qtd);
+	}
+
+	console.log(cargo, `vxvxvxffvsdfvsds`, quantidade);
+	gerenciarGraficosBarra("graficoFuncoes", quantidade, cargo, label);
 }
 
 function reloadFuncionarios() {
