@@ -102,22 +102,27 @@
                             <i class="fa-solid fa-filter"></i>
                         </div>
                         <select>
-                            <option id="optAz" value="opcao1" onclick="organizarLista(1)">
+                            <option onclick="organizarLista(1)">
+                                PID Crescente
+                            </option>
+                            <option onclick="organizarLista(2)">
+                                PID Decrescente
+                            </option>
+                            <option onclick="organizarLista(3)">
                                 Ordem: A → Z
                             </option>
-                            <option id="optZa" value="opcao2" onclick="organizarLista(2)">
+                            <option onclick="organizarLista(4)">
                                 Ordem: Z → A
                             </option>
-                            <option id="optCpu" value="opcao3" onclick="organizarLista(3)">
+                            <option onclick="organizarLista(5)">
                                 Maior consumo de CPU
                             </option>
-                            <option id="optRam" value="opcao4" onclick="organizarLista(4)">
+                            <option onclick="organizarLista(6)">
                                 Maior consumo de RAM
                             </option>
                         </select>
                     </div>
                 </div>
-                
                 
                 <div id="table_processo">
                     <table>

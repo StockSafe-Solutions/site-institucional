@@ -9,6 +9,7 @@ function listarProcessos(codServidor, orderByString){
     JOIN tb_servidor AS serv 
     ON proc.fk_servidor = serv.id_servidor
     WHERE serv.codigo = '${codServidor}' 
+    AND data_hora >= NOW() - INTERVAL 1 MINUTE
     ${orderByString};
     `
     console.log("Executando a instrução SQL: \n" + instrucao);
