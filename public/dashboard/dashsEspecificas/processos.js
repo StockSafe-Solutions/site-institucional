@@ -1,5 +1,5 @@
 var graficoProcesso;
-var orderByString = "ORDER BY proc.pid_proc";
+var orderByString = "ORDER BY p.pid_proc";
 
 function carregarPaginaProcessos(){
     indiceParm = location.href.indexOf('?');
@@ -254,22 +254,22 @@ function organizarLista(modo) {
 
     switch (modo){
         case 1:
-            orderByString = "ORDER BY proc.pid_proc";
+            orderByString = "ORDER BY p.pid_proc";
             break;
         case 2:
-            orderByString = "ORDER BY proc.pid_proc DESC";
+            orderByString = "ORDER BY p.pid_proc DESC";
             break;
         case 3:
-            orderByString = "ORDER BY proc.nome_proc";
+            orderByString = "ORDER BY p.nome_proc";
             break;
         case 4:
-            orderByString = "ORDER BY proc.nome_proc DESC";
+            orderByString = "ORDER BY p.nome_proc DESC";
             break;
         case 5:
-            orderByString = "ORDER BY proc.uso_cpu DESC";
+            orderByString = "ORDER BY p.uso_cpu DESC";
             break;
         case 6:
-            orderByString = "ORDER BY proc.uso_ram DESC";
+            orderByString = "ORDER BY p.uso_ram DESC";
             break;
     }
 
