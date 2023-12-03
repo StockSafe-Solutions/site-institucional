@@ -8,12 +8,15 @@ function carregarPagina(){
     carregarMenu("rede", false, params)
     //CARREGANDO O MENU, false PARA PAG. ESPECÍFICA
 
-    carregarKPIs(params)
+    carregarKPIs(params, "kpiBandaLarga", "bandaLarga")
+    carregarKPIs(params, "kpiPacotesEnviados", "pacotesEnviados")
+    carregarKPIs(params, "kpiPacotesRecebidos", "pacotesRecebidos")
+    carregarKPIs(params, "kpiTaxaTransferencia", "taxaTransferencia")
 }
 
-function carregarKPIs(params){
+function carregarKPIs(params, url, id){
 
-    fetch(`../../rede/kpiBandaLarga/${params}`, {
+    fetch(`../../rede/${url}/${params}`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -21,7 +24,10 @@ function carregarKPIs(params){
     }).then(function (resposta) {
         if (resposta.ok) {
             console.log(resposta);
-            console.log(resposta.json())
+            resposta.json().then(json => {
+                console.log(json)
+                document.getElementById(id).innerHTML = Math.round((json[0].media * 100) / 100).toFixed(0);
+            });
         }
         else {
             resposta.text().then(texto => {
@@ -30,5 +36,5 @@ function carregarKPIs(params){
         }
     }).catch(function (erro) {
               console.log(erro)
-          })
+    })
 }

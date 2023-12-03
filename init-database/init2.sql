@@ -21,7 +21,7 @@ INSERT INTO tb_categoria VALUES
 		(3, "Uso da RAM", "%"),
 		(4, "Taxa de transferencia", "MB/s"),
                 (5, "Pacotes recebidos", null),
-                (6, "Uso da banda larga", "%");
+                (6, "Uso da banda larga", "MB/s");
 
 INSERT INTO tb_monitorar VALUES 
 		(2000,1),(2000,2),(2000,3),(2000,4),

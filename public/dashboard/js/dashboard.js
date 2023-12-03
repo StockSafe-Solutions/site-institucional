@@ -33,6 +33,7 @@ function carregarDados(){
             resposta.json().then(json => {
                 if(urlKPIs == "../dash/kpiGeral"){
                     definirKPIs("geral",json)
+                    console.log(json)
                 } else{
                     definirKPIs("espec",json)
                 }
