@@ -131,6 +131,10 @@ h4 {
 
 /* =============================================== Tabela de processos */
 
+.processoContent {
+    padding: 1%;
+}
+
 #table_processo {
     height: 45vh;
     border: 1px #001a46 solid;

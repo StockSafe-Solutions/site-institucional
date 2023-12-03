@@ -38,33 +38,44 @@ function carregarProcessos(processos) {
 }
 
 function atualizarKpis(valor) {
-    const kpi1 = document.getElementById("valorKPI1");
-    const kpi2 = document.getElementById("valorKPI2");
-    const kpi3 = document.getElementById("valorKPI3");
-    const kpi4 = document.getElementById("valorKPI4");
+
+    const kpi1 = document.getElementById("KPI1");
+    const kpi2 = document.getElementById("KPI2");
+    const kpi3 = document.getElementById("KPI3");
+    const kpi4 = document.getElementById("KPI4");
+
+    const valorKpi1 = document.getElementById("valorKPI1");
+    const valorKpi2 = document.getElementById("valorKPI2");
+    const valorKpi3 = document.getElementById("valorKPI3");
+    const valorKpi4 = document.getElementById("valorKPI4");
 
     const baseKpi3 = document.getElementById("baseKPI3");
     const baseKpi4 = document.getElementById("baseKPI4");
 
     if (valor[0] == undefined){
 
-        kpi1.innerHTML = "0%";
-        kpi2.innerHTML = "0%";
-        kpi3.innerHTML = "Nenhum";
-        kpi4.innerHTML = "Nenhum";
+        valorKpi1.innerHTML = "0%";
+        valorKpi2.innerHTML = "0%";
+        valorKpi3.innerHTML = "Nenhum";
+        valorKpi4.innerHTML = "Nenhum";
 
         baseKpi3.innerHTML = `0% de uso`
         baseKpi4.innerHTML = `0% de uso`
     } else {
 
-        kpi1.innerHTML = parseInt(valor[0].uso_total_cpu) + "%";
-        kpi2.innerHTML = parseInt(valor[0].uso_total_ram) + "%";
-        kpi3.innerHTML = valor[0].nome_cpu;
-        kpi4.innerHTML = valor[0].nome_ram;
+        valorKpi1.innerHTML = parseInt(valor[0].uso_total_cpu) + "%";
+        valorKpi2.innerHTML = parseInt(valor[0].uso_total_ram) + "%";
+        valorKpi3.innerHTML = valor[0].nome_cpu;
+        valorKpi4.innerHTML = valor[0].nome_ram;
 
         baseKpi3.innerHTML = `com ${parseInt(valor[0].proc_total_cpu)}% de uso`
         baseKpi4.innerHTML = `com ${parseInt(valor[0].proc_total_ram)}% de uso` 
     }
+
+    kpi1.className = "kpiBoa";
+    kpi2.className = "kpiBoa";
+    kpi3.className = "kpiBoa";
+    kpi4.className = "kpiBoa";
 }
 
 function carregarGraficoProcesso(valor) {
