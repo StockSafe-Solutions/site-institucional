@@ -1,4 +1,4 @@
-function carregarExemplo(){
+function carregarPagina(){
     indiceParm = location.href.indexOf('?')
     params = location.href.slice(indiceParm+1,indiceParm+7)
     // PEGANDO O PARAMETRO GET
