@@ -14,6 +14,7 @@ var funcionarioRouter = require("./src/routes/funcionario");
 var configuracaoRouter = require("./src/routes/configuracao")
 var dashRouter = require("./src/routes/dash")
 var alertaRouter = require("./src/routes/alerta")
+var redeRouter = require("./src/routes/rede")
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -27,6 +28,7 @@ app.use("/funcionario", funcionarioRouter)
 app.use("/configuracao", configuracaoRouter)
 app.use("/dash", dashRouter)
 app.use("/alerta", alertaRouter)
+app.use("/rede", redeRouter)
 
 app.listen(PORTA, function () {
     console.log(`Servidor do seu site já está rodando! Acesse o caminho a seguir para visualizar: http://localhost:${PORTA} \n
