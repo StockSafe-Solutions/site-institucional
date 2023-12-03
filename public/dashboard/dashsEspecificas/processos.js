@@ -66,6 +66,11 @@ function atualizarKpis(valor) {
 
         baseKpi3.innerHTML = `0% de uso`
         baseKpi4.innerHTML = `0% de uso`
+
+        kpi1.className = "kpiMuitoRuim";
+        kpi2.className = "kpiMuitoRuim";
+        kpi3.className = "kpiMuitoRuim";
+        kpi4.className = "kpiMuitoRuim";
     } else {
 
         valorKpi1.innerHTML = parseInt(valor[0].uso_total_cpu) + "%";
@@ -75,12 +80,12 @@ function atualizarKpis(valor) {
 
         baseKpi3.innerHTML = `com ${parseInt(valor[0].proc_total_cpu)}% de uso`
         baseKpi4.innerHTML = `com ${parseInt(valor[0].proc_total_ram)}% de uso` 
-    }
 
-    kpi1.className = "kpiBoa";
-    kpi2.className = "kpiBoa";
-    kpi3.className = "kpiBoa";
-    kpi4.className = "kpiBoa";
+        kpi1.className = "kpiBoa";
+        kpi2.className = "kpiBoa";
+        kpi3.className = "kpiBoa";
+        kpi4.className = "kpiBoa";
+    }
 
     // Definir kpi1
     if (valor[0].uso_total_cpu >= altoRuim || valor[0].uso_total_cpu <= baixoRuim) {
