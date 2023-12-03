@@ -52,6 +52,11 @@ function atualizarKpis(valor) {
     const baseKpi3 = document.getElementById("baseKPI3");
     const baseKpi4 = document.getElementById("baseKPI4");
 
+    const baixoRuim = 20;
+    const baixoMuitoRuim = 10;
+    const altoRuim = 70;
+    const altoMuitoRuim = 90;
+
     if (valor[0] == undefined){
 
         valorKpi1.innerHTML = "0%";
@@ -76,6 +81,42 @@ function atualizarKpis(valor) {
     kpi2.className = "kpiBoa";
     kpi3.className = "kpiBoa";
     kpi4.className = "kpiBoa";
+
+    // Definir kpi1
+    if (valor[0].uso_total_cpu >= altoRuim || valor[0].uso_total_cpu <= baixoRuim) {
+        kpi1.className = "kpiRuim";
+    } else if (valor[0].uso_total_cpu >= altoMuitoRuim || valor[0].uso_total_cpu <= baixoMuitoRuim){
+        kpi1.className = "kpiMuitoRuim";
+    } else {
+        kpi1.className = "kpiBoa";
+    }
+
+    // Definir kpi2
+    if (valor[0].uso_total_ram >= altoRuim || valor[0].uso_total_ram <= baixoRuim) {
+        kpi2.className = "kpiRuim";
+    } else if (valor[0].uso_total_ram >= altoMuitoRuim || valor[0].uso_total_ram <= baixoMuitoRuim){
+        kpi2.className = "kpiMuitoRuim";
+    } else {
+        kpi2.className = "kpiBoa";
+    }
+
+    // Definir kpi3
+    if (valor[0].proc_total_cpu >= altoRuim || valor[0].proc_total_cpu >= baixoRuim) {
+        kpi3.className = "kpiRuim";
+    } else if (valor[0].proc_total_cpu >= altoMuitoRuim || valor[0].proc_total_cpu >= baixoMuitoRuim){
+        kpi3.className = "kpiMuitoRuim";
+    } else {
+        kpi3.className = "kpiBoa";
+    }
+
+    // Definir kpi4
+    if (valor[0].proc_total_ram >= altoRuim || valor[0].proc_total_ram >= baixoRuim) {
+        kpi4.className = "kpiRuim";
+    } else if (valor[0].proc_total_ram >= altoMuitoRuim || valor[0].proc_total_ram >= baixoMuitoRuim){
+        kpi4.className = "kpiMuitoRuim";
+    } else {
+        kpi4.className = "kpiBoa";
+    }
 }
 
 function carregarGraficoProcesso(valor) {
