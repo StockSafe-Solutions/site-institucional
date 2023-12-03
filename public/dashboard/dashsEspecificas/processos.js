@@ -178,10 +178,11 @@ function atualizarDadosProcessos(params) {
 }
 
 function dropdownLista() {
-    var dropdown = document.getElementById('dropdown')
+    var dropdown = document.querySelector('.dropdown')
 
     if (dropdown.style.display == 'flex') {
         dropdown.style.display = 'none';
+
     } else {
         dropdown.style.display = 'flex';
     }
@@ -203,19 +204,15 @@ function organizarLista(modo) {
     switch (modo){
         case 1:
             orderByString = "ORDER BY proc.nome_proc"
-            divAz.style.backgroundColor = "#486699"; //escuro
             break;
         case 2:
             orderByString = "ORDER BY proc.nome_proc DESC"
-            divAz.style.backgroundColor = "#577bb9"; //claro
             break;
         case 3:
             orderByString = "ORDER BY proc.uso_cpu DESC"
-            divAz.style.backgroundColor = "#577bb9";
             break;
         case 4:
             orderByString = "ORDER BY proc.uso_ram DESC";
-            divAz.style.backgroundColor = "#577bb9";
             break;
     }
 
@@ -242,5 +239,19 @@ function organizarLista(modo) {
     }).catch(function (erro) {
         console.log(erro);
     })
-
 }
+
+var divFixa = document.querySelector('.dropdown');
+var ultimaPosicaoScroll = window.scrollY;
+
+window.onscroll = function() {
+  var novaPosicaoScroll = window.scrollY;
+
+  if (novaPosicaoScroll > ultimaPosicaoScroll) {
+    divFixa.style.top = '-100%';
+  } else {
+    divFixa.style.top = '0';
+  }
+
+  ultimaPosicaoScroll = novaPosicaoScroll;
+};

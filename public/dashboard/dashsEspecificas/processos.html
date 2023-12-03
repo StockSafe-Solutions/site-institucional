@@ -97,26 +97,24 @@
                 <div id="above_list">
                     <h4>Lista de processos - <span id="qtdProcessos"></span></h4>
                     
-                    <div id="icone_filtro" onclick="dropdownLista()">
-                        <h5>Filtro</h5>
-                        <i class="fa-solid fa-filter"></i>
-                    </div>
-                    <div id="dropdown">
-                        <div id="optAz" onclick="organizarLista(1, this)" style="background-color: #486699;"> 
-                            Ordem: A → Z
+                    <div id="filtro">
+                        <div>
+                            <i class="fa-solid fa-filter"></i>
                         </div>
-                        <hr>
-                        <div id="optZa" onclick="organizarLista(2, this)">
-                            Ordem: Z → A
-                        </div>
-                        <hr>
-                        <div id="optCpu" onclick="organizarLista(3, this)">
-                            Maior consumo <br>de CPU
-                        </div>
-                        <hr>
-                        <div id="optRam" onclick="organizarLista(4, this)">
-                            Maior consumo <br>de RAM
-                        </div>
+                        <select>
+                            <option id="optAz" value="opcao1" onclick="organizarLista(1)">
+                                Ordem: A → Z
+                            </option>
+                            <option id="optZa" value="opcao2" onclick="organizarLista(2)">
+                                Ordem: Z → A
+                            </option>
+                            <option id="optCpu" value="opcao3" onclick="organizarLista(3)">
+                                Maior consumo de CPU
+                            </option>
+                            <option id="optRam" value="opcao4" onclick="organizarLista(4)">
+                                Maior consumo de RAM
+                            </option>
+                        </select>
                     </div>
                 </div>
                 
