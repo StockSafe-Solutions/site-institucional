@@ -136,7 +136,7 @@ function semiCadastrar() {
 	var textoErro = "";
 	var email = inpEmail.value;
 	var funcao = inpFuncao.value;
-	console.log(email, funcao)
+
 	if (email == undefined || funcao == undefined) {
 		textoErro += "Campo inválido";
 		return;
@@ -296,7 +296,7 @@ function carregarDadosFunc() {
 		.then(function (resposta) {
 			if (resposta.ok) {
 				resposta.json().then((json) => {
-					console.log(`TESTESSSSSSSSSSSSSSSSSSSSS`, json);
+					console.log( json);
 					chamarBarra(json);
 				});
 			} else {
@@ -330,16 +330,12 @@ function chamarGraficos(tipo, json) {
 
 function chamarBarra(json) {
 	label = ["Cargos"];
-	const jsonArray = Array.from(json);
-
 	cargo = [];
 	quantidade = [];
 	for (i in json) {
 		cargo.push(json[i].funcao);
 		quantidade.push(json[i].qtd);
 	}
-
-	console.log(cargo, `vxvxvxffvsdfvsds`, quantidade);
 	gerenciarGraficosBarra("graficoFuncoes", quantidade, cargo, label);
 }
 
