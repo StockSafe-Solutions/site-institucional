@@ -171,10 +171,10 @@ function carregarMenu(pagina, geral, codServidor) {
     accordionSidebar.className = "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
     accordionSidebar.innerHTML = conteudo;
     
-    // criarContainerAlertas()
-    // setInterval(()=>{
-    //     atualizarAlertas()
-    // },sessionStorage.intervalo_atualizacao)
+    criarContainerAlertas()
+    setInterval(()=>{
+        atualizarAlertas()
+    },sessionStorage.intervalo_atualizacao)
 
     // BOTÃO DE AJUDA      
       window.onclick = function(event) {
@@ -198,179 +198,179 @@ function switchModalHelpDesk(){
 
 // ========================================================== ALERTAS
 
-// function criarContainerAlertas() {
-//     containerAlertas.innerHTML = `
-//     <p id="contadorAlerta" onclick="quadroAlertas()"></p>
-//     <i class="fa-solid fa-bell" onclick="quadroAlertas()" id="iconQuadroAlertas"></i>
-//     <ul id="quadroDeAlertas"></ul>`;
-//     atualizarAlertas();
-// }
+function criarContainerAlertas() {
+    containerAlertas.innerHTML = `
+    <p id="contadorAlerta" onclick="quadroAlertas()"></p>
+    <i class="fa-solid fa-bell" onclick="quadroAlertas()" id="iconQuadroAlertas"></i>
+    <ul id="quadroDeAlertas"></ul>`;
+    atualizarAlertas();
+}
 
-// function carregarAlertas(alertas) {
-//     quadroDeAlertas.innerHTML = "";
-//     contadorAlerta.innerText = alertas.length;
+function carregarAlertas(alertas) {
+    quadroDeAlertas.innerHTML = "";
+    contadorAlerta.innerText = alertas.length;
 
-//     alertas.forEach((alerta, i) => {
-//         let tituloAlerta = "";
-//         let corAlerta = "";
-//         switch (alerta.nivel_alerta) {
-//             case 0:
-//                 tituloAlerta = "Normal";
-//                 corAlerta = "#319e41"; // Verde
-//                 break;
-//             case 1:
-//                 tituloAlerta = "Atenção";
-//                 corAlerta = "#ccc34d"; // Amarelo
-//                 break;
-//             case 2:
-//                 tituloAlerta = "Cuidado";
-//                 corAlerta = "#f7ae04"; // Laranja
-//                 break;
-//             case 3:
-//                 tituloAlerta = "Perigo";
-//                 corAlerta = "#f73504"; // Vermelho
-//         }
+    alertas.forEach((alerta, i) => {
+        let tituloAlerta = "";
+        let corAlerta = "";
+        switch (alerta.nivel_alerta) {
+            case 0:
+                tituloAlerta = "Normal";
+                corAlerta = "#319e41"; Verde
+                break;
+            case 1:
+                tituloAlerta = "Atenção";
+                corAlerta = "#ccc34d"; Amarelo
+                break;
+            case 2:
+                tituloAlerta = "Cuidado";
+                corAlerta = "#f7ae04"; Laranja
+                break;
+            case 3:
+                tituloAlerta = "Perigo";
+                corAlerta = "#f73504"; Vermelho
+        }
 
-//         quadroDeAlertas.innerHTML += `
-//         <li id="alerta${alerta.id_alerta}"
-//         style="background-color: ${corAlerta}; cursor: pointer;"
-//         onclick="visualizarAlerta(${alerta.id_alerta})"
-//         onmouseover="expandirAlerta(${alerta.id_alerta})"
-//         onmouseleave="comprimirAlerta(${alerta.id_alerta})">
-//             <u>
-//                 <h4>
-//                     ${tituloAlerta}
-//                 </h4>
-//             </u>
-//             <span>
-//                 <p>${alerta.descricao}</p>
-//                 <i id="iconAlerta${alerta.id_alerta}" class="fa-solid fa-plus"></i>
-//             </span>
-//             <p>Servidor: ${alerta.codigo}</p>
-//             <p>Horário: ${formatarDataHora(alerta.data_hora)}</p>
-//         </li>`;
+        quadroDeAlertas.innerHTML += `
+        <li id="alerta${alerta.id_alerta}"
+        style="background-color: ${corAlerta}; cursor: pointer;"
+        onclick="visualizarAlerta(${alerta.id_alerta})"
+        onmouseover="expandirAlerta(${alerta.id_alerta})"
+        onmouseleave="comprimirAlerta(${alerta.id_alerta})">
+            <u>
+                <h4>
+                    ${tituloAlerta}
+                </h4>
+            </u>
+            <span>
+                <p>${alerta.descricao}</p>
+                <i id="iconAlerta${alerta.id_alerta}" class="fa-solid fa-plus"></i>
+            </span>
+            <p>Servidor: ${alerta.codigo}</p>
+            <p>Horário: ${formatarDataHora(alerta.data_hora)}</p>
+        </li>`;
 
-//     });
+    });
 
-//     if (alertas.length === 0) {
-//         quadroDeAlertas.innerHTML += `
-//         <p><br>Nenhum alerta encontrado</p>`;
-//     }
-// }
+    if (alertas.length === 0) {
+        quadroDeAlertas.innerHTML += `
+        <p><br>Nenhum alerta encontrado</p>`;
+    }
+}
 
-// function atualizarAlertas() {
-//     if (iconQuadroAlertas.className.indexOf("iconQuadroAberto") === -1) {
-//         iconQuadroAlertas.className = "fa-solid fa-arrows-rotate";
-//         iconQuadroAlertas.style = "animation-name: girar; pointer-events: none";
-//         contadorAlerta.style = "display: none";
+function atualizarAlertas() {
+    if (iconQuadroAlertas.className.indexOf("iconQuadroAberto") === -1) {
+        iconQuadroAlertas.className = "fa-solid fa-arrows-rotate";
+        iconQuadroAlertas.style = "animation-name: girar; pointer-events: none";
+        contadorAlerta.style = "display: none";
 
-//         setTimeout(() => {
-//             const alertas = [
-//                 fetch("/alerta/listarAlertas", {
-//                     method: "GET",
-//                     headers: {
-//                         "Content-Type": "application/json"
-//                     }
-//                 }).then(function (resposta) {
-//                     if (resposta.ok) {
-//                         console.log(resposta);
-//                         resposta.json().then(json => {
-//                             console.log(json)
-//                             carregarAlertas(json)
-//                         });
-//                     }
-//                     else {
-//                         resposta.text().then(texto => {
-//                             console.warn(texto)
-//                         })
-//                     }
-//                 }).catch(function (erro) {
-//                     console.log(erro);
-//                 })
-//             ];
-//             carregarAlertas(alertas);
+        setTimeout(() => {
+            const alertas = [
+                fetch("/alerta/listarAlertas", {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                }).then(function (resposta) {
+                    if (resposta.ok) {
+                        console.log(resposta);
+                        resposta.json().then(json => {
+                            console.log(json)
+                            carregarAlertas(json)
+                        });
+                    }
+                    else {
+                        resposta.text().then(texto => {
+                            console.warn(texto)
+                        })
+                    }
+                }).catch(function (erro) {
+                    console.log(erro);
+                })
+            ];
+            carregarAlertas(alertas);
 
-//             setTimeout(() => {
-//                 iconQuadroAlertas.className = "fa-solid fa-bell";
-//                 iconQuadroAlertas.style = "";
-//                 contadorAlerta.style = "";
-//             }, 1000);
-//         }, 500);
-//     }
-// }
+            setTimeout(() => {
+                iconQuadroAlertas.className = "fa-solid fa-bell";
+                iconQuadroAlertas.style = "";
+                contadorAlerta.style = "";
+            }, 1000);
+        }, 500);
+    }
+}
 
-// var quadroAberto = false
-// function quadroAlertas(){
-//     if(!quadroAberto){
-//         quadroDeAlertas.style = "display: flex";
-//         iconQuadroAlertas.className += " iconQuadroAberto"
-//         quadroAberto = true
-//     } else{
-//         quadroDeAlertas.style = "";
-//         iconQuadroAlertas.className = "fa-solid fa-bell"
-//         quadroAberto = false
-//         atualizarAlertas()
-//     }
-// }
+var quadroAberto = false
+function quadroAlertas(){
+    if(!quadroAberto){
+        quadroDeAlertas.style = "display: flex";
+        iconQuadroAlertas.className += " iconQuadroAberto"
+        quadroAberto = true
+    } else{
+        quadroDeAlertas.style = "";
+        iconQuadroAlertas.className = "fa-solid fa-bell"
+        quadroAberto = false
+        atualizarAlertas()
+    }
+}
 
-// function expandirAlerta(id){
-//     alertaAlvo = document.getElementById(`alerta${id}`)
-//     icon = document.getElementById(`iconAlerta${id}`)
+function expandirAlerta(id){
+    alertaAlvo = document.getElementById(`alerta${id}`)
+    icon = document.getElementById(`iconAlerta${id}`)
 
-//     icon.style = "animation-name: rodar";
-//     alertaAlvo.className = "alertaAberto"
-//     setTimeout(()=>{
-//         icon.className = "fa-solid fa-minus aberto"
-//         icon.style = ""
-//     },100)
-// }
+    icon.style = "animation-name: rodar";
+    alertaAlvo.className = "alertaAberto"
+    setTimeout(()=>{
+        icon.className = "fa-solid fa-minus aberto"
+        icon.style = ""
+    },100)
+}
 
-// function comprimirAlerta(id){
+function comprimirAlerta(id){
 
-//     alertaAlvo = document.getElementById(`alerta${id}`)
-//     icon = document.getElementById(`iconAlerta${id}`)
+    alertaAlvo = document.getElementById(`alerta${id}`)
+    icon = document.getElementById(`iconAlerta${id}`)
 
-//     icon.style = "animation-name: rodar; animation-direction: reverse";
-//     alertaAlvo.className = "";
-//     setTimeout(()=>{
-//         icon.className = "fa-solid fa-plus"
-//         icon.style = ""
-//     },100)
-// }
+    icon.style = "animation-name: rodar; animation-direction: reverse";
+    alertaAlvo.className = "";
+    setTimeout(()=>{
+        icon.className = "fa-solid fa-plus"
+        icon.style = ""
+    },100)
+}
 
-// function visualizarAlerta(id) {
+function visualizarAlerta(id) {
 
-//     alertaAlvo = document.getElementById(`alerta${id}`);
+    alertaAlvo = document.getElementById(`alerta${id}`);
 
-//     console.log("Opa, notificação clicada!")
+    console.log("Opa, notificação clicada!")
 
-//     console.log(id);
+    console.log(id);
 
-//     fetch(`/alerta/visualizarAlerta/${id}`, {
-//         method: "PUT",
-//         headers: {
-//             "Content-Type": "application/json"
-//         },
-//         body: JSON.stringify({
-//             id_alerta: id
-//         }),
-//     })
-//     .then(function (resposta) {
-//         if (resposta.ok) {
-//             console.log("Visualização alterada!");
-//         } else {
-//             console.warn(`Erro: ${resposta.status} - ${resposta.statusText}`);
-//         }
-//     })
-//     .catch(function (erro) {
-//         console.error(erro);
-//     })
-//     .finally(function (){
-//         if (alertaAlvo) {
-//             alertaAlvo.style.display = 'none';
-//         }
-//     });
-// }
+    fetch(`/alerta/visualizarAlerta/${id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            id_alerta: id
+        }),
+    })
+    .then(function (resposta) {
+        if (resposta.ok) {
+            console.log("Visualização alterada!");
+        } else {
+            console.warn(`Erro: ${resposta.status} - ${resposta.statusText}`);
+        }
+    })
+    .catch(function (erro) {
+        console.error(erro);
+    })
+    .finally(function (){
+        if (alertaAlvo) {
+            alertaAlvo.style.display = 'none';
+        }
+    });
+}
 
 // ========================================================================
 
