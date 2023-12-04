@@ -40,7 +40,36 @@ function ramGeral(){
     return database.executar(instrucao);
 }
 
+
+
+
+function info(nome_funcao, info_query) {
+    console.log(`\n[KPI Model] ${nome_funcao} => ${info_query}`)
+}
+
+function buscarDados(select) {
+    info("buscarDados", select)
+
+    return database.executar(select)
+}
+
+function buscarGraficos() {
+
+    instrucaoSql = ''
+
+    if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+        instrucaoSql = `CALL dash_geral_erros(1);`
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+        return
+    }
+    return database.executar(instrucaoSql);
+}
+
+
 module.exports = {
+    buscarGraficos,
+    buscarDados,
     kpiEspecifica,
     cpuEspecifico,
     ramEspecifico,
