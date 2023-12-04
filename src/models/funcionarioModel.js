@@ -2,7 +2,9 @@ var database = require("../database/config");
 var nodemailer = require("nodemailer");
 
 function listar() {
-	var instrucao = `SELECT id_funcionario, nome, email, senha, funcao, DATE_FORMAT(data_nascimento, '%d/%m/%Y') as dtNasc
+	var instrucao = `
+  SELECT id_funcionario, nome, email, senha, funcao, 
+  FORMAT(data_nascimento, 'dd/MM/yyyy') as dtNasc
 	FROM tb_funcionario WHERE nome IS NOT NULL`;
 	console.log("Executando a instrução SQL: \n" + instrucao);
 	return database.executar(instrucao);
@@ -10,7 +12,7 @@ function listar() {
 
 function selecionar(id) {
 	var instrucao = `
-    SELECT id_funcionario, nome, email, senha, funcao, DATE_FORMAT(data_nascimento, '%d/%m/%Y') as dtNasc
+    SELECT id_funcionario, nome, email, senha, funcao, FORMAT(data_nascimento, '%d/%m/%Y') as dtNasc
 	FROM tb_funcionario
     WHERE id_funcionario = '${id}'`;
 	console.log("Executando a instrução SQL: \n" + instrucao);

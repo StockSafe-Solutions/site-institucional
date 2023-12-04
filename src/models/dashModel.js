@@ -89,14 +89,14 @@ function ramGeral() {
 }
 
 function csvRam(codServidor, data) {
-	const instrucao = `SELECT DATE_FORMAT(data_hora, '%Y-%m-%d %h:%i') AS dataDados,
+	const instrucao = `SELECT FORMAT(data_hora, '%Y-%m-%d %h:%i') AS dataDados,
        ROUND(AVG(uso_da_ram)) AS avgUsoRam,
        ROUND(AVG(uso_disponivel_da_ram)) AS avgUsoDisponivelRam,
        ROUND(AVG(total_da_ram)) AS avgUsoTotalRam
 				FROM vw_registro
 				WHERE fk_servidor = (SELECT id_servidor FROM tb_servidor WHERE codigo = '${codServidor}')
      		and data_hora LIKE '%${data}%'
-				GROUP BY DATE_FORMAT(data_hora, '%Y-%m-%d %h:%i')
+				GROUP BY FORMAT(data_hora, '%Y-%m-%d %h:%i')
 				ORDER BY dataDados;`;
 	console.log("Executando a instrução SQL: \n" + instrucao);
 	return database.executar(instrucao);
