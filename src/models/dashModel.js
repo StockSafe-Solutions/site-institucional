@@ -11,7 +11,7 @@ function kpiRam(codServidor) {
 	WHERE fk_servidor = (
 		SELECT id_servidor
 		FROM tb_servidor
-		WHERE codigo = 'SVJW32'
+		WHERE codigo = '${codServidor}'
 	)
 	GROUP BY DATEPART(MINUTE, data_hora)
 	ORDER BY dataDados DESC;`;
