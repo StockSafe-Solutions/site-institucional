@@ -3,17 +3,19 @@ var sql = require('mssql');
 
 // CONEXÃO DO SQL SERVER - AZURE (NUVEM)
 var sqlServerConfig = {
-    server: "SEU_SERVIDOR",
-    database: "SEU_BANCO_DE_DADOS",
-    user: "SEU_USUARIO",
-    password: "SUA_SENHA",
+    port: "1433",
+    server: "54.164.215.197",
+    database: "StockSafe",
+    user: "sa",
+    password: "urubu100",
     pool: {
         max: 10,
         min: 0,
         idleTimeoutMillis: 30000
     },
     options: {
-        encrypt: true, // for azure
+        encrypt: false,
+        trustServerCertificate: true,
     }
 }
 
