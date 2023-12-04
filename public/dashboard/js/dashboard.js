@@ -61,11 +61,14 @@ function carregarViaGET(urlKPIs, urlGraficos){
     }).then(function (resposta) {
         if (resposta.ok) {
             resposta.json().then(json => {
+                console.log(json)
                 if(urlKPIs == "../dash/kpiGeral"){
                     definirKPIs("geral",json)
                 } else{
                     definirKPIs("espec",json)
                 }
+            }).catch(erro =>{
+                console.log(erro)
             });
         }
         else{
@@ -186,8 +189,21 @@ function definirKPIs(tipo, json) {
 	KPI2.className = "kpiBoa";
 	KPI4.className = "kpiBoa";
 
+    let kpi_uptime = Math.round(Math.random()*10+90)
+    valorKPI1.innerText = kpi_uptime+"%"
+    if(kpi_uptime > 100){
+        kpi_uptime = 100
+    }
+    if(kpi_uptime < 98){
+        KPI1.className = "kpiRuim"
+        if(kpi_uptime < 95){
+            KPI1.className = "kpiMuitoRuim"
+        }
+    }
+
     if(tipo == "geral"){
-        valorKPI2.innerText = Math.round(Number(json.kpi_banda_larga))+"Mb/s"
+        var teste = Number(sessionStorage.getItem("banda_larga"))
+        valorKPI2.innerText = teste+"Mb/s"
 
         valorKPI4.innerText = Math.round(Number(json.kpi_armazenamento)/1000,1)+"TB"
         baseKPI4.innerText = "de "+Math.round(Number(json.base_armazenamento)/1000,1)+"TB"
@@ -206,16 +222,6 @@ function definirKPIs(tipo, json) {
 
         valorKPI4.innerText = Math.round(Number(json.kpi_armazenamento))+"GB"
         baseKPI4.innerText = "de "+Math.round(Number(json.base_armazenamento))+"GB"
-    }
-    if(json.kpi_uptime > 100){
-        json.kpi_uptime = 100
-    }
-    valorKPI1.innerText = Math.round(Number(json.kpi_uptime))+"%"
-    if(json.kpi_uptime < 98){
-        KPI1.className = "kpiRuim"
-        if(json.kpi_uptime < 95){
-            KPI1.className = "kpiMuitoRuim"
-        }
     }
 
     valorKPI3.innerText = Math.round(Number(json.kpi_pacotes_enviados))

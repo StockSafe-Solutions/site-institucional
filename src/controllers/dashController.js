@@ -11,7 +11,7 @@ function kpiEspecifica(req, res) {
   dashboardModel.kpiEspecifica(codServidor).then((resultado) => {
     if (resultado.length > 0) {
       console.log(resultado)
-      res.status(200).json(resultado[0][0])
+      res.status(200).json(resultado[0])
     } else {
       res.status(404).send()
     }}).catch((error) => {
@@ -155,7 +155,7 @@ function kpiGeral(req, res) {
   dashboardModel.kpiGeral().then((resultado) => {
     if (resultado.length > 0) {
       console.log(resultado)
-      res.status(200).json(resultado[0][0])
+      res.status(200).json(resultado[0])
     } else {
       res.status(404).send()
     }}).catch((error) => {

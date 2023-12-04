@@ -21,7 +21,16 @@ function kpiRam(codServidor) {
 }
 
 function kpiEspecifica(codServidor) {
-	var instrucao = `CALL sp_kpi_especifica(1, '${codServidor}');`;
+	var instrucao = `
+	SELECT
+		AVG(taxt.taxa_de_transferencia) AS kpi_taxa,
+		SUM(pct.pacotes_enviados) AS kpi_pacotes_enviados,
+		SUM((s.armazenamento_usado * 100.0) / s.armazenamento_total) AS kpi_armazenamento,
+		SUM(s.armazenamento_total) AS base_armazenamento
+	FROM tb_servidor s
+	JOIN vw_taxa_de_transferencia taxt ON taxt.fk_servidor = s.id_servidor
+	JOIN vw_pacotes_enviados pct ON pct.fk_servidor = s.id_servidor
+	WHERE s.codigo = '${codServidor}'`;
 	console.log("Executando a instrução SQL: \n" + instrucao);
 	return database.executar(instrucao);
 }
@@ -76,7 +85,7 @@ function horaRam(codServidor) {
 }
 
 function kpiGeral() {
-	var instrucao = `CALL sp_kpi_geral(1);`;
+	var instrucao = `SELECT * FROM vw_kpi_geral;`;
 	console.log("Executando a instrução SQL: \n" + instrucao);
 	return database.executar(instrucao);
 }
