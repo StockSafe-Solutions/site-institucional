@@ -1,15 +1,20 @@
 var database = require("../database/config");
 
 function kpiRam(codServidor) {
-	const instrucao = ` SELECT  MINUTE(data_hora)  AS dataDados,
-       ROUND(AVG(uso_da_ram)) AS avgUsoRam,
-       ROUND(AVG(uso_disponivel_da_ram)) AS avgUsoDisponivelRam,
-       ROUND(AVG(total_da_ram)) AS avgTotalRam
-			 FROM vw_registro
-			WHERE fk_servidor = (SELECT id_servidor FROM tb_servidor WHERE codigo = '${codServidor}' )
-			GROUP BY MINUTE(data_hora)
-			ORDER BY dataDados DESC
-			LIMIT 1 ;`;
+	const instrucao = `
+	SELECT TOP 1 
+		DATEPART(MINUTE, data_hora) AS dataDados,
+		ROUND(AVG(uso_da_ram), 0) AS avgUsoRam,
+		ROUND(AVG(ram_livre), 0) AS avgUsoDisponivelRam,
+		ROUND(AVG(total_da_ram), 0) AS avgTotalRam
+	FROM vw_registro
+	WHERE fk_servidor = (
+		SELECT id_servidor
+		FROM tb_servidor
+		WHERE codigo = 'SVJW32'
+	)
+	GROUP BY DATEPART(MINUTE, data_hora)
+	ORDER BY dataDados DESC;`;
 
 	console.log("Executando a instrução SQL: \n" + instrucao);
 	return database.executar(instrucao);
