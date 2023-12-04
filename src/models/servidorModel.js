@@ -6,7 +6,7 @@ function listar(){
   s.*,
   COUNT(ts.fk_tag) as qtdTag
   FROM vw_servidor AS s
-  JOIN tb_tag_servidor AS ts ON s.id_servidor = ts.fk_servidor
+  LEFT JOIN tb_tag_servidor AS ts ON s.id_servidor = ts.fk_servidor
   GROUP BY
     s.id_servidor,
     s.codigo,
