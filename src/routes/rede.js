@@ -19,4 +19,12 @@ router.get("/kpiTaxaTransferencia/:codServidor", (req, res) => {
   dashboardRedeController.kpiTaxaTransferencia(req, res);
 })
 
+router.get("/graficoBandaLarga/:codServidor", (req, res) => {
+  dashboardRedeController.graficoBandaLarga(req, res);
+})
+
+router.get("/graficoTaxaTransferencia/:codServidor", (req, res) => {
+  dashboardRedeController.graficoTaxaTransferencia(req, res);
+})
+
 module.exports = router;

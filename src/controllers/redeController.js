@@ -92,9 +92,55 @@ function kpiTaxaTransferencia(req, res){
   })
 }
 
+function graficoBandaLarga(req, res) {
+  var codServidor = req.params.codServidor;
+
+  if (codServidor == undefined) {
+    res.status(400).send("Undefined")
+  }
+  dashboardRedeModel.graficoBandaLarga(codServidor).then((resultado) => {
+    console.log(`\n Resultados encontrados: ${resultado.length}`);
+      console.log(`Resultados: ${JSON.stringify(resultado)}`);
+
+      if (resultado) {
+        console.log(resultado);
+        res.json(resultado);
+      } else {
+        res.status(404).send()
+      }
+  }).catch((error) => {
+    console.log(error);
+    console.log("Erro nas Dashboards\n", error.sqlMessage);
+  })
+}
+
+function graficoTaxaTransferencia(req, res) {
+  var codServidor = req.params.codServidor;
+
+  if (codServidor == undefined) {
+    res.status(400).send("Undefined")
+  }
+  dashboardRedeModel.graficoTaxaTransferencia(codServidor).then((resultado) => {
+    console.log(`\n Resultados encontrados: ${resultado.length}`);
+      console.log(`Resultados: ${JSON.stringify(resultado)}`);
+
+      if (resultado) {
+        console.log(resultado);
+        res.json(resultado);
+      } else {
+        res.status(404).send()
+      }
+  }).catch((error) => {
+    console.log(error);
+    console.log("Erro nas Dashboards\n", error.sqlMessage);
+  })
+}
+
 module.exports = {
   kpiBandaLarga,
   kpiPacotesEnviados,
   kpiPacotesRecebidos,
-  kpiTaxaTransferencia
+  kpiTaxaTransferencia, 
+  graficoBandaLarga,
+  graficoTaxaTransferencia
 }

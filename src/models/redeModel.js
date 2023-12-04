@@ -28,9 +28,24 @@ function kpiTaxaTransferencia(codServidor){
   return database.executar(instrucao);
 }
 
+function graficoBandaLarga(codServidor) {
+
+  var instrucao = `SELECT * FROM vw_grafico_banda_larga WHERE codigo = '${codServidor}';`
+  console.log("Executando a instrucao SQL: \n" + instrucao);
+  return database.executar(instrucao);
+}
+
+function graficoTaxaTransferencia(codServidor) {
+  var instrucao = `SELECT * FROM vw_grafico_taxa_transferencia WHERE codigo = '${codServidor}';`
+  console.log("Executando a instrucao SQL: \n" + instrucao);
+  return database.executar(instrucao);
+}
+
 module.exports = {
   kpiBandaLarga,
   kpiPacotesEnviados,
   kpiPacotesRecebidos,
-  kpiTaxaTransferencia
+  kpiTaxaTransferencia,
+  graficoBandaLarga,
+  graficoTaxaTransferencia
 }

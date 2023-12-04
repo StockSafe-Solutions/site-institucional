@@ -12,6 +12,9 @@ function carregarPagina(){
     carregarKPIs(params, "kpiPacotesEnviados", "pacotesEnviados")
     carregarKPIs(params, "kpiPacotesRecebidos", "pacotesRecebidos")
     carregarKPIs(params, "kpiTaxaTransferencia", "taxaTransferencia")
+
+    plotarHistoricoBandaLarga(params)
+    plotarHistoricoTaxaTransferencia(params)
 }
 
 function carregarKPIs(params, url, id){
@@ -36,5 +39,111 @@ function carregarKPIs(params, url, id){
         }
     }).catch(function (erro) {
               console.log(erro)
+    })
+}
+
+function plotarHistoricoBandaLarga(params) {
+
+    var grafico = {
+            labels: ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+            datasets: [{
+            label: 'Histórico de uso de banda larga',
+            data: [],
+            fill: false,
+            borderColor: 'rgb(75, 192, 192)',
+            tension: 0.1
+        }]
+    }
+
+    var config = new Chart(document.getElementById(`graficoBandaLarga`), {
+        type: 'line',
+        data: grafico,
+        options: {
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
+        }
+    })
+
+    fetch(`../../rede/graficoBandaLarga/${params}`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(function (resposta) {
+        if (resposta.ok) {
+            console.log(resposta);
+            resposta.json().then(json => {
+                console.log(json)
+
+                for (let i = 0; i < json.length; i++) {
+                    grafico.datasets[0].data.push(json[i].valor);
+                }
+
+                config.update();
+            })
+        }
+        else {
+            resposta.text().then(texto => {
+                console.warn(texto)
+            })
+        }
+    }).catch(function (erro) {
+        console.log(erro)
+    })
+}
+
+function plotarHistoricoTaxaTransferencia(params) {
+
+    var grafico = {
+            labels: ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+            datasets: [{
+            label: 'Histórico de taxa de transferência',
+            data: [],
+            fill: false,
+            borderColor: 'rgb(75, 192, 192)',
+            tension: 0.1
+        }]
+    }
+
+    var config = new Chart(document.getElementById(`graficoTaxaTransferencia`), {
+        type: 'line',
+        data: grafico,
+        options: {
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
+        }
+    })
+
+    fetch(`../../rede/graficoTaxaTransferencia/${params}`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(function (resposta) {
+        if (resposta.ok) {
+            console.log(resposta);
+            resposta.json().then(json => {
+                console.log(json)
+
+                for (let i = 0; i < json.length; i++) {
+                    grafico.datasets[0].data.push(json[i].valor);
+                }
+
+                config.update();
+            })
+        }
+        else {
+            resposta.text().then(texto => {
+                console.warn(texto)
+            })
+        }
+    }).catch(function (erro) {
+        console.log(erro)
     })
 }

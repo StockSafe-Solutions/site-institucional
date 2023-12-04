@@ -11,3 +11,10 @@ CREATE OR REPLACE VIEW vw_kpi_pacotes_recebidos AS
 
 CREATE OR REPLACE VIEW vw_kpi_taxa_transferencia AS
        SELECT avg(r.valor) AS media, r.fk_servidor, s.codigo FROM tb_registro AS r JOIN tb_servidor AS s ON fk_servidor = id_servidor WHERE fk_cat = 4 GROUP BY fk_servidor;
+
+CREATE OR REPLACE VIEW vw_grafico_banda_larga AS 
+	SELECT r.valor, r.data_hora, r.fk_servidor, s.codigo FROM tb_registro AS r JOIN tb_servidor AS s ON fk_servidor = id_servidor WHERE fk_cat = 6;
+
+CREATE OR REPLACE VIEW vw_grafico_taxa_transferencia AS 
+	SELECT r.valor, r.data_hora, r.fk_servidor, s.codigo FROM tb_registro AS r JOIN tb_servidor AS s ON fk_servidor = id_servidor WHERE fk_cat = 4;
+
