@@ -46,7 +46,7 @@
 .kpis{
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
     flex-wrap: wrap;
 }
 
@@ -113,8 +113,21 @@
 }
 
 .grafico{
-    width: 40vw;
+    width: 37vw;
     height: 50vh;
+    background-color: lightgrey;
+    border-radius: 0.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    color: #001a46;
+}
+
+.graficoErro{
+    width: 45vw;
+    height: 55vh;
     background-color: lightgrey;
     border-radius: 0.25rem;
     display: flex;

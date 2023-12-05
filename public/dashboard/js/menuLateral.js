@@ -14,6 +14,7 @@ function carregarMenu(pagina, geral, codServidor) {
     destEspecifica = ""
     destExemplo = ""
     destRede = ""
+    destErro = ""
 
     switch (pagina) {
         case "geral":
@@ -40,6 +41,9 @@ function carregarMenu(pagina, geral, codServidor) {
         case "rede":
             destRede = " active"
             break;
+        case "erro":
+            destErro = " active"
+            break;    
     }
 
     let conteudoGeral = `
@@ -58,9 +62,9 @@ function carregarMenu(pagina, geral, codServidor) {
                 <span>Visão geral</span></a>
         </li>
 
-        <li class="nav-item${destExemplo}">
+        <li class="nav-item${destErro}">
                 <a class="nav-link" href="./dashsEspecificas/dashErros.html">
-                    <i class="fa-solid fa-server"></i>
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Erros</span></a>
             </li>
 

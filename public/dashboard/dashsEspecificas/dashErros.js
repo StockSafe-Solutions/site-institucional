@@ -2,9 +2,8 @@
 function carregarDados(){
     
     nomePagina.innerText = "Dashboard - Erros"
-    carregarMenu("geral",true)
+    carregarMenu("erro",true)
 
-    
 
 
 // ERROS USO DO DISCO
