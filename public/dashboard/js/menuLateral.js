@@ -156,6 +156,12 @@ function carregarMenu(pagina, geral, codServidor) {
                     <i class="fa-solid fa-wifi"></i>
                     <span>Rede</span></a>
             </li>
+            <!-- Exemplo -->
+            <li class="nav-item${destExemplo}">
+                <a class="nav-link" href="${pasta}processos.html?${codServidor}">
+                    <i class="fa-solid fa-list"></i>
+                    <span>Processos</span></a>
+            </li>
 
             <!-- Divisor -->
             <hr class="sidebar-divider d-none d-md-block">`

@@ -124,3 +124,100 @@
     padding: 15px;
     color: #001a46;
 }
+
+h4 {
+    margin-top: 2vh;
+}
+
+/* =============================================== Tabela de processos */
+
+.processoContent {
+    padding: 1%;
+}
+
+#table_processo {
+    height: 45vh;
+    border: 1px #001a46 solid;
+    overflow-y: scroll;
+}
+
+#table_processo::-webkit-scrollbar {
+    width: thin;
+}
+
+#table_processo::-webkit-scrollbar-thumb {
+    background-color: #577bb9;
+    border-radius: 6px;
+}
+
+#table_processo::-webkit-scrollbar-track {
+    background-color: #ddd;
+}
+
+@-moz-document url-prefix() {
+    #table_processo {
+        scrollbar-width: thin;
+        scrollbar-color: #577bb9 #ddd;
+    }
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 6px;
+    text-align: left;
+}
+
+th {
+    position: sticky;
+    color: #fff;
+    background-color: #577bb9;
+    top: 0;
+}
+
+#above_list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between ;
+    padding-right: 5px;
+}
+
+#filtro {
+    width: 21vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* =============================================== KPI de processos */
+
+#kpi_area {
+    height: 300px;
+    width: 100%;
+
+    background-color: #001a46;
+}
+
+/* =============================================== Gráficos de processos */
+
+.containerGraficoProcesso {
+    margin: 3vh 0vh;
+    width: 100%;
+}
+
+.graficoProc {
+    width: 100%;
+    height: 50vh;
+    background-color: lightgrey;
+    border-radius: 0.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    color: #001a46;
+}
