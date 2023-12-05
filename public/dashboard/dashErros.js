@@ -41,7 +41,9 @@ fetch(`../../dash/listarDados/`, {
     });
 
     // ERROS USO DA CPU
-    var select = `select SUM(uso_da_cpu <= 30 or uso_da_cpu >= 80) as contagem from vw_cpu_geral where dataDados - interval 30 day;`
+    var select = `SELECT SUM(CASE WHEN uso_da_cpu <= 30 OR uso_da_cpu >= 80 THEN 1 ELSE 0 END) AS contagem
+                    FROM vw_cpu_geral
+                    WHERE dataDados >= DATEADD(day, -30, GETDATE());`
 
 fetch(`../../dash/listarDados/`, {
     method: "POST",
@@ -76,7 +78,9 @@ fetch(`../../dash/listarDados/`, {
 
     
     // ERROS USO DA RAM
-var select = `select SUM(uso_da_ram <= 30 or uso_da_ram >= 80) as contagem from vw_ram_geral where dataDados - interval 30 day;`
+var select = `SELECT SUM(CASE WHEN uso_da_ram <= 30 OR uso_da_ram >= 80 THEN 1 ELSE 0 END) AS contagem
+                FROM vw_ram_geral
+                WHERE dataDados >= DATEADD(day, -30, GETDATE());`
 
 fetch(`../../dash/listarDados/`, {
     method: "POST",
@@ -110,7 +114,7 @@ fetch(`../../dash/listarDados/`, {
     });
 
     // ERROS UPTIME
-    var select = `CALL kpi_uptime_erro(1);`
+    var select = `EXECUTE kpi_uptime_erro @taxa_atualizacao = 1;`
 
     fetch(`../../dash/listarDados/`, {
         method: "POST",
@@ -213,7 +217,7 @@ fetch(`../../dash/listarDados/`, {
                 console.log("Labels:", labels);
                 console.log("Data Values:", dataValues);
                 
-                myChart.update()
+                myChart.update();
             }) 
         }
     })
