@@ -57,7 +57,7 @@ function buscarGraficos() {
 
     instrucaoSql = ''
 
-    if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+    if (process.env.AMBIENTE_PROCESSO == "producao" || process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `CALL dash_geral_erros(1);`
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
