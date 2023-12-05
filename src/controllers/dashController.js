@@ -43,7 +43,7 @@ function buscarDados(req, res) {
 }
 
 function kpiEspecifica(req, res) {
-  var codServidor = req.params.codServidor
+  var codServidor = req.params.codServidor;
 
   if (codServidor == undefined) {
     res.status(400).send("Undefined")
@@ -215,7 +215,7 @@ function graficosGerais(req, res) {
           res.status(404).send()
         }}).catch((error) => {
         console.log(error)
-        console.log("Erro nas Dashboards\n", erro.sqlMessage)
+        console.log("Erro nas Dashboards\n", error.sqlMessage)
       })} else {
       res.status(404).send()
     }}).catch((error) => {
@@ -267,15 +267,8 @@ function kpiRam(req, res) {
 }
 
 module.exports = {
-<<<<<<< HEAD
-    buscarGraficos,
-    buscarDados,
-    kpiEspecifica,
-    graficosEspecificos,
-    kpiGeral,
-    graficosGerais
-}
-=======
+  buscarGraficos,
+  buscarDados,
 	kpiEspecifica,
 	graficosEspecificos,
 	kpiGeral,
@@ -288,4 +281,3 @@ module.exports = {
 	kpiRam,
   csvRam
 };
->>>>>>> gusJulia

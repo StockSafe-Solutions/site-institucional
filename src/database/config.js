@@ -1,17 +1,21 @@
 var mysql = require("mysql2");
-var sql = require('mssql');
+// var sql = require('mssql');
 
 // CONEXÃO DO SQL SERVER - AZURE (NUVEM)
 var sqlServerConfig = {
-    port: parseInt(1433,10),
-    server: "44.221.134.15",
+    port: 1433,
+    server: "54.164.215.197",
     database: "StockSafe",
     user: "sa",
     password: "urubu100",
-    stream: false,
+    pool: {
+        max: 10,
+        min: 0,
+        idleTimeoutMillis: 30000
+    },
     options: {
-        encrypt: false, // for azure
-        trustServerCertificate: true
+        encrypt: false,
+        trustServerCertificate: true,
     }
 }
 
@@ -49,7 +53,6 @@ function executar(instrucao) {
                 if (erro) {
                     reject(erro);
                 }
-                console.log(resultados);
                 resolve(resultados);
             });
             conexao.on('error', function (erro) {

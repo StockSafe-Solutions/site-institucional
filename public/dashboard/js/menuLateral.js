@@ -15,6 +15,8 @@ function carregarMenu(pagina, geral, codServidor) {
     destEspecifica = ""
     destExemplo = ""
     destMemoria = ""
+    destRede = ""
+    destErro = ""
 
     switch (pagina) {
         case "geral":
@@ -44,6 +46,12 @@ function carregarMenu(pagina, geral, codServidor) {
         case "memoria":
             destMemoria = " active"
             break;
+        case "rede":
+            destRede = " active"
+            break;
+        case "erro":
+            destErro = " active"
+            break;    
     }
 
     let conteudoGeral = `
@@ -62,9 +70,9 @@ function carregarMenu(pagina, geral, codServidor) {
                 <span>Visão geral</span></a>
         </li>
 
-        <li class="nav-item${destExemplo}">
+        <li class="nav-item${destErro}">
                 <a class="nav-link" href="./dashsEspecificas/dashErros.html">
-                    <i class="fa-solid fa-server"></i>
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Erros</span></a>
             </li>
 
@@ -172,12 +180,20 @@ function carregarMenu(pagina, geral, codServidor) {
                     </svg>
                     <span>Memória</span></a>
             </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
 
+            <!-- Rede -->
+            <li class="nav-item${destRede}">
+                <a class="nav-link" href="${pasta}rede.html?${codServidor}">
+                    <i class="fa-solid fa-wifi"></i>
+                    <span>Rede</span></a>
+            </li>
             <!-- Exemplo -->
             <li class="nav-item${destExemplo}">
-                <a class="nav-link" href="${pasta}base.html?${codServidor}">
-                    <i class="fa-solid fa-person-circle-question"></i>
-                    <span>Exemplo 2</span></a>
+                <a class="nav-link" href="${pasta}processos.html?${codServidor}">
+                    <i class="fa-solid fa-list"></i>
+                    <span>Processos</span></a>
             </li>
 
             <!-- Divisor -->
@@ -243,25 +259,30 @@ function carregarAlertas(alertas) {
         switch (alerta.nivel_alerta) {
             case 0:
                 tituloAlerta = "Normal";
-                corAlerta = "#319e41"; // Verde
+                corAlerta = "#319e41"; Verde
                 break;
             case 1:
                 tituloAlerta = "Atenção";
-                corAlerta = "#ccc34d"; // Amarelo
+                corAlerta = "#ccc34d"; Amarelo
                 break;
             case 2:
                 tituloAlerta = "Cuidado";
-                corAlerta = "#f7ae04"; // Laranja
+                corAlerta = "#f7ae04"; Laranja
                 break;
             case 3:
                 tituloAlerta = "Perigo";
-                corAlerta = "#f73504"; // Vermelho
+                corAlerta = "#f73504"; Vermelho
         }
 
         quadroDeAlertas.innerHTML += `
-        <li id="alerta${alerta.id_alerta}" 
+        <li id="alerta${alerta.id_alerta}"
         style="background-color: ${corAlerta}; cursor: pointer;" 
         onclick="visualizarAlerta(${alerta.id_alerta})" 
+        <li id="alerta${alerta.id_alerta}"
+        style="background-color: ${corAlerta}; cursor: pointer;"
+        onclick="visualizarAlerta(${alerta.id_alerta})"
+        onmouseover="expandirAlerta(${alerta.id_alerta})"
+        onmouseleave="comprimirAlerta(${alerta.id_alerta})">
             <u>
                 <h4>
                     ${tituloAlerta}
@@ -335,6 +356,31 @@ function quadroAlertas(){
     }
 }
 
+function expandirAlerta(id){
+    alertaAlvo = document.getElementById(`alerta${id}`)
+    icon = document.getElementById(`iconAlerta${id}`)
+
+    icon.style = "animation-name: rodar";
+    alertaAlvo.className = "alertaAberto"
+    setTimeout(()=>{
+        icon.className = "fa-solid fa-minus aberto"
+        icon.style = ""
+    },100)
+}
+
+function comprimirAlerta(id){
+
+    alertaAlvo = document.getElementById(`alerta${id}`)
+    icon = document.getElementById(`iconAlerta${id}`)
+
+    icon.style = "animation-name: rodar; animation-direction: reverse";
+    alertaAlvo.className = "";
+    setTimeout(()=>{
+        icon.className = "fa-solid fa-plus"
+        icon.style = ""
+    },100)
+}
+
 function visualizarAlerta(id) {
     alertaAlvo = document.getElementById(`alerta${id}`);
 
@@ -363,7 +409,12 @@ function visualizarAlerta(id) {
     })
     .catch(function (erro) {
         console.error(erro);
-    }); 
+    })
+    .finally(function (){
+        if (alertaAlvo) {
+            alertaAlvo.style.display = 'none';
+        }
+    });
 }
 
 // ========================================================================

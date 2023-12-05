@@ -16,8 +16,8 @@ function listar(req, res) {
       }).catch(
         function (erro) {
           console.log(erro);
-          console.log("\n Houve um erro ao realizar o login! Erro: ", erro.sqlMessage);
-          res.status(500), json(erro.sqlMessage);
+          console.log("\n Houve um erro ao realizar o login! Erro: ", error.sqlMessage);
+          res.status(500), json(error.sqlMessage);
         }
       )
 }
@@ -43,8 +43,8 @@ function selecionar(req, res) {
         }).catch(
           function (erro) {
             console.log(erro);
-            console.log("\n Houve um erro ao realizar o login! Erro: ", erro.sqlMessage);
-            res.status(500), json(erro.sqlMessage);
+            console.log("\n Houve um erro ao realizar o login! Erro: ", error.sqlMessage);
+            res.status(500), json(error.sqlMessage);
           }
         )
   }
@@ -59,8 +59,8 @@ function cadastrar(req, res) {
     }
     ).catch((erro) => {
       console.log(erro);
-      console.log(erro.sqlMessage);
-      res.status(500).json(erro.sqlMessage);
+      console.log(error.sqlMessage);
+      res.status(500).json(error.sqlMessage);
     });
 }
 

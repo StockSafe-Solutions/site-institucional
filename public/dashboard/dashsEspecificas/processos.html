@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Fontes -->
+    <script src="https://kit.fontawesome.com/2d69d246f0.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="../../css/templateStocksafe.min.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+
+    <!-- Scripts -->
+    <script src="../js/sessao.js"></script>
+    <script src="../js/menuLateral.js"></script>
+    <script src="../js/graficos.js"></script>
+    <script src="processos.js"></script>
+
+    <!-- Icone -->
+    <link rel="icon" href="../assets/icon/logo.ico" />
+
+    <title>StockSafe - Dashboard</title>
+</head>
+
+<body id="page-top" onload="carregarPaginaProcessos()">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+        <ul id="accordionSidebar"></ul>
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+            <!-- Main Content -->
+            <div id="content" class="processoContent">
+                <div class="container-fluid">
+                    <header>
+                        <span>
+                            <h3 id="nomePagina" class="nomePagina"></h3>
+                        </span>
+                        <span id="reload_e_alertas">
+                            <span>
+                                <p id="textoReload"></p>
+                                <i class="fa-solid fa-arrows-rotate" id="iconReload"></i>
+                            </span>
+                            <div id="containerAlertas"></div>
+                        </span>
+                    </header>
+                </div>
+
+                <!--======================================================KPIS-->
+
+                <h4>Agora</h4> 
+                <div class="kpis">
+                    <div id="KPI1">
+                        <span>
+                            <h3>Uso atual de CPU</h3>
+                            <i class="fa-solid fa-microchip"></i>                          
+                         </span>
+                        <p id="valorKPI1" class="valorKPI">0%</p>
+                        <p id="baseKPI1" class="baseKPI">de uso da CPU</p>
+                    </div>
+
+                    <div id="KPI2">
+                        <span>
+                            <h3 id="nomeKPI2">Uso atual de RAM</h3>
+                            <i class="fa-solid fa-memory"></i>                           
+                        </span>
+                        <p id="valorKPI2" class="valorKPI">0%</p>
+                        <p id="baseKPI2" class="baseKPI">de uso da RAM</p>
+                    </div>
+
+                    <div id="KPI3">
+                        <span>
+                            <h3>Maior consumidor de CPU</h3>
+                            <i class="fa-solid fa-weight-scale"></i>          
+                        </span>
+                        <p id="valorKPI3" class="valorKPI">Nenhum</p>
+                        <p id="baseKPI3" class="baseKPI"></p>
+                    </div>
+
+                    <div id="KPI4">
+                        <span>
+                            <h3>Maior consumidor de RAM</h3>
+                            <i class="fa-solid fa-weight-hanging"></i>                           
+                        </span>
+                        <p id="valorKPI4" class="valorKPI">Nenhum</p>
+                        <p id="baseKPI4" class="baseKPI"></p>
+                    </div>
+                </div>
+
+                <!--======================================================Lista-->
+
+                <div id="above_list">
+                    <h4>Lista de processos - Quantidade: <span id="qtdProcessos"></span></h4>
+                    
+                    <div id="filtro">
+                        <div>
+                            <i class="fa-solid fa-filter"></i>
+                        </div>
+                        <select>
+                            <option onclick="organizarLista(1)">
+                                PID Crescente
+                            </option>
+                            <option onclick="organizarLista(2)">
+                                PID Decrescente
+                            </option>
+                            <option onclick="organizarLista(3)">
+                                Ordem: A → Z
+                            </option>
+                            <option onclick="organizarLista(4)">
+                                Ordem: Z → A
+                            </option>
+                            <option onclick="organizarLista(5)">
+                                Maior consumo de CPU
+                            </option>
+                            <option onclick="organizarLista(6)">
+                                Maior consumo de RAM
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div id="table_processo">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>PID</th>
+                                <th>Nome</th>
+                                <th>CPU%</th>
+                                <th>RAM%</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cell_processos">
+                            <tr>
+                                <td>0</td>
+                                <td>Nenhum</td>
+                                <td>0%</td>
+                                <td>0%</td>
+                            </tr>
+                            <!--Outros <tr> com valores pegos do json-->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!--======================================================Grafico-->
+
+                <h4>Hoje</h4>
+                <div class="containerGraficoProcesso">
+                    <div class="graficoProc">
+                        <h3>Processos mais aparentes</h3>
+                        <canvas id="graficoProcessos"></canvas>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
