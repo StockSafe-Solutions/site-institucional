@@ -3,11 +3,9 @@ var alertaModel = require("../models/alertaModel");
 function listarAlertas(req, res) {
     alertaModel.listarAlertas().then(
         function (resultado) {
-            console.log(`\n Resultados encontrados: ${resultado.length}`);
-            console.log(`Resultados: ${JSON.stringify(resultado)}`);
 
             if (resultado) {
-                console.log(resultado);
+                ;
                 res.json(resultado);
             } else {
                 res.status(404).send()

@@ -47,4 +47,16 @@ router.delete('/deletarSolicitacoes/:idFuncionario', function(req, res){
     funcionarioController.deletarSolicitacoes(req, res);
 })
 
+router.get("/contarSolicitacoes", function(req, res){
+    funcionarioController.contarSolicitacoes(req, res);
+});
+
+router.get("/contarFuncionarios", function (req, res) {
+	funcionarioController.contarFuncionarios(req, res);
+});
+
+router.get("/contarCargos", function (req, res) {
+	funcionarioController.contarCargos(req, res);
+});
+
 module.exports = router;

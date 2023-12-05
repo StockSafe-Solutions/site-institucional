@@ -4,7 +4,6 @@
     80% { transform: scale(0.95,0.95); }
     100% { transform: scale(1,1); }
 }
-
 @keyframes sumir{
     from {transform: scale(1,1);opacity: 1;}
     to {transform: scale(0,0);opacity: 0;}
@@ -275,3 +274,46 @@
 #modalEditFunc i:hover{
     opacity: 0.6;
 }
+
+.modalGraficoFunc{
+    background-color: #001a46;
+    color: white;
+    border-radius: .35rem;
+    display: none;
+    flex-direction: column;
+    padding: 15px;
+    width: 85vw;
+    height: 90vh;
+    overflow-y: scroll;
+    list-style: none;
+}
+
+.modalGraficoFunc header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.contentGrafico {
+    background-color: #f1f1f1;
+    margin: 5% auto; 
+    padding: 20px;
+    border-radius: 5px;
+    width: 90%;
+    height: auto; 
+    justify-content: space-around;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+
+}
+
+#modalGraficoFunc i{
+    color: #005eff;
+    cursor: pointer;
+    transition: 500ms;
+}
+

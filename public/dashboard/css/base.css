@@ -9,6 +9,12 @@ body > div > *{
 *::-webkit-scrollbar {
     width: 10px;
 }
+*{
+    /* Retirando a habilidade de selecionar textos */
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
 
 /*Quadro de alertas*/
 #containerAlertas{
@@ -47,6 +53,7 @@ body > div > *{
 }
 
 #contadorAlerta{
+    display: none;
     position: absolute;
     top: -7px;
     right: -5px;
@@ -79,18 +86,21 @@ body > div > *{
 }
 #quadroDeAlertas li{
     color: whitesmoke;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    cursor: default;
+    cursor: pointer;
     border-radius: 0.25rem;
     margin: 5px;
     padding: 10px;
-    font-size: 0.8em !important;
+    font-size: 1em !important;
     width: 250px;
-    height: 70px;
     transition: 1s;
+    font-weight: bold;
+    animation-duration: 500ms;
 }
+@keyframes sumir{
+    from {transform: scale(1,1);opacity: 1;}
+    to {transform: scale(0,0);opacity: 0;}
+}
+
 .alertaAberto{
     height: fit-content !important;
     box-shadow: 0px 0px 0px 5px rgba(156,156,156,1);
@@ -107,6 +117,7 @@ body > div > *{
 }
 #quadroDeAlertas h4{
     margin: 0;
+    font-weight: bolder;
 }
 #quadroDeAlertas i{
     animation-duration: 500ms;
@@ -123,7 +134,7 @@ body > div > *{
     width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
-    text-align: justify;
+    text-align: left;
 }
 
 /* Barra lateral */
@@ -133,11 +144,14 @@ body > div > *{
     background-color: #005EFF;
 }
 
+.nav-link{
+    padding: 15px !important;
+}
+
 .nav-profile .nav-link{
     display: flex !important;
     flex-direction: column;
     align-items: center;
-    padding: 10px 0px !important;
     cursor: default;
 }
 .nav-profile .nav-link a:hover{
@@ -148,18 +162,29 @@ body > div > *{
 .nav-profile img{
     width: 25%;
 }
-
-.imgInterrog {
-    display: flex;
-    height: 45px;
-    transform-style: preserve-3d;
-    transition: all 0.5s;
-    position: relative;
-    left: 5.5rem;
-    cursor: pointer;
+.nav-profile .nav-link{
+    margin: 0px;
+    padding: 0px !important;
 }
 
-
+.nav-interrogacao{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 14rem;
+    margin: 10px 0;
+}
+.imgInterrog {
+    display: flex;
+    height: 25px;
+    transform-style: preserve-3d;
+    transition: all 0.5s;
+    cursor: pointer;
+    color: #f1f1f1;
+    border: solid 1px white;
+    border-radius: 100%;
+    padding: 10px 10px 25px 10px;
+}
 .imgInterrog:hover {
     transform: rotateY(360deg);
 }
@@ -168,7 +193,6 @@ body > div > *{
     border: 0;
     all: unset;
     outline: revert;
-    
 }
 
 
@@ -313,4 +337,33 @@ body > div > *{
         margin: 90px 40px 80px 0px;
         height: 515px;
     }
+}
+
+.tag{
+    background-color: black;
+    font-weight: 700;
+    padding: 7.5px 5px;
+    border-radius: 5px;
+    width: fit-content;
+    height: fit-content;
+    cursor: default;
+    transition: 500ms;
+    line-height: 1;
+    user-select: none;
+}
+.corEscura{
+    border: solid 2px #4d4d4d;
+    color: #4d4d4d;
+}
+
+.tag u{
+    font-size: 1.2em;
+}
+.tag input{
+    margin-right: 2.5px;
+    pointer-events: none;
+}
+
+.tagClicavel:hover{
+    transform: scale(1.15);
 }

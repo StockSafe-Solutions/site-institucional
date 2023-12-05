@@ -21,6 +21,20 @@
     cursor: text;
 }
 
+header > span > button{
+    background-color: #005eff;
+    color: white !important;
+    font-weight: bold;
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0 5px;
+    transition: 500ms;
+}
+header > span > button:hover{
+    transform: scale(1.05);
+    opacity: 0.7;
+}
+
 .container-fluid > header > span:last-child, .container-fluid > header > span > span{
     display: flex;
     flex-direction: row;
@@ -53,7 +67,7 @@
 .kpis > div{
     width: 180px;
     height: 180px;
-    background-color: #577bb9;
+    background-color: #001a46;
     display: flex;
     flex-direction: column;
     align-items: start;
@@ -98,7 +112,8 @@
     margin-left: 10px;
 }
 .valorKPI{
-    font-size: 36px;
+    font-size: 32px;
+    font-weight: bold;
     line-height: 0.8;
     margin-bottom: 10px;
 }
@@ -106,14 +121,13 @@
 .containerGraficos{
     width: 100%;
     display: flex;
-    flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-evenly;
     padding: 20px 0;
 }
 
 .grafico{
-    width: 37vw;
+    width: 35vw;
     height: 50vh;
     background-color: lightgrey;
     border-radius: 0.25rem;
@@ -225,12 +239,76 @@ th {
 .graficoProc {
     width: 100%;
     height: 50vh;
-    background-color: lightgrey;
+    background-color: #4f7bc5;
     border-radius: 0.25rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 15px;
-    color: #001a46;
+    color: white;
+}
+
+.contentTags{
+    overflow: hidden;
+    margin: 0px;
+}
+.contentTags #content-wrapper{
+    margin: 0px;
+}
+.contentTags #content{
+    margin: 0px !important;
+    padding: 0px !important;
+    width: 100%;
+}
+.contentTags .container-fluid{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    height: 540px;
+    padding: 0px;
+    margin: 0px;
+}
+
+.contentTags header{
+    display: none;
+}
+.contentTags #nomePagina{
+    display: none;
+}
+
+.contentTags .containerGraficos{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 0 5px;
+    box-sizing: border-box;
+}
+.contentTags .containerGraficos .grafico{
+    width: 100%;
+    height: fit-content;
+}
+
+.contentTags .kpis{
+    display: flex;
+    flex-direction: column;
+    height: inherit;
+}
+.contentTags .kpis span{
+    margin: 0 0 2.5px 0;
+}
+.contentTags .valorKPI{
+    font-size: 1.2em;
+    margin: 0px;
+    font-weight: bold;
+}
+.contentTags .baseKPI{
+    margin: 0px;
+}
+
+.contentTags .kpis > div{
+    width: 150px;
+    height: fit-content;
+    margin: 5px;
 }

@@ -10,7 +10,7 @@ function listarProcessos(req, res) {
             console.log(`Resultados: ${JSON.stringify(resultado)}`);
 
             if (resultado) {
-                console.log(resultado);
+                ;
                 res.json(resultado);
             } else {
                 res.status(404).send()
@@ -35,7 +35,7 @@ function atualizarKpis(req, res) {
             console.log(`Resultados: ${JSON.stringify(resultado)}`);
 
             if (resultado) {
-                console.log(resultado);
+                ;
                 res.json(resultado);
             } else {
                 res.status(404).send()
@@ -60,7 +60,7 @@ function atualizarGraficoProc(req, res){
             console.log(`Resultados: ${JSON.stringify(resultado)}`);
 
             if (resultado) {
-                console.log(resultado);
+                ;
                 res.json(resultado);
             } else {
                 res.status(404).send()

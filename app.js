@@ -1,5 +1,5 @@
-process.env.AMBIENTE_PROCESSO = "desenvolvimento";
-// process.env.AMBIENTE_PROCESSO = "producao";
+//  process.env.AMBIENTE_PROCESSO = "desenvolvimento";
+process.env.AMBIENTE_PROCESSO = "producao";
 
 var express = require("express");
 var cors = require("cors");
@@ -14,6 +14,7 @@ var funcionarioRouter = require("./src/routes/funcionario");
 var configuracaoRouter = require("./src/routes/configuracao")
 var dashRouter = require("./src/routes/dash")
 var alertaRouter = require("./src/routes/alerta")
+var tagRouter = require("./src/routes/tag")
 var redeRouter = require("./src/routes/rede")
 var processoRouter = require("./src/routes/processo")
 
@@ -29,6 +30,7 @@ app.use("/funcionario", funcionarioRouter)
 app.use("/configuracao", configuracaoRouter)
 app.use("/dash", dashRouter)
 app.use("/alerta", alertaRouter)
+app.use("/tag", tagRouter)
 app.use("/rede", redeRouter)
 app.use("/processo", processoRouter)
 
