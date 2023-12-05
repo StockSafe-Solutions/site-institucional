@@ -16,6 +16,7 @@ router.get("/listarGraficos", (req, res) => {
 router.post("/listarDados", (req, res) => {
     info("/listarDados")
     dashController.buscarDados(req, res);
+})
 
 // geral
     router.get("/kpiEspecifica/:codServidor", (req, res) => {
@@ -33,7 +34,6 @@ router.post("/listarDados", (req, res) => {
     router.get("/graficosGerais", (req, res) => {
         dashController.graficosGerais(req, res);
     })
-})
 
 router.get("/listarRegistrosData/:data", (req, res) => {
     dashController.listarRegistrosData(req, res);
