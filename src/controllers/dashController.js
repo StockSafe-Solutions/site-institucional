@@ -36,9 +36,9 @@ function buscarDados(req, res) {
         } else {
             res.status(204).send("Nenhum resultado encontrado!")
         }
-    }).catch(function (erro) {
-        console.log(erro);
-        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+    }).catch(function (error) {
+        console.log(error);
+        console.log("Houve um error ao buscar as ultimas medidas.", error.sqlMessage);
     });
 }
 
@@ -71,12 +71,12 @@ function listarRegistrosData(req, res){
         res.json(resultado);
       }
     ).catch(
-      function(erro){
-        console.log(erro);
+      function(error){
+        console.log(error);
         console.log(
-          `\n houve um erro ao listar registro!`, erro.sqlMessage
+          `\n houve um error ao listar registro!`, error.sqlMessage
         );
-        res.status(500).json(erro.sqlMessage);
+        res.status(500).json(error.sqlMessage);
       }
     )
   }
@@ -93,12 +93,12 @@ function listarRegistrosDataEspeficico(req, res){
         res.json(resultado);
       }
     ).catch(
-      function(erro){
-        console.log(erro);
+      function(error){
+        console.log(error);
         console.log(
-          `\n houve um erro ao listar registro!`, erro.sqlMessage
+          `\n houve um error ao listar registro!`, error.sqlMessage
         );
-        res.status(500).json(erro.sqlMessage);
+        res.status(500).json(error.sqlMessage);
       }
     )
   }
@@ -115,13 +115,13 @@ function csvRam(req, res) {
 			.then(function (resultado) {
 				res.json(resultado);
 			})
-			.catch(function (erro) {
-				console.log(erro);
+			.catch(function (error) {
+				console.log(error);
 				console.log(
-					`\n houve um erro ao listar registro!`,
-					erro.sqlMessage
+					`\n houve um error ao listar registro!`,
+					error.sqlMessage
 				);
-				res.status(500).json(erro.sqlMessage);
+				res.status(500).json(error.sqlMessage);
 			});
 	}
 }
@@ -135,13 +135,13 @@ function ramLivreEspeficico(req, res) {
 			.then(function (resultado) {
 				res.json(resultado);
 			})
-			.catch(function (erro) {
-				console.log(erro);
+			.catch(function (error) {
+				console.log(error);
 				console.log(
-					`\n houve um erro ao ver livre registro!`,
-					erro.sqlMessage
+					`\n houve um error ao ver livre registro!`,
+					error.sqlMessage
 				);
-				res.status(500).json(erro.sqlMessage);
+				res.status(500).json(error.sqlMessage);
 			});
 	}
 }
@@ -155,13 +155,13 @@ function ramUsadoEspeficico(req, res) {
 			.then(function (resultado) {
 				res.json(resultado);
 			})
-			.catch(function (erro) {
-				console.log(erro);
+			.catch(function (error) {
+				console.log(error);
 				console.log(
-					`\n houve um erro ao ver usado registro!`,
-					erro.sqlMessage
+					`\n houve um error ao ver usado registro!`,
+					error.sqlMessage
 				);
-				res.status(500).json(erro.sqlMessage);
+				res.status(500).json(error.sqlMessage);
 			});
 	}
 }
@@ -234,13 +234,13 @@ function horaRam(req, res){
 			.then(function (resultado) {
 				res.json(resultado);
 			})
-			.catch(function (erro) {
-				console.log(erro);
+			.catch(function (error) {
+				console.log(error);
 				console.log(
-					`\n houve um erro ao ver hora RAM registro!`,
-					erro.sqlMessage
+					`\n houve um error ao ver hora RAM registro!`,
+					error.sqlMessage
 				);
-				res.status(500).json(erro.sqlMessage);
+				res.status(500).json(error.sqlMessage);
 			});
 	}
 }
@@ -255,13 +255,13 @@ function kpiRam(req, res) {
 			.then(function (resultado) {
 				res.json(resultado);
 			})
-			.catch(function (erro) {
-				console.log(erro);
+			.catch(function (error) {
+				console.log(error);
 				console.log(
-					`\n houve um erro ao ver hora RAM registro!`,
-					erro.sqlMessage
+					`\n houve um error ao ver hora RAM registro!`,
+					error.sqlMessage
 				);
-				res.status(500).json(erro.sqlMessage);
+				res.status(500).json(error.sqlMessage);
 			});
 	}
 }
