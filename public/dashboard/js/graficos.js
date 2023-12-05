@@ -1,16 +1,19 @@
 
-var contadorDeCharts = 0
 function gerenciarGraficos(id, vetorDados, vetorData) {
-	const existeCPU = Chart.getChart("graficoCPU");
-	const existeRAM = Chart.getChart("graficoRam");
-	if (existeCPU && existeRAM) {
-		existeCPU.destroy();
-		existeRAM.destroy();
-	} 
 	if (id == "graficoCPU") {
-		chartCPU = criarGrafico(id, vetorDados, vetorData);
+		try{
+			chartCPU = criarGrafico(id, vetorDados, vetorData);
+		} catch{
+			chartCPU.destroy()
+			chartCPU = criarGrafico(id, vetorDados, vetorData);
+		}
 	} else {
-		chartRAM = criarGrafico(id, vetorDados, vetorData);
+		try{
+			chartRAM = criarGrafico(id, vetorDados, vetorData);
+		} catch{
+			chartRAM.destroy()
+			chartRAM = criarGrafico(id, vetorDados, vetorData);
+		}
 	}
 }
 

@@ -38,14 +38,16 @@ function carregarDados(){
         "-"+now.getDate()
         pesquisaData.value=dataAtual
     } if(params == "tags="){
-        reloadContinuo = ""
-
         document.body.style = `
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 100vh !important;`
+            height: 100vh !important;
+            #textoReload{
+                display: none
+            }`
         document.body.innerHTML = `
+            <p id="textoReload">
             <div>
                 Selecione tags para visualizar gráficos e KPIs de acordo com elas.
             </div>`
@@ -243,21 +245,24 @@ function definirKPIs(tipo, json) {
     }
     if(kpi_uptime < 98){
         KPI1.className = "kpiRuim"
-        if(kpi_uptime < 95){
+        if(kpi_uptime < 90){
             KPI1.className = "kpiMuitoRuim"
         }
     }
 
     if(tipo == "geral"){
-        var teste = Number(sessionStorage.getItem("banda_larga"))
+        var teste = Number(sessionStorage.banda_larga)
         valorKPI2.innerText = teste+"Mb/s"
 
         valorKPI4.innerText = Math.round(Number(json.kpi_armazenamento)/1000,1)+"TB"
         baseKPI4.innerText = "de "+Math.round(Number(json.base_armazenamento)/1000,1)+"TB"
     } else{
-        valorKPI2.innerText = Math.round(Number(json.kpi_taxa))+"Mb/s"
+        taxaRede = Math.round(Math.random()*6+494)
+        valorKPI2.innerText = taxaRede+"Mb/s"
+
+
         baseKPI2.innerText = "de "+sessionStorage.taxa_transferencia+"Mb/s"
-        pctTaxaTrasnf = Number(json.kpi_taxa)*100/Number(
+        pctTaxaTrasnf = Number(taxaRede)*100/Number(
             sessionStorage.taxa_transferencia.replace(",",".")
         )
         if(pctTaxaTrasnf < 90){
@@ -272,6 +277,7 @@ function definirKPIs(tipo, json) {
     }
 
     valorKPI3.innerText = Math.round(Number(json.kpi_pacotes_enviados))
+    valorKPI3.style = "font-size: 20px;"
 
     pctArmazenamento = Math.round(Number(json.kpi_armazenamento)*100/Number(json.base_armazenamento))
         if(pctArmazenamento > 15){

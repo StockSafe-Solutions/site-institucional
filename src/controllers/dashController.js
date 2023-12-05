@@ -22,8 +22,8 @@ function buscarDados(req, res) {
         res.status(204).json(resultado)
       }
     }
-    ).catch((error) => {
-      console.log(error)
+    ).catch((erro) => {
+      console.log(erro)
       console.log("Erro nas Dashboards\n", erro.sqlMessage)
     }
     )
@@ -54,9 +54,9 @@ function kpiEspecifica(req, res) {
       res.status(200).json(resultado[0])
     } else {
       res.status(404).send()
-    }}).catch((error) => {
-    console.log(error)
-    console.log("Erro nas Dashboards\n", error.sqlMessage)
+    }}).catch((erro) => {
+    console.log(erro)
+    console.log("Erro nas Dashboards\n", erro.sqlMessage)
   })
 }
 
@@ -179,14 +179,14 @@ function graficosEspecificos(req, res) {
           res.status(200).json([resultado1,resultado2])
         } else {
           res.status(404).send()
-        }}).catch((error) => {
-        console.log(error)
-        console.log("Erro nas Dashboards\n", error.sqlMessage)
+        }}).catch((erro) => {
+        console.log(erro)
+        console.log("Erro nas Dashboards\n", erro.sqlMessage)
       })} else {
       res.status(404).send()
-    }}).catch((error) => {
-    console.log(error)
-    console.log("Erro nas Dashboards\n", error.sqlMessage)
+    }}).catch((erro) => {
+    console.log(erro)
+    console.log("Erro nas Dashboards\n", erro.sqlMessage)
   })
 }
 
@@ -198,9 +198,9 @@ function kpiGeral(req, res) {
       res.status(200).json(resultado[0])
     } else {
       res.status(404).send()
-    }}).catch((error) => {
-    console.log(error)
-    console.log("Erro nas Dashboards\n", error.sqlMessage)
+    }}).catch((erro) => {
+    console.log(erro)
+    console.log("Erro nas Dashboards\n", erro.sqlMessage)
   })
 }
 
@@ -213,14 +213,14 @@ function graficosGerais(req, res) {
           res.status(200).json([resultado1,resultado2])
         } else {
           res.status(404).send()
-        }}).catch((error) => {
-        console.log(error)
-        console.log("Erro nas Dashboards\n", error.sqlMessage)
+        }}).catch((erro) => {
+        console.log(erro)
+        console.log("Erro nas Dashboards\n", erro.sqlMessage)
       })} else {
       res.status(404).send()
-    }}).catch((error) => {
-    console.log(error)
-    console.log("Erro nas Dashboards\n", error.sqlMessage)
+    }}).catch((erro) => {
+    console.log(erro)
+    console.log("Erro nas Dashboards\n", erro.sqlMessage)
   })
 
 }

@@ -390,6 +390,7 @@ function cadastrarTag(nome, cor, servidores){
     }).then(function (resposta) {
         if (resposta.ok) {
            colocarTagsNosServidores(servidores, nome)
+           tagsPorNome()
         } 
         else {
             if(resposta.status == 409){
