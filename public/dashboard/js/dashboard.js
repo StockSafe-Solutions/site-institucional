@@ -100,12 +100,12 @@ function carregarViaGET(urlKPIs, urlGraficos){
 function carregarViaPOST(urlKPIs, corpoKPIs, urlGraficos, corpoGraficos){
     fetch(urlKPIs, {
         method: "POST",
-        body: JSON.stringify({
-            tagServer: corpoKPIs
-        }),
         headers: {
             "Content-Type": "application/json"
-        }
+        },
+        body: JSON.stringify({
+            tagServer: corpoKPIs
+        })
     }).then(function (resposta) {
         if (resposta.ok) {
             resposta.json().then(json => {
@@ -115,6 +115,8 @@ function carregarViaPOST(urlKPIs, corpoKPIs, urlGraficos, corpoGraficos){
         else{
             resposta.text().then(texto => { console.warn(texto) })}}).catch(function (erro) {
         console.log(erro);
+    }).catch(function (erro){
+        console.log(erro)
     })
 
 	now = new Date();

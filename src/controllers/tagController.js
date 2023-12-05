@@ -74,7 +74,6 @@ function tagsPorNome(req, res) {
 
 function graficosPorTags(req, res){
     var tags = req.body.tagServer;
-    // var tags = [1,2,3,5]
     if(tags == undefined){
         res.status(400).send()
     }
@@ -97,7 +96,8 @@ function graficosPorTags(req, res){
 }
 
 function kpisPorTags(req, res){
-    var tags = req.body.tagServer;
+    // var tags = req.body.tagServer;
+    var tags = [1,2,3,5]
     if(tags == undefined){
         res.status(400).send()
     }
