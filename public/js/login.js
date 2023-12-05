@@ -1,3 +1,5 @@
+
+
 function entrar() {
 
     var emailVar = iptEmail.value;
@@ -20,7 +22,7 @@ function entrar() {
     }
 
     if(!validacoes){
-    Swal.fire({
+    swal({
         title: "Campos inválidos!",
         text: textoErro,
         icon: "error"
@@ -43,10 +45,18 @@ function entrar() {
                 sessionStorage.funcionario = JSON.stringify(json)
                 carregarConfigs()
             });
-        } 
+        } else if(resposta.status == 406){
+            resposta.text().then(texto => {
+                swal({
+                    icon: 'error',
+                    title: 'Login inválido',
+                    text: 'As credenciais informadas não correspondem à nenhum registro no nosso sistema.'
+                })
+            }) 
+        }
         else {
             resposta.text().then(texto => {
-                Swal.fire({
+                swal({
                     icon: 'error',
                     title: 'Erro ao realizar o login',
                     text: texto
@@ -73,7 +83,7 @@ function carregarConfigs() {
             console.log(resposta);
             resposta.json().then(json => {
                 sessionStorage.banda_larga = json['banda_larga']
-                sessionStorage.taxa_transferencia = json['taxa_de_transferência'].replace(".",",")
+                sessionStorage.taxa_transferencia = json['taxa_de_transferencia']
                 sessionStorage.intervalo_atualizacao = json['intervalo_atualizacao']
                 window.location = "../dashboard/index.html"
             });

@@ -1,3 +1,4 @@
+
 // OLHAR ../JS/LOGIN.JS PARA VER ATRIBUIÇÕES DOS SESSION STORAGE AQUI CONSUMIDOS
 
 function carregarCamposConfigs(){
@@ -36,7 +37,7 @@ function alterarConfigs(){
     }).then(function (resposta) {
         console.log("resposta: ", resposta);
         if (resposta.ok) {
-            Swal.fire({
+            swal({
                 icon: 'success',
                 title: 'Configurações alteradas com sucesso!',
                 text: 'As métricas utilizadas nas dashboards serão atualizadas automaticamente de acordo com os valores definidos.'
@@ -44,7 +45,7 @@ function alterarConfigs(){
             carregarConfigs()
         }
         else {
-            Swal.fire({
+            swal({
                 title: 'Erro interno!',
                 text: 'Erro no servidor do aplicativo. Contate seu administrador de TI.',
                 icon: 'error'

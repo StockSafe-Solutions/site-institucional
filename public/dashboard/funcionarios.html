@@ -16,17 +16,19 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/funcionarios.css">
     <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/dashFunc.css">
 
     <!-- Scripts -->
     <script src="js/sessao.js"></script>
     <script src="js/menuLateral.js"></script>
     <script src="js/funcionarios.js"></script>
     <script src="js/Modals.js"></script>
+    <script src="./js/graficos.js"></script>
 
     <!-- Icone -->
     <link rel="icon" href="../assets/icon/logo.ico" />
 
-    <title>Stock Safe - Funcionarios</title>
+    <title>Stock Safe - Funcionários</title>
 </head>
 
 <body id="page-top" onload="carregarMenu('funcs',true), reloadFuncionarios()">
@@ -47,16 +49,17 @@
                                 <i class="fa-solid fa-arrows-rotate" id="iconReload"></i>
                             </span>
 
-                           <div id="containerAlertas"></div>
+                            <div id="containerAlertas"></div>
 
                             <button onclick="abrirModal('func')">Adicionar novo</button>
                             <button onclick="abrirModal('solicitacoes'), reloadSolicitacoes()">Solicitações</button>
+                            <button onclick="abrirModal('grafico'), carregarDadosFunc()">Gráfico</button>
                             <span>
-                                
+
                                 <input type="text" id="iptPesquisa" placeholder="Pesquisar por nome">
-                                    <!-- onkeyup="pesquisarServidores()"> -->
+                                <!-- onkeyup="pesquisarServidores()"> -->
                                 <svg xmlns="http://www.w3.org/2000/svg" height="1em"
-                                    viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                                    viewBox="0 0 512 512"><!-- Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                                     <style>
                                         svg {
                                             fill: #005eff
@@ -89,18 +92,40 @@
                 <button id="btnCadastrar" onclick="semiCadastrar()">Enviar convite</button>
             </div>
         </div>
-            <div class="modalFunc" id="modalSolic">
-                <header onload="reloadSolicitacoes()">
-                    <h3 class="nomePagina">Solicitações dos novos funcionários</h3>
-                    <i class="fa-solid fa-x" onclick="fecharModal('solicitacoes'), reloadFuncionarios()"></i>
-                </header>
-                <ul id="container-funcionarios-solicitacao"></ul>          
+        <div class="modalFunc" id="modalSolic">
+            <header onload="reloadSolicitacoes()">
+                <h3 class="nomePagina">Solicitações dos novos funcionários</h3>
+                <i class="fa-solid fa-x" onclick="fecharModal('solicitacoes'), reloadFuncionarios()"></i>
+            </header>
+            <ul id="container-funcionarios-solicitacao"></ul>
+        </div>
+        <div class="modalGrafico" id="modalEditFunc">
+            <i class="fa-solid fa-x" onclick="fecharModal('editFunc')"></i>
+            <iframe id="frameFuncionario" frameborder="0"></iframe>
+        </div>
+        <div class="modalGraficoFunc" id="modalGraficoFunc">
+            <header>
+                <h3 class="nomePagina"> Gráficos de funcionários</h3>
+                <i class="fa-solid fa-x" onclick="fecharModal('graficoFunc'), reloadFuncionarios()"></i>
+            </header>
+            <div class="contentGrafico">
+                <div class="container-fluid">
+                    <div class="containerGraficos">
+                        <div class="grafico" id="graficoFunc">
+                            <h4>Porcentagem de aceitação</h4>
+                            <canvas id="graficoFuncSA"></canvas>
+                        </div>
+                       <div class="grafico">
+                            <h3>Quantidade de cargos</h3>
+                            <canvas id="graficoFuncoes"></canvas>
+                       </div>
+                    </div>
+                </div>
             </div>
-            <div class="modalFunc" id="modalEditFunc">
-                <i class="fa-solid fa-x" onclick="fecharModal('editFunc')"></i>
-                <iframe id="frameFuncionario" frameborder="0"></iframe>
-            </div>
-    </div>
+        </div>
 </body>
+
 </html>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/Chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

@@ -1,3 +1,5 @@
+
+
 var editando = false
 
 function mudarModo(){
@@ -99,7 +101,7 @@ function editarPerfil(){
     }
 
     if(!validacoes){
-        Swal.fire({
+        swal({
           title: "Campos inválidos!",
           text: textoErro,
           icon: "error"
@@ -129,14 +131,14 @@ function editarPerfil(){
         }).then(function (resposta) {
             console.log(resposta);
             if (resposta.ok) {
-                Swal.fire({
+                swal({
                 icon: 'success',
                 title: 'Perfil alterado com sucesso!',
                 text: 'Recarregando a página em 5 segundos...'
                 })
             } 
             else {
-                Swal.fire({
+                swal({
                 title: 'Erro interno!',
                 text: 'Erro no servidor do aplicativo. Contate seu administrador de TI.',
                 icon: 'error'

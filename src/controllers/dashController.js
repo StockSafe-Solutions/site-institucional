@@ -42,10 +42,6 @@ function buscarDados(req, res) {
     });
 }
 
-
-
-
-
 function kpiEspecifica(req, res) {
   var codServidor = req.params.codServidor
 
@@ -55,13 +51,119 @@ function kpiEspecifica(req, res) {
   dashboardModel.kpiEspecifica(codServidor).then((resultado) => {
     if (resultado.length > 0) {
       console.log(resultado)
-      res.status(200).json(resultado[0][0])
+      res.status(200).json(resultado[0])
     } else {
       res.status(404).send()
     }}).catch((error) => {
     console.log(error)
-    console.log("Erro nas Dashboards\n", erro.sqlMessage)
+    console.log("Erro nas Dashboards\n", error.sqlMessage)
   })
+}
+
+function listarRegistrosData(req, res){
+  const data = req.params.data;
+  console.log(data)
+  if(data == undefined){
+    res.status(400).send("Data vazia.");
+  }else{
+    dashboardModel.listarRegistrosData(data).then(
+      function(resultado){
+        res.json(resultado);
+      }
+    ).catch(
+      function(erro){
+        console.log(erro);
+        console.log(
+          `\n houve um erro ao listar registro!`, erro.sqlMessage
+        );
+        res.status(500).json(erro.sqlMessage);
+      }
+    )
+  }
+}
+
+function listarRegistrosDataEspeficico(req, res){
+  const data = req.params.data;
+  const codServidor = req.params.codServidor;
+  if(data == undefined || codServidor == undefined){
+    res.status(400).send("Vazio");
+  }else{
+    dashboardModel.listarRegistrosDataEspeficico(codServidor,data).then(
+      function(resultado){
+        res.json(resultado);
+      }
+    ).catch(
+      function(erro){
+        console.log(erro);
+        console.log(
+          `\n houve um erro ao listar registro!`, erro.sqlMessage
+        );
+        res.status(500).json(erro.sqlMessage);
+      }
+    )
+  }
+}
+
+function csvRam(req, res) {
+	const data = req.params.data;
+	const codServidor = req.params.codServidor;
+	if (data == undefined || codServidor == undefined) {
+		res.status(400).send("Vazio");
+	} else {
+		dashboardModel
+			.csvRam(codServidor, data)
+			.then(function (resultado) {
+				res.json(resultado);
+			})
+			.catch(function (erro) {
+				console.log(erro);
+				console.log(
+					`\n houve um erro ao listar registro!`,
+					erro.sqlMessage
+				);
+				res.status(500).json(erro.sqlMessage);
+			});
+	}
+}
+
+function ramLivreEspeficico(req, res) {
+	const codServidor = req.params.codServidor;
+	if ( codServidor == undefined) {
+		res.status(400).send("Vazio");
+	} else {
+		dashboardModel.ramLivreEspeficico(codServidor)
+			.then(function (resultado) {
+				res.json(resultado);
+			})
+			.catch(function (erro) {
+				console.log(erro);
+				console.log(
+					`\n houve um erro ao ver livre registro!`,
+					erro.sqlMessage
+				);
+				res.status(500).json(erro.sqlMessage);
+			});
+	}
+}
+function ramUsadoEspeficico(req, res) {
+	const codServidor = req.params.codServidor;
+	if (codServidor == undefined) {
+		res.status(400).send("Vazio");
+	} else {
+		dashboardModel
+			.ramUsadaEspeficico(codServidor)
+			.then(function (resultado) {
+				res.json(resultado);
+			})
+			.catch(function (erro) {
+				console.log(erro);
+				console.log(
+					`\n houve um erro ao ver usado registro!`,
+					erro.sqlMessage
+				);
+				res.status(500).json(erro.sqlMessage);
+			});
+	}
 }
 
 function graficosEspecificos(req, res) {
@@ -79,12 +181,12 @@ function graficosEspecificos(req, res) {
           res.status(404).send()
         }}).catch((error) => {
         console.log(error)
-        console.log("Erro nas Dashboards\n", erro.sqlMessage)
+        console.log("Erro nas Dashboards\n", error.sqlMessage)
       })} else {
       res.status(404).send()
     }}).catch((error) => {
     console.log(error)
-    console.log("Erro nas Dashboards\n", erro.sqlMessage)
+    console.log("Erro nas Dashboards\n", error.sqlMessage)
   })
 }
 
@@ -93,12 +195,12 @@ function kpiGeral(req, res) {
   dashboardModel.kpiGeral().then((resultado) => {
     if (resultado.length > 0) {
       console.log(resultado)
-      res.status(200).json(resultado[0][0])
+      res.status(200).json(resultado[0])
     } else {
       res.status(404).send()
     }}).catch((error) => {
     console.log(error)
-    console.log("Erro nas Dashboards\n", erro.sqlMessage)
+    console.log("Erro nas Dashboards\n", error.sqlMessage)
   })
 }
 
@@ -118,12 +220,54 @@ function graficosGerais(req, res) {
       res.status(404).send()
     }}).catch((error) => {
     console.log(error)
-    console.log("Erro nas Dashboards\n", erro.sqlMessage)
+    console.log("Erro nas Dashboards\n", error.sqlMessage)
   })
 
 }
 
+function horaRam(req, res){
+  const codServidor = req.params.codServidor;
+  	if (codServidor == undefined) {
+		res.status(400).send("Vazio");
+	} else {
+		dashboardModel.horaRam(codServidor)
+			.then(function (resultado) {
+				res.json(resultado);
+			})
+			.catch(function (erro) {
+				console.log(erro);
+				console.log(
+					`\n houve um erro ao ver hora RAM registro!`,
+					erro.sqlMessage
+				);
+				res.status(500).json(erro.sqlMessage);
+			});
+	}
+}
+
+function kpiRam(req, res) {
+	const codServidor = req.params.codServidor;
+	if (codServidor == undefined) {
+		res.status(400).send("Vazio");
+	} else {
+		dashboardModel
+			.kpiRam(codServidor)
+			.then(function (resultado) {
+				res.json(resultado);
+			})
+			.catch(function (erro) {
+				console.log(erro);
+				console.log(
+					`\n houve um erro ao ver hora RAM registro!`,
+					erro.sqlMessage
+				);
+				res.status(500).json(erro.sqlMessage);
+			});
+	}
+}
+
 module.exports = {
+<<<<<<< HEAD
     buscarGraficos,
     buscarDados,
     kpiEspecifica,
@@ -131,3 +275,17 @@ module.exports = {
     kpiGeral,
     graficosGerais
 }
+=======
+	kpiEspecifica,
+	graficosEspecificos,
+	kpiGeral,
+	graficosGerais,
+	listarRegistrosData,
+	listarRegistrosDataEspeficico,
+	ramLivreEspeficico,
+	ramUsadoEspeficico,
+	horaRam,
+	kpiRam,
+  csvRam
+};
+>>>>>>> gusJulia

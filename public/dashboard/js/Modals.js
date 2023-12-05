@@ -1,80 +1,117 @@
+
+
 function abrirModal(modal, codigo) {
     containerModal.value = "";
     switch (modal) {
         case "cad":
             gerarCodigo()
             modalCadastro.style = "display: flex; animation-name: aparecer; animation-duration: 500ms;"
-            setTimeout(()=>{
+            setTimeout(() => {
                 modalCadastro.style = "display: flex"
-            },1000)
+            }, 1000)
             break
         case "dash":
-            frameDashboard.src="index.html?"+codigo
+            frameDashboard.src="index.html?id="+codigo
             modalDashboard.style = "display: flex; animation-name: aparecer; animation-duration: 500ms;"
-            setTimeout(()=>{
+            setTimeout(() => {
                 modalDashboard.style = "display: flex"
-            },1000)
+            }, 1000)
             break
         case "func":
             modalCadFunc.style = "display: flex; animation-name: aparecer; animation-duration: 500ms;"
-            setTimeout(()=>{
+            setTimeout(() => {
                 modalCadFunc.style = "display: flex"
-            },1000)
+            }, 1000)
             break
         case "solicitacoes":
-            modalSolic.style ="display: flex; animation-name: aparecer; animation-duration: 500ms;"
-            setTimeout(()=>{
+            modalSolic.style = "display: flex; animation-name: aparecer; animation-duration: 500ms;"
+            setTimeout(() => {
                 modalSolic.style = "display: flex";
             }, 1000);
             break;
         case "editFunc":
-            frameFuncionario.src="perfil.html?"+codigo
-            modalEditFunc.style ="display: flex; animation-name: aparecer; animation-duration: 500ms;"
-            setTimeout(()=>{
+            frameFuncionario.src = "perfil.html?" + codigo
+            modalEditFunc.style = "display: flex; animation-name: aparecer; animation-duration: 500ms;"
+            setTimeout(() => {
                 modalEditFunc.style = "display: flex";
             }, 1000);
             break;
-        }
+        case "hist":
+            graficoTagHistorico.innerHTML = '<img src="../assets/img/dashboard/loading.gif">'
+            graficoTagHistorico.className = "graficoCarregando"
+            modalTagHistorico.style ="display: flex; animation-name: aparecer; animation-duration: 500ms;"
+            setTimeout(()=>{
+                modalTagHistorico.style = "display: flex";
+                reloadHistorico()
+            }, 1000);
+            break;
+        case "tagAdd":
+            modalTagNova.style ="display: flex; animation-name: aparecer; animation-duration: 500ms;"
+            setTimeout(()=>{
+                modalTagNova.style = "display: flex";
+            }, 1000);
+            break;
+        case "tagExcl":
+            carregarTagsModalExcl()
+            modalTagExcluir.style ="display: flex; animation-name: aparecer; animation-duration: 500ms;"
+            setTimeout(()=>{
+                modalTagExcluir.style = "display: flex";
+            }, 1000);
+            break;
+        case "grafico":
+            modalGraficoFunc.style = "display: flex; animation-name: aparecer; animation-duration: 500ms;"
+            setTimeout(() => {
+                modalGraficoFunc.style = "display: flex"
+            }, 1000)
+            break
+    }
     setTimeout(()=>{
         containerModal.style = "display: flex"
-    },500)
+    }, 500)
 }
 function fecharModal(modal) {
+    let idDaModal = ""
     switch (modal) {
-        case "cad":
-            modalCadastro.style = "display: flex; animation-name: sumir; animation-duration: 300ms;"
+			case "cad":
+				idDaModal = "modalCadastro";
+				break;
+			case "dash":
+				idDaModal = "modalDashboard";
+				break;
+			case "func":
+				idDaModal = "modalCadFunc";
+				break;
+			case "solicitacoes":
+				idDaModal = "modalSolic";
+				break;
+			case "editFunc":
+				idDaModal = "modalEditFunc";
+				break;
+			case "hist":
+				idDaModal = "modalTagHistorico";
+				break;
+			case "tagAdd":
+				idDaModal = "modalTagNova";
+				break;
+			case "tagExcl":
+				idDaModal = "modalTagExcluir";
+				break;
+			case "grafico":
+				idDaModal = "modalTagExcluir";
+				break;
+			case "graficoFunc":
+				idDaModal = "modalGraficoFunc";
+				break;
+		}
+    let modalEscolhida = document.getElementById(idDaModal)
+    modalEscolhida.style = "display: flex; animation-name: sumir; animation-duration: 300ms;"
             setTimeout(()=>{
-                modalCadastro.style = ""
+                modalEscolhida.style = ""
             },200)
-            break
-        case "dash":
-            modalDashboard.style = "display: flex; animation-name: sumir; animation-duration: 300ms;"
-            setTimeout(()=>{
-                modalDashboard.style = ""
-            },200)
-            break
-        case "func":
-            modalCadFunc.style = "display: flex; animation-name: sumir; animation-duration: 300ms;"
-            setTimeout(()=>{
-                modalCadFunc.style = ""
-            },200)
-            break
-        case "solicitacoes":
-            modalSolic.style = "display: flex; animation-name: sumir; animation-duration: 300ms;";
-				setTimeout(() => {
-					modalSolic.style = "";
-				}, 200);
-            break;    
-        case "editFunc":
-            modalEditFunc.style = "display: flex; animation-name: sumir; animation-duration: 300ms;";
-            setTimeout(() => {
-                modalEditFunc.style = "";
-            }, 200);
-            break;
-        }
-    setTimeout(()=>{
+
+    setTimeout(() => {
         containerModal.style = "display: none"
-    },200)
+    }, 200)
 }
 
 function gerarCodigo() {
@@ -122,7 +159,7 @@ function cadastrarServidor() {
         console.log("resposta: ", resposta);
         fecharModal("cad")
         if (resposta.ok) {
-            Swal.fire({
+            swal({
                 icon: 'success',
                 title: 'Servidor cadastrado com sucesso!',
                 text: 'Você deve autenticar o Monitor de Recursos com o código desse servidor para visualizar suas informações.'
@@ -130,13 +167,14 @@ function cadastrarServidor() {
             reloadServidores()
         }
         else {
-            Swal.fire({
+            swal({
                 title: 'Erro interno!',
                 text: 'Erro no servidor do aplicativo. Contate seu administrador de TI.',
                 icon: 'error'
             })
-        }}).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
         }
+    }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+    }
     );
 }

@@ -1,0 +1,409 @@
+#content-wrapper{
+    margin: 0px;
+}
+#content{
+    background-color: initial;
+}
+
+.container-fluid{
+    padding: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.container-fluid > div{
+    background-color: #001A46;
+    border-radius: 15px;
+}
+
+#kpisTags{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 570px;
+    width: 20%;
+    background: none;
+}
+#kpisTags > div{
+    background-color: #001A46;
+    border-radius: inherit;
+    display: inherit;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    padding: 10px 20px;
+}
+#kpisTags > div > h3{
+    text-align: center;
+    font-weight: 700;
+    line-height: 0.9;
+    font-size: 26px;
+}
+#kpisTags button{
+    border-radius: inherit;
+    border: none;
+    background-color: #005eff;
+    color: white;
+    font-size: 22px;
+    font-weight: normal;
+    line-height: 1;
+    padding: 10px 20px;
+    transition: 500ms;
+}
+#kpisTags button:hover{
+    opacity: 0.8;
+}
+
+#containerTags{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 10px 20px;
+    width: 30%;
+}
+#containerTags h3{
+    font-weight: 700;
+    text-align: center;
+}
+
+#cabecalhoTags{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+}
+#cabecalhoTags > *{
+    margin-bottom: 10px;
+}
+
+#spanBuscarTag{
+    background-color: white;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    color: black;
+    width: 100%;
+}
+#iptNomeTag{
+    border: none;
+    border-radius: inherit;
+    color: inherit;
+    height: 100%;
+    padding: 0 10px;
+}
+#spanBuscarTag > i{
+    color: #005eff;
+    margin: 0px 10px;
+    cursor: pointer;
+    transition: 500ms;
+}
+#spanBuscarTag > i:hover{
+    color: #001A46;
+}
+
+#cabecalhoTags > span:last-child{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#cabecalhoTags > span:last-child button{
+    border: none;
+    border-radius: 10px;
+    background-color: #005eff;
+    color: inherit;
+    padding: 5px 10px;
+    font-size: 18px;
+}
+
+#containerSeletorTags{
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+}
+#containerSeletorTags > div{
+    padding: 5px 10px;
+}
+
+#filtroSeletorTags{
+    border-radius: 10px 10px 0px 0px;
+    color: #001A46;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 18px;
+    background-color: whitesmoke;
+}
+#filtroSeletorTags > span{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+#filtroSeletorTags > span > h4{
+    margin: 0px;
+}
+#filtroSeletorTags > span > i{
+    margin: 0px 5px;
+}
+
+#filtroSeletorTags > span:last-child{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+#filtroSeletorTags > span:last-child > i{
+    color: #005eff;
+    transition: 500ms;
+    cursor: pointer;
+}
+#filtroSeletorTags > span:last-child > i:hover{
+    color: #001A46;    
+}
+
+#containerResultadosBuscaTags{
+    height: 280px;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+#containerResultadosBuscaTags > *{
+    margin: 0px 5px;
+    cursor: pointer;
+}
+
+#rodapeSeletorTags{
+    border-radius: 0px 0px 10px 10px;
+    background-color: whitesmoke;
+    color: #001A46;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#rodapeSeletorTags p{
+    margin: 0px;
+}
+
+#frameTags{
+    width: 40vw;
+}
+
+#containerModal{
+    display: none;
+    position: absolute;
+    z-index: 15;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: rgba(140, 140, 140, 0.5);
+    backdrop-filter: blur(2px);
+    left: -10px;
+    top: 0px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#containerModal div{
+    display: none;
+    background-color: #001A46;
+    border-radius: 0.25rem;
+    padding: 10px 20px;
+}
+#containerModal > div{
+    flex-direction: column;
+}
+
+#containerModal header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    color: white;
+}
+#containerModal header > span{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+#containerModal header h3{
+    font-weight: bold;
+    width: fit-content;
+}
+#containerModal header > span > *{
+    margin: 0px 5px;
+}
+
+#containerModal header > i{
+    color: #005eff;
+    cursor: pointer;
+    transition: 500ms;
+}
+#containerModal header > i:hover{
+    opacity: 0.4;
+}
+
+#containerModal button{
+    border-radius: 0.25rem;
+    background-color: #005eff;
+    color: white;
+    font-size: 1.2em;
+    border: none;
+    padding: 5px 10px;
+}
+
+#containerModal form{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+#containerModal label{
+    margin: 5px 0 2.5px 0;
+    color: white;
+}
+#containerModal input{
+    border-radius: 10rem;
+    padding: 0.5rem 1rem;
+    background-color: #001A46;
+    border: solid 1px whitesmoke;
+    color: white;
+}
+#containerModal div > form > div{
+    display: flex;
+    width: 100%;
+    border-radius: 0.25rem;
+    background-color: whitesmoke;
+    overflow-y: scroll;
+}
+
+#modalTagHistorico header{
+    margin-bottom: 10px;
+}
+
+.tooltipHistorico{
+    width: 250px;
+}
+
+#modalTagNova{
+    color: rgb(75, 181, 51);
+    color: rgb(255, 225, 31);
+    color: rgb(255, 46, 46);
+    color: rgb(196, 196, 196);
+    color: rgb(7, 77, 85);
+    color: rgb(92, 90, 66);
+    color: rgb(51, 51, 51);
+}
+
+#seletorCor{
+    flex-direction: row;
+    padding: 0px !important;
+    overflow: hidden;
+}
+#seletorCor span{
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 10%;
+    margin: 5px;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+#seletorCor .bordaSeletor{
+    border: solid 2px #4d4d4d;
+}
+.corSelecionada{
+    border-color: #005eff !important;
+    border: solid 3px #005eff;
+}
+#seletorCor span i.fa-check{
+    position: absolute;
+    right: -13px;
+    top: -10px;
+    background-color: whitesmoke;
+    padding: 2.5px 4px;
+    border: solid 3px #005eff;
+    border-radius: 100%;
+    color: #001A46;
+}
+
+.modalTagSeletor{
+    flex-direction: column;
+    justify-content: start;
+    align-items: stretch;
+    max-height: 30vh;
+    padding: 0px !important;
+}
+.modalTagSeletor > span{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.modalTagSeletor span:nth-child(odd){
+    background-color: #e6e6e6;
+}
+.modalTagSeletor span > *:not(input):not(button){
+    margin: 0px;
+    color: #0f0f0f;
+    cursor: default;
+}
+.modalTagSeletor span > input{
+    cursor: pointer;
+}
+.modalTagSeletor p{
+    margin:  20px 10px;
+}
+
+#modalTagNova button{
+    margin-top: 7.5px;
+    align-self: center;
+}
+
+#modalExclTags{
+    max-height: 50vh;
+}
+#modalExclTags > span{
+    padding: 10px 0;
+    justify-content: start;
+}
+#modalExclTags > span > *{
+    margin: 0 10px;
+}
+
+.graficoCarregando{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+#graficoTagHistorico{
+    display: flex !important;
+    width: 100%;
+    border-radius: 0.25rem !important;
+    background-color: whitesmoke !important;
+    overflow-y: scroll;
+}
+#graficoTagHistorico div{
+    display: inherit;
+    background-color: inherit;
+}
+.apexcharts-toolbar > div > i{
+    color: #005eff;
+}
+
+
+@keyframes aparecer{
+    0% { transform: scale(0,0); }
+    50% { transform: scale(1,1); }
+    80% { transform: scale(0.95,0.95); }
+    100% { transform: scale(1,1); }
+}
+@keyframes sumir{
+    from {transform: scale(1,1);opacity: 1;}
+    to {transform: scale(0,0);opacity: 0;}
+}
