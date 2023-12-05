@@ -61,7 +61,6 @@ function carregarViaGET(urlKPIs, urlGraficos){
     }).then(function (resposta) {
         if (resposta.ok) {
             resposta.json().then(json => {
-                console.log(json)
                 if(urlKPIs == "../dash/kpiGeral"){
                     definirKPIs("geral",json)
                 } else{
@@ -121,67 +120,79 @@ function carregarViaPOST(urlKPIs, corpoKPIs, urlGraficos, corpoGraficos){
 	
 }
 
-function chamarRegistros() {
-    carregarDados();
-	indiceParm = location.href.indexOf("?");
-	params = location.href.slice(indiceParm + 1, indiceParm + 7);
-	var data = pesquisaData.value;
+function chamarRegistros() { 
+    if(pesquisaData.value == ""){
+        swal({
+            icon: 'warning',
+            title: 'Nenhuma data selecionada',
+            text: `Favor uma data da qual serão os dados à serem salvos.`
+        })
+    } else{
+        carregarDados();
+        indiceParm = location.href.indexOf("?");
+        params = location.href.slice(indiceParm + 1, indiceParm + 7);
+        var data = pesquisaData.value;
 
 
-	if (indiceParm == -1) {
-		urlDados = `/dash/listarRegistrosData/${data}`;
-		nomePagina.innerText = "Dashboard - Visão Geral";
-		carregarMenu("geral", true);
-	} else {
-		urlDados = `/dash/listarRegistrosDataEspeficico/${params}/${data}`;
-		nomePagina.innerText = "Dashboard - Servidor " + params;
-		reload_e_alertas.style = "left: -45px";
+        if (indiceParm == -1) {
+            urlDados = `/dash/listarRegistrosData/${data}`;
+            nomePagina.innerText = "Dashboard - Visão Geral";
+            carregarMenu("geral", true);
+        } else {
+            urlDados = `/dash/listarRegistrosDataEspeficico/${params}/${data}`;
+            nomePagina.innerText = "Dashboard - Servidor " + params;
+            reload_e_alertas.style = "left: -45px";
 
-		iconKPI2.className = "fa-solid fa-arrow-right-arrow-left";
-		nomeKPI2.innerText = "Taxa de transferência";
+            iconKPI2.className = "fa-solid fa-arrow-right-arrow-left";
+            nomeKPI2.innerText = "Taxa de transferência";
 
-		carregarMenu("especifica", false, params);
-	}
-    fetch(urlDados, {
-			method: "GET",
-			headers: {
-				"Content-Type": "application/json",
-			},
-		})
-			.then(function (resposta) {
-				console.log("Resposta: ", resposta);
-				if (resposta.ok) {
-					console.log("OK");
-					resposta.json().then((json) => {
-                        console.log(json);
-                        csv(json);
-					});
-				} else {
-					console.log("não ok");
-					console.log(`#ERRO: ${resposta}`);
-				}
-			})
-			.catch(function (resposta) {
-				console.log(`#ERRO: ${resposta}`);
-			});
+            carregarMenu("especifica", false, params);
+        }
+        fetch(urlDados, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            })
+                .then(function (resposta) {
+                    if (resposta.ok) {
+                        console.log("OK");
+                        resposta.json().then((json) => {
+                            console.log(json);
+                            csv(json);
+                        });
+                    } else {
+                        console.log(`#ERRO: ${resposta}`);
+                    }
+                })
+                .catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+                });
+    }
 }
 
 function csv(json) {
-	const colunas = Object.keys(json[0]);
-	var csv = colunas.join(",");
+    try{
+        const colunas = Object.keys(json[0]);
+        var csv = colunas.join(",");
 
-	for (const item of json) {
-		const linha = Object.values(item).join(",");
-		csv += "\n" + linha;
-	}
+        for (const item of json) {
+            const linha = Object.values(item).join(",");
+            csv += "\n" + linha;
+        }
 
-	console.log(csv);
-
-	const blob = new Blob([csv], { type: "text/csv" });
-	const link = document.createElement("a");
-	link.href = window.URL.createObjectURL(blob);
-	link.download = "dados.csv";
-	link.click();
+        const blob = new Blob([csv], { type: "text/csv" });
+        const link = document.createElement("a");
+        link.href = window.URL.createObjectURL(blob);
+        link.download = "dados.csv";
+        link.click();
+    } catch{
+        swal({
+            icon: 'warning',
+            title: 'Nenhum dado para a data selecionada.',
+            text: `Não foi encontrado nenhum dado gravado na data escolhida. Favor selecionar um dia em que os servidores estiveram ativos.`
+        })
+    }
 }
 
 function definirKPIs(tipo, json) {
