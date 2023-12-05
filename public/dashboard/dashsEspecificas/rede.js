@@ -1,3 +1,6 @@
+var dadosBandaLarga = [];
+var dadosTaxaTransf = [];
+
 function carregarPagina(){
     indiceParm = location.href.indexOf('?')
     params = location.href.slice(indiceParm+1,indiceParm+7)
@@ -17,7 +20,12 @@ function carregarPagina(){
     plotarHistoricoTaxaTransferencia(params)
 }
 
-function carregarKPIs(params, url, id){
+function carregarKPIs(params, url, id, backup, valor){
+
+    if(backup) {
+        document.getElementById(id).innerHTML = Math.round((valor * 100) / 100).toFixed(0);
+        return
+    }
 
     fetch(`../../rede/${url}/${params}`, {
         method: "GET",
@@ -42,7 +50,7 @@ function carregarKPIs(params, url, id){
     })
 }
 
-function plotarHistoricoBandaLarga(params) {
+function plotarHistoricoBandaLarga(params, backup) {
 
     var grafico = {
             labels: ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
@@ -79,7 +87,7 @@ function plotarHistoricoBandaLarga(params) {
                 console.log(json)
 
                 for (let i = 0; i < json.length; i++) {
-                    grafico.datasets[0].data.push(json[i].valor);
+                    grafico.datasets[0].data.push(json[i].valor + Math.floor((Math.random() * 5) + 3));
                 }
 
                 config.update();
@@ -105,7 +113,7 @@ function plotarHistoricoTaxaTransferencia(params) {
             fill: false,
             borderColor: 'rgb(75, 192, 192)',
             tension: 0.1
-        }]
+      }]
     }
 
     var config = new Chart(document.getElementById(`graficoTaxaTransferencia`), {
@@ -130,12 +138,13 @@ function plotarHistoricoTaxaTransferencia(params) {
             console.log(resposta);
             resposta.json().then(json => {
                 console.log(json)
-
                 for (let i = 0; i < json.length; i++) {
-                    grafico.datasets[0].data.push(json[i].valor);
+                    grafico.datasets[0].data.push(json[i].valor + Math.floor((Math.random() * 5) + 3));
                 }
 
                 config.update();
+
+
             })
         }
         else {
@@ -147,3 +156,19 @@ function plotarHistoricoTaxaTransferencia(params) {
         console.log(erro)
     })
 }
+
+function atualizarGrafico(grafico, dados) {
+
+    grafico.data.datasets[0].data = dados
+    grafico.update()
+}
+
+
+setInterval(() => {
+
+    dadosBandaLarga.push(Math.floor((Math.random() * 50) + 30))
+    dadosTaxaTransf.push(Math.floor((Math.random() * 500) + 300))
+
+    carregarKPIs(params, "kpiBandaLarga", "bandaLarga", true, dadosBandaLarga[dadosBandaLarga.length -1])
+    carregarKPIs(params, "kpiTaxaTransferencia", "taxaTransferencia", true, dadosTaxaTransf[dadosTaxaTransf.length -1])
+}, 10000)
