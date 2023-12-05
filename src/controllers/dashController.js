@@ -141,7 +141,7 @@ function graficosEspecificos(req, res) {
           res.status(404).send()
         }}).catch((error) => {
         console.log(error)
-        console.log("Erro nas Dashboards\n", erro.sqlMessage)
+        console.log("Erro nas Dashboards\n", error.sqlMessage)
       })} else {
       res.status(404).send()
     }}).catch((error) => {

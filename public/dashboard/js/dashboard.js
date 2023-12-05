@@ -81,8 +81,10 @@ function carregarViaGET(urlKPIs, urlGraficos){
             "Content-Type": "application/json"
         }
     }).then(function (resposta) {
+        console.log(resposta)
         if (resposta.ok) {
            resposta.json().then((json) => {
+                    console.log(json)
 					chamarGraficos(json);
 				});
         }

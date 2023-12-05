@@ -24,7 +24,6 @@ function listarServidores() {
     }).then(function (resposta) {
         if (resposta.status == 204) { semServidores(false) }
         else if (resposta.ok) {
-            console.log(resposta);
             resposta.json().then(json => {
                 criarLiServidor(json)
             });
