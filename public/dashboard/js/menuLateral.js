@@ -227,6 +227,10 @@ function carregarAlertas(alertas) {
     quadroDeAlertas.innerHTML = "";
     contadorAlerta.innerText = alertas.length;
 
+    if(alertas.length != 0){
+        contadorAlerta.style = "display: block"
+    }
+
     alertas.forEach((alerta, i) => {
         let tituloAlerta = "";
         let corAlerta = "";
@@ -252,8 +256,6 @@ function carregarAlertas(alertas) {
         <li id="alerta${alerta.id_alerta}" 
         style="background-color: ${corAlerta}; cursor: pointer;" 
         onclick="visualizarAlerta(${alerta.id_alerta})" 
-        onmouseover="expandirAlerta(${alerta.id_alerta})"
-        onmouseleave="comprimirAlerta(${alerta.id_alerta})">
             <u>
                 <h4>
                     ${tituloAlerta}
@@ -261,7 +263,6 @@ function carregarAlertas(alertas) {
             </u>
             <span>
                 <p>${alerta.descricao}</p>
-                <i id="iconAlerta${alerta.id_alerta}" class="fa-solid fa-plus"></i>
             </span>
             <p>Servidor: ${alerta.codigo}</p>
             <p>Horário: ${formatarDataHora(alerta.data_hora)}</p>
@@ -276,7 +277,7 @@ function carregarAlertas(alertas) {
 }
 
 function atualizarAlertas() {
-    if (iconQuadroAlertas.className.indexOf("iconQuadroAberto") === -1) {
+    if (iconQuadroAlertas.className.indexOf("iconQuadroAberto") == -1) {
         iconQuadroAlertas.className = "fa-solid fa-arrows-rotate";
         iconQuadroAlertas.style = "animation-name: girar; pointer-events: none";
         contadorAlerta.style = "display: none";
@@ -328,38 +329,13 @@ function quadroAlertas(){
     }
 }
 
-function expandirAlerta(id){
-    alertaAlvo = document.getElementById(`alerta${id}`)
-    icon = document.getElementById(`iconAlerta${id}`)
-    
-    icon.style = "animation-name: rodar";
-    alertaAlvo.className = "alertaAberto"
-    setTimeout(()=>{
-        icon.className = "fa-solid fa-minus aberto"
-        icon.style = ""
-    },100)
-}
-
-function comprimirAlerta(id){
-
-    alertaAlvo = document.getElementById(`alerta${id}`)
-    icon = document.getElementById(`iconAlerta${id}`)
-
-    icon.style = "animation-name: rodar; animation-direction: reverse";
-    alertaAlvo.className = "";
-    setTimeout(()=>{
-        icon.className = "fa-solid fa-plus"
-        icon.style = ""
-    },100)
-}
-
 function visualizarAlerta(id) {
-
     alertaAlvo = document.getElementById(`alerta${id}`);
 
-    console.log("Opa, notificação clicada!")
-
-    console.log(id);
+    alertaAlvo.style = 'animation-name: sumir';
+            setTimeout(()=>{
+                alertaAlvo.style = 'display: none';
+            },500)
 
     fetch(`/alerta/visualizarAlerta/${id}`, {
         method: "PUT",
@@ -372,19 +348,16 @@ function visualizarAlerta(id) {
     })
     .then(function (resposta) {
         if (resposta.ok) {
-            console.log("Visualização alterada!");
+            if(quadroDeAlertas.innerHTML = "<p>Nenhum alerta encontrado</p>"){
+                quadroDeAlertas()
+            }
         } else {
             console.warn(`Erro: ${resposta.status} - ${resposta.statusText}`);
         }
     })
     .catch(function (erro) {
         console.error(erro);
-    })
-    .finally(function (){
-        if (alertaAlvo) {
-            alertaAlvo.style.display = 'none';
-        }
-    });    
+    }); 
 }
 
 // ========================================================================

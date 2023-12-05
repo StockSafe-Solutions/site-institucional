@@ -53,6 +53,7 @@ body > div > *{
 }
 
 #contadorAlerta{
+    display: none;
     position: absolute;
     top: -7px;
     right: -5px;
@@ -85,18 +86,21 @@ body > div > *{
 }
 #quadroDeAlertas li{
     color: whitesmoke;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    cursor: default;
+    cursor: pointer;
     border-radius: 0.25rem;
     margin: 5px;
     padding: 10px;
-    font-size: 0.8em !important;
+    font-size: 1em !important;
     width: 250px;
-    height: 70px;
     transition: 1s;
+    font-weight: bold;
+    animation-duration: 500ms;
 }
+@keyframes sumir{
+    from {transform: scale(1,1);opacity: 1;}
+    to {transform: scale(0,0);opacity: 0;}
+}
+
 .alertaAberto{
     height: fit-content !important;
     box-shadow: 0px 0px 0px 5px rgba(156,156,156,1);
@@ -113,6 +117,7 @@ body > div > *{
 }
 #quadroDeAlertas h4{
     margin: 0;
+    font-weight: bolder;
 }
 #quadroDeAlertas i{
     animation-duration: 500ms;
@@ -129,7 +134,7 @@ body > div > *{
     width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
-    text-align: justify;
+    text-align: left;
 }
 
 /* Barra lateral */
