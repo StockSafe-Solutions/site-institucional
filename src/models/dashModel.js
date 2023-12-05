@@ -176,17 +176,8 @@ function buscarGraficos() {
 
 
 module.exports = {
-<<<<<<< HEAD
     buscarGraficos,
     buscarDados,
-    kpiEspecifica,
-    cpuEspecifico,
-    ramEspecifico,
-    kpiGeral,
-    cpuGeral,
-    ramGeral
-}
-=======
 	kpiEspecifica,
 	cpuEspecifico,
 	ramEspecifico,
@@ -201,4 +192,3 @@ module.exports = {
 	kpiRam,
 	csvRam
 };
->>>>>>> gusJulia
