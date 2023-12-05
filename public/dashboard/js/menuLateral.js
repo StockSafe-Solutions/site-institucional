@@ -3,7 +3,7 @@ function carregarMenu(pagina, geral, codServidor) {
     nomeUsuario = jsonFunc.nome;
     fotoUsuario = jsonFunc.foto;
     if(fotoUsuario == null){
-        fotoUsuario = "../assets/img/fotosPadrao/undraw_profile.svg"
+        fotoUsuario = "../../assets/img/fotosPadrao/undraw_profile.svg"
     }
 
     destGeral = ""
@@ -53,35 +53,41 @@ function carregarMenu(pagina, geral, codServidor) {
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item${destGeral}">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="../index.html">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Visão geral</span></a>
         </li>
 
+        <li class="nav-item${destExemplo}">
+                <a class="nav-link" href="./dashsEspecificas/dashErros.html">
+                    <i class="fa-solid fa-server"></i>
+                    <span>Erros</span></a>
+            </li>
+
             <!-- Servidores -->
             <li class="nav-item${destServs}">
-                <a class="nav-link" href="servidores.html">
+                <a class="nav-link" href="../servidores.html">
                     <i class="fa-solid fa-server"></i>
                     <span>Servidores</span></a>
             </li>
 
             <!-- Funcionários -->
             <li class="nav-item${destFuncs}">
-                <a class="nav-link" href="funcionarios.html">
+                <a class="nav-link" href="../funcionarios.html">
                     <i class="fa-solid fa-users"></i>
                     <span>Funcionários</span></a>
             </li>
 
             <!-- Seu perfil -->
             <li class="nav-item${destPerf}">
-                <a class="nav-link" href="perfil.html">
+                <a class="nav-link" href="../perfil.html">
                     <i class="fa-solid fa-user-gear"></i>
                     <span>Seu perfil</span></a>
             </li>
 
             <!-- Configurações -->
             <li class="nav-item${destConfig}">
-                <a class="nav-link" href="configuracoes.html">
+                <a class="nav-link" href="../configuracoes.html">
                     <i class="fa-solid fa-gears"></i>
                     <span>Configurações</span></a>
             </li>
@@ -101,17 +107,17 @@ function carregarMenu(pagina, geral, codServidor) {
             <li class="nav-interrogacao">
               
             <button class="modalBtn" onclick="switchModalHelpDesk()">
-                <img src="../assets/img/dashboard/interrogacao.png" class="imgInterrog">
+                <img src="../../assets/img/dashboard/interrogacao.png" class="imgInterrog">
             </button>
                   
             <div class="modal">
                 <div class="content">
                     <div class="jira">
-                        <a href="https://stock-safe-solutions.atlassian.net/servicedesk/customer/portal/1" target="_blank"><img src="../assets/img/dashboard/jira.png" class="imgJira"></a>
+                        <a href="https://stock-safe-solutions.atlassian.net/servicedesk/customer/portal/1" target="_blank"><img src="../../assets/img/dashboard/jira.png" class="imgJira"></a>
                     </div>
 
                     <div class="slack">
-                    <a href="https://stocksafe-solutions.slack.com/" target="_blank"><img src="../assets/img/dashboard/slack.png" class="imgSlack"></a>
+                    <a href="https://stocksafe-solutions.slack.com/" target="_blank"><img src="../../assets/img/dashboard/slack.png" class="imgSlack"></a>
                     </div>
                 </div>
             </div>
