@@ -107,7 +107,6 @@ function carregarViaPOST(urlKPIs, corpoKPIs, urlGraficos, corpoGraficos){
     }).then(function (resposta) {
         if (resposta.ok) {
             resposta.json().then(json => {
-                console.log(json)
                 definirKPIs("tag",json[0])
             });
         }
@@ -120,7 +119,41 @@ function carregarViaPOST(urlKPIs, corpoKPIs, urlGraficos, corpoGraficos){
 	dataAtual =
 		now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate();
 
-	
+        console.log(corpoGraficos)
+        fetch(urlGraficos, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                tagServer: corpoGraficos
+            })
+        }).then(function (resposta) {
+            console.log(resposta)
+            if (resposta.ok) {
+               resposta.json().then((json) => {
+                        console.log(json);
+
+                        uso_cpu = []
+                        uso_ram = []
+                        data_cpu = []
+                        data_ram = []
+
+                        for(let i = 0; i < json.length; i++){
+                            uso_cpu.push(json[i].uso_da_cpu)
+                            data_cpu.push(json[i].data_hora)
+                            uso_ram.push(json[i].uso_da_ram)
+                            data_ram.push(json[i].uso_da_cpu)
+                        }
+
+                        gerenciarGraficos("graficoCPU", uso_cpu, data_cpu);
+	                    gerenciarGraficos("graficoRAM", uso_ram, data_ram);
+                    });
+            }
+            else{
+                resposta.text().then(texto => { console.warn(texto) })}}).catch(function (erro) {
+            console.log(erro);
+        })
 }
 
 function chamarRegistros() { 

@@ -205,12 +205,12 @@ function clicarEmTag(){
         tagsClicaveisChecadas --
     } else {
         iptTag.checked = true
+        tagsAtivas.push(iptTag.id)
         tagsClicaveisChecadas ++
     }
     contagemTagsBuscaSelecionadas.innerText = `
         Selecionadas: ${tagsClicaveisChecadas}`
     
-    console.log(tagsAtivas)
     carregarIframe()
 }
 

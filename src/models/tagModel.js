@@ -27,7 +27,7 @@ function tagsPorNome(nome, ordenacao){
 function graficosPorTags(tags){
     var instrucao = `
     SELECT
-        data_hora,
+        FORMAT(data_hora, 'HH:mm') as data_hora,
         ROUND(avg (uso_da_cpu),1) AS uso_da_cpu,
         ROUND(avg (uso_da_ram),1) AS uso_da_ram
         FROM vw_registro AS r
@@ -41,7 +41,7 @@ function graficosPorTags(tags){
             instrucao += " OR "
         }
     }
-    instrucao += " GROUP BY data_hora;"
+    instrucao += " GROUP BY FORMAT(data_hora, 'HH:mm');"
 
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

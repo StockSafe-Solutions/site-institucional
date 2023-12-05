@@ -16,7 +16,7 @@ function listar(req, res) {
       }).catch(
         function (erro) {
           console.log(erro);
-          console.log("\n Houve um erro ao realizar o login! Erro: ", error.sqlMessage);
+          console.log("\n Houve um erro ao realizar o login! Erro: ", erro.sqlMessage);
           res.status(500), json(error.sqlMessage);
         }
       )

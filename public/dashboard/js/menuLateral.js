@@ -369,9 +369,6 @@ function visualizarAlerta(id) {
     })
     .then(function (resposta) {
         if (resposta.ok) {
-            if(quadroDeAlertas.innerHTML = "<p>Nenhum alerta encontrado</p>"){
-                quadroDeAlertas()
-            }
         } else {
             console.warn(`Erro: ${resposta.status} - ${resposta.statusText}`);
         }

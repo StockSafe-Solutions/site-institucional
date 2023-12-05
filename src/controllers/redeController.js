@@ -12,7 +12,7 @@ function kpiBandaLarga(req, res){
            console.log(`Resultados: ${JSON.stringify(resultado)}`);
 
             if (resultado) {
-                console.log(resultado);
+                ;
                 res.json(resultado);
             } else {
                 res.status(404).send()
@@ -35,7 +35,7 @@ function kpiPacotesEnviados(req, res){
            console.log(`Resultados: ${JSON.stringify(resultado)}`);
 
             if (resultado) {
-                console.log(resultado);
+                ;
                 res.json(resultado);
             } else {
                 res.status(404).send()
@@ -58,7 +58,7 @@ function kpiPacotesRecebidos(req, res){
            console.log(`Resultados: ${JSON.stringify(resultado)}`);
 
             if (resultado) {
-                console.log(resultado);
+                ;
                 res.json(resultado);
             } else {
                 res.status(404).send()
@@ -81,7 +81,7 @@ function kpiTaxaTransferencia(req, res){
            console.log(`Resultados: ${JSON.stringify(resultado)}`);
 
             if (resultado) {
-                console.log(resultado);
+                ;
                 res.json(resultado);
             } else {
                 res.status(404).send()
@@ -103,7 +103,7 @@ function graficoBandaLarga(req, res) {
       console.log(`Resultados: ${JSON.stringify(resultado)}`);
 
       if (resultado) {
-        console.log(resultado);
+        ;
         res.json(resultado);
       } else {
         res.status(404).send()
@@ -125,7 +125,7 @@ function graficoTaxaTransferencia(req, res) {
       console.log(`Resultados: ${JSON.stringify(resultado)}`);
 
       if (resultado) {
-        console.log(resultado);
+        ;
         res.json(resultado);
       } else {
         res.status(404).send()

@@ -16,7 +16,7 @@ function buscarDados(req, res) {
   
     dashboardModel.buscarDados(select).then((resultado) => {
       if (resultado.length > 0) {
-        console.log(resultado)
+        
         res.status(200).json(resultado)
       } else {
         res.status(204).json(resultado)
@@ -50,7 +50,7 @@ function kpiEspecifica(req, res) {
   }
   dashboardModel.kpiEspecifica(codServidor).then((resultado) => {
     if (resultado.length > 0) {
-      console.log(resultado)
+      
       res.status(200).json(resultado[0])
     } else {
       res.status(404).send()
@@ -194,7 +194,7 @@ function kpiGeral(req, res) {
 
   dashboardModel.kpiGeral().then((resultado) => {
     if (resultado.length > 0) {
-      console.log(resultado)
+      
       res.status(200).json(resultado[0])
     } else {
       res.status(404).send()

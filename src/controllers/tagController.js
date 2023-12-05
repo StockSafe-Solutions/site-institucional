@@ -3,11 +3,8 @@ var tagModel = require("../models/tagModel");
 function listarTags(req, res) {
     tagModel.listarTags().then(
         function (resultado) {
-            console.log(`\n Resultados encontrados: ${resultado.length}`);
-            console.log(`Resultados: ${JSON.stringify(resultado)}`);
-
             if (resultado.length > 0) {
-                console.log(resultado);
+                ;
                 res.json(resultado);
             } else if (resultado.length == 0){
                 res.status(204).send()
@@ -27,7 +24,7 @@ function kpisTags(req, res){
     tagModel.kpisTags().then(
         function (resultado){
             if (resultado.length > 0) {
-                console.log(resultado);
+                ;
                 res.json(resultado);
             } else if (resultado.length == 0){
                 res.status(204).send()
@@ -77,6 +74,7 @@ function tagsPorNome(req, res) {
 
 function graficosPorTags(req, res){
     var tags = req.body.tagServer;
+    // var tags = [1,2,3,5]
     if(tags == undefined){
         res.status(400).send()
     }
@@ -193,8 +191,6 @@ function historicoAlerta(req, res) {
     tagModel.historicoAlerta().then(
         function (resultado) {
             if (resultado.length > 0) {
-                console.log(`\n Resultados encontrados: ${resultado.length}`);
-                console.log(`Resultados: ${JSON.stringify(resultado)}`);
                 res.json(resultado);
 
             } else if (resultado.length == 0){
