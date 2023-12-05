@@ -136,6 +136,7 @@ function plotarHistoricoTaxaTransferencia(params) {
                 }
 
                 config.update();
+                setInterval( () => {config.update()}, 2000 )
             })
         }
         else {
