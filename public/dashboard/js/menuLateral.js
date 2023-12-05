@@ -3,7 +3,7 @@ function carregarMenu(pagina, geral, codServidor) {
     nomeUsuario = jsonFunc.nome;
     fotoUsuario = jsonFunc.foto;
     if(fotoUsuario == null){
-        fotoUsuario = "../../assets/img/fotosPadrao/undraw_profile.svg"
+        fotoUsuario = "../assets/img/fotosPadrao/undraw_profile.svg"
     }
 
     destGeral = ""
@@ -15,8 +15,8 @@ function carregarMenu(pagina, geral, codServidor) {
     destEspecifica = ""
     destExemplo = ""
     destMemoria = ""
+    destErros = ""
     destRede = ""
-    destErro = ""
 
     switch (pagina) {
         case "geral":
@@ -46,12 +46,12 @@ function carregarMenu(pagina, geral, codServidor) {
         case "memoria":
             destMemoria = " active"
             break;
+        case "erro":
+            destErros = " active"
+            break; 
         case "rede":
             destRede = " active"
             break;
-        case "erro":
-            destErro = " active"
-            break;    
     }
 
     let conteudoGeral = `
@@ -65,20 +65,14 @@ function carregarMenu(pagina, geral, codServidor) {
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item${destGeral}">
-            <a class="nav-link" href="../index.html">
+            <a class="nav-link" href="index.html">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Visão geral</span></a>
         </li>
 
-        <li class="nav-item${destErro}">
-                <a class="nav-link" href="./dashsEspecificas/dashErros.html">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Erros</span></a>
-            </li>
-
             <!-- Servidores -->
             <li class="nav-item${destServs}">
-                <a class="nav-link" href="../servidores.html">
+                <a class="nav-link" href="servidores.html">
                     <i class="fa-solid fa-server"></i>
                     <span>Todos os servidores</span></a>
             </li>
@@ -90,23 +84,30 @@ function carregarMenu(pagina, geral, codServidor) {
                     <span>Filtrar por tags</span></a>
             </li>
 
+            <!-- Tags -->
+            <li class="nav-item${destErros}">
+                <a class="nav-link" href="dashErros.html">
+                    <i class="fa-solid fa-x"></i>
+                    <span>Visualizar erros</span></a>
+            </li>
+
             <!-- Funcionários -->
             <li class="nav-item${destFuncs}">
-                <a class="nav-link" href="../funcionarios.html">
+                <a class="nav-link" href="funcionarios.html">
                     <i class="fa-solid fa-users"></i>
                     <span>Funcionários</span></a>
             </li>
 
             <!-- Seu perfil -->
             <li class="nav-item${destPerf}">
-                <a class="nav-link" href="../perfil.html">
+                <a class="nav-link" href="perfil.html">
                     <i class="fa-solid fa-user-gear"></i>
                     <span>Seu perfil</span></a>
             </li>
 
             <!-- Configurações -->
             <li class="nav-item${destConfig}">
-                <a class="nav-link" href="../configuracoes.html">
+                <a class="nav-link" href="configuracoes.html">
                     <i class="fa-solid fa-gears"></i>
                     <span>Configurações</span></a>
             </li>
@@ -132,11 +133,11 @@ function carregarMenu(pagina, geral, codServidor) {
             <div class="modal">
                 <div class="content">
                     <div class="jira">
-                        <a href="https://stock-safe-solutions.atlassian.net/servicedesk/customer/portal/1" target="_blank"><img src="../../assets/img/dashboard/jira.png" class="imgJira"></a>
+                        <a href="https://stock-safe-solutions.atlassian.net/servicedesk/customer/portal/1" target="_blank"><img src="../assets/img/dashboard/jira.png" class="imgJira"></a>
                     </div>
 
                     <div class="slack">
-                    <a href="https://stocksafe-solutions.slack.com/" target="_blank"><img src="../../assets/img/dashboard/slack.png" class="imgSlack"></a>
+                    <a href="https://stocksafe-solutions.slack.com/" target="_blank"><img src="../assets/img/dashboard/slack.png" class="imgSlack"></a>
                     </div>
                 </div>
             </div>
@@ -172,7 +173,7 @@ function carregarMenu(pagina, geral, codServidor) {
             PARA MUDAR O ÍCONE, MUDAR A CLASSE DO FONTAWESOME ->
             <!-- COLOCAR O codServidor COMO PARAMETRO GET NAS PAGINAS SE PRECISAR ->
 
-            <!-- Exemplo -->
+            <!-- Memoria -->
             <li class="nav-item${destMemoria}">
                 <a class="nav-link" href="${pasta}memoria.html?${codServidor}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="16" fill="currentColor" class="bi bi-memory" viewBox="0 0 16 16">
@@ -180,8 +181,6 @@ function carregarMenu(pagina, geral, codServidor) {
                     </svg>
                     <span>Memória</span></a>
             </li>
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
 
             <!-- Rede -->
             <li class="nav-item${destRede}">
@@ -189,7 +188,7 @@ function carregarMenu(pagina, geral, codServidor) {
                     <i class="fa-solid fa-wifi"></i>
                     <span>Rede</span></a>
             </li>
-            <!-- Exemplo -->
+            <!-- Memoria -->
             <li class="nav-item${destExemplo}">
                 <a class="nav-link" href="${pasta}processos.html?${codServidor}">
                     <i class="fa-solid fa-list"></i>
@@ -259,30 +258,25 @@ function carregarAlertas(alertas) {
         switch (alerta.nivel_alerta) {
             case 0:
                 tituloAlerta = "Normal";
-                corAlerta = "#319e41"; Verde
+                corAlerta = "#319e41"; // Verde
                 break;
             case 1:
                 tituloAlerta = "Atenção";
-                corAlerta = "#ccc34d"; Amarelo
+                corAlerta = "#ccc34d"; // Amarelo
                 break;
             case 2:
                 tituloAlerta = "Cuidado";
-                corAlerta = "#f7ae04"; Laranja
+                corAlerta = "#f7ae04"; // Laranja
                 break;
             case 3:
                 tituloAlerta = "Perigo";
-                corAlerta = "#f73504"; Vermelho
+                corAlerta = "#f73504"; // Vermelho
         }
 
         quadroDeAlertas.innerHTML += `
-        <li id="alerta${alerta.id_alerta}"
+        <li id="alerta${alerta.id_alerta}" 
         style="background-color: ${corAlerta}; cursor: pointer;" 
         onclick="visualizarAlerta(${alerta.id_alerta})" 
-        <li id="alerta${alerta.id_alerta}"
-        style="background-color: ${corAlerta}; cursor: pointer;"
-        onclick="visualizarAlerta(${alerta.id_alerta})"
-        onmouseover="expandirAlerta(${alerta.id_alerta})"
-        onmouseleave="comprimirAlerta(${alerta.id_alerta})">
             <u>
                 <h4>
                     ${tituloAlerta}
@@ -356,31 +350,6 @@ function quadroAlertas(){
     }
 }
 
-function expandirAlerta(id){
-    alertaAlvo = document.getElementById(`alerta${id}`)
-    icon = document.getElementById(`iconAlerta${id}`)
-
-    icon.style = "animation-name: rodar";
-    alertaAlvo.className = "alertaAberto"
-    setTimeout(()=>{
-        icon.className = "fa-solid fa-minus aberto"
-        icon.style = ""
-    },100)
-}
-
-function comprimirAlerta(id){
-
-    alertaAlvo = document.getElementById(`alerta${id}`)
-    icon = document.getElementById(`iconAlerta${id}`)
-
-    icon.style = "animation-name: rodar; animation-direction: reverse";
-    alertaAlvo.className = "";
-    setTimeout(()=>{
-        icon.className = "fa-solid fa-plus"
-        icon.style = ""
-    },100)
-}
-
 function visualizarAlerta(id) {
     alertaAlvo = document.getElementById(`alerta${id}`);
 
@@ -409,12 +378,7 @@ function visualizarAlerta(id) {
     })
     .catch(function (erro) {
         console.error(erro);
-    })
-    .finally(function (){
-        if (alertaAlvo) {
-            alertaAlvo.style.display = 'none';
-        }
-    });
+    }); 
 }
 
 // ========================================================================

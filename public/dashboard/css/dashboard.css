@@ -121,14 +121,13 @@ header > span > button:hover{
 .containerGraficos{
     width: 100%;
     display: flex;
-    flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-evenly;
     padding: 20px 0;
 }
 
 .grafico{
-    width: 37vw;
+    width: 35vw;
     height: 50vh;
     background-color: lightgrey;
     border-radius: 0.25rem;
